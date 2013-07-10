@@ -1,0 +1,17 @@
+  {% if site.jquery_scripts == true %}<!-- jQuery / Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="{{ relative }}js/jquery.min.js?1102"><\/script>')</script>
+  <script src="{{ relative }}js/script.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>{% endif %}{% if site.code_highlighting == true %}
+  <!-- Code Highlighting -->
+  <script src="{{ relative }}js/prism.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>{% endif %}{% if site.google_analytics == true %}
+  <!-- Google Analytics -->
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ site.google_analytics_id }}');ga('send','pageview');
+  </script>{% endif %}
+</body>
+</html>

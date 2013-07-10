@@ -1,0 +1,26 @@
+/*!** [made by]
+MICHAEL GUERRA
+msguerra74.com
+@msguerra74
+[in 2013] **/
+
+//--------------
+// OldIE Styles
+//--------------
+
+@import
+  "compass",
+  "modules/settings",
+  "modules/helpers",
+  "vendor/normalize-oldie",
+  "partials/base",
+  "partials/tablet",
+  "partials/laptop",
+  "partials/desktop";
+
+// ----- Vendor Scripts ----- //
+
+// @import "vendor/prism";
+
+// ----- OldIE Specific Style Overrides ----- //
+

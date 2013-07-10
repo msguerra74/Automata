@@ -1,0 +1,51 @@
+## ----- Site Info ----- ##
+
+url: http://localhost:4000
+name: Automaton
+description: Static Website Generator
+
+owner: Michael Guerra
+email: mgsuerra74+automaton@gmail.com
+
+## ----- Custom Site Components ----- ##
+
+## Adds viewport tag
+responsive_design: true
+
+## Adds conditional comments for OldIE support via oldie.css and oldie.js
+oldie_support: true
+
+## Adds link to jQuery and plugin scripts
+## NOTE: Only needed if plugins are used in /source/assets/scripts/plugins/
+jquery_scripts: true
+
+## Adds link to Prism syntax highlighting script
+## NOTE: Also need to uncomment Sass @ import "vendor/prism"; in /source/assets/styles/style.scss and oldie.scss
+code_highlighting: false
+
+## Adds Google Analytics tracking code
+google_analytics: true
+google_analytics_id: UA-xxxxxxxx-x
+
+## ----- Global Configuration ----- ##
+
+source: TEMP
+destination: BUILD
+
+layouts: ./_layouts
+plugins: ./_plugins
+exclude: ['.htaccess']
+include: ['']
+keep_files: ['']
+timezone:
+
+## ----- Build Command Options ----- ##
+
+future: false
+lsi: false
+show_drafts: false
+
+paginate: 7
+permalink: /:categories/:title/
+
+markdown: rdiscount

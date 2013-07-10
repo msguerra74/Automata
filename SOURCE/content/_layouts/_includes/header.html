@@ -1,0 +1,31 @@
+<!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- [made by]
+  MICHAEL GUERRA
+  msguerra74.com
+  @msguerra74
+  [in 2013] -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">{% if page.title %}
+  <title>{{ page.title }} | {{ site.name }}</title>{% else %}
+  <title>{{ site.name }}</title>{% endif %}{% if page.description %}
+  <meta name="description" content="{{ page.description }}">{% else %}
+  <meta name="description" content="{{ site.description }}">{% endif %}{% if site.responsive_design == true %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}
+  <link rel="alternate" type="application/atom+xml" title="{{ site.name }} Atom Feed" href="{{ site.url }}/feed.xml">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
+  <!--[if (gt IE 8) | (IEMobile)]><!-->
+  <link rel="stylesheet" href="{{ relative }}css/style.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">
+  <!--<![endif]-->{% if site.oldie_support == true %}
+  <!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" href="{{ relative }}css/oldie.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">
+  <script src="{{ relative }}js/oldie.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>
+  <![endif]-->{% endif %}
+  <!-- Detect JavaScript -->
+  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
+</head>
+<body>{% if site.oldie_support == true %}
+  <!--[if lt IE 8]>
+  <p class="browser-alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->{% endif %}

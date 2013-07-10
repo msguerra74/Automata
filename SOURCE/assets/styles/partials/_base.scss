@@ -1,0 +1,37 @@
+//-------------
+// Base Styles
+//-------------
+
+*,
+*:after,
+*:before {
+  @include box-sizing(border-box);
+}
+
+body {
+  background: $base-bg-color;
+  color: $base-font-color;
+  font: $base-font;
+  font-size: em(16);
+  line-height: $base-line-height;
+}
+
+img,
+object,
+embed,
+video {
+  max-width: 100%;
+}
+
+// ----- Classes ----- //
+
+.browser-alert {
+  background: $error-bg-color;
+  border: 1px dashed $error-color;
+  color: $error-color;
+  margin: em(16);
+  padding: em(16);
+}
+
+// ----- Sections ----- //
+
