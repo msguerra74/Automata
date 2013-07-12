@@ -1,6 +1,6 @@
   {% if site.jquery_scripts == true %}<!-- jQuery / Scripts -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="{{ relative }}js/jquery.min.js?1102"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/{{ site.jquery_version }}/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="{{ relative }}js/jquery.min.js?{{ site.jquery_version }}"><\/script>')</script>
   <script src="{{ relative }}js/script.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>{% endif %}{% if site.code_highlighting == true %}
   <!-- Code Highlighting -->
   <script src="{{ relative }}js/prism.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>{% endif %}{% if site.google_analytics == true %}

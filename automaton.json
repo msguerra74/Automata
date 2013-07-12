@@ -1,0 +1,40 @@
+{
+  "source": "SOURCE",
+  "build": "_BUILD",
+  "temp": ".temp",
+
+  "name": "Automaton",
+  "description": "Static Website Generator",
+  "url": "http://localhost:4000",
+  "owner": "Michael Guerra",
+  "email": "msguerra74+automaton@gmail.com",
+
+  "responsive_design": "true",
+  "oldie_support": "true",
+  "jquery_scripts": "true",
+  "code_highlighting": "false",
+  "google_analytics": "true",
+  "google_analytics_id": "UA-xxxxxxxx-x",
+
+  "exclude": "'.htaccess'",
+  "include": "",
+  "keep_files": "",
+  "timezone": "",
+
+  "paginate": "7",
+  "permalink": "/:categories/:title/",
+  "markdown": "rdiscount",
+
+  "dev_name": "Michael Guerra",
+  "dev_website": "http://msguerra74.com",
+  "dev_email": "msguerra74@gmail.com",
+  "dev_twitter": "@msguerra74",
+  "dev_year": "2013",
+
+  "dev_url": "http://localhost:<%= prj.dev_url_port %>",
+  "dev_url_port": "4000",
+
+  "dev_banner_open": "/* ",
+  "dev_banner": "[made by] <%= prj.dev_name %> | <%= prj.dev_twitter %> | <%= prj.dev_website %> [in <%= prj.dev_year %>]",
+  "dev_banner_close": " */"
+}

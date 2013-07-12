@@ -62,6 +62,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
       - [grunt-contrib-watch][]
       - [grunt-jekyll][]
       - [grunt-open][]
+      - [grunt-replace][]
       - [matchdep][]
 - [Ruby][]: Programming Language / Runtime Environment
  - [Compass][]: CSS Authoring Framework
@@ -84,6 +85,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [grunt-contrib-watch]: http://npmjs.org/package/grunt-contrib-watch/
   [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
   [grunt-open]: http://npmjs.org/package/grunt-open/
+  [grunt-replace]: http://npmjs.org/package/grunt-replace/
   [matchdep]: http://npmjs.org/package/matchdep/
   [Ruby]: http://ruby-lang.org/en/
   [Compass]: http://compass-style.org
@@ -119,11 +121,8 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - Additional Automation
   - Categories / Tags
   - Deployment (Amazon S3 / SFTP / Github)
-  - Fonts
-  - Sprites (Compass)
   - SVG
 - Misc
-  - Gruntfile.js variables via .json file
   - Icon Placeholders (Apple / Windows 8)
   - Update this README
 - Widgets

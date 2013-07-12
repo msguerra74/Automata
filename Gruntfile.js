@@ -5,34 +5,50 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    // Source Directory
-    source: 'SOURCE',
+    // Project Variables
+    prj: grunt.file.readJSON('automaton.json'),
 
-    // Development Banner
-    banner: '/*** [made by]\nMICHAEL GUERRA\nmsguerra74.com\n@msguerra74\n[in 2013] **/',
+    // jQuery Version
+    jquery_version: '1.10.2',
 
     // Clean Task
     clean: {
-      all: ['.sass-cache', 'BUILD', 'TEMP'],
-      build: ['.sass-cache', 'TEMP']
+      all: ['.sass-cache', '<%= prj.build %>', '<%= prj.temp %>'],
+      build: ['.sass-cache', '<%= prj.temp %>']
     },
 
     // Compass Task
     compass: {
-      build: {
+      sass: {
         options: {
-          config: '<%= source %>/_configs/compass.rb',
-          sassDir: '<%= source %>/assets/styles'
+          boring: true,
+          cssDir: '<%= prj.temp %>/css',
+          environment: 'production',
+          fontsDir: '<%= prj.temp %>/fonts',
+          force: true,
+          imagesDir: '<%= prj.temp %>/img',
+          javascriptsDir: '<%= prj.temp %>/js',
+          outputStyle: 'compressed',
+          relativeAssets: true,
+          sassDir: '<%= prj.source %>/assets/styles',
+          raw:
+          // Cache Buster
+          'asset_cache_buster :none\n' +
+          // Preferred Syntax
+          'preferred_syntax = :scss\n' +
+          // Rename styles.css to styles.min.css
+          // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
+          'on_stylesheet_saved do |file|\n' + 'if File.exists?(file)\n' + 'filename = File.basename(file, File.extname(file))\n' + 'File.rename(file, "<%= prj.temp %>/css" + "/" + filename + ".min" + File.extname(file))\n' + 'end\n' + 'end'
         }
       }
     },
 
     // Connect Task
     connect: {
-      build: {
+      server: {
         options: {
-          port: 4000,
-          base: 'BUILD',
+          port: '<%= prj.dev_url_port %>',
+          base: '<%= prj.build %>',
           hostname: ''
         }
       }
@@ -43,81 +59,81 @@ module.exports = function(grunt) {
       fonts: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/assets/fonts',
+          cwd: '<%= prj.source %>/assets/fonts',
           src: '**/*',
-          dest: 'TEMP/fonts'
+          dest: '<%= prj.temp %>/fonts'
         }]
       },
       drafts: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/posts/_drafts',
+          cwd: '<%= prj.source %>/content/posts/_drafts',
           src: ['**/*'],
-          dest: 'TEMP/_drafts'
+          dest: '<%= prj.temp %>/_drafts'
         }]
       },
       includes: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/_layouts/_includes',
+          cwd: '<%= prj.source %>/content/_layouts/_includes',
           src: ['**/*'],
-          dest: 'TEMP/_includes'
+          dest: '<%= prj.temp %>/_includes'
         }]
       },
       layouts: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/_layouts',
+          cwd: '<%= prj.source %>/content/_layouts',
           src: ['**/*', '!_**/_**/*', '!_**/*', '!_**'],
-          dest: 'TEMP/_layouts'
+          dest: '<%= prj.temp %>/_layouts'
         }]
       },
       pages: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/pages',
+          cwd: '<%= prj.source %>/content/pages',
           src: ['**/*'],
-          dest: 'TEMP'
+          dest: '<%= prj.temp %>'
         }]
       },
       plugins: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/_plugins',
+          cwd: '<%= prj.source %>/content/_plugins',
           src: ['**/*'],
-          dest: 'TEMP/_plugins'
+          dest: '<%= prj.temp %>/_plugins'
         }]
       },
       posts: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/posts',
+          cwd: '<%= prj.source %>/content/posts',
           src: ['**/*', '!_**/*', '!_**'],
-          dest: 'TEMP/_posts'
+          dest: '<%= prj.temp %>/_posts'
         }]
       },
       root: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/content/root',
+          cwd: '<%= prj.source %>/content/root',
           src: ['**/{*,.*}'],
-          dest: 'TEMP'
+          dest: '<%= prj.temp %>'
         }]
       }
     },
 
     // Imagemin Task
     imagemin: {
-      build: {
+      images: {
         options: {
           optimizationLevel: 7,
           progressive: true
         },
         files: [{
           expand: true,
-          cwd: '<%= source %>/assets/images',
+          cwd: '<%= prj.source %>/assets/images',
           src: '**/*',
-          dest: 'TEMP/img'
+          dest: '<%= prj.temp %>/img'
         }]
       }
     },
@@ -125,19 +141,55 @@ module.exports = function(grunt) {
     // Jekyll Task
     jekyll: {
       build: {
-        config: '<%= source %>/_configs/jekyll.yml'
+        dest: '<%= prj.build %>',
+        drafts: false,
+        future: false,
+        lsi: false,
+        src: '<%= prj.temp %>',
+        raw:
+        // Website Info
+        'url: <%= prj.url %>\n' + 'name: <%= prj.name %>\n' + 'description: <%= prj.description %>\n' + 'owner: <%= prj.owner %>\n' + 'email: <%= prj.email %>\n' +
+        // Custom Website Components
+        'responsive_design: <%= prj.responsive_design %>\n' + 'oldie_support: <%= prj.oldie_support %>\n' + 'jquery_scripts: <%= prj.jquery_scripts %>\n' + 'jquery_version: <%= jquery_version %>\n' + 'code_highlighting: <%= prj.code_highlighting %>\n' + 'google_analytics: <%= prj.google_analytics %>\n' + 'google_analytics_id: <%= prj.google_analytics_id %>\n' +
+        // Global Jekyll Configuration
+        'exclude: [<%= prj.exclude %>]\n' + 'include: [<%= prj.include %>]\n' + 'keep_files: [<%= prj.keep_files %>]\n' + 'timezone: <%= prj.timezone %>\n' +
+        // Jekyll Build Command Options
+        'paginate: <%= prj.paginate %>\n' + 'permalink: <%= prj.permalink %>\n' + 'markdown: <%= prj.markdown %>'
       }
     },
 
     // JShint Task
     jshint: {
-      source: ['Gruntfile.js', '<%= source %>/assets/scripts/plugins/**/*']
+      source: ['Gruntfile.js', '<%= prj.source %>/assets/scripts/plugins/**/*']
     },
 
     // Open Task
     open: {
-      build: {
-        path: 'http://localhost:4000'
+      browser: {
+        path: '<%= prj.dev_url %>'
+      }
+    },
+
+    // Replace Task
+    replace: {
+      banner: {
+        options: {
+          variables: {
+            ' banner %>': '<%= prj.dev_banner %>'
+          },
+          prefix: '<%='
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: ['<%= prj.temp %>/css/**/*'],
+          dest: '<%= prj.temp %>/css'
+        }, {
+          expand: true,
+          flatten: true,
+          src: ['<%= prj.temp %>/_includes/**/*'],
+          dest: '<%= prj.temp %>/_includes'
+        }]
       }
     },
 
@@ -145,11 +197,11 @@ module.exports = function(grunt) {
     uglify: {
       plugins: {
         options: {
-          banner: '<%= banner %>'
+          banner: '<%= prj.dev_banner_open %><%= prj.dev_banner %><%= prj.dev_banner_close %>'
         },
         files: [{
-          src: ['<%= source %>/assets/scripts/plugins/**/*'],
-          dest: 'TEMP/js/script.min.js'
+          src: ['<%= prj.source %>/assets/scripts/plugins/**/*'],
+          dest: '<%= prj.temp %>/js/script.min.js'
         }]
       },
       vendor: {
@@ -159,14 +211,14 @@ module.exports = function(grunt) {
           preserveComments: 'all'
         },
         files: [{
-          src: ['<%= source %>/assets/scripts/vendor/html5shiv.*'],
-          dest: 'TEMP/js/oldie.min.js'
+          src: ['<%= prj.source %>/assets/scripts/vendor/html5shiv.*'],
+          dest: '<%= prj.temp %>/js/oldie.min.js'
         }, {
-          src: ['<%= source %>/assets/scripts/vendor/jquery.*'],
-          dest: 'TEMP/js/jquery.min.js'
+          src: ['<%= prj.source %>/assets/scripts/vendor/jquery.*'],
+          dest: '<%= prj.temp %>/js/jquery.min.js'
         }, {
-          src: ['<%= source %>/assets/scripts/vendor/prism.*'],
-          dest: 'TEMP/js/prism.min.js'
+          src: ['<%= prj.source %>/assets/scripts/vendor/prism.*'],
+          dest: '<%= prj.temp %>/js/prism.min.js'
         }]
       }
     },
@@ -174,27 +226,27 @@ module.exports = function(grunt) {
     // Watch Task
     watch: {
       build: {
-        files: ['TEMP/**/*'],
-        tasks: ['jekyll:build']
+        files: ['<%= prj.temp %>/**/*'],
+        tasks: ['replace', 'jekyll']
       },
       css: {
-        files: ['<%= source %>/assets/styles/**/*'],
+        files: ['<%= prj.source %>/assets/styles/**/*'],
         tasks: ['compass']
       },
       fonts: {
-        files: ['<%= source %>/assets/fonts/**/*'],
+        files: ['<%= prj.source %>/assets/fonts/**/*'],
         tasks: ['copy:fonts']
       },
       content: {
-        files: ['<%= source %>/content/**/*'],
+        files: ['<%= prj.source %>/content/**/*'],
         tasks: ['content']
       },
       img: {
-        files: ['<%= source %>/assets/images/**/*'],
+        files: ['<%= prj.source %>/assets/images/**/*'],
         tasks: ['imagemin']
       },
       js: {
-        files: ['<%= source %>/assets/scripts/**/*'],
+        files: ['<%= prj.source %>/assets/scripts/**/*'],
         tasks: ['jshint', 'uglify']
       }
     }
@@ -214,7 +266,7 @@ module.exports = function(grunt) {
   grunt.registerTask('content', ['copy:drafts', 'copy:includes', 'copy:layouts', 'copy:pages', 'copy:plugins', 'copy:posts', 'copy:root']);
 
   // Compile Tasks
-  grunt.registerTask('compile', ['clean:all', 'assets', 'content', 'jekyll:build']);
+  grunt.registerTask('compile', ['clean:all', 'assets', 'content', 'replace', 'jekyll']);
 
   // Dev Tasks
   grunt.registerTask('dev', ['compile', 'connect', 'open', 'watch']);
