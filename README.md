@@ -110,7 +110,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 ### Usage
 
-1. Modify SOURCE/_configs/jekyll.yml 'Site Info' and select 'Custom Site Components' to match your project needs.
+1. Modify the automaton.json file variables to match your project needs.
 2. Run Grunt tasks:
  - 'grunt dev' to run in development mode.
  - 'grunt build' to build developed site.
