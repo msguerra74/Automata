@@ -31,6 +31,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 ### Add-Ons
 
+- [FluidVids.js][]: Responsive and fluid YouTube and Vimeo video embeds
 - [Google Analytics][]: Web Analytics and Reporting
 - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
 - [jQuery][]: JavaScript Library
@@ -38,6 +39,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [PHPMailer][]: Email Creation and Transfer Class for PHP
 - [Prism][]: Syntax Highlighter
 
+  [FluidVids.js]: http://github.com/toddmotto/fluidvids/
   [Google Analytics]: http://google.com/analytics/
   [html5 Shiv]: http://github.com/aFarkas/html5shiv/
   [jQuery]: http://jquery.com
@@ -60,14 +62,15 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
       - [grunt-contrib-jshint][]
       - [grunt-contrib-uglify][]
       - [grunt-contrib-watch][]
+      - [grunt-grunticon][]
       - [grunt-jekyll][]
       - [grunt-open][]
       - [grunt-replace][]
+      - [grunt-svgmin][]
       - [matchdep][]
 - [Ruby][]: Programming Language / Runtime Environment
  - [Compass][]: CSS Authoring Framework
  - [Jekyll][]: Static Site Generator
- - [Rdiscount][]: Markdown Processor used by Jekyll
  - [Sass][]: Extension to CSS3
 
   [GitHub]: http://github.com/msguerra74/
@@ -82,15 +85,16 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [grunt-contrib-imagemin]: http://npmjs.org/package/grunt-contrib-imagemin/
   [grunt-contrib-jshint]: http://npmjs.org/package/grunt-contrib-jshint/
   [grunt-contrib-uglify]: http://npmjs.org/package/grunt-contrib-uglify/
+  [grunt-grunticon]: http://npmjs.org/package/grunt-grunticon/
   [grunt-contrib-watch]: http://npmjs.org/package/grunt-contrib-watch/
   [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
   [grunt-open]: http://npmjs.org/package/grunt-open/
   [grunt-replace]: http://npmjs.org/package/grunt-replace/
+  [grunt-svgmin]: http://npmjs.org/package/grunt-svgmin/
   [matchdep]: http://npmjs.org/package/matchdep/
   [Ruby]: http://ruby-lang.org/en/
   [Compass]: http://compass-style.org
   [Jekyll]: http://jekyllrb.com
-  [Rdiscount]: http://github.com/davidfstr/rdiscount/
   [Sass]: http://sass-lang.com
 
 ### Installation
@@ -99,7 +103,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 2. Download and install [Node.js][] if needed.
 3. Download and install [Ruby][] if needed.
 4. From the command prompt, navigate to the "Automaton" folder and type the following:
- - gem install compass jekyll rdiscount
+ - gem install compass jekyll
  - npm install -g grunt-cli
  - npm install
 5. That's it, now you can run any Grunt task!
@@ -121,7 +125,6 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - Additional Automation
   - Categories / Tags
   - Deployment (Amazon S3 / SFTP / Github)
-  - SVG
 - Misc
   - Icon Placeholders (Apple / Windows 8)
   - Update this README

@@ -14,9 +14,14 @@
   "partials/laptop",
   "partials/desktop";
 
+// ----- OldIE Specific Style Overrides ----- //
+
+*,
+*:after,
+*:before {
+  *behavior: url(/js/boxsizing.htc);
+}
+
 // ----- Vendor Scripts ----- //
 
 // @import "vendor/prism";
-
-// ----- OldIE Specific Style Overrides ----- //
-

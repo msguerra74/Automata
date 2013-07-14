@@ -1,7 +1,5 @@
 {
   "source": "SOURCE",
-  "build": "_BUILD",
-  "temp": ".temp",
 
   "name": "Automaton",
   "description": "Static Website Generator",
@@ -11,8 +9,9 @@
 
   "responsive_design": "true",
   "oldie_support": "true",
-  "jquery_scripts": "true",
-  "code_highlighting": "false",
+  "svg_icons": "false",
+  "jquery": "false",
+  "scripts": "false",
   "google_analytics": "true",
   "google_analytics_id": "UA-xxxxxxxx-x",
 
@@ -23,7 +22,6 @@
 
   "paginate": "7",
   "permalink": "/:categories/:title/",
-  "markdown": "rdiscount",
 
   "dev_name": "Michael Guerra",
   "dev_website": "http://msguerra74.com",

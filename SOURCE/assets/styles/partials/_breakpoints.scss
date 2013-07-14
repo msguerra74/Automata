@@ -5,23 +5,17 @@
 // ----- Tablet Media Query ----- //
 
 @media only screen and (min-width: $tablet) {
-
   @import "tablet";
-
 }
 
 // ----- Laptop Media Query ----- //
 
 @media only screen and (min-width: $laptop) {
-
   @import "laptop";
-
 }
 
 // ----- Desktop Media Query ----- //
 
 @media only screen and (min-width: $desktop) {
-
   @import "desktop";
-
 }
