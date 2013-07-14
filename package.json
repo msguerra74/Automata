@@ -25,6 +25,7 @@
     "grunt-jekyll": "~0.3.8",
     "grunt-open": "~0.2.0",
     "grunt-replace": "~0.4.4",
+    "grunt-sftp-deploy": "0.0.8",
     "grunt-svgmin": "~0.2.0",
     "matchdep": "~0.1.2"
   }

@@ -233,6 +233,21 @@ module.exports = function(grunt) {
       }
     },
 
+    // SFTP Deploy Task
+    'sftp-deploy': {
+      deploy: {
+        auth: {
+          host: '<%= prj.sftp_host %>',
+          port: 22,
+          // Credentials are stored in .ftppass file
+          authKey: '<%= prj.sftp_key %>'
+        },
+        src: '<%= build %>',
+        dest: '<%= prj.sftp_path %>',
+        server_sep: '/'
+      }
+    },
+
     // SVGmin Task
     svgmin: {
       options: {
@@ -326,5 +341,8 @@ module.exports = function(grunt) {
 
   // Build Tasks
   grunt.registerTask('build', ['compile', 'clean:build']);
+
+  // Deploy Tasks
+  grunt.registerTask('deploy', ['build', 'sftp-deploy']);
 
 };

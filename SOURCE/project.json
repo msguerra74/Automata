@@ -7,6 +7,10 @@
   "owner": "Michael Guerra",
   "email": "msguerra74+automaton@gmail.com",
 
+  "sftp_host": "host",
+  "sftp_key": "key",
+  "sftp_path": "/server/path/",
+
   "responsive_design": "true",
   "oldie_support": "true",
   "svg_icons": "false",
