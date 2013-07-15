@@ -2,10 +2,15 @@
   "source": "SOURCE",
 
   "name": "Automaton",
-  "description": "Static Website Generator",
+  "description": "Automated Static Website Generator",
   "url": "http://localhost:4000",
   "owner": "Michael Guerra",
   "email": "msguerra74+automaton@gmail.com",
+
+  "s3_key": "key",
+  "s3_secret": "secret",
+  "s3_bucket": "bucket",
+  "s3_access": "public-read",
 
   "sftp_host": "host",
   "sftp_key": "key",

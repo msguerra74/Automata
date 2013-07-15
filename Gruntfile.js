@@ -233,6 +233,25 @@ module.exports = function(grunt) {
       }
     },
 
+    // S3 Deploy Task
+    s3: {
+      options: {
+        key: '<%= prj.s3_key %>',
+        secret: '<%= prj.s3_secret %>',
+        bucket: '<%= prj.s3_bucket %>',
+        access: '<%= prj.s3_access %>'
+      },
+      deploy: {
+        upload: [{
+          src: '<%= build %>/**/*',
+          dest: '',
+          gzip: true,
+          rel: '<%= build %>'
+        }]
+      }
+
+    },
+
     // SFTP Deploy Task
     'sftp-deploy': {
       deploy: {
@@ -342,7 +361,10 @@ module.exports = function(grunt) {
   // Build Tasks
   grunt.registerTask('build', ['compile', 'clean:build']);
 
-  // Deploy Tasks
-  grunt.registerTask('deploy', ['build', 'sftp-deploy']);
+  // S3 Deploy Tasks
+  grunt.registerTask('s3deploy', ['build', 's3']);
+
+  // SFTP Deploy Tasks
+  grunt.registerTask('sftpdeploy', ['build', 'sftp-deploy']);
 
 };

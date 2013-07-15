@@ -66,6 +66,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
       - [grunt-jekyll][]
       - [grunt-open][]
       - [grunt-replace][]
+      - [grunt-s3][]
       - [grunt-sftp-deploy][]
       - [grunt-svgmin][]
       - [matchdep][]
@@ -91,6 +92,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
   [grunt-open]: http://npmjs.org/package/grunt-open/
   [grunt-replace]: http://npmjs.org/package/grunt-replace/
+  [grunt-s3]: http://npmjs.org/package/grunt-s3/
   [grunt-sftp-deploy]: http://npmjs.org/package/grunt-sftp-deploy/
   [grunt-svgmin]: http://npmjs.org/package/grunt-svgmin/
   [matchdep]: http://npmjs.org/package/matchdep/
@@ -126,6 +128,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 - Additional Automation
   - Categories / Tags
+  - Deploy to GitHub pages
 - Misc
   - Icon Placeholders (Apple / Windows 8)
   - Update this README
