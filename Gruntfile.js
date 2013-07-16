@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     // Build Directories
-    build: '_BUILD',
+    build: '.BUILD',
     temp: '.temp',
 
     // jQuery Version
@@ -17,8 +17,8 @@ module.exports = function(grunt) {
 
     // Clean Task
     clean: {
-      all: ['.sass-cache', '<%= build %>', '<%= temp %>'],
-      build: ['.sass-cache', '<%= temp %>']
+      all: ['<%= build %>', '<%= temp %>'],
+      build: ['<%= temp %>']
     },
 
     // Compass Task
@@ -38,6 +38,8 @@ module.exports = function(grunt) {
         'asset_cache_buster :none\n' +
         // Preferred Syntax
         'preferred_syntax = :scss\n' +
+        // Sass Cache
+        'cache_path = "<%= temp %>/css/.sass-cache"\n' +
         // Rename styles.css to styles.min.css
         // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
         'on_stylesheet_saved do |file|\n' + 'if File.exists?(file)\n' + 'filename = File.basename(file, File.extname(file))\n' + 'File.rename(file, "<%= temp %>/css" + "/" + filename + ".min" + File.extname(file))\n' + 'end\n' + 'end\n'
@@ -49,7 +51,7 @@ module.exports = function(grunt) {
       },
       icons: {
         options: {
-          sassDir: '<%= temp %>/_grunticon'
+          sassDir: '<%= temp %>/_icons'
         }
       }
     },
@@ -86,7 +88,7 @@ module.exports = function(grunt) {
       htc: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/assets/scripts/vendor/misc',
+          cwd: '<%= prj.source %>/assets/scripts/vendor',
           src: ['**/*.htc'],
           dest: '<%= temp %>/js'
         }]
@@ -152,7 +154,7 @@ module.exports = function(grunt) {
           previewhtml: '_trash/preview.html',
           urlpngcss: 'icons-png.scss',
           src: '<%= temp %>/img/icons',
-          dest: '<%= temp %>/_grunticon'
+          dest: '<%= temp %>/_icons'
         }
       }
     },
@@ -277,7 +279,7 @@ module.exports = function(grunt) {
       icons: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/assets/icons',
+          cwd: '<%= prj.source %>/assets/images/icons',
           src: '**/*',
           dest: '<%= temp %>/img/icons'
         }]
@@ -300,7 +302,7 @@ module.exports = function(grunt) {
           src: ['<%= prj.source %>/assets/scripts/vendor/oldie/**/*'],
           dest: '<%= temp %>/js/oldie.min.js'
         }, {
-          src: ['<%= prj.source %>/assets/scripts/vendor/jquery/**/*'],
+          src: ['<%= prj.source %>/assets/scripts/vendor/jquery.js'],
           dest: '<%= temp %>/js/jquery.min.js'
         }]
       }

@@ -54,22 +54,22 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [Markdown][]: Text to HTML Converter
 - [Node.js][]: JavaScript Runtime Platform
     - [Grunt][]: JavaScript Task Runner
-      - [grunt-contrib-clean][]
-      - [grunt-contrib-compass][]
-      - [grunt-contrib-connect][]
-      - [grunt-contrib-copy][]
-      - [grunt-contrib-imagemin][]
-      - [grunt-contrib-jshint][]
-      - [grunt-contrib-uglify][]
-      - [grunt-contrib-watch][]
-      - [grunt-grunticon][]
-      - [grunt-jekyll][]
-      - [grunt-open][]
-      - [grunt-replace][]
-      - [grunt-s3][]
-      - [grunt-sftp-deploy][]
-      - [grunt-svgmin][]
-      - [matchdep][]
+      - [grunt-contrib-clean][]: Task to delete files/folders
+      - [grunt-contrib-compass][]: Compass task
+      - [grunt-contrib-connect][]: Task to create/connect to server
+      - [grunt-contrib-copy][]: Task to copy files/folders
+      - [grunt-contrib-imagemin][]: Task to optimize jpg/png images
+      - [grunt-contrib-jshint][]: Task to lint js files
+      - [grunt-contrib-uglify][]: Task to concat/compress js files
+      - [grunt-contrib-watch][]: Task to watch files/folders for changes
+      - [grunt-grunticon][]: Task to add svg images to css and convert svg images to png images
+      - [grunt-jekyll][]: Static site generator and templating task
+      - [grunt-open][]: Task to open files/urls
+      - [grunt-replace][]: Task to replace inline text
+      - [grunt-s3][]: Task to deploy finished site to Amazon S3
+      - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
+      - [grunt-svgmin][]: Task to optimize svg images
+      - [matchdep][]: Task to filter npm modules
 - [Ruby][]: Programming Language / Runtime Environment
  - [Compass][]: CSS Authoring Framework
  - [Jekyll][]: Static Site Generator
