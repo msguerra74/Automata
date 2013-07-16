@@ -260,7 +260,13 @@ module.exports = function(grunt) {
         auth: {
           host: '<%= prj.sftp_host %>',
           port: 22,
-          // Credentials are stored in .ftppass file
+          // Store credentials in .ftppass file with this format:
+          // {
+          //   "key": {
+          //     "username": "username",
+          //     "password": "password"
+          //   }
+          // }
           authKey: '<%= prj.sftp_key %>'
         },
         src: '<%= build %>',
