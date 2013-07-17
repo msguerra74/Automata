@@ -62,13 +62,11 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
       - [grunt-contrib-jshint][]: Task to lint js files
       - [grunt-contrib-uglify][]: Task to concat/compress js files
       - [grunt-contrib-watch][]: Task to watch files/folders for changes
-      - [grunt-grunticon][]: Task to add svg images to css and convert svg images to png images
       - [grunt-jekyll][]: Static site generator and templating task
       - [grunt-open][]: Task to open files/urls
       - [grunt-replace][]: Task to replace inline text
       - [grunt-s3][]: Task to deploy finished site to Amazon S3
       - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
-      - [grunt-svgmin][]: Task to optimize svg images
       - [matchdep][]: Task to filter npm modules
 - [Ruby][]: Programming Language / Runtime Environment
  - [Compass][]: CSS Authoring Framework
@@ -87,14 +85,12 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [grunt-contrib-imagemin]: http://npmjs.org/package/grunt-contrib-imagemin/
   [grunt-contrib-jshint]: http://npmjs.org/package/grunt-contrib-jshint/
   [grunt-contrib-uglify]: http://npmjs.org/package/grunt-contrib-uglify/
-  [grunt-grunticon]: http://npmjs.org/package/grunt-grunticon/
   [grunt-contrib-watch]: http://npmjs.org/package/grunt-contrib-watch/
   [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
   [grunt-open]: http://npmjs.org/package/grunt-open/
   [grunt-replace]: http://npmjs.org/package/grunt-replace/
   [grunt-s3]: http://npmjs.org/package/grunt-s3/
   [grunt-sftp-deploy]: http://npmjs.org/package/grunt-sftp-deploy/
-  [grunt-svgmin]: http://npmjs.org/package/grunt-svgmin/
   [matchdep]: http://npmjs.org/package/matchdep/
   [Ruby]: http://ruby-lang.org/en/
   [Compass]: http://compass-style.org

@@ -18,12 +18,7 @@
   <!--[if (lt IE 9) & (!IEMobile)]>
   <link rel="stylesheet" href="{{ relative }}css/oldie.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">
   <script src="{{ relative }}js/oldie.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>
-  <![endif]-->{% endif %}{% if site.svg_icons == true %}
-  <script>
-    window.grunticon=function(e){if(e&&3===e.length){var t=window,n=!!t.document.createElementNS&&!!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect&&!!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1"),A=function(A){var o=t.document.createElement("link"),r=t.document.getElementsByTagName("script")[0];o.rel="stylesheet",o.href=e[A&&n?0:A?1:2],r.parentNode.insertBefore(o,r)},o=new t.Image;o.onerror=function(){A(!1)},o.onload=function(){A(1===o.width&&1===o.height)},o.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="}};
-    grunticon( [ "{{ relative }}css/icons-data-svg.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}", "{{ relative }}css/icons-data-png.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}", "{{ relative }}css/icons-png.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}" ] );
-  </script>
-  <noscript><link rel="stylesheet" href="{{ relative }}css/icons-png.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}"></noscript>{% endif %}
+  <![endif]-->{% endif %}
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
 </head>
 <body>{% if site.oldie_support == true %}

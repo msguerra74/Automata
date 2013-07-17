@@ -18,9 +18,8 @@
 
   "responsive_design": "true",
   "oldie_support": "true",
-  "svg_icons": "false",
-  "jquery": "false",
-  "scripts": "false",
+  "jquery": "true",
+  "scripts": "true",
   "google_analytics": "true",
   "google_analytics_id": "UA-xxxxxxxx-x",
 

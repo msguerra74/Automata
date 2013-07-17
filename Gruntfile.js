@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Project Variables
+    // prj: grunt.file.readJSON('SOURCE/project.json'),
     prj: grunt.file.readJSON('SOURCE/project.json'),
 
     pkg: grunt.file.readJSON('package.json'),
@@ -26,12 +27,10 @@ module.exports = function(grunt) {
       options: {
         boring: true,
         cssDir: '<%= temp %>/css',
-        environment: 'production',
         fontsDir: '<%= temp %>/fonts',
         force: true,
         imagesDir: '<%= temp %>/img',
         javascriptsDir: '<%= temp %>/js',
-        outputStyle: 'compressed',
         relativeAssets: true,
         raw:
         // Cache Buster
@@ -46,12 +45,9 @@ module.exports = function(grunt) {
       },
       styles: {
         options: {
+          environment: 'production',
+          outputStyle: 'compressed',
           sassDir: '<%= prj.source %>/assets/styles'
-        }
-      },
-      icons: {
-        options: {
-          sassDir: '<%= temp %>/_icons'
         }
       }
     },
@@ -143,22 +139,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Grunticon Task
-    grunticon: {
-      icons: {
-        options: {
-          datasvgcss: 'icons-data-svg.scss',
-          datapngcss: 'icons-data-png.scss',
-          loadersnippet: '_trash/grunticon.loader.txt',
-          pngfolder: '../img/icons',
-          previewhtml: '_trash/preview.html',
-          urlpngcss: 'icons-png.scss',
-          src: '<%= temp %>/img/icons',
-          dest: '<%= temp %>/_icons'
-        }
-      }
-    },
-
     // Imagemin Task
     imagemin: {
       images: {
@@ -169,11 +149,6 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= prj.source %>/assets/images',
-          src: '**/*',
-          dest: '<%= temp %>/img'
-        }, {
-          expand: true,
-          cwd: '<%= temp %>/img',
           src: '**/*',
           dest: '<%= temp %>/img'
         }]
@@ -192,7 +167,7 @@ module.exports = function(grunt) {
         // Website Info
         'url: <%= prj.url %>\n' + 'name: <%= prj.name %>\n' + 'description: <%= prj.description %>\n' + 'owner: <%= prj.owner %>\n' + 'email: <%= prj.email %>\n' +
         // Custom Website Components
-        'responsive_design: <%= prj.responsive_design %>\n' + 'oldie_support: <%= prj.oldie_support %>\n' + 'svg_icons: <%= prj.svg_icons %>\n' + 'jquery_scripts: <%= prj.jquery %>\n' + 'jquery_version: <%= jquery_version %>\n' + 'scripts: <%= prj.scripts %>\n' + 'google_analytics: <%= prj.google_analytics %>\n' + 'google_analytics_id: <%= prj.google_analytics_id %>\n' +
+        'responsive_design: <%= prj.responsive_design %>\n' + 'oldie_support: <%= prj.oldie_support %>\n' + 'jquery_scripts: <%= prj.jquery %>\n' + 'jquery_version: <%= jquery_version %>\n' + 'scripts: <%= prj.scripts %>\n' + 'google_analytics: <%= prj.google_analytics %>\n' + 'google_analytics_id: <%= prj.google_analytics_id %>\n' +
         // Global Jekyll Configuration
         'exclude: [<%= prj.exclude %>]\n' + 'include: [<%= prj.include %>]\n' + 'keep_files: [<%= prj.keep_files %>]\n' + 'timezone: <%= prj.timezone %>\n' +
         // Jekyll Build Command Options
@@ -275,23 +250,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // SVGmin Task
-    svgmin: {
-      options: {
-        plugins: [{
-          removeViewBox: false
-        }]
-      },
-      icons: {
-        files: [{
-          expand: true,
-          cwd: '<%= prj.source %>/assets/images/icons',
-          src: '**/*',
-          dest: '<%= temp %>/img/icons'
-        }]
-      }
-    },
-
     // Uglify Task
     uglify: {
       scripts: {
@@ -299,17 +257,17 @@ module.exports = function(grunt) {
           banner: '<%= prj.dev_banner_open %><%= prj.dev_banner %><%= prj.dev_banner_close %>'
         },
         files: [{
-          src: ['<%= prj.source %>/assets/scripts/plugins/**/*', '<%= prj.source %>/assets/scripts/vendor/plugins/**/*'],
-          dest: '<%= temp %>/js/script.min.js'
-        }]
-      },
-      vendor: {
-        files: [{
-          src: ['<%= prj.source %>/assets/scripts/vendor/oldie/**/*'],
+          src: ['<%= prj.source %>/assets/scripts/oldie/**/*'],
           dest: '<%= temp %>/js/oldie.min.js'
         }, {
-          src: ['<%= prj.source %>/assets/scripts/vendor/jquery.js'],
-          dest: '<%= temp %>/js/jquery.min.js'
+          src: ['<%= prj.source %>/assets/scripts/plugins/**/*'],
+          dest: '<%= temp %>/js/script.min.js'
+        }, {
+          expand: true,
+          cwd: '<%= prj.source %>/assets/scripts',
+          src: ['*.js'],
+          dest: '<%= temp %>/js',
+          ext: '.min.js'
         }]
       }
     },
@@ -332,10 +290,6 @@ module.exports = function(grunt) {
         files: ['<%= prj.source %>/content/**/*'],
         tasks: ['content']
       },
-      icons: {
-        files: ['<%= prj.source %>/assets/icons/**/*'],
-        tasks: ['svgmin', 'grunticon', 'compass:icons']
-      },
       img: {
         files: ['<%= prj.source %>/assets/images/**/*'],
         tasks: ['imagemin']
@@ -355,7 +309,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['clean:all']);
 
   // Assets Tasks
-  grunt.registerTask('assets', ['jshint', 'uglify', 'copy:htc', 'svgmin', 'grunticon', 'imagemin', 'copy:fonts', 'compass']);
+  grunt.registerTask('assets', ['jshint', 'uglify', 'copy:htc', 'imagemin', 'copy:fonts', 'compass']);
 
   // Content Tasks
   grunt.registerTask('content', ['copy:drafts', 'copy:includes', 'copy:layouts', 'copy:pages', 'copy:plugins', 'copy:posts', 'copy:root']);
