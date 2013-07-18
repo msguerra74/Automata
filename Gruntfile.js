@@ -4,9 +4,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Project Variables
-    // prj: grunt.file.readJSON('SOURCE/project.json'),
+    // EDIT THIS PATH TO MATCH PROJECT PATH
+    // Default // prj: grunt.file.readJSON('SOURCE/project.json'),
     prj: grunt.file.readJSON('SOURCE/project.json'),
 
+    // Automaton Project / Grunt Dependencies
     pkg: grunt.file.readJSON('package.json'),
 
     // Build Directories
@@ -84,7 +86,7 @@ module.exports = function(grunt) {
       htc: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/assets/scripts/vendor',
+          cwd: '<%= prj.source %>/assets/scripts',
           src: ['**/*.htc'],
           dest: '<%= temp %>/js'
         }]

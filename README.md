@@ -1,10 +1,10 @@
 Automaton
 =========
 
-Static Website Generator
-------------------------
+Automated Static Website Generator
+----------------------------------
 
-by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
+by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
 - [Project Website][]
 - [GitHub Page][]
@@ -21,7 +21,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [HTML5][]
 - [CSS3][]
 - [JavaScript][] / [jQuery][]
-- [PHP][]
+- <s>[PHP][]</s> - Coming soon...
 
   [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
   [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
@@ -36,8 +36,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
 - [jQuery][]: JavaScript Library
 - [normalize.css][]: CSS Reset Alternative
-- [PHPMailer][]: Email Creation and Transfer Class for PHP
-- [Prism][]: Syntax Highlighter
+- <s>[PHPMailer][]: Email Creation and Transfer Class for PHP</s> - Coming soon...
 
   [FluidVids.js]: http://github.com/toddmotto/fluidvids/
   [Google Analytics]: http://google.com/analytics/
@@ -45,7 +44,6 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [jQuery]: http://jquery.com
   [normalize.css]: http://github.com/necolas/normalize.css/tree/v1/
   [PHPMailer]: http://github.com/Synchro/PHPMailer/
-  [Prism]: http://prismjs.com
 
 ### Components
 
@@ -114,7 +112,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 ### Usage
 
-1. Modify the automaton.json file variables to match your project needs.
+1. Modify the SOURCE/project.json file variables to match your project needs.
 2. Run Grunt tasks:
  - 'grunt dev' to run in development mode.
  - 'grunt build' to build developed site.
@@ -123,13 +121,14 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 ### To-Do
 
 - Additional Automation
-  - Categories / Tags
   - Deploy to GitHub pages
 - Misc
   - Icon Placeholders (Apple / Windows 8)
   - Update this README
 - Widgets
-  - Contact Form
+  - Categories / Tags listing
+  - Contact Form (js / php)
+  - Post archive page
   - Post Comments (Disqus)
   - Search
   - Social Media

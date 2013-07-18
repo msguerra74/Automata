@@ -2,15 +2,7 @@
   "name": "Automaton",
   "version": "0.3.0",
   "description": "Automated Static Website Generator",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/msguerra74/Automaton.git"
-  },
-  "author": "Michael Guerra <msguerra74+automaton@gmail.com> (http://msguerra74.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/msguerra74/Automaton/issues"
-  },
+  "main": "Gruntfile.js",
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.1",
@@ -22,10 +14,19 @@
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-watch": "~0.4.4",
     "grunt-jekyll": "~0.3.8",
-    "grunt-open": "~0.2.0",
+    "grunt-open": "~0.2.1",
     "grunt-replace": "~0.4.4",
     "grunt-s3": "~0.2.0-alpha.2",
-    "grunt-sftp-deploy": "0.0.8",
+    "grunt-sftp-deploy": "~0.0.8",
     "matchdep": "~0.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/msguerra74/Automaton.git"
+  },
+  "author": "Michael Guerra <msguerra74+automaton@gmail.com> (http://msguerra74.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/msguerra74/Automaton/issues"
   }
 }
