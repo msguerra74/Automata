@@ -16,7 +16,10 @@
   "sftp_key": "key",
   "sftp_path": "/server/path/",
 
+  "ie_edge": "false",
   "responsive_design": "true",
+  "web_fonts": "false",
+  "web_fonts_stack": "",
   "oldie_support": "true",
   "jquery": "true",
   "scripts": "true",

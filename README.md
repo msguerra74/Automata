@@ -122,6 +122,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
 - Additional Automation
   - Deploy to GitHub pages
+  - SVG
 - Misc
   - Icon Placeholders (Apple / Windows 8)
   - Update this README

@@ -6,11 +6,22 @@
 
 // Base
 $base-bg-color: #fff; // White
-$base-font-color: lighten(#000, 20); // Gray20 #333
+$base-font-color: lighten(#000, 10); // #1a1a1a
 
 // Alerts
 $error-bg-color: #fcf0ad; // Canary Yellow
 $error-color: #d44942; // Chili
+
+// ----- Fonts ----- //
+
+// Base
+$base-font: Verdana, Geneva, sans-serif;
+
+// ----- Sizes ----- //
+
+// Base
+$base-font-size: 16; // px
+$base-line-height: 1.5;
 
 // ----- Media Query Breakpoints ----- //
 
@@ -24,14 +35,3 @@ $laptop: 48.0625em; // 769px to 1366px
 
 // Desktop
 $desktop: 85.4375em; // 1367px and up
-
-// ----- Fonts ----- //
-
-// Base
-$base-font: Verdana, Geneva, sans-serif;
-
-// ----- Sizes ----- //
-
-// Base
-$base-font-size: 16; // px
-$base-line-height: 1.5;

@@ -2,16 +2,16 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- <%= banner %> -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">{% if page.title %}
+  <!-- <%= banner %> -->{% if site.ie_edge == true %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}{% if page.title %}
   <title>{{ page.title }} | {{ site.name }}</title>{% else %}
   <title>{{ site.name }}</title>{% endif %}{% if page.description %}
   <meta name="description" content="{{ page.description }}">{% else %}
   <meta name="description" content="{{ site.description }}">{% endif %}{% if site.responsive_design == true %}
   <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}
   <link rel="alternate" type="application/atom+xml" title="{{ site.name }} Atom Feed" href="{{ relative }}feed.xml">
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
-  <link rel="sitemap" type="application/xml" title="{{ site.name }} Sitemap" href="{{ relative }}sitemap.xml">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">{% if site.web_fonts == true %}
+  <link rel="stylesheet" href="{{ site.web_fonts_stack }}">{% endif %}
   <!--[if (gt IE 8) | (IEMobile)]><!-->
   <link rel="stylesheet" href="{{ relative }}css/style.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">
   <!--<![endif]-->{% if site.oldie_support == true %}

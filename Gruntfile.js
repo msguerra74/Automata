@@ -169,7 +169,7 @@ module.exports = function(grunt) {
         // Website Info
         'url: <%= prj.url %>\n' + 'name: <%= prj.name %>\n' + 'description: <%= prj.description %>\n' + 'owner: <%= prj.owner %>\n' + 'email: <%= prj.email %>\n' +
         // Custom Website Components
-        'responsive_design: <%= prj.responsive_design %>\n' + 'oldie_support: <%= prj.oldie_support %>\n' + 'jquery_scripts: <%= prj.jquery %>\n' + 'jquery_version: <%= jquery_version %>\n' + 'scripts: <%= prj.scripts %>\n' + 'google_analytics: <%= prj.google_analytics %>\n' + 'google_analytics_id: <%= prj.google_analytics_id %>\n' +
+        'ie_edge: <%= prj.ie_edge %>\n' + 'responsive_design: <%= prj.responsive_design %>\n' + 'web_fonts: <%= prj.web_fonts %>\n' + 'web_fonts_stack: <%= prj.web_fonts_stack %>\n' + 'oldie_support: <%= prj.oldie_support %>\n' + 'jquery_scripts: <%= prj.jquery %>\n' + 'jquery_version: <%= jquery_version %>\n' + 'scripts: <%= prj.scripts %>\n' + 'google_analytics: <%= prj.google_analytics %>\n' + 'google_analytics_id: <%= prj.google_analytics_id %>\n' +
         // Global Jekyll Configuration
         'exclude: [<%= prj.exclude %>]\n' + 'include: [<%= prj.include %>]\n' + 'keep_files: [<%= prj.keep_files %>]\n' + 'timezone: <%= prj.timezone %>\n' +
         // Jekyll Build Command Options
