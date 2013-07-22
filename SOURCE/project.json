@@ -20,6 +20,7 @@
   "responsive_design": "true",
   "web_fonts": "false",
   "web_fonts_stack": "",
+  "svg_images": "false",
   "oldie_support": "true",
   "jquery": "true",
   "scripts": "true",
