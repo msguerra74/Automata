@@ -5,8 +5,8 @@
 // ----- Colors ----- //
 
 // Base
-$base-bg-color: #fff; // White
-$base-font-color: lighten(#000, 10); // #1a1a1a
+$dark: lighten(#000, 10); // #1a1a1a
+$light: #fff; // White
 
 // Alerts
 $error-bg-color: #fcf0ad; // Canary Yellow

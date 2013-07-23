@@ -1,5 +1,7 @@
 // Menu Toggle Class
+var $menu = $(".menu"),
+  $active = $("nav ul");
 $(".menu").on("click", function() {
-  $(this).toggleClass("active");
-  $("nav").toggleClass("active");
+  $active.toggleClass("active");
+  $menu.toggleClass("active");
 });

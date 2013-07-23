@@ -335,6 +335,10 @@ module.exports = function(grunt) {
         files: ['<%= prj.source %>/content/**/*'],
         tasks: ['content']
       },
+      icons: {
+        files: ['<%= prj.source %>/assets/images/icons/**/*'],
+        tasks: ['svgmin', 'grunticon', 'imagemin']
+      },
       img: {
         files: ['<%= prj.source %>/assets/images/**/*'],
         tasks: ['imagemin']
