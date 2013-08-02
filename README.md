@@ -14,7 +14,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
   [@msguerra74]: http://twitter.com/msguerra74
   [Project Website]: http://msguerra74.github.io/Automaton/
   [GitHub Page]: http://github.com/msguerra74/Automaton/
-  [Automaton.zip]: http://github.com/msguerra74/Automaton/zipball/master/
+  [Automaton.zip]: http://github.com/msguerra74/Automaton/archive/master.zip
 
 ### Standards:
 
@@ -35,7 +35,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 - [Google Analytics][]: Web Analytics and Reporting
 - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
 - [jQuery][]: JavaScript Library
-- [normalize.css][]: CSS Reset Alternative
+- [normalize.css][] and [reset.css][]: CSS Reset and Normalization
 - <s>[PHPMailer][]: Email Creation and Transfer Class for PHP</s> - Coming soon...
 
   [FluidVids.js]: http://github.com/toddmotto/fluidvids/
@@ -43,6 +43,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
   [html5 Shiv]: http://github.com/aFarkas/html5shiv/
   [jQuery]: http://jquery.com
   [normalize.css]: http://github.com/necolas/normalize.css/tree/v1/
+  [reset.css]: http://meyerweb.com/eric/tools/css/reset/reset.css
   [PHPMailer]: http://github.com/Synchro/PHPMailer/
 
 ### Components
@@ -52,6 +53,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 - [Markdown][]: Text to HTML Converter
 - [Node.js][]: JavaScript Runtime Platform
     - [Grunt][]: JavaScript Task Runner
+      - Project Specific Packages:
       - [grunt-contrib-clean][]: Task to delete files/folders
       - [grunt-contrib-compass][]: Compass task
       - [grunt-contrib-connect][]: Task to create/connect to server
@@ -66,11 +68,11 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
       - [grunt-replace][]: Task to replace inline text
       - [grunt-s3][]: Task to deploy finished site to Amazon S3
       - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
-      - [grunt-svgmin][]: Task to optimize and minify SVG images
       - [matchdep][]: Task to filter npm modules
 - [Ruby][]: Programming Language / Runtime Environment
  - [Compass][]: CSS Authoring Framework
  - [Jekyll][]: Static Site Generator
+ - [RDiscount][]: Markdown Processor used by Jekyll
  - [Sass][]: Extension to CSS3
 
   [GitHub]: http://github.com/msguerra74/
@@ -92,11 +94,11 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
   [grunt-replace]: http://npmjs.org/package/grunt-replace/
   [grunt-s3]: http://npmjs.org/package/grunt-s3/
   [grunt-sftp-deploy]: http://npmjs.org/package/grunt-sftp-deploy/
-  [grunt-svgmin]: http://npmjs.org/package/grunt-svgmin/
   [matchdep]: http://npmjs.org/package/matchdep/
   [Ruby]: http://ruby-lang.org/en/
   [Compass]: http://compass-style.org
   [Jekyll]: http://jekyllrb.com
+  [RDiscount]: http://github.com/davidfstr/rdiscount/
   [Sass]: http://sass-lang.com
 
 ### Installation
@@ -104,19 +106,19 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 1. Download and unzip [Automaton.zip][] where you want it.
 2. Download and install [Node.js][] if needed.
 3. Download and install [Ruby][] if needed.
-4. From the command prompt, navigate to the "Automaton" folder and type the following:
- - gem install compass jekyll
+4. From the command prompt, navigate to the "Automaton" folder and type the following commands:
+ - gem install compass jekyll rdiscount
  - npm install -g grunt-cli
  - npm install
 5. That's it, now you can run any Grunt task!
 
-  [Automaton.zip]: http://github.com/msguerra74/Automaton/zipball/master/
+  [Automaton.zip]: http://github.com/msguerra74/Automaton/archive/master.zip
   [Node.js]: http://nodejs.org
   [Ruby]: http://ruby-lang.org/en/
 
 ### Usage
 
-1. Modify the SOURCE/project.json file variables to match your project needs.
+1. Modify the Projects/_Default/project.json file variables to match your project needs. (NOTE: You can also duplicate this directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the Gruntfile.js file)
 2. Run Grunt tasks:
  - 'grunt dev' to run in development mode.
  - 'grunt build' to build developed site.
@@ -127,7 +129,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 - Additional Automation
   - Deploy to GitHub pages
 - Misc
-  - Icon Placeholders (Apple / Windows 8)
+  - Icon Placeholders (favicon, Apple / Windows 8)
   - Update this README
 - Widgets
   - Categories / Tags listing

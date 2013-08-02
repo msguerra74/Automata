@@ -3,215 +3,138 @@ module.exports = function(grunt) {
   // Task Configurations
   grunt.initConfig({
 
-    // Project Variables
-    // EDIT THIS PATH TO MATCH PROJECT PATH
-    // Default // prj: grunt.file.readJSON('SOURCE/project.json'),
-    prj: grunt.file.readJSON('SOURCE/project.json'),
+    // Project Variables File
+    // prj: grunt.file.readJSON('_Default/project.json'),
+    prj: grunt.file.readJSON('Projects/_Default/project.json'),
 
-    // Automaton Project / Grunt Dependencies
+    // Automaton Project / Grund Dependencies
     pkg: grunt.file.readJSON('package.json'),
 
-    // Build Directories
+    // ----- Variables ----- //
+
+    // Current 4 Digit Year
+    current_year: grunt.template.today('yyyy'),
+
+    // Directories
     build: '.BUILD',
     temp: '.temp',
+    project: '<%= prj.project %>',
+    source: 'Projects/_Source',
 
     // jQuery Version
     jquery_version: '1.10.2',
 
-    // Clean Task
-    clean: {
-      all: ['<%= build %>', '<%= temp %>'],
-      build: ['<%= temp %>']
-    },
-
-    // Compass Task
-    compass: {
-      options: {
-        boring: true,
-        cssDir: '<%= temp %>/css',
-        environment: 'production',
-        fontsDir: '<%= temp %>/fonts',
-        force: true,
-        imagesDir: '<%= temp %>/img',
-        javascriptsDir: '<%= temp %>/js',
-        outputStyle: 'compressed',
-        relativeAssets: true,
-        raw:
-        // Cache Buster
-        'asset_cache_buster :none\n' +
-        // Preferred Syntax
-        'preferred_syntax = :scss\n' +
-        // Sass Cache
-        'cache_path = "<%= temp %>/css/.sass-cache"\n' +
-        // Rename styles.css to styles.min.css
-        // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
-        'on_stylesheet_saved do |file|\n' + 'if File.exists?(file)\n' + 'filename = File.basename(file, File.extname(file))\n' + 'File.rename(file, "<%= temp %>/css" + "/" + filename + ".min" + File.extname(file))\n' + 'end\n' + 'end\n'
-      },
-      styles: {
-        options: {
-          sassDir: '<%= prj.source %>/assets/styles'
-        }
-      },
-      icons: {
-        options: {
-          sassDir: '<%= temp %>/_icons'
-        }
-      }
-    },
-
-    // Connect Task
-    connect: {
-      server: {
-        options: {
-          port: '<%= prj.dev_url_port %>',
-          base: '<%= build %>',
-          hostname: ''
-        }
-      }
-    },
+    // ----- Assets & Content ----- //
 
     // Copy Task
     copy: {
-      fonts: {
+      // Project Assets
+      projectFonts: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/assets/fonts',
+          cwd: '<%= project %>/assets/fonts',
           src: '**/*',
           dest: '<%= temp %>/fonts'
         }]
       },
-      drafts: {
+      projectStyles: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/content/posts/_drafts',
-          src: ['**/*'],
+          cwd: '<%= project %>/assets/styles',
+          src: '**/*',
+          dest: '<%= temp %>/_scss'
+        }]
+      },
+      // Project Content
+      projectDrafts: {
+        files: [{
+          expand: true,
+          cwd: '<%= project %>/content/posts/drafts',
+          src: '**/*',
           dest: '<%= temp %>/_drafts'
         }]
       },
-      htc: {
+      projectIncludes: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/assets/scripts',
-          src: ['**/*.htc'],
-          dest: '<%= temp %>/js'
-        }]
-      },
-      includes: {
-        files: [{
-          expand: true,
-          cwd: '<%= prj.source %>/content/_templates/_layouts/_includes',
-          src: ['**/*'],
+          cwd: '<%= project %>/content/templates/layouts/includes',
+          src: '**/*',
           dest: '<%= temp %>/_includes'
         }]
       },
-      layouts: {
+      projectLayouts: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/content/_templates/_layouts',
-          src: ['**/*', '!_**/_**/*', '!_**/*', '!_**'],
+          cwd: '<%= project %>/content/templates/layouts',
+          src: ['**/*', '!includes/**/*', '!includes/*', '!includes'],
           dest: '<%= temp %>/_layouts'
         }]
       },
-      pages: {
+      projectPages: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/content/pages',
-          src: ['**/*'],
+          cwd: '<%= project %>/content/pages',
+          src: '**/*',
           dest: '<%= temp %>'
         }]
       },
-      plugins: {
+      projectPlugins: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/content/_templates/_plugins',
-          src: ['**/*'],
+          cwd: '<%= project %>/content/templates/plugins',
+          src: '**/*',
           dest: '<%= temp %>/_plugins'
         }]
       },
-      posts: {
+      projectPosts: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/content/posts',
-          src: ['**/*', '!_**/*', '!_**'],
+          cwd: '<%= project %>/content/posts',
+          src: ['**/*', '!drafts/**/*', '!drafts/*', '!drafts'],
           dest: '<%= temp %>/_posts'
         }]
       },
-      root: {
+      projectRoot: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/content/_templates/root',
-          src: ['**/{*,.*}'],
+          cwd: '<%= project %>/content/templates/root',
+          src: '**/{*,.*}',
           dest: '<%= temp %>'
         }]
-      }
-    },
-
-    // Grunticon Task
-    grunticon: {
-      icons: {
-        options: {
-          datasvgcss: 'icon.data.svg.scss',
-          datapngcss: 'icon.data.png.scss',
-          loadersnippet: '../_icons/trash/grunticon.loader.txt',
-          pngfolder: '../img/icons',
-          previewhtml: '../_icons/trash/preview.html',
-          urlpngcss: 'icon.png.scss',
-          src: "<%= temp %>/img/icons",
-          dest: "<%= temp %>/_icons"
-        }
-      }
-    },
-
-    // Imagemin Task
-    imagemin: {
-      images: {
-        options: {
-          optimizationLevel: 7,
-          progressive: true
-        },
+      },
+      // Source Assets
+      sourceStyles: {
         files: [{
           expand: true,
-          cwd: '<%= prj.source %>/assets/images',
+          cwd: '<%= source %>/assets/styles',
           src: '**/*',
-          dest: '<%= temp %>/img'
-        }, {
-          expand: true,
-          cwd: '<%= temp %>/img/icons',
-          src: '**/*',
-          dest: '<%= temp %>/img/icons'
+          dest: '<%= temp %>/_scss'
         }]
-      }
-    },
-
-    // Jekyll Task
-    jekyll: {
-      build: {
-        dest: '<%= build %>',
-        drafts: false,
-        future: false,
-        lsi: false,
-        src: '<%= temp %>',
-        raw:
-        // Website Info
-        'url: <%= prj.url %>\n' + 'name: <%= prj.name %>\n' + 'description: <%= prj.description %>\n' + 'owner: <%= prj.owner %>\n' + 'email: <%= prj.email %>\n' +
-        // Custom Website Components
-        'ie_edge: <%= prj.ie_edge %>\n' + 'responsive_design: <%= prj.responsive_design %>\n' + 'web_fonts: <%= prj.web_fonts %>\n' + 'web_fonts_stack: <%= prj.web_fonts_stack %>\n' + 'svg_images: <%= prj.svg_images %>\n' + 'oldie_support: <%= prj.oldie_support %>\n' + 'jquery_scripts: <%= prj.jquery %>\n' + 'jquery_version: <%= jquery_version %>\n' + 'scripts: <%= prj.scripts %>\n' + 'google_analytics: <%= prj.google_analytics %>\n' + 'google_analytics_id: <%= prj.google_analytics_id %>\n' +
-        // Global Jekyll Configuration
-        'exclude: [<%= prj.exclude %>]\n' + 'include: [<%= prj.include %>]\n' + 'keep_files: [<%= prj.keep_files %>]\n' + 'timezone: <%= prj.timezone %>\n' +
-        // Jekyll Build Command Options
-        'paginate: <%= prj.paginate %>\n' + 'permalink: <%= prj.permalink %>\n'
-      }
-    },
-
-    // JShint Task
-    jshint: {
-      source: ['Gruntfile.js', '<%= prj.source %>/assets/scripts/plugins/**/*']
-    },
-
-    // Open Task
-    open: {
-      browser: {
-        path: '<%= prj.dev_url %>'
+      },
+      // Source Content
+      sourceIncludes: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/content/templates/layouts/includes',
+          src: '**/*',
+          dest: '<%= temp %>/_includes'
+        }]
+      },
+      sourceLayouts: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/content/templates/layouts',
+          src: ['**/*', '!includes/**/*', '!includes/*', '!includes'],
+          dest: '<%= temp %>/_layouts'
+        }]
+      },
+      sourceRoot: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/content/templates/root',
+          src: '**/{*,.*}',
+          dest: '<%= temp %>'
+        }]
       }
     },
 
@@ -227,8 +150,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           flatten: true,
-          src: ['<%= temp %>/css/**/*'],
-          dest: '<%= temp %>/css'
+          src: ['<%= temp %>/_scss/**/*'],
+          dest: '<%= temp %>/_scss'
         }, {
           expand: true,
           flatten: true,
@@ -238,7 +161,269 @@ module.exports = function(grunt) {
       }
     },
 
-    // S3 Deploy Task
+    // ----- Styles ----- //
+
+    // Compass Task
+    compass: {
+      options: {
+        boring: true,
+        cssDir: '<%= temp %>/css',
+        fontsDir: '<%= temp %>/fonts',
+        force: true,
+        imagesDir: '<%= temp %>/img',
+        javascriptsDir: '<%= temp %>/js',
+        relativeAssets: true,
+        raw:
+        // Cache Buster
+        'asset_cache_buster :none\n' +
+
+        // Preferred Syntax
+        'preferred_syntax = :scss\n' +
+
+        // Sass Cache
+        'cache_path = "<%= temp %>/_scss/.sass-cache"\n' +
+
+        // Rename styles.css to styles.min.css
+        // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
+        'on_stylesheet_saved do |file|\n' +
+        'if File.exists?(file)\n' +
+        'filename = File.basename(file, File.extname(file))\n' +
+        'File.rename(file, "<%= temp %>/css" + "/" + filename + ".min" + File.extname(file))\n' +
+        'end\n' +
+        'end\n'
+      },
+      build: {
+        options: {
+          environment: 'production',
+          outputStyle: 'compressed',
+          sassDir: '<%= temp %>/_scss'
+        }
+      },
+      dev: {
+        options: {
+          environment: 'development',
+          outputStyle: 'expanded',
+          sassDir: '<%= temp %>/_scss'
+        }
+      }
+    },
+
+    // ----- Images & SVGs ----- //
+
+    // Imagemin Task
+    imagemin: {
+      images: {
+        options: {
+          optimizationLevel: 7,
+          progressive: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= project %>/assets/images',
+          src: '**/*',
+          dest: '<%= temp %>/img'
+        }, {
+          expand: true,
+          cwd: '<%= temp %>/img/icons',
+          src: '**/*',
+          dest: '<%= temp %>/img/icons'
+        }]
+      }
+    },
+
+    // Grunticon Task
+    grunticon: {
+      icons: {
+        options: {
+          datasvgcss: 'icon.data.svg.scss',
+          datapngcss: 'icon.data.png.scss',
+          loadersnippet: 'grunticon.loader.txt',
+          pngfolder: '../img/icons',
+          previewhtml: 'preview.html',
+          urlpngcss: 'icon.png.scss',
+          src: "<%= project %>/assets/images/icons",
+          dest: "<%= temp %>/_scss"
+        }
+      }
+    },
+
+    // ----- Scripts ----- //
+
+    // JShint Task
+    jshint: {
+      options: {
+        ignores: ['<%= source %>/assets/scripts/jquery.js']
+      },
+      scripts: ['Gruntfile.js', '<%= project %>/assets/scripts/**/*', '<%= source %>/assets/scripts/**/*']
+    },
+
+    // Uglify Task
+    uglify: {
+      scripts: {
+        options: {
+          banner: '<%= prj.dev_banner_open %><%= prj.dev_banner %><%= prj.dev_banner_close %>'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= project %>/assets/scripts',
+          src: ['**/*.js', '!plugins/**/*', '!plugins/*', '!plugins'],
+          dest: '<%= temp %>/js',
+          ext: '.min.js'
+        }, {
+          src: ['<%= project %>/assets/scripts/plugins/**/*.js'],
+          dest: '<%= temp %>/js/script.min.js'
+        }, {
+          expand: true,
+          cwd: '<%= source %>/assets/scripts',
+          src: ['**/*.js'],
+          dest: '<%= temp %>/js',
+          ext: '.min.js'
+        }]
+      }
+    },
+
+    // ----- Content ----- //
+
+    // Jekyll Task
+    jekyll: {
+      build: {
+        dest: '<%= build %>',
+        drafts: false,
+        future: false,
+        lsi: false,
+        src: '<%= temp %>',
+        raw:
+        // Website Info
+        'url: <%= prj.url %>\n' +
+        'name: <%= prj.name %>\n' +
+        'description: <%= prj.description %>\n' +
+        'owner: <%= prj.owner %>\n' +
+        'email: <%= prj.email %>\n' +
+
+        // Custom Website Components
+        'ie_edge: <%= prj.ie_edge %>\n' +
+        'responsive_design: <%= prj.responsive_design %>\n' +
+        'svg_images: <%= prj.svg_images %>\n' +
+        'oldie_support: <%= prj.oldie_support %>\n' +
+        'jquery_scripts: <%= prj.jquery %>\n' +
+        'jquery_version: <%= jquery_version %>\n' +
+        'scripts: <%= prj.scripts %>\n' +
+        'google_analytics: <%= prj.google_analytics %>\n' +
+        'google_analytics_id: <%= prj.google_analytics_id %>\n' +
+
+        // Global Jekyll Configuration
+        'exclude: [<%= prj.exclude %>]\n' +
+        'include: [<%= prj.include %>]\n' +
+        'keep_files: [<%= prj.keep_files %>]\n' +
+        'timezone: <%= prj.timezone %>\n' +
+
+        // Jekyll Build Command Options
+        'paginate: <%= prj.paginate %>\n' +
+        'permalink: <%= prj.permalink %>\n' +
+        'markdown: <%= prj.markdown %>\n'
+      }
+    },
+
+    // ----- Dev Tasks ----- //
+
+    // Clean Task
+    clean: {
+      all: ['<%= temp %>', '<%= build %>']
+    },
+
+    // Connect Task
+    connect: {
+      server: {
+        options: {
+          port: '<%= prj.dev_url_port %>',
+          base: '<%= build %>',
+          hostname: '0.0.0.0'
+        }
+      }
+    },
+
+    // Open Task
+    open: {
+      browser: {
+        path: '<%= prj.dev_url %>'
+      }
+    },
+
+    // Watch Task
+    watch: {
+      // Watch Assets
+      fonts: {
+        files: ['<%= project %>/assets/fonts/**/*'],
+        tasks: ['copy:projectFonts']
+      },
+      images: {
+        files: ['<%= project %>/assets/images/**/*'],
+        tasks: ['imagemin']
+      },
+      scripts: {
+        files: ['<%= project %>/assets/scripts/**/*'],
+        tasks: ['jshint', 'uglify']
+      },
+      styles: {
+        files: ['<%= project %>/assets/styles/**/*'],
+        tasks: ['copy:projectStyles', 'compass:dev']
+      },
+      // Watch Content
+      drafts: {
+        files: ['<%= project %>/content/posts/drafts/**/*'],
+        tasks: ['copy:projectDrafts']
+      },
+      includes: {
+        files: ['<%= project %>/content/templates/layouts/includes/**/*'],
+        tasks: ['copy:projectIncludes']
+      },
+      layouts: {
+        files: ['<%= project %>/content/templates/layouts/**/*'],
+        tasks: ['copy:projectLayouts']
+      },
+      pages: {
+        files: ['<%= project %>/content/pages/**/*'],
+        tasks: ['copy:projectPages']
+      },
+      posts: {
+        files: ['<%= project %>/content/posts/**/*'],
+        tasks: ['copy:projectPosts']
+      },
+      root: {
+        files: ['<%= project %>/content/root/**/*'],
+        tasks: ['copy:projectRoot']
+      },
+      // Watch Source
+      sourceIncludes: {
+        files: ['<%= source %>/content/templates/layouts/includes/**/*'],
+        tasks: ['copy:sourceIncludes', 'replace']
+      },
+      sourceLayouts: {
+        files: ['<%= source %>/content/templates/layouts/**/*'],
+        tasks: ['copy:sourceLayouts']
+      },
+      sourceRoot: {
+        files: ['<%= source %>/content/templates/root/**/*'],
+        tasks: ['copy:sourceRoot']
+      },
+      sourceScripts: {
+        files: ['<%= source %>/assets/scripts/**/*'],
+        tasks: ['jshint', 'uglify']
+      },
+      sourceStyles: {
+        files: ['<%= source %>/assets/styles/**/*'],
+        tasks: ['copy:sourceStyles', 'replace']
+      },
+      // Watch Temp
+      temp: {
+        files: ['<%= temp %>/**/*'],
+        tasks: ['jekyll']
+      }
+    },
+
+    // ----- Deployment Tasks ----- //
+
+    // Amazon S3 Deploy Task
     s3: {
       options: {
         key: '<%= prj.s3_key %>',
@@ -263,89 +448,19 @@ module.exports = function(grunt) {
         auth: {
           host: '<%= prj.sftp_host %>',
           port: 22,
-          // Store credentials in .ftppass file with this format:
-          // {
-          //   "key": {
-          //     "username": "username",
-          //     "password": "password"
-          //   }
-          // }
+          /* Store 'authKey' credentials in root .ftppass file in this format:
+            {
+              "key": {
+                "username": "username",
+                "password": "password"
+              }
+            }
+          */
           authKey: '<%= prj.sftp_key %>'
         },
         src: '<%= build %>',
         dest: '<%= prj.sftp_path %>',
         server_sep: '/'
-      }
-    },
-
-    // SVGmin Task
-    svgmin: {
-      options: {
-        plugins: [{
-          removeViewBox: false
-        }]
-      },
-      svg: {
-        files: [{
-          expand: true,
-          cwd: '<%= prj.source %>/assets/images/icons',
-          src: '**/*',
-          dest: '<%= temp %>/img/icons'
-        }]
-      }
-    },
-
-    // Uglify Task
-    uglify: {
-      scripts: {
-        options: {
-          banner: '<%= prj.dev_banner_open %><%= prj.dev_banner %><%= prj.dev_banner_close %>'
-        },
-        files: [{
-          src: ['<%= prj.source %>/assets/scripts/oldie/**/*'],
-          dest: '<%= temp %>/js/oldie.min.js'
-        }, {
-          src: ['<%= prj.source %>/assets/scripts/plugins/**/*'],
-          dest: '<%= temp %>/js/script.min.js'
-        }, {
-          expand: true,
-          cwd: '<%= prj.source %>/assets/scripts',
-          src: ['*.js'],
-          dest: '<%= temp %>/js',
-          ext: '.min.js'
-        }]
-      }
-    },
-
-    // Watch Task
-    watch: {
-      build: {
-        files: ['<%= temp %>/**/*'],
-        tasks: ['replace', 'jekyll']
-      },
-      css: {
-        files: ['<%= prj.source %>/assets/styles/**/*'],
-        tasks: ['compass']
-      },
-      fonts: {
-        files: ['<%= prj.source %>/assets/fonts/**/*'],
-        tasks: ['copy:fonts']
-      },
-      content: {
-        files: ['<%= prj.source %>/content/**/*'],
-        tasks: ['content']
-      },
-      icons: {
-        files: ['<%= prj.source %>/assets/images/icons/**/*'],
-        tasks: ['svgmin', 'grunticon', 'imagemin']
-      },
-      img: {
-        files: ['<%= prj.source %>/assets/images/**/*'],
-        tasks: ['imagemin']
-      },
-      js: {
-        files: ['<%= prj.source %>/assets/scripts/**/*'],
-        tasks: ['jshint', 'uglify']
       }
     }
 
@@ -354,25 +469,22 @@ module.exports = function(grunt) {
   // Load NPM Tasks
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 
-  // Default Tasks
-  grunt.registerTask('default', ['clean:all']);
+  // Default Tasks - Clean generated folders
+  grunt.registerTask('default', ['clean']);
 
-  // Assets Tasks
-  grunt.registerTask('assets', ['jshint', 'uglify', 'copy:htc', 'svgmin', 'grunticon', 'imagemin', 'copy:fonts', 'compass']);
-
-  // Content Tasks
-  grunt.registerTask('content', ['copy:drafts', 'copy:includes', 'copy:layouts', 'copy:pages', 'copy:plugins', 'copy:posts', 'copy:root']);
+  // Precompile Tasks
+  grunt.registerTask('precompile', ['default', 'copy', 'replace', 'jshint', 'uglify', 'grunticon', 'imagemin']);
 
   // Compile Tasks
-  grunt.registerTask('compile', ['clean:all', 'assets', 'content', 'replace', 'jekyll']);
+  grunt.registerTask('compile', ['precompile', 'compass:dev', 'jekyll']);
 
   // Dev Tasks
   grunt.registerTask('dev', ['compile', 'connect', 'open', 'watch']);
 
   // Build Tasks
-  grunt.registerTask('build', ['compile', 'clean:build']);
+  grunt.registerTask('build', ['precompile', 'compass:build', 'jekyll']);
 
-  // S3 Deploy Tasks
+  // Amazon S3 Deploy Tasks
   grunt.registerTask('s3deploy', ['build', 's3']);
 
   // SFTP Deploy Tasks
