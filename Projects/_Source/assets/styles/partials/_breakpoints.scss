@@ -1,20 +1,20 @@
-//-------------------------
-// Media Query Breakpoints
-//-------------------------
+/*-----------------
+    MEDIA QUERIES
+  -----------------*/
 
-// ----- Tablet Media Query ----- //
+/* ----- Tablet ----- */
 
 @media only screen and (min-width: $tablet) {
   @import "tablet";
 }
 
-// ----- Laptop Media Query ----- //
+/* ----- Laptop ----- */
 
 @media only screen and (min-width: $laptop) {
   @import "laptop";
 }
 
-// ----- Desktop Media Query ----- //
+/* ----- Desktop ----- */
 
 @media only screen and (min-width: $desktop) {
   @import "desktop";

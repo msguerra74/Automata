@@ -1,9 +1,11 @@
-//------------------------------
-// CSS Reset and Default Styles
-//------------------------------
+/*------------------------------
+    CSS Reset / Default Styles
+  ------------------------------*/
 
-// ----- Box Model ----- //
-// http://paulirish.com/2012/box-sizing-border-box-ftw/
+/* ----- Box Model ----- */
+/**
+ * http://paulirish.com/2012/box-sizing-border-box-ftw/
+ */
 
 *,
 *:before,
@@ -11,8 +13,10 @@
   @include box-sizing(border-box);
 }
 
-// ----- From Reset CSS v2.0 ----- //
-// http://meyerweb.com/eric/tools/css/reset/
+/* ----- From Reset CSS v2.0 ----- */
+/**
+ * http://meyerweb.com/eric/tools/css/reset/
+ */
 
 html,
 body,
@@ -122,10 +126,12 @@ q:after {
   content: none;
 }
 
-// ----- From Normalize.css v2.1.2 ----- //
-// http://github.com/necolas/normalize.css/
+/* ----- From Normalize.css v2.1.2 ----- */
+/**
+ * http://github.com/necolas/normalize.css/
+ */
 
-// HTML5
+/* HTML5 */
 
 article,
 aside,
@@ -158,7 +164,7 @@ template {
   display: none;
 }
 
-// Base
+/* Base */
 
 html {
   font-family: $base-font-family;
@@ -166,7 +172,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-// Links
+/* Links */
 
 a {
   background: transparent;
@@ -181,7 +187,7 @@ a:hover {
   outline: 0;
 }
 
-// Typography
+/* Typography */
 
 abbr[title] {
   border-bottom: 1px dotted;
@@ -219,13 +225,13 @@ sub {
   bottom: -0.25em;
 }
 
-// Embedded
+/* Embedded */
 
 svg:not(:root) {
   overflow: hidden;
 }
 
-// Forms
+/* Forms */
 
 button,
 input,
@@ -284,17 +290,19 @@ textarea {
   vertical-align: top;
 }
 
-// Tables
+/* Tables */
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-// ----- Misc ----- //
+/* ----- Misc ----- */
 
-// Fluid Images
-// http://alistapart.com/article/fluid-images/
+/**
+ * Fluid Images
+ * http://alistapart.com/article/fluid-images/
+ */
 
 embed,
 img,
@@ -303,8 +311,10 @@ video {
   max-width: 100%;
 }
 
-// From HTML5 Boilerplate Main CSS
-// http://raw.github.com/h5bp/html5-boilerplate/master/css/main.css
+/**
+ * From HTML5 Boilerplate Main CSS
+ * http://raw.github.com/h5bp/html5-boilerplate/master/css/main.css
+ */
 
 audio,
 canvas,
@@ -314,7 +324,7 @@ video {
 }
 
 body {
-  font-size: $base-font-size;
+  font-size: em(16);
   line-height: $base-line-height;
 }
 
@@ -322,8 +332,10 @@ textarea {
   resize: vertical;
 }
 
-// -ms-touch-action Property
-// http://msdn.microsoft.com/en-US/library/ie/hh772044.aspx
+/**
+ * -ms-touch-action Property
+ * http://msdn.microsoft.com/en-US/library/ie/hh772044.aspx
+ */
 
 canvas {
   -ms-touch-action: auto;
