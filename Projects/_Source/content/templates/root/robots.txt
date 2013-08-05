@@ -5,3 +5,4 @@
 Sitemap: {{ site.url }}/sitemap.xml
 
 User-agent: *
+{% include robots.txt %}

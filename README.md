@@ -123,18 +123,3 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
  - 'grunt dev' to run in development mode.
  - 'grunt build' to build developed site.
 3. More on usage later...
-
-### To-Do
-
-- Additional Automation
-  - Deploy to GitHub pages
-- Misc
-  - Icon Placeholders (favicon, Apple / Windows 8)
-  - Update this README
-- Widgets
-  - Categories / Tags listing
-  - Contact Form (js / php)
-  - Post archive page
-  - Post Comments (Disqus)
-  - Search
-  - Social Media

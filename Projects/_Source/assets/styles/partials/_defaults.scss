@@ -1,11 +1,9 @@
-/*------------------------------
-    CSS Reset / Default Styles
-  ------------------------------*/
+//---------------------------------
+//  CSS Resets and Default Styles
+//---------------------------------
 
 /* ----- Box Model ----- */
-/**
- * http://paulirish.com/2012/box-sizing-border-box-ftw/
- */
+// http://paulirish.com/2012/box-sizing-border-box-ftw/
 
 *,
 *:before,
@@ -14,9 +12,7 @@
 }
 
 /* ----- From Reset CSS v2.0 ----- */
-/**
- * http://meyerweb.com/eric/tools/css/reset/
- */
+// http://meyerweb.com/eric/tools/css/reset/
 
 html,
 body,
@@ -127,11 +123,9 @@ q:after {
 }
 
 /* ----- From Normalize.css v2.1.2 ----- */
-/**
- * http://github.com/necolas/normalize.css/
- */
+// http://github.com/necolas/normalize.css/
 
-/* HTML5 */
+// HTML5
 
 article,
 aside,
@@ -152,6 +146,8 @@ audio,
 canvas,
 video {
   display: inline-block;
+  *display: inline; // OldIE
+  *zoom: 1; // OldIE
 }
 
 audio:not([controls]) {
@@ -164,15 +160,16 @@ template {
   display: none;
 }
 
-/* Base */
+// Base
 
 html {
-  font-family: $base-font-family;
+  font-family: sans-serif;
+  font-size: 100%; // OldIE
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
-/* Links */
+// Links
 
 a {
   background: transparent;
@@ -187,7 +184,7 @@ a:hover {
   outline: 0;
 }
 
-/* Typography */
+// Typography
 
 abbr[title] {
   border-bottom: 1px dotted;
@@ -201,12 +198,15 @@ code,
 kbd,
 pre,
 samp {
-  font-family: $code-font-family;
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace; // OldIE
   font-size: 1em;
 }
 
 pre {
+  white-space: pre; // OldIE
   white-space: pre-wrap;
+  word-wrap: break-word; // OldIE
 }
 
 sub,
@@ -225,13 +225,25 @@ sub {
   bottom: -0.25em;
 }
 
-/* Embedded */
+// Lists
+
+nav ul,
+nav ol {
+  list-style: none; // OldIE
+  list-style-image: none; // OldIE
+}
+
+// Embedded
+
+img {
+  -ms-interpolation-mode: bicubic; // OldIE
+}
 
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* Forms */
+// Forms
 
 button,
 input,
@@ -240,6 +252,8 @@ textarea {
   font-family: inherit;
   font-size: 100%;
   margin: 0;
+  vertical-align: baseline; // OldIE
+  *vertical-align: middle; // OldIE
 }
 
 button,
@@ -258,6 +272,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  *overflow: visible; // OldIE
 }
 
 button[disabled],
@@ -268,6 +283,8 @@ html input[disabled] {
 input[type="checkbox"],
 input[type="radio"] {
   padding: 0;
+  *height: 13px; // OldIE
+  *width: 13px; // OldIE
 }
 
 input[type="search"] {
@@ -290,19 +307,17 @@ textarea {
   vertical-align: top;
 }
 
-/* Tables */
+// Tables
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* ----- Misc ----- */
+/* ----- Defaults ----- */
 
-/**
- * Fluid Images
- * http://alistapart.com/article/fluid-images/
- */
+// Fluid Images
+// http://alistapart.com/article/fluid-images/
 
 embed,
 img,
@@ -311,10 +326,8 @@ video {
   max-width: 100%;
 }
 
-/**
- * From HTML5 Boilerplate Main CSS
- * http://raw.github.com/h5bp/html5-boilerplate/master/css/main.css
- */
+// From HTML5 Boilerplate Main CSS
+// http://raw.github.com/h5bp/html5-boilerplate/master/css/main.css
 
 audio,
 canvas,
@@ -324,18 +337,16 @@ video {
 }
 
 body {
-  font-size: em(16);
-  line-height: $base-line-height;
+  font-size: 1em;
+  line-height: 1.5;
 }
 
 textarea {
   resize: vertical;
 }
 
-/**
- * -ms-touch-action Property
- * http://msdn.microsoft.com/en-US/library/ie/hh772044.aspx
- */
+// -ms-touch-action Property
+// http://msdn.microsoft.com/en-US/library/ie/hh772044.aspx
 
 canvas {
   -ms-touch-action: auto;

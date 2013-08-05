@@ -1,21 +1,27 @@
-/*-----------------
-    MEDIA QUERIES
-  -----------------*/
+//-----------------
+//  MEDIA QUERIES
+//-----------------
 
-/* ----- Tablet ----- */
+/* ----- Small Breakpoint ----- */
 
-@media only screen and (min-width: $tablet) {
-  @import "tablet";
+@media only screen and (min-width: $small) {
+  @import "small";
 }
 
-/* ----- Laptop ----- */
+/* ----- Medium Breakpoint ----- */
 
-@media only screen and (min-width: $laptop) {
-  @import "laptop";
+@media only screen and (min-width: $medium) {
+  @import "medium";
 }
 
-/* ----- Desktop ----- */
+/* ----- Large Breakpoint ----- */
 
-@media only screen and (min-width: $desktop) {
-  @import "desktop";
+@media only screen and (min-width: $large) {
+  @import "large";
+}
+
+/* ----- XLarge Breakpoint ----- */
+
+@media only screen and (min-width: $xlarge) {
+  @import "xlarge";
 }

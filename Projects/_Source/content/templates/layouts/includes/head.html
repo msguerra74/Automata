@@ -16,12 +16,11 @@
     grunticon( [ "{{ relative }}css/icon.data.svg.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}", "{{ relative }}css/icon.data.png.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}", "{{ relative }}css/icon.png.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}" ] );
   </script>
   <noscript><link rel="stylesheet" href="{{ relative }}css/icon.png.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}"></noscript>{% endif %}
-  <!--[if (gt IE 8) | (IEMobile)]><!-->
-  <link rel="stylesheet" href="{{ relative }}css/style.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">
-  <!--<![endif]-->{% if site.oldie_support == true %}
-  <!--[if (lt IE 9) & (!IEMobile)]>
-  <link rel="stylesheet" href="{{ relative }}css/oldie.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">
-  <script src="{{ relative }}js/html5shiv.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>
+  <link rel="stylesheet" href="{{ relative }}css/style.min.css?{{ site.time | date: "%y%m%d%H%M%S" }}">{% if site.add_to_head  %}
+  {{ site.add_to_head }}{% endif %}{% if page.add_to_head  %}
+  {{ page.add_to_head }}{% endif %}{% if site.oldie_support == true %}
+  <!--[if (lt IE 9)]>
+  <script src="{{ relative }}js/oldie.min.js?{{ site.time | date: "%y%m%d%H%M%S" }}"></script>
   <![endif]-->{% endif %}
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
 </head>

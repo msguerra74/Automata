@@ -1,13 +1,13 @@
 /*! <%= banner %> */
 
-/*--------------
-    ALL STYLES
-  --------------*/
+//--------------
+//  ALL STYLES
+//--------------
 
 @import
   "compass",
-  "modules/variables",
-  "modules/helpers",
+  "partials/variables",
+  "partials/helpers",
   "partials/defaults",
   "partials/base",
   "partials/breakpoints",

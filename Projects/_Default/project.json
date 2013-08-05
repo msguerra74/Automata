@@ -1,5 +1,5 @@
 {
-  "project": "Projects/_Default",
+  "project": "_Default",
 
   "name": "Automaton",
   "description": "Automated Static Website Generator",
@@ -19,9 +19,11 @@
   "ie_edge": "false",
   "responsive_design": "true",
   "svg_images": "false",
+  "add_to_head": "",
   "oldie_support": "true",
   "jquery": "true",
   "scripts": "true",
+  "add_to_foot": "",
   "google_analytics": "true",
   "google_analytics_id": "UA-xxxxxxxx-x",
 
@@ -42,7 +44,7 @@
   "dev_url": "http://localhost:<%= prj.dev_url_port %>",
   "dev_url_port": "4000",
 
-  "dev_banner_open": "/* ",
+  "dev_banner_open": "/*! ",
   "dev_banner": "[made by] <%= prj.dev_name %> | <%= prj.dev_twitter %> | <%= prj.dev_website %> [in <%= current_year %>]",
   "dev_banner_close": " */"
 }

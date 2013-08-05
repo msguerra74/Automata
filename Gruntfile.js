@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Project Variables File
-    // prj: grunt.file.readJSON('_Default/project.json'),
+    // prj: grunt.file.readJSON('Projects/_Default/project.json'),
     prj: grunt.file.readJSON('Projects/_Default/project.json'),
 
     // Automaton Project / Grund Dependencies
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     // Directories
     build: '.BUILD',
     temp: '.temp',
-    project: '<%= prj.project %>',
+    project: 'Projects/<%= prj.project %>',
     source: 'Projects/_Source',
 
     // jQuery Version
@@ -251,10 +251,7 @@ module.exports = function(grunt) {
 
     // JShint Task
     jshint: {
-      options: {
-        ignores: ['<%= source %>/assets/scripts/jquery.js']
-      },
-      scripts: ['Gruntfile.js', '<%= project %>/assets/scripts/**/*', '<%= source %>/assets/scripts/**/*']
+      scripts: ['Gruntfile.js', '<%= project %>/assets/scripts/**/*']
     },
 
     // Uglify Task
@@ -275,9 +272,15 @@ module.exports = function(grunt) {
         }, {
           expand: true,
           cwd: '<%= source %>/assets/scripts',
-          src: ['**/*.js'],
+          src: ['**/*.js', '!oldie/**/*', '!oldie/*', '!oldie', '!jquery.js'],
           dest: '<%= temp %>/js',
           ext: '.min.js'
+        }, {
+          src: ['<%= source %>/assets/scripts/jquery.js'],
+          dest: '<%= temp %>/js/jquery-<%= jquery_version %>.min.js'
+        }, {
+          src: ['<%= source %>/assets/scripts/oldie/**/*.js'],
+          dest: '<%= temp %>/js/oldie.min.js'
         }]
       }
     },
@@ -304,10 +307,12 @@ module.exports = function(grunt) {
         'ie_edge: <%= prj.ie_edge %>\n' +
         'responsive_design: <%= prj.responsive_design %>\n' +
         'svg_images: <%= prj.svg_images %>\n' +
+        'add_to_head: <%= prj.add_to_head %>\n' +
         'oldie_support: <%= prj.oldie_support %>\n' +
         'jquery_scripts: <%= prj.jquery %>\n' +
         'jquery_version: <%= jquery_version %>\n' +
         'scripts: <%= prj.scripts %>\n' +
+        'add_to_foot: <%= prj.add_to_foot %>\n' +
         'google_analytics: <%= prj.google_analytics %>\n' +
         'google_analytics_id: <%= prj.google_analytics_id %>\n' +
 
@@ -451,8 +456,8 @@ module.exports = function(grunt) {
           /* Store 'authKey' credentials in root .ftppass file in this format:
             {
               "key": {
-                "username": "username",
-                "password": "password"
+                "username": "myusername",
+                "password": "mypassword"
               }
             }
           */

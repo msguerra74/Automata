@@ -1,21 +1,18 @@
-/*-------------------------------------
-    FUNCTIONS / MIXINS / PLACEHOLDERS
-  -------------------------------------*/
+//-------------------------------------
+//  FUNCTIONS / MIXINS / PLACEHOLDERS
+//-------------------------------------
 
-/* ----- Functions ----- */
+// ----- Functions ----- //
 
-/**
- * PX to EM Conversion
- *
-   font-size: em(18);
- *
- * or target/context
- *
-   font-size: em(18, 24);
- *
- */
+// PX to EM Conversion
+// Example:
+// font-size: em(18);
+// or (target, context)
+// font-size: em(18, 24);
 
-@function em($px, $base: $base-font-size) {
+$em-base: 16px !default;
+
+@function em($px, $base: $em-base) {
   @if not unitless($px) {
     $px: strip-units($px);
   }
@@ -25,41 +22,55 @@
   @return ($px / $base) * 1em;
 }
 
-/* ----- Mixins ----- */
+// Strips the units from a value.
+// Example:
+// 16px to 16
 
-/**
- * Media Query Breakpoints
- *
-   @include breakpoint(tablet) {
+@function strip-units($val) {
+  @return ($val / ($val * 0 + 1));
+}
 
-   }
- *
- */
+// ----- Mixins ----- //
+
+// Media Query Breakpoints
+// Example:
+// @include breakpoint(tablet) {}
+
+// Tablet Portrait (481px to 768px)
+$small: 30.0625em !default;
+// Tablet Landscape (769px to 1024px)
+$medium: 48.0625em !default;
+// Medium Display (1025px to 1366px)
+$large: 64.0625em !default;
+// Large Display (1367px and up)
+$xlarge: 85.4375em !default;
 
 @mixin breakpoint($point) {
-  @if $point == tablet {
-    @media only screen and (min-width: $tablet) {
+  @if $point == small {
+    @media only screen and (min-width: $small) {
       @content;
     }
   }
-  @else if $point == laptop {
-    @media only screen and (min-width: $laptop) {
+  @else if $point == medium {
+    @media only screen and (min-width: $medium) {
       @content;
     }
   }
-  @else if $point == desktop {
-    @media only screen and (min-width: $desktop) {
+  @else if $point == large {
+    @media only screen and (min-width: $large) {
+      @content;
+    }
+  }
+  @else if $point == xlarge {
+    @media only screen and (min-width: $xlarge) {
       @content;
     }
   }
 }
 
-/**
- * Prefixer
- *
-   @include prefixer(box-sizing, border-box, webkit moz spec);
- *
- */
+// Prefixer
+// Example:
+// @include prefixer(box-sizing, border-box, webkit moz spec);
 
 $prefix-for-webkit: true !default;
 $prefix-for-mozilla: true !default;
@@ -108,23 +119,18 @@ $prefix-for-spec: true !default;
   $prefix-for-spec: false;
 }
 
-/* ----- HTML5 Boilerplate Helper Mixins ----- */
-/**
- * http://github.com/h5bp/html5-boilerplate/
- */
+// ----- HTML5 Boilerplate Helper Mixins ----- //
+// http://github.com/h5bp/html5-boilerplate/
 
-/**
- * Image replacement
- *
-   @include image-replacement(image.png);
- *
- */
+// Image replacement
+// Example:
+// @include image-replacement(image.png);
 
 @mixin image-replacement($img: none, $x: 50%, $y: 50%) {
   background-color: transparent;
   border: 0;
   overflow: hidden;
-  *text-indent: -9999px; /* IE 6/7 */
+  *text-indent: -9999px; // OldIE
   &:before {
     content: "";
     display: block;
@@ -137,12 +143,9 @@ $prefix-for-spec: true !default;
   }
 }
 
-/**
- * Sized image replacement
- *
-   @include sized-image-replacement(image.png);
- *
- */
+// Sized image replacement
+// Example:
+// @include sized-image-replacement(image.png);
 
 @mixin sized-image-replacement($img, $x: 50%, $y: 50%) {
   @include image-replacement($img, $x, $y);
@@ -150,24 +153,18 @@ $prefix-for-spec: true !default;
   height: image-height($img);
 }
 
-/**
- * Hide from both screenreaders and browsers
- *
-   @include hidden;
- *
- */
+// Hide from both screenreaders and browsers
+// Example:
+// @include hidden;
 
 @mixin hidden {
   display: none !important;
   visibility: hidden;
 }
 
-/**
- * Hide only visually, but have it available for screenreaders
- *
-   @include visually-hidden;
- *
- */
+// Hide only visually, but have it available for screenreaders
+// Example:
+// @include visually-hidden;
 
 @mixin visually-hidden {
   border: 0;
@@ -179,7 +176,7 @@ $prefix-for-spec: true !default;
   position: absolute;
   width: 1px;
 
-  /* Extends visuallyhidden to allow the element to be focusable when navigated to via the keyboard */
+  // Extends visuallyhidden to allow the element to be focusable when navigated to via the keyboard
 
   &.focusable:active,
   &.focusable:focus {
@@ -192,23 +189,17 @@ $prefix-for-spec: true !default;
   }
 }
 
-/**
- * Hide visually and from screenreaders, but maintain layout
- *
-   @include invisible;
- *
- */
+// Hide visually and from screenreaders, but maintain layout
+// Example:
+// @include invisible;
 
 @mixin invisible {
   visibility: hidden;
 }
 
-/**
- * Clearfix
- *
-   @include clear;
- *
- */
+// Clearfix
+// Example:
+// @include clear;
 
 @mixin clear {
   &:before,
@@ -220,18 +211,15 @@ $prefix-for-spec: true !default;
     clear: both;
   }
   & {
-    *zoom: 1; /* IE 6/7 */
+    *zoom: 1; // OldIE
   }
 }
 
-/* ----- Placeholders ----- */
+// ----- Placeholders ----- //
 
-/**
- * Clearfix
- *
-   @extend %clear;
- *
- */
+// Clearfix
+// Example:
+// @extend %clear;
 
 %clear {
   @include clear;
