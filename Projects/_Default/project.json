@@ -7,15 +7,6 @@
   "owner": "Michael Guerra",
   "email": "msguerra74+automaton@gmail.com",
 
-  "s3_key": "key",
-  "s3_secret": "secret",
-  "s3_bucket": "bucket",
-  "s3_access": "public-read",
-
-  "sftp_host": "host",
-  "sftp_key": "key",
-  "sftp_path": "/server/path/",
-
   "ie_edge": "false",
   "responsive_design": "true",
   "svg_images": "false",
@@ -35,6 +26,15 @@
   "paginate": "7",
   "permalink": "/:categories/:title/",
   "markdown": "rdiscount",
+
+  "s3_key": "key",
+  "s3_secret": "secret",
+  "s3_bucket": "bucket",
+  "s3_access": "public-read",
+
+  "sftp_host": "host",
+  "sftp_key": "key",
+  "sftp_path": "/server/path/",
 
   "dev_name": "Michael Guerra",
   "dev_website": "http://msguerra74.com",

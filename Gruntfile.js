@@ -12,14 +12,14 @@ module.exports = function(grunt) {
 
     // ----- Variables ----- //
 
-    // Current 4 Digit Year
-    current_year: grunt.template.today('yyyy'),
-
     // Directories
     build: '.BUILD',
     temp: '.temp',
     project: 'Projects/<%= prj.project %>',
     source: 'Projects/_Source',
+
+    // Current 4 Digit Year
+    current_year: grunt.template.today('yyyy'),
 
     // jQuery Version
     jquery_version: '1.10.2',
@@ -176,13 +176,10 @@ module.exports = function(grunt) {
         raw:
         // Cache Buster
         'asset_cache_buster :none\n' +
-
         // Preferred Syntax
         'preferred_syntax = :scss\n' +
-
         // Sass Cache
         'cache_path = "<%= temp %>/_scss/.sass-cache"\n' +
-
         // Rename styles.css to styles.min.css
         // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
         'on_stylesheet_saved do |file|\n' +
@@ -302,7 +299,6 @@ module.exports = function(grunt) {
         'description: <%= prj.description %>\n' +
         'owner: <%= prj.owner %>\n' +
         'email: <%= prj.email %>\n' +
-
         // Custom Website Components
         'ie_edge: <%= prj.ie_edge %>\n' +
         'responsive_design: <%= prj.responsive_design %>\n' +
@@ -315,14 +311,11 @@ module.exports = function(grunt) {
         'add_to_foot: <%= prj.add_to_foot %>\n' +
         'google_analytics: <%= prj.google_analytics %>\n' +
         'google_analytics_id: <%= prj.google_analytics_id %>\n' +
-
         // Global Jekyll Configuration
         'exclude: [<%= prj.exclude %>]\n' +
         'include: [<%= prj.include %>]\n' +
         'keep_files: [<%= prj.keep_files %>]\n' +
         'timezone: <%= prj.timezone %>\n' +
-
-        // Jekyll Build Command Options
         'paginate: <%= prj.paginate %>\n' +
         'permalink: <%= prj.permalink %>\n' +
         'markdown: <%= prj.markdown %>\n'
