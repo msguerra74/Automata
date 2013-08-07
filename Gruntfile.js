@@ -18,7 +18,10 @@ module.exports = function(grunt) {
     project: 'Projects/<%= prj.project %>',
     source: 'Projects/_Source',
 
-    // Current 4 Digit Year
+    // Cache Buster Short Timestamp
+    cache_buster: grunt.template.today('yymdHMs'),
+
+    // Current Year
     current_year: grunt.template.today('yyyy'),
 
     // jQuery Version
@@ -302,15 +305,17 @@ module.exports = function(grunt) {
         // Custom Website Components
         'ie_edge: <%= prj.ie_edge %>\n' +
         'responsive_design: <%= prj.responsive_design %>\n' +
+        'blog_feed: <%= prj.blog_feed %>\n' +
         'svg_images: <%= prj.svg_images %>\n' +
-        'add_to_head: <%= prj.add_to_head %>\n' +
+        'head_insert: <%= prj.head_insert %>\n' +
         'oldie_support: <%= prj.oldie_support %>\n' +
-        'jquery_scripts: <%= prj.jquery %>\n' +
+        'jquery: <%= prj.jquery %>\n' +
         'jquery_version: <%= jquery_version %>\n' +
         'scripts: <%= prj.scripts %>\n' +
-        'add_to_foot: <%= prj.add_to_foot %>\n' +
+        'foot_insert: <%= prj.foot_insert %>\n' +
         'google_analytics: <%= prj.google_analytics %>\n' +
         'google_analytics_id: <%= prj.google_analytics_id %>\n' +
+        'cache_buster: <%= cache_buster %>\n' +
         // Global Jekyll Configuration
         'exclude: [<%= prj.exclude %>]\n' +
         'include: [<%= prj.include %>]\n' +
@@ -335,7 +340,7 @@ module.exports = function(grunt) {
         options: {
           port: '<%= prj.dev_url_port %>',
           base: '<%= build %>',
-          hostname: '0.0.0.0'
+          hostname: ''
         }
       }
     },
