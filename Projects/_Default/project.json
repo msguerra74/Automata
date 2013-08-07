@@ -9,12 +9,13 @@
 
   "ie_edge": "false",
   "responsive_design": "true",
+  "blog_feed": "false",
   "svg_images": "false",
-  "add_to_head": "",
+  "head_insert": "",
   "oldie_support": "true",
-  "jquery": "true",
+  "jquery": "false",
   "scripts": "true",
-  "add_to_foot": "",
+  "foot_insert": "",
   "google_analytics": "true",
   "google_analytics_id": "UA-xxxxxxxx-x",
 
