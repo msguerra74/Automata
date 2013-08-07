@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     // Automaton Project / Grund Dependencies
     pkg: grunt.file.readJSON('package.json'),
 
-    // ----- Variables ----- //
+    /* ----- Variables ----- */
 
     // Directories
     build: '.BUILD',
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     // jQuery Version
     jquery_version: '1.10.2',
 
-    // ----- Assets & Content ----- //
+    /* ----- Assets & Content ----- */
 
     // Copy Task
     copy: {
@@ -161,7 +161,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // ----- Styles ----- //
+    /* ----- Styles ----- */
 
     // Compass Task
     compass: {
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // ----- Images & SVGs ----- //
+    /* ----- Images & SVGs ----- */
 
     // Imagemin Task
     imagemin: {
@@ -244,7 +244,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // ----- Scripts ----- //
+    /* ----- Scripts ----- */
 
     // JShint Task
     jshint: {
@@ -282,7 +282,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // ----- Content ----- //
+    /* ----- Content ----- */
 
     // Jekyll Task
     jekyll: {
@@ -322,7 +322,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // ----- Dev Tasks ----- //
+    /* ----- Dev Tasks ----- */
 
     // Clean Task
     clean: {
@@ -419,7 +419,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // ----- Deployment Tasks ----- //
+    /* ----- Deployment Tasks ----- */
 
     // Amazon S3 Deploy Task
     s3: {
@@ -446,14 +446,17 @@ module.exports = function(grunt) {
         auth: {
           host: '<%= prj.sftp_host %>',
           port: 22,
-          /* Store 'authKey' credentials in root .ftppass file in this format:
-            {
-              "key": {
-                "username": "myusername",
-                "password": "mypassword"
-              }
-            }
-          */
+          /**
+           * Store 'authKey' credentials in root .ftppass file in this format:
+           *
+             {
+               "key": {
+                 "username": "myusername",
+                 "password": "mypassword"
+               }
+             }
+           *
+           */
           authKey: '<%= prj.sftp_key %>'
         },
         src: '<%= build %>',
