@@ -1,3 +1,10 @@
+/**
+ * FluidVids.js
+ * http://github.com/toddmotto/fluidvids
+ **
+ * IE7+
+ */
+
 (function(window, document, undefined) {
 
   'use strict';
