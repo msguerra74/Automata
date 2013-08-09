@@ -9,7 +9,7 @@
 
   "ie_edge": "false",
   "responsive_design": "true",
-  "blog_feed": "false",
+  "blog_feed": "true",
   "svg_images": "false",
   "head_insert": "",
   "oldie_support": "true",
