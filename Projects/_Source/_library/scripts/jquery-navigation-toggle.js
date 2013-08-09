@@ -5,11 +5,12 @@
 /**
  * JavaScript and jQuery example:
  * http://codepen.io/msguerra74/pen/yaocw/
+ **
+ * IE6+
  */
 
-var $navToggle = $("nav .menu"),
-  $navMenu = $("nav ul");
-$("nav .menu").on("click", function() {
-  $navToggle.toggleClass("active");
-  $navMenu.toggleClass("active");
+$("#nav-toggle").on("click", function() {
+  var $nav = $("#nav");
+  $(this).toggleClass("active");
+  $nav.toggleClass("active");
 });
