@@ -5,11 +5,12 @@
 /**
  * JavaScript and jQuery example:
  * http://codepen.io/msguerra74/pen/yaocw/
+ **
+ * IE10+
  */
 
-document.querySelector('nav .menu').onclick = function() {
-  var navToggle = document.querySelector('nav .menu');
-  var navMenu = document.querySelector('nav ul');
-  navToggle.classList.toggle('active');
-  navMenu.classList.toggle('active');
+document.querySelector('#nav-toggle').onclick = function() {
+  var nav = document.querySelector('#nav');
+  this.classList.toggle('active');
+  nav.classList.toggle('active');
 };
