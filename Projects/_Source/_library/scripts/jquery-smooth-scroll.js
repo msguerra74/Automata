@@ -5,9 +5,11 @@
 /**
  * JavaScript and jQuery example:
  * http://codepen.io/msguerra74/pen/fxjiK
- *
+ **
  * jQuery version based on:
  * http://www.paulund.co.uk/smooth-scroll-to-internal-links-with-jquery/
+ **
+ * IE6+
  */
 
 $("a[href^='#']").on("click", function(e) {
