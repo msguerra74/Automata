@@ -16,9 +16,9 @@
     grunticon( [ "{{ relative }}css/icon.data.svg.min.css?{{ site.cache_buster }}", "{{ relative }}css/icon.data.png.min.css?{{ site.cache_buster }}", "{{ relative }}css/icon.png.min.css?{{ site.cache_buster }}" ] );
   </script>
   <noscript><link rel="stylesheet" href="{{ relative }}css/icon.png.min.css?{{ site.cache_buster }}"></noscript>{% endif %}
-  <link rel="stylesheet" href="{{ relative }}css/style.min.css?{{ site.cache_buster }}">{% if site.head_insert %}
-  {{ site.head_insert }}{% endif %}{% if page.head_insert %}
-  {{ page.head_insert }}{% endif %}{% if site.oldie_support == true %}
+  <link rel="stylesheet" href="{{ relative }}css/style.min.css?{{ site.cache_buster }}">{% if site.head_include %}
+  {{ site.head_include }}{% endif %}{% if page.head_include %}
+  {{ page.head_include }}{% endif %}{% if site.oldie_support == true %}
   <!--[if (lt IE 9)]>
   <script src="{{ relative }}js/oldie.min.js?{{ site.cache_buster }}"></script>
   <![endif]-->{% endif %}
