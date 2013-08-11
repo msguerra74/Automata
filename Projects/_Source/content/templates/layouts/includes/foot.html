@@ -1,4 +1,5 @@
-  {% if site.jquery == true %}<script src="{{ relative }}js/jquery-{{ site.jquery_version }}.min.js"></script>{% endif %}{% if site.scripts == true %}
+  <!-- JavaScript -->{% if site.jquery == true %}
+  <script src="{{ relative }}js/jquery-{{ site.jquery_version }}.min.js"></script>{% endif %}{% if site.scripts == true %}
   <script src="{{ relative }}js/script.min.js?{{ site.cache_buster }}"></script>{% endif %}{% if site.foot_insert %}
   {{ site.foot_insert }}{% endif %}{% if page.foot_insert %}
   {{ page.foot_insert }}{% endif %}{% if site.google_analytics == true %}
