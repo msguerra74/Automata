@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     // Project Variables File
     // website: grunt.file.readJSON('Websites/_example.com/website.json'),
-    website: grunt.file.readJSON('Websites/test.com/website.json'),
+    website: grunt.file.readJSON('Websites/_example.com/website.json'),
 
     // Automaton Project and Grunt Dependencies
     pkg: grunt.file.readJSON('package.json'),
