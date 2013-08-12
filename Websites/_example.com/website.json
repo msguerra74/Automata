@@ -1,9 +1,9 @@
 {
-  "project": "_Default",
+  "site": "_example.com",
 
-  "name": "Automaton",
-  "description": "Automated Static Website Generator",
   "url": "http://localhost:4000",
+  "title": "Automaton",
+  "description": "Automated Static Website Generator",
   "owner": "Michael Guerra",
   "email": "msguerra74+automaton@gmail.com",
 
@@ -42,10 +42,10 @@
   "dev_email": "msguerra74@gmail.com",
   "dev_twitter": "@msguerra74",
 
-  "dev_url": "http://localhost:<%= prj.dev_url_port %>",
+  "dev_url": "http://localhost:<%= website.dev_url_port %>",
   "dev_url_port": "4000",
 
   "dev_banner_open": "/*! ",
-  "dev_banner": "[made by] <%= prj.dev_name %> | <%= prj.dev_twitter %> | <%= prj.dev_website %> [in <%= current_year %>]",
+  "dev_banner": "[made by] <%= website.dev_name %> | <%= website.dev_twitter %> | <%= website.dev_website %> [in <%= current_year %>]",
   "dev_banner_close": " */"
 }

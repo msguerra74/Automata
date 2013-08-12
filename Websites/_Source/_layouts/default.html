@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <!-- <%= banner %> -->{% if site.ie_edge == true %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}{% if page.title %}
-  <title>{{ page.title }} | {{ site.name }}</title>{% else %}
-  <title>{{ site.name }}</title>{% endif %}{% if page.description %}
+  <title>{{ page.title }} | {{ site.title }}</title>{% else %}
+  <title>{{ site.title }}</title>{% endif %}{% if page.description %}
   <meta name="description" content="{{ page.description }}">{% else %}
   <meta name="description" content="{{ site.description }}">{% endif %}{% if site.responsive_design == true %}
   <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.blog_feed == true %}
-  <link rel="alternate" type="application/atom+xml" title="{{ site.name }} Atom Feed" href="{{ relative }}feed.xml">{% endif %}
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Atom Feed" href="{{ relative }}feed.xml">{% endif %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">{% if site.svg_images == true %}
   <script>
     window.grunticon=function(e){if(e&&3===e.length){var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){var r=t.document.createElement("link"),a=t.document.getElementsByTagName("script")[0];r.rel="stylesheet",r.href=e[o&&n?0:o?1:2],a.parentNode.insertBefore(r,a)},r=new t.Image;r.onerror=function(){o(!1)},r.onload=function(){o(1===r.width&&1===r.height)},r.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="}};
@@ -25,3 +25,21 @@
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
 </head>
 <body>
+{% include header.html %}
+{{ content }}
+{% include footer.html %}
+  <!-- JavaScript -->{% if site.jquery == true %}
+  <script src="{{ relative }}js/jquery-{{ site.jquery_version }}.min.js"></script>{% endif %}{% if site.scripts == true %}
+  <script src="{{ relative }}js/script.min.js?{{ site.cache_buster }}"></script>{% endif %}{% if site.foot_include %}
+  {{ site.foot_include }}{% endif %}{% if page.foot_include %}
+  {{ page.foot_include }}{% endif %}{% if site.google_analytics == true %}
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ site.google_analytics_id }}');ga('send','pageview');
+  </script>{% endif %}
+</body>
+</html>
