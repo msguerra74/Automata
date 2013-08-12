@@ -9,8 +9,8 @@
  * IE6+
  */
 
-$("#nav-toggle").on("click", function() {
-  var $nav = $("#nav");
+$(".nav-toggle").on("click", function() {
+  var $nav = $(".nav");
   $(this).toggleClass("active");
   $nav.toggleClass("active");
 });
