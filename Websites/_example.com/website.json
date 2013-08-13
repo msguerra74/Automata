@@ -46,6 +46,6 @@
   "dev_url_port": "4000",
 
   "dev_banner_open": "/* ",
-  "dev_banner": "[made by] <%= website.dev_name %> | <%= website.dev_twitter %> | <%= website.dev_website %> [in <%= current_year %>]",
+  "dev_banner": "[made by] <%= website.dev_name %> | <%= website.dev_website %> | <%= website.dev_twitter %> [in <%= current_year %>]",
   "dev_banner_close": " */"
 }
