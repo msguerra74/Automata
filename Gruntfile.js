@@ -228,10 +228,8 @@ module.exports = function(grunt) {
         options: {
           datasvgcss: 'icon.data.svg.scss',
           datapngcss: 'icon.data.png.scss',
-          loadersnippet: 'grunticon.loader.txt',
           pngcrush: false,
           pngfolder: '../img/icons',
-          previewhtml: 'preview.html',
           urlpngcss: 'icon.png.scss',
           src: "<%= site %>/icons",
           dest: "<%= temp %>/scss"
