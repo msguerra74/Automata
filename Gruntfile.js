@@ -447,7 +447,7 @@ module.exports = function(grunt) {
       },
       icons: {
         files: ['<%= site %>/icons/**/*'],
-        tasks: ['icons', 'compass:dev']
+        tasks: ['icons', 'hashify:styles', 'compass:dev']
       },
       images: {
         files: ['<%= site %>/images/**/*'],
