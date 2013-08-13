@@ -4,7 +4,7 @@ Automaton
 Automated Static Website Generator
 ----------------------------------
 
-by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
+by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 - [Project Website][]
 - [GitHub Page][]
@@ -21,7 +21,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 - [HTML5][]
 - [CSS3][]
 - [JavaScript][] / [jQuery][]
-- <s>[PHP][]</s> - Coming soon...
+- <del>[PHP][]</del>
 
   [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
   [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
@@ -36,7 +36,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
 - [jQuery][]: JavaScript Library
 - [normalize.css][] and [reset.css][]: CSS Reset and Normalization
-- <s>[PHPMailer][]: Email Creation and Transfer Class for PHP</s> - Coming soon...
+- <del>[PHPMailer][]: Email Creation and Transfer Class for PHP</del>
 
   [FluidVids.js]: http://github.com/toddmotto/fluidvids/
   [Google Analytics]: http://google.com/analytics/
@@ -54,6 +54,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 - [Node.js][]: JavaScript Runtime Platform
     - [Grunt][]: JavaScript Task Runner
       - Project Specific Packages:
+      - [assemble][]: Task to assemble pages and templating
       - [grunt-contrib-clean][]: Task to delete files/folders
       - [grunt-contrib-compass][]: Compass task
       - [grunt-contrib-connect][]: Task to create/connect to server
@@ -63,9 +64,9 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
       - [grunt-contrib-uglify][]: Task to concat/compress js files
       - [grunt-contrib-watch][]: Task to watch files/folders for changes
       - [grunt-grunticon][]: SVG to PNG / CSS Task
+      - [grunt-hashify][]: Task for creating MD5 hashes and hashmaps
       - [grunt-jekyll][]: Static site generator and templating task
       - [grunt-open][]: Task to open files/urls
-      - [grunt-replace][]: Task to replace inline text
       - [grunt-s3][]: Task to deploy finished site to Amazon S3
       - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
       - [matchdep][]: Task to filter npm modules
@@ -80,6 +81,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
   [Markdown]: http://daringfireball.net/projects/markdown/
   [Node.js]: http://nodejs.org
   [Grunt]: http://gruntjs.com
+  [assemble]: http://npmjs.org/package/assemble/
   [grunt-contrib-clean]: http://npmjs.org/package/grunt-contrib-clean/
   [grunt-contrib-compass]: http://npmjs.org/package/grunt-contrib-compass/
   [grunt-contrib-connect]: http://npmjs.org/package/grunt-contrib-connect/
@@ -89,9 +91,9 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
   [grunt-contrib-uglify]: http://npmjs.org/package/grunt-contrib-uglify/
   [grunt-contrib-watch]: http://npmjs.org/package/grunt-contrib-watch/
   [grunt-grunticon]: http://npmjs.org/package/grunt-grunticon/
+  [grunt-hashify]: http://npmjs.org/package/grunt-hashify/
   [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
   [grunt-open]: http://npmjs.org/package/grunt-open/
-  [grunt-replace]: http://npmjs.org/package/grunt-replace/
   [grunt-s3]: http://npmjs.org/package/grunt-s3/
   [grunt-sftp-deploy]: http://npmjs.org/package/grunt-sftp-deploy/
   [matchdep]: http://npmjs.org/package/matchdep/
@@ -118,7 +120,7 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
 ### Usage
 
-1. Modify the Projects/_Default/project.json file variables to match your project needs. (NOTE: You can also duplicate this directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the Gruntfile.js file)
+1. Modify the Websites/_example.com/website.json file variables to match your project needs. (NOTE: You can also duplicate this directory for multiple projects, so long as you point to the appropriate 'website.json' file at the top of the Gruntfile.js file)
 2. Run Grunt tasks:
  - 'grunt dev' to run in development mode.
  - 'grunt build' to build developed site.
