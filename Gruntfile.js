@@ -34,14 +34,15 @@ module.exports = function(grunt) {
       }
     },
 
-    // Clean Task
+    // Clean
     clean: {
       all: ['<%= temp %>', '<%= build %>']
     },
 
-    // Compass Task
+    // Compass
     compass: {
       options: {
+        banner: '<%= website.dev_banner_open %><%= website.dev_banner %><%= website.dev_banner_close %>',
         boring: true,
         cssDir: '<%= build %>/css',
         fontsDir: '<%= build %>/fonts',
@@ -49,9 +50,11 @@ module.exports = function(grunt) {
         imagesDir: '<%= build %>/img',
         javascriptsDir: '<%= build %>/js',
         relativeAssets: true,
+        specify: '<%= temp %>/scss/*.scss',
         raw:
         // Cache Buster
         // 'asset_cache_buster :none\n' +
+        // Adds MD5 hash string
         'asset_cache_buster do |http_path, real_path|\n' +
         'if File.exists?(real_path)\n' +
         'hash = Digest::MD5.file(real_path.path).hexdigest\n' +
@@ -61,15 +64,15 @@ module.exports = function(grunt) {
         // Preferred Syntax
         'preferred_syntax = :scss\n' +
         // Sass Cache
-        'cache_path = "<%= temp %>/scss/.sass-cache"\n' +
+        'cache_path = "<%= temp %>/scss/.sass-cache"\n'
         // Rename styles.css to styles.min.css
         // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
-        'on_stylesheet_saved do |file|\n' +
-        'if File.exists?(file)\n' +
-        'filename = File.basename(file, File.extname(file))\n' +
-        'File.rename(file, "<%= build %>/css" + "/" + filename + ".min" + File.extname(file))\n' +
-        'end\n' +
-        'end\n'
+        // 'on_stylesheet_saved do |file|\n' +
+        // 'if File.exists?(file)\n' +
+        // 'filename = File.basename(file, File.extname(file))\n' +
+        // 'File.rename(file, "<%= build %>/css" + "/" + filename + ".min" + File.extname(file))\n' +
+        // 'end\n' +
+        // 'end\n'
       },
       build: {
         options: {
@@ -87,7 +90,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Connect Task
+    // Connect
     connect: {
       server: {
         options: {
@@ -98,7 +101,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Copy Task
+    // Copy
     copy: {
       // Source Assets
       sourceStyles: {
@@ -219,13 +222,14 @@ module.exports = function(grunt) {
       }
     },
 
-    // Grunticon Task
+    // Grunticon
     grunticon: {
       icons: {
         options: {
           datasvgcss: 'icon.data.svg.scss',
           datapngcss: 'icon.data.png.scss',
           loadersnippet: 'grunticon.loader.txt',
+          pngcrush: false,
           pngfolder: '../img/icons',
           previewhtml: 'preview.html',
           urlpngcss: 'icon.png.scss',
@@ -235,15 +239,17 @@ module.exports = function(grunt) {
       }
     },
 
-    // Hashify Task
+    // Hashify
     hashify: {
       options: {
         basedir: './',
-        copy: true,
         hashmap: '<%= temp %>/hashmap.json',
         length: '7'
       },
       scripts: {
+        options: {
+          copy: true
+        },
         files: [{
           src: '<%= build %>/js/jquery.min.js',
           dest: '<%= build %>/js/jquery.min.js',
@@ -259,27 +265,30 @@ module.exports = function(grunt) {
         }]
       },
       styles: {
+        options: {
+          copy: false
+        },
         files: [{
           src: '<%= temp %>/scss/icon.data.png.scss',
-          dest: '<%= temp %>/scss/icon.data.png.scss',
+          dest: '<%= temp %>/scss/icon.data.png.min.scss',
           key: 'icon_data_png_css'
         }, {
           src: '<%= temp %>/scss/icon.data.svg.scss',
-          dest: '<%= temp %>/scss/icon.data.svg.scss',
+          dest: '<%= temp %>/scss/icon.data.svg.min.scss',
           key: 'icon_data_svg_css'
         }, {
           src: '<%= temp %>/scss/icon.png.scss',
-          dest: '<%= temp %>/scss/icon.png.scss',
+          dest: '<%= temp %>/scss/icon.png.min.scss',
           key: 'icon_png_css'
         }, {
           src: '<%= temp %>/scss/style.scss',
-          dest: '<%= temp %>/scss/style.scss',
+          dest: '<%= temp %>/scss/style.min.scss',
           key: 'style_css'
         }]
       }
     },
 
-    // Imagemin Task
+    // Imagemin
     imagemin: {
       options: {
         optimizationLevel: 7,
@@ -303,7 +312,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Jekyll Task
+    // Jekyll
     jekyll: {
       build: {
         dest: '<%= temp %>/_build',
@@ -341,45 +350,19 @@ module.exports = function(grunt) {
       }
     },
 
-    // JShint Task
+    // JShint
     jshint: {
       siteScripts: ['<%= site %>/scripts/**/*']
     },
 
-    // Open Task
+    // Open
     open: {
       browser: {
         path: '<%= website.dev_url %>'
       }
     },
 
-    // Replace Task
-    replace: {
-      options: {
-        variables: {
-          ' banner %>': '<%= website.dev_banner %>'
-        },
-        prefix: '<%='
-      },
-      styles: {
-        files: [{
-          expand: true,
-          flatten: true,
-          src: ['<%= temp %>/scss/**/*'],
-          dest: '<%= temp %>/scss'
-        }]
-      },
-      includes: {
-        files: [{
-          expand: true,
-          flatten: true,
-          src: ['<%= temp %>/html/_layouts/**/*'],
-          dest: '<%= temp %>/html/_layouts'
-        }]
-      }
-    },
-
-    // Amazon S3 Deploy Task
+    // Amazon S3 Deploy
     s3: {
       options: {
         key: '<%= website.s3_key %>',
@@ -397,7 +380,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // SFTP Deploy Task
+    // SFTP Deploy
     'sftp-deploy': {
       deploy: {
         auth: {
@@ -418,10 +401,10 @@ module.exports = function(grunt) {
       }
     },
 
-    // Uglify Task
+    // Uglify
     uglify: {
       options: {
-        banner: '<%= website.dev_banner_open %><%= website.dev_banner %><%= website.dev_banner_close %>'
+        banner: '<%= website.dev_banner_open %><%= website.dev_banner %><%= website.dev_banner_close %>\n'
       },
       sourceScripts: {
         files: [{
@@ -452,7 +435,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Watch Task
+    // Watch
     watch: {
       // Watch Source
       source: {
@@ -493,7 +476,6 @@ module.exports = function(grunt) {
 
   // Load NPM Tasks
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
-
   grunt.loadNpmTasks('assemble');
 
   /* ----- Default Tasks ----- */
@@ -504,7 +486,7 @@ module.exports = function(grunt) {
   /* ----- Content Tasks ----- */
 
   // Content - Source
-  grunt.registerTask('sourceContent', ['copy:sourceIncludes', 'copy:sourceLayouts', 'copy:sourceRoot', 'replace:includes']);
+  grunt.registerTask('sourceContent', ['copy:sourceIncludes', 'copy:sourceLayouts', 'copy:sourceRoot']);
   // Content - Site
   grunt.registerTask('siteContent', ['copy:siteDrafts', 'copy:siteIncludes', 'copy:siteLayouts', 'copy:sitePages', 'copy:sitePlugins', 'copy:sitePosts', 'copy:siteRoot']);
   // Content - All
@@ -528,7 +510,7 @@ module.exports = function(grunt) {
   grunt.registerTask('images', ['icons', 'imagemin:images']);
 
   // Styles - Source
-  grunt.registerTask('sourceStyles', ['copy:sourceStyles', 'replace:styles']);
+  grunt.registerTask('sourceStyles', ['copy:sourceStyles']);
   // Styles - Site
   grunt.registerTask('siteStyles', ['copy:siteStyles']);
   // Styles - Dev
