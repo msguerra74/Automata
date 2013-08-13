@@ -22,13 +22,12 @@
     "grunt-contrib-jshint": "~0.6.2",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-watch": "~0.5.1",
-    "grunt-grunticon": "~0.6.4",
+    "grunt-grunticon": "~0.6.6",
     "grunt-hashify": "0.0.5",
     "grunt-jekyll": "~0.3.8",
-    "grunt-open": "~0.2.1",
-    "grunt-replace": "~0.4.4",
+    "grunt-open": "~0.2.2",
     "grunt-s3": "~0.2.0-alpha.2",
-    "grunt-sftp-deploy": "0.0.8",
+    "grunt-sftp-deploy": "0.0.9",
     "matchdep": "~0.1.2"
   }
 }
