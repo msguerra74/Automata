@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- <%= banner %> -->{% if site.ie_edge == true %}
+  <!-- {% raw %}{{ website.dev_banner }}{% endraw %} -->{% if site.ie_edge == true %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}{% if page.title %}
   <title>{{ page.title }} | {{ site.title }}</title>{% else %}
   <title>{{ site.title }}</title>{% endif %}{% if page.description %}
