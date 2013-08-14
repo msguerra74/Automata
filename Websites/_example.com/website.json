@@ -6,6 +6,7 @@
   "description": "Automated Static Website Generator",
   "owner": "Michael Guerra",
   "email": "msguerra74+automaton@gmail.com",
+  "google_analytics_id": "UA-xxxxxxxx-x",
 
   "ie_edge": "false",
   "responsive_design": "true",
@@ -17,7 +18,6 @@
   "scripts": "true",
   "foot_include": "false",
   "google_analytics": "true",
-  "google_analytics_id": "UA-xxxxxxxx-x",
 
   "exclude": "'.htaccess'",
   "include": "",
