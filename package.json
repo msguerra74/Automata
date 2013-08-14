@@ -22,7 +22,7 @@
     "grunt-contrib-jshint": "~0.6.2",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-watch": "~0.5.1",
-    "grunt-grunticon": "~0.6.7",
+    "grunt-grunticon": "~0.6.8",
     "grunt-hashify": "0.0.5",
     "grunt-jekyll": "~0.3.8",
     "grunt-open": "~0.2.2",
