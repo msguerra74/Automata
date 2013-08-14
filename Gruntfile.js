@@ -228,7 +228,6 @@ module.exports = function(grunt) {
         options: {
           datasvgcss: 'icon.data.svg.scss',
           datapngcss: 'icon.data.png.scss',
-          pngcrush: false,
           pngfolder: '../img/icons',
           urlpngcss: 'icon.png.scss',
           src: "<%= site %>/icons",
@@ -526,5 +525,13 @@ module.exports = function(grunt) {
 
   // Build
   grunt.registerTask('build', ['default', 'fonts', 'scripts', 'images', 'styles', 'content']);
+
+  /* ----- Deployment ----- */
+
+  // Amazon S3 Deploy
+  grunt.registerTask('s3deploy', ['build', 's3']);
+
+  // SFTP Deploy
+  grunt.registerTask('sftpdeploy', ['build', 'sftp-deploy']);
 
 };
