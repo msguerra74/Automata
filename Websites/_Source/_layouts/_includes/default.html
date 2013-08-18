@@ -1,7 +1,7 @@
-  <main role="main">{% if page.title %}
+  <div class="default">{% if page.title %}
     <h1>{{ page.title }}</h1>{% else %}
     <h1>{{ site.title }}</h1>{% endif %}{% if page.description %}
     <p>{{ page.description }}</p>{% else %}
     <p>{{ site.description }}</p>{% endif %}
     <a href="{{ site.url }}">{{ site.title }}</a>
-  </main>
+  </div>
