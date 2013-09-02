@@ -13,10 +13,10 @@ module.exports = function(grunt) {
     /* ----- Variables ----- */
 
     // Directories
-    build: '_BUILD',
+    build: '<%= site %>/.BUILD',
     site: 'Websites/<%= website.site %>',
     source: 'Websites/_Source',
-    temp: '_temp',
+    temp: '<%= site %>/.temp',
 
     // Current Year
     current_year: grunt.template.today('yyyy'),
@@ -29,14 +29,14 @@ module.exports = function(grunt) {
         data: ['<%= site %>/**/*.json', '<%= temp %>/**/*.json']
       },
       sourceLayouts: {
-        src: ['<%= temp %>/_build/**/*.html'],
+        src: ['<%= temp %>/.build/**/*.html'],
         dest: './'
       }
     },
 
     // Clean
     clean: {
-      all: ['<%= temp %>', '<%= build %>']
+      all: ['<%= temp %>', '<%= build %>/**/*']
     },
 
     // Compass
@@ -215,7 +215,7 @@ module.exports = function(grunt) {
       contentBuild: {
         files: [{
           expand: true,
-          cwd: '<%= temp %>/_build',
+          cwd: '<%= temp %>/.build',
           src: '**/{*,.*}',
           dest: '<%= build %>'
         }]
@@ -312,7 +312,7 @@ module.exports = function(grunt) {
     // Jekyll
     jekyll: {
       build: {
-        dest: '<%= temp %>/_build',
+        dest: '<%= temp %>/.build',
         drafts: false,
         future: false,
         lsi: false,
