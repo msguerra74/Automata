@@ -50,6 +50,7 @@ module.exports = function(grunt) {
         imagesDir: '<%= build %>/img',
         javascriptsDir: '<%= build %>/js',
         relativeAssets: true,
+        sassDir: '<%= temp %>/scss',
         specify: '<%= temp %>/scss/*.scss',
         raw:
         // Cache Buster
@@ -77,15 +78,13 @@ module.exports = function(grunt) {
       build: {
         options: {
           environment: 'production',
-          outputStyle: 'compressed',
-          sassDir: ['<%= temp %>/scss']
+          outputStyle: 'compressed'
         }
       },
       dev: {
         options: {
           environment: 'development',
-          outputStyle: 'expanded',
-          sassDir: '<%= temp %>/scss'
+          outputStyle: 'expanded'
         }
       }
     },
@@ -222,65 +221,33 @@ module.exports = function(grunt) {
       }
     },
 
-    // Grunticon
-    grunticon: {
-      icons: {
-        options: {
-          datasvgcss: 'icon.data.svg.scss',
-          datapngcss: 'icon.data.png.scss',
-          pngcrush: false,
-          pngfolder: '../img/icons',
-          urlpngcss: 'icon.png.scss',
-          src: "<%= site %>/icons",
-          dest: "<%= temp %>/scss"
-        }
-      }
-    },
-
     // Hashify
     hashify: {
       options: {
         basedir: './',
+        copy: false,
         hashmap: '<%= temp %>/hashmap.json',
         length: '7'
       },
       scripts: {
-        options: {
-          copy: true
-        },
         files: [{
           src: '<%= build %>/js/jquery.min.js',
-          dest: '<%= build %>/js/jquery.min.js',
+          dest: '<%= build %>/js/jquery-{{hash}}.min.js',
           key: 'jquery_js'
         }, {
           src: '<%= build %>/js/oldie.min.js',
-          dest: '<%= build %>/js/oldie.min.js',
+          dest: '<%= build %>/js/oldie-{{hash}}.min.js',
           key: 'oldie_js'
         }, {
           src: '<%= build %>/js/script.min.js',
-          dest: '<%= build %>/js/script.min.js',
+          dest: '<%= build %>/js/script-{{hash}}.min.js',
           key: 'script_js'
         }]
       },
       styles: {
-        options: {
-          copy: false
-        },
         files: [{
-          src: '<%= temp %>/scss/icon.data.png.scss',
-          dest: '<%= temp %>/scss/icon.data.png.min.scss',
-          key: 'icon_data_png_css'
-        }, {
-          src: '<%= temp %>/scss/icon.data.svg.scss',
-          dest: '<%= temp %>/scss/icon.data.svg.min.scss',
-          key: 'icon_data_svg_css'
-        }, {
-          src: '<%= temp %>/scss/icon.png.scss',
-          dest: '<%= temp %>/scss/icon.png.min.scss',
-          key: 'icon_png_css'
-        }, {
           src: '<%= temp %>/scss/style.scss',
-          dest: '<%= temp %>/scss/style.min.scss',
+          dest: '<%= temp %>/scss/style-{{hash}}.min.scss',
           key: 'style_css'
         }]
       }
@@ -291,14 +258,6 @@ module.exports = function(grunt) {
       options: {
         optimizationLevel: 7,
         progressive: true
-      },
-      icons: {
-        files: [{
-          expand: true,
-          cwd: '<%= temp %>/img/icons',
-          src: '**/*',
-          dest: '<%= build %>/img/icons'
-        }]
       },
       images: {
         files: [{
@@ -329,7 +288,6 @@ module.exports = function(grunt) {
         'ie_edge: <%= website.ie_edge %>\n' +
         'responsive_design: <%= website.responsive_design %>\n' +
         'blog_feed: <%= website.blog_feed %>\n' +
-        'svg_images: <%= website.svg_images %>\n' +
         'head_include: <%= website.head_include %>\n' +
         'oldie_support: <%= website.oldie_support %>\n' +
         'jquery: <%= website.jquery %>\n' +
@@ -445,10 +403,6 @@ module.exports = function(grunt) {
         files: ['<%= site %>/fonts/**/*'],
         tasks: ['fonts']
       },
-      icons: {
-        files: ['<%= site %>/icons/**/*'],
-        tasks: ['icons', 'hashify:styles', 'compass:dev']
-      },
       images: {
         files: ['<%= site %>/images/**/*'],
         tasks: ['imagemin:images']
@@ -502,10 +456,8 @@ module.exports = function(grunt) {
   // Scripts - All
   grunt.registerTask('scripts', ['sourceScripts', 'siteScripts', 'hashify:scripts']);
 
-  // Images - Icons
-  grunt.registerTask('icons', ['grunticon:icons', 'imagemin:icons']);
   // Images - All
-  grunt.registerTask('images', ['icons', 'imagemin:images']);
+  grunt.registerTask('images', ['imagemin:images']);
 
   // Styles - Source
   grunt.registerTask('sourceStyles', ['copy:sourceStyles']);
