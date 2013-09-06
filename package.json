@@ -27,6 +27,7 @@
     "grunt-open": "~0.2.2",
     "grunt-s3": "~0.2.0-alpha.2",
     "grunt-sftp-deploy": "0.0.9",
+    "grunt-svgmin": "~0.2.0",
     "matchdep": "~0.1.2"
   }
 }
