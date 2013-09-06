@@ -1,4 +1,9 @@
 /**
+ * FastClick.js
+ * http://github.com/ftlabs/fastclick
+ */
+
+/**
  * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *
  * @version 0.6.9
@@ -17,6 +22,7 @@
  * @constructor
  * @param {Element} layer The layer to listen on
  */
+
 function FastClick(layer) {
   'use strict';
   var oldOnClick, self = this;
@@ -90,22 +96,34 @@ function FastClick(layer) {
   }
 
   /** @type function() */
-  this.onClick = function() { return FastClick.prototype.onClick.apply(self, arguments); };
+  this.onClick = function() {
+    return FastClick.prototype.onClick.apply(self, arguments);
+  };
 
   /** @type function() */
-  this.onMouse = function() { return FastClick.prototype.onMouse.apply(self, arguments); };
+  this.onMouse = function() {
+    return FastClick.prototype.onMouse.apply(self, arguments);
+  };
 
   /** @type function() */
-  this.onTouchStart = function() { return FastClick.prototype.onTouchStart.apply(self, arguments); };
+  this.onTouchStart = function() {
+    return FastClick.prototype.onTouchStart.apply(self, arguments);
+  };
 
   /** @type function() */
-  this.onTouchMove = function() { return FastClick.prototype.onTouchMove.apply(self, arguments); };
+  this.onTouchMove = function() {
+    return FastClick.prototype.onTouchMove.apply(self, arguments);
+  };
 
   /** @type function() */
-  this.onTouchEnd = function() { return FastClick.prototype.onTouchEnd.apply(self, arguments); };
+  this.onTouchEnd = function() {
+    return FastClick.prototype.onTouchEnd.apply(self, arguments);
+  };
 
   /** @type function() */
-  this.onTouchCancel = function() { return FastClick.prototype.onTouchCancel.apply(self, arguments); };
+  this.onTouchCancel = function() {
+    return FastClick.prototype.onTouchCancel.apply(self, arguments);
+  };
 
   if (FastClick.notNeeded(layer)) {
     return;
@@ -209,7 +227,7 @@ FastClick.prototype.needsClick = function(target) {
   'use strict';
   switch (target.nodeName.toLowerCase()) {
 
-  // Don't send a synthetic click to disabled inputs (issue #62)
+    // Don't send a synthetic click to disabled inputs (issue #62)
   case 'button':
   case 'select':
   case 'textarea':
@@ -430,7 +448,8 @@ FastClick.prototype.onTouchStart = function(event) {
  */
 FastClick.prototype.touchHasMoved = function(event) {
   'use strict';
-  var touch = event.changedTouches[0], boundary = this.touchBoundary;
+  var touch = event.changedTouches[0],
+    boundary = this.touchBoundary;
 
   if (Math.abs(touch.pageX - this.touchStartX) > boundary || Math.abs(touch.pageY - this.touchStartY) > boundary) {
     return true;
@@ -720,7 +739,7 @@ FastClick.notNeeded = function(layer) {
         return true;
       }
 
-    // Chrome desktop doesn't need FastClick (issue #15)
+      // Chrome desktop doesn't need FastClick (issue #15)
     } else {
       return true;
     }
@@ -759,3 +778,7 @@ if (typeof define !== 'undefined' && define.amd) {
 } else {
   window.FastClick = FastClick;
 }
+
+$(function() {
+  FastClick.attach(document.body);
+});
