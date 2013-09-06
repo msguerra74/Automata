@@ -1,7 +1,10 @@
 ---
 title: 404 - Page Not Found
-description: Hrmph... the requested page was not found and that's all we know.
+description: Hrmph... there's nothing to see here.
 layout: default
 ---
 
-{% include default.html %}
+  {% if page.title %}<h1>{{ page.title }}</h1>{% else %}
+  <h1>{{ site.title }}</h1>{% endif %}{% if page.description %}
+  <p>{{ page.description }} Run along <a href="{{ site.url }}">home</a>.</p>{% else %}
+  <p>{{ site.description }}</p>{% endif %}
