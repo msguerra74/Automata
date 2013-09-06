@@ -8,14 +8,14 @@
   "email": "msguerra74+automaton@gmail.com",
   "google_analytics_id": "UA-xxxxxxxx-x",
 
-  "ie_edge": "false",
+  "ie_edge": "true",
   "responsive_design": "true",
-  "blog_feed": "false",
+  "blog_feed": "true",
   "svg_images": "false",
   "head_include": "false",
   "oldie_support": "true",
-  "jquery": "false",
-  "scripts": "false",
+  "jquery": "true",
+  "scripts": "true",
   "foot_include": "false",
   "google_analytics": "true",
 
