@@ -54,13 +54,10 @@ canvas {
 // http://cssfontstack.com
 html {
   font-family: Verdana, Geneva, sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
   font-size: 1em;
   line-height: 1.5;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
