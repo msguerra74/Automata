@@ -13,10 +13,10 @@ module.exports = function(grunt) {
     /* ----- Variables ----- */
 
     // Directories
-    build: '<%= site %>/.BUILD',
+    build: '.BUILD',
     site: 'Websites/<%= website.site %>',
     source: 'Websites/_Source',
-    temp: '<%= site %>/.temp',
+    temp: '.temp',
 
     // Current Year
     current_year: grunt.template.today('yyyy'),
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 
     // Clean
     clean: {
-      all: ['<%= temp %>', '<%= build %>/**/*']
+      all: ['<%= temp %>', '<%= build %>']
     },
 
     // Compass
@@ -228,6 +228,7 @@ module.exports = function(grunt) {
         options: {
           datasvgcss: 'icon.data.svg.scss',
           datapngcss: 'icon.data.png.scss',
+          pngcrush: false,
           pngfolder: '../img/icons',
           urlpngcss: 'icon.png.scss',
           src: "<%= site %>/icons",
