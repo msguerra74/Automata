@@ -31,6 +31,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 ### Add-Ons
 
+- [FastClick.js][]: Polyfill to remove click delays on browsers with touch UIs
 - [FluidVids.js][]: Responsive and fluid YouTube and Vimeo video embeds
 - [Google Analytics][]: Web Analytics and Reporting
 - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
@@ -38,6 +39,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [normalize.css][] and [reset.css][]: CSS Reset and Normalization
 - <del>[PHPMailer][]: Email Creation and Transfer Class for PHP</del>
 
+  [FastClick.js]: http://github.com/ftlabs/fastclick/
   [FluidVids.js]: http://github.com/toddmotto/fluidvids/
   [Google Analytics]: http://google.com/analytics/
   [html5 Shiv]: http://github.com/aFarkas/html5shiv/
@@ -63,7 +65,6 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
       - [grunt-contrib-jshint][]: Task to lint js files
       - [grunt-contrib-uglify][]: Task to concat/compress js files
       - [grunt-contrib-watch][]: Task to watch files/folders for changes
-      - [grunt-grunticon][]: SVG to PNG / CSS Task
       - [grunt-hashify][]: Task for creating MD5 hashes and hashmaps
       - [grunt-jekyll][]: Static site generator and templating task
       - [grunt-open][]: Task to open files/urls
@@ -90,7 +91,6 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [grunt-contrib-jshint]: http://npmjs.org/package/grunt-contrib-jshint/
   [grunt-contrib-uglify]: http://npmjs.org/package/grunt-contrib-uglify/
   [grunt-contrib-watch]: http://npmjs.org/package/grunt-contrib-watch/
-  [grunt-grunticon]: http://npmjs.org/package/grunt-grunticon/
   [grunt-hashify]: http://npmjs.org/package/grunt-hashify/
   [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
   [grunt-open]: http://npmjs.org/package/grunt-open/
