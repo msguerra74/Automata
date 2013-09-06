@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       options: {
         data: ['<%= site %>/**/*.json', '<%= temp %>/**/*.json']
       },
-      sourceLayouts: {
+      html: {
         src: ['<%= temp %>/.build/**/*.html'],
         dest: './'
       }
@@ -357,6 +357,23 @@ module.exports = function(grunt) {
       }
     },
 
+    // SVGmin
+    svgmin: {
+      options: {
+        plugins: [{
+          removeViewBox: false
+        }]
+      },
+      svg: {
+        files: [{
+          expand: true,
+          cwd: '<%= site %>/images',
+          src: '**/*',
+          dest: '<%= build %>/img'
+        }]
+      }
+    },
+
     // Uglify
     uglify: {
       options: {
@@ -405,7 +422,7 @@ module.exports = function(grunt) {
       },
       images: {
         files: ['<%= site %>/images/**/*'],
-        tasks: ['imagemin:images']
+        tasks: ['images']
       },
       scripts: {
         files: ['<%= site %>/scripts/**/*'],
@@ -442,7 +459,7 @@ module.exports = function(grunt) {
   // Content - Site
   grunt.registerTask('siteContent', ['copy:siteDrafts', 'copy:siteIncludes', 'copy:siteLayouts', 'copy:sitePages', 'copy:sitePlugins', 'copy:sitePosts', 'copy:siteRoot']);
   // Content - All
-  grunt.registerTask('content', ['sourceContent', 'siteContent', 'jekyll', 'assemble:sourceLayouts', 'copy:contentBuild']);
+  grunt.registerTask('content', ['sourceContent', 'siteContent', 'jekyll', 'assemble:html', 'copy:contentBuild']);
 
   /* ----- Assets Tasks ----- */
 
@@ -457,7 +474,7 @@ module.exports = function(grunt) {
   grunt.registerTask('scripts', ['sourceScripts', 'siteScripts', 'hashify:scripts']);
 
   // Images - All
-  grunt.registerTask('images', ['imagemin:images']);
+  grunt.registerTask('images', ['svgmin', 'imagemin']);
 
   // Styles - Source
   grunt.registerTask('sourceStyles', ['copy:sourceStyles']);
