@@ -70,6 +70,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
       - [grunt-open][]: Task to open files/urls
       - [grunt-s3][]: Task to deploy finished site to Amazon S3
       - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
+      - [grunt-svgmin][]: SVG minifier
       - [matchdep][]: Task to filter npm modules
 - [Ruby][]: Programming Language / Runtime Environment
  - [Compass][]: CSS Authoring Framework
@@ -96,6 +97,7 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
   [grunt-open]: http://npmjs.org/package/grunt-open/
   [grunt-s3]: http://npmjs.org/package/grunt-s3/
   [grunt-sftp-deploy]: http://npmjs.org/package/grunt-sftp-deploy/
+  [grunt-svgmin]: http://github.com/sindresorhus/grunt-svgmin/
   [matchdep]: http://npmjs.org/package/matchdep/
   [Ruby]: http://ruby-lang.org/en/
   [Compass]: http://compass-style.org
