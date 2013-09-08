@@ -53,9 +53,7 @@ module.exports = function(grunt) {
         sassDir: '<%= temp %>/scss',
         specify: '<%= temp %>/scss/*.scss',
         raw:
-        // Cache Buster
-        // 'asset_cache_buster :none\n' +
-        // Adds MD5 hash string
+        // Cache Buster - Adds MD5 hash string
         'asset_cache_buster do |http_path, real_path|\n' +
         'if File.exists?(real_path)\n' +
         'hash = Digest::MD5.file(real_path.path).hexdigest\n' +
@@ -66,14 +64,6 @@ module.exports = function(grunt) {
         'preferred_syntax = :scss\n' +
         // Sass Cache
         'cache_path = "<%= temp %>/scss/.sass-cache"\n'
-        // Rename styles.css to styles.min.css
-        // http://h3r2on.com/2013/05/17/rename-css-on-compile.html
-        // 'on_stylesheet_saved do |file|\n' +
-        // 'if File.exists?(file)\n' +
-        // 'filename = File.basename(file, File.extname(file))\n' +
-        // 'File.rename(file, "<%= build %>/css" + "/" + filename + ".min" + File.extname(file))\n' +
-        // 'end\n' +
-        // 'end\n'
       },
       build: {
         options: {
@@ -112,14 +102,6 @@ module.exports = function(grunt) {
         }]
       },
       // Source Content
-      sourceIncludes: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/_layouts/_includes',
-          src: '**/*',
-          dest: '<%= temp %>/html/_includes'
-        }]
-      },
       sourceLayouts: {
         files: [{
           expand: true,
@@ -225,29 +207,32 @@ module.exports = function(grunt) {
     hashify: {
       options: {
         basedir: './',
-        copy: false,
+        copy: true,
         hashmap: '<%= temp %>/hashmap.json',
         length: '7'
       },
       scripts: {
         files: [{
           src: '<%= build %>/js/jquery.min.js',
-          dest: '<%= build %>/js/jquery-{{hash}}.min.js',
+          dest: '<%= build %>/js/jquery.min.js',
           key: 'jquery_js'
         }, {
           src: '<%= build %>/js/oldie.min.js',
-          dest: '<%= build %>/js/oldie-{{hash}}.min.js',
+          dest: '<%= build %>/js/oldie.min.js',
           key: 'oldie_js'
         }, {
           src: '<%= build %>/js/script.min.js',
-          dest: '<%= build %>/js/script-{{hash}}.min.js',
+          dest: '<%= build %>/js/script.min.js',
           key: 'script_js'
         }]
       },
       styles: {
+        options: {
+          copy: false
+        },
         files: [{
           src: '<%= temp %>/scss/style.scss',
-          dest: '<%= temp %>/scss/style-{{hash}}.min.scss',
+          dest: '<%= temp %>/scss/style.min.scss',
           key: 'style_css'
         }]
       }
@@ -455,7 +440,7 @@ module.exports = function(grunt) {
   /* ----- Content Tasks ----- */
 
   // Content - Source
-  grunt.registerTask('sourceContent', ['copy:sourceIncludes', 'copy:sourceLayouts', 'copy:sourceRoot']);
+  grunt.registerTask('sourceContent', ['copy:sourceLayouts', 'copy:sourceRoot']);
   // Content - Site
   grunt.registerTask('siteContent', ['copy:siteDrafts', 'copy:siteIncludes', 'copy:siteLayouts', 'copy:sitePages', 'copy:sitePlugins', 'copy:sitePosts', 'copy:siteRoot']);
   // Content - All

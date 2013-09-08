@@ -11,11 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.blog_feed == true %}
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Atom Feed" href="{{ relative }}feed.xml">{% endif %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
-  <link rel="stylesheet" href="{{ relative }}css/style-{% raw %}{{ hashmap.style_css }}{% endraw %}.min.css">{% if site.head_include == true %}
+  <link rel="stylesheet" href="{{ relative }}css/style.min.css?v={% raw %}{{ hashmap.style_css }}{% endraw %}">{% if site.head_include == true %}
 {% include head_include.html %}{% endif %}{% if page.head_include %}
   {{ page.head_include }}{% endif %}{% if site.oldie_support == true %}
   <!--[if (lt IE 9)]>
-  <script src="{{ relative }}js/oldie-{% raw %}{{ hashmap.oldie_js }}{% endraw %}.min.js"></script>
+  <script src="{{ relative }}js/oldie.min.js?v={% raw %}{{ hashmap.oldie_js }}{% endraw %}"></script>
   <![endif]-->{% endif %}
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
 </head>
@@ -24,8 +24,8 @@
 {{ content }}
 {% include footer.html %}
   <!-- JavaScript -->{% if site.jquery == true %}
-  <script src="{{ relative }}js/jquery-{% raw %}{{ hashmap.jquery_js }}{% endraw %}.min.js"></script>{% endif %}{% if site.scripts == true %}
-  <script src="{{ relative }}js/script-{% raw %}{{ hashmap.script_js }}{% endraw %}.min.js"></script>{% endif %}{% if site.foot_include == true %}
+  <script src="{{ relative }}js/jquery.min.js?v={% raw %}{{ hashmap.jquery_js }}{% endraw %}"></script>{% endif %}{% if site.scripts == true %}
+  <script src="{{ relative }}js/script.min.js?v={% raw %}{{ hashmap.script_js }}{% endraw %}"></script>{% endif %}{% if site.foot_include == true %}
 {% include foot_include.html %}{% endif %}{% if page.foot_include %}
   {{ page.foot_include }}{% endif %}{% if site.google_analytics == true %}
   <script>

@@ -4,14 +4,13 @@ Automaton
 Automated Static Website Generator
 ----------------------------------
 
-by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
+by **Michael Guerra** | [msguerra74.com][]
 
 - [Project Website][]
 - [GitHub Page][]
 - [Automaton.zip][]
 
   [msguerra74.com]: http://msguerra74.com
-  [@msguerra74]: http://twitter.com/msguerra74
   [Project Website]: http://msguerra74.github.io/Automaton/
   [GitHub Page]: http://github.com/msguerra74/Automaton/
   [Automaton.zip]: http://github.com/msguerra74/Automaton/archive/master.zip
@@ -21,32 +20,27 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [HTML5][]
 - [CSS3][]
 - [JavaScript][] / [jQuery][]
-- <del>[PHP][]</del>
 
   [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
   [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
   [JavaScript]: http://developer.mozilla.org/en-US/docs/Web/JavaScript/
   [jQuery]: http://jquery.com
-  [PHP]: http://php.net
 
 ### Add-Ons
 
-- [FastClick.js][]: Polyfill to remove click delays on browsers with touch UIs
-- [FluidVids.js][]: Responsive and fluid YouTube and Vimeo video embeds
-- [Google Analytics][]: Web Analytics and Reporting
-- [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
-- [jQuery][]: JavaScript Library
-- [normalize.css][] and [reset.css][]: CSS Reset and Normalization
-- <del>[PHPMailer][]: Email Creation and Transfer Class for PHP</del>
+- CSS
+    - [normalize.css][] CSS Reset and Normalization
+- JavaScript / jQuery
+    - [Google Analytics][]: Web Analytics and Reporting
+    - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
+    - [jQuery][]: JavaScript Library
+    - [respond.js][]: Polyfill for CSS3 Media Queries
 
-  [FastClick.js]: http://github.com/ftlabs/fastclick/
-  [FluidVids.js]: http://github.com/toddmotto/fluidvids/
+  [normalize.css]: http://github.com/necolas/normalize.css/
   [Google Analytics]: http://google.com/analytics/
   [html5 Shiv]: http://github.com/aFarkas/html5shiv/
   [jQuery]: http://jquery.com
-  [normalize.css]: http://github.com/necolas/normalize.css/tree/v1/
-  [reset.css]: http://meyerweb.com/eric/tools/css/reset/reset.css
-  [PHPMailer]: http://github.com/Synchro/PHPMailer/
+  [respond.js]: http://github.com/scottjehl/Respond/
 
 ### Components
 
@@ -55,28 +49,28 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 - [Markdown][]: Text to HTML Converter
 - [Node.js][]: JavaScript Runtime Platform
     - [Grunt][]: JavaScript Task Runner
-      - Project Specific Packages:
-      - [assemble][]: Task to assemble pages and templating
-      - [grunt-contrib-clean][]: Task to delete files/folders
-      - [grunt-contrib-compass][]: Compass task
-      - [grunt-contrib-connect][]: Task to create/connect to server
-      - [grunt-contrib-copy][]: Task to copy files/folders
-      - [grunt-contrib-imagemin][]: Task to optimize jpg/png images
-      - [grunt-contrib-jshint][]: Task to lint js files
-      - [grunt-contrib-uglify][]: Task to concat/compress js files
-      - [grunt-contrib-watch][]: Task to watch files/folders for changes
-      - [grunt-hashify][]: Task for creating MD5 hashes and hashmaps
-      - [grunt-jekyll][]: Static site generator and templating task
-      - [grunt-open][]: Task to open files/urls
-      - [grunt-s3][]: Task to deploy finished site to Amazon S3
-      - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
-      - [grunt-svgmin][]: SVG minifier
-      - [matchdep][]: Task to filter npm modules
+        - Project Specific Packages:
+        - [assemble][]: Task to assemble pages and templating
+        - [grunt-contrib-clean][]: Task to delete files/folders
+        - [grunt-contrib-compass][]: Compass task
+        - [grunt-contrib-connect][]: Task to create/connect to server
+        - [grunt-contrib-copy][]: Task to copy files/folders
+        - [grunt-contrib-imagemin][]: Task to optimize jpg/png images
+        - [grunt-contrib-jshint][]: Task to lint js files
+        - [grunt-contrib-uglify][]: Task to concat/compress js files
+        - [grunt-contrib-watch][]: Task to watch files/folders for changes
+        - [grunt-hashify][]: Task for creating MD5 hashes and hashmaps
+        - [grunt-jekyll][]: Static site generator and templating task
+        - [grunt-open][]: Task to open files/urls
+        - [grunt-s3][]: Task to deploy finished site to Amazon S3
+        - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
+        - [grunt-svgmin][]: SVG minifier
+        - [matchdep][]: Task to filter npm modules
 - [Ruby][]: Programming Language / Runtime Environment
- - [Compass][]: CSS Authoring Framework
- - [Jekyll][]: Static Site Generator
- - [RDiscount][]: Markdown Processor used by Jekyll
- - [Sass][]: Extension to CSS3
+    - [Compass][]: CSS Authoring Framework
+    - [Jekyll][]: Static Site Generator
+    - [RDiscount][]: Markdown Processor used by Jekyll
+    - [Sass][]: Extension to CSS3
 
   [GitHub]: http://github.com/msguerra74/
   [HTML5 Boilerplate]: http://github.com/h5bp/html5-boilerplate/
@@ -111,9 +105,9 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 2. Download and install [Node.js][] if needed.
 3. Download and install [Ruby][] if needed.
 4. From the command prompt, navigate to the "Automaton" folder and type the following commands:
- - gem install compass jekyll rdiscount
- - npm install -g grunt-cli
- - npm install
+    - gem install compass jekyll rdiscount
+    - npm install -g grunt-cli
+    - npm install
 5. That's it, now you can run any Grunt task!
 
   [Automaton.zip]: http://github.com/msguerra74/Automaton/archive/master.zip
@@ -124,6 +118,19 @@ by **Michael Guerra** | [msguerra74.com][] | [@msguerra74][]
 
 1. Modify the Websites/_example.com/website.json file variables to match your project needs. (NOTE: You can also duplicate this directory for multiple projects, so long as you point to the appropriate 'website.json' file at the top of the Gruntfile.js file)
 2. Run Grunt tasks:
- - 'grunt dev' to run in development mode.
- - 'grunt build' to build developed site.
+    - 'grunt dev' to run in development mode.
+    - 'grunt build' to build developed site.
 3. More on usage later...
+
+### To-Do
+
+- Misc
+    - Icon Placeholders (favicon, Apple / Windows 8)
+
+- Widgets
+    - Categories / Tags listing
+    - Contact Form (js / php)
+    - Post archive page
+    - Post Comments (Disqus)
+    - Search
+    - Social Media

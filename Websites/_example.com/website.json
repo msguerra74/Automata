@@ -39,12 +39,11 @@
   "dev_name": "Michael Guerra",
   "dev_website": "http://msguerra74.com",
   "dev_email": "msguerra74@gmail.com",
-  "dev_twitter": "@msguerra74",
 
   "dev_url": "http://localhost:<%= website.dev_url_port %>",
   "dev_url_port": "4000",
 
   "dev_banner_open": "/* ",
-  "dev_banner": "[made by] <%= website.dev_name %> | <%= website.dev_website %> | <%= website.dev_twitter %> [in <%= current_year %>]",
+  "dev_banner": "Copyright <%= current_year %>, <%= website.dev_name %> - <%= website.dev_website %>",
   "dev_banner_close": " */"
 }
