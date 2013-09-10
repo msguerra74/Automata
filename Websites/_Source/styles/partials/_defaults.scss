@@ -3,7 +3,9 @@
 //------------------
 
 // http://paulirish.com/2012/box-sizing-border-box-ftw/
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   @include box-sizing(border-box);
 }
 
@@ -11,9 +13,14 @@
 html {
   font-size: 1em;
   line-height: 1.5;
+  min-width: em(320);
+  overflow-y: scroll;
 }
 
-audio, canvas, img, video {
+audio,
+canvas,
+img,
+video {
   vertical-align: middle;
 }
 
@@ -27,6 +34,10 @@ canvas {
 }
 
 // http://alistapart.com/article/fluid-images/
-embed, img, object, video {
+embed,
+img,
+object,
+video {
+  height: auto;
   max-width: 100%;
 }
