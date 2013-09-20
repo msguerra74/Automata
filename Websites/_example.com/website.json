@@ -18,8 +18,8 @@
   "foot_include": "false",
   "google_analytics": "true",
 
-  "exclude": "'.htaccess'",
-  "include": "",
+  "exclude": "",
+  "include": "'.htaccess'",
   "keep_files": "",
   "timezone": "",
 

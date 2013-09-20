@@ -6,15 +6,43 @@
 *,
 *:before,
 *:after {
-  @include box-sizing(border-box);
+  @include prefixer(box-sizing, border-box, webkit moz spec);
 }
 
 // http://html5boilerplate.com
+
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
 html {
   font-size: 1em;
   line-height: 1.5;
   min-width: em(320);
   overflow-y: scroll;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 audio,
