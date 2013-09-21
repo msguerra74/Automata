@@ -9,6 +9,33 @@
   @include prefixer(box-sizing, border-box, webkit moz spec);
 }
 
+// http://github.com/csswizardry/inuit.css/blob/master/generic/_reset.scss
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+form,
+fieldset,
+legend,
+table,
+th,
+td,
+caption,
+hr {
+  margin:0;
+  padding:0;
+}
+
 // http://html5boilerplate.com
 
 html,
