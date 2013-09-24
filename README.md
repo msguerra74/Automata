@@ -1,6 +1,8 @@
 Automaton
 =========
 
+[![Dependency Status](https://david-dm.org/msguerra74/Automaton.png)](https://david-dm.org/msguerra74/Automaton) [![devDependency Status](https://david-dm.org/msguerra74/Automaton/dev-status.png)](https://david-dm.org/msguerra74/Automaton#info=devDependencies)
+
 Automated Static Website Generator
 ----------------------------------
 
