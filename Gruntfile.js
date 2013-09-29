@@ -1,209 +1,180 @@
+/**
+ * Automaton
+ * Automated Static Website Generator
+ * @author Michael Guerra | @msguerra74 | http://msguerra74.com
+ * @license MIT License [See README]
+ */
+
+// Grunt module
 module.exports = function(grunt) {
 
-  // Task Configurations
+  // Grunt configurations
   grunt.initConfig({
 
-    // Website Variables File
-    // website: grunt.file.readJSON('Websites/_example.com/website.json'),
-    website: grunt.file.readJSON('Websites/_example.com/website.json'),
+    /* ---------- Variables ---------- */
 
-    // Automaton Package
+    // Project variables file (Change '_example.com' to current project)
+    prj: grunt.file.readJSON('Projects/_example.com/project.json'),
+
+    // Automaton package
     pkg: grunt.file.readJSON('package.json'),
 
-    /* ----- Variables ----- */
-
     // Directories
-    build: '.BUILD',
-    site: 'Websites/<%= website.site %>',
-    source: 'Websites/_Source',
-    temp: '.temp',
+    build: '<%= source %>/.BUILD',
+    source: 'Projects/<%= prj.name %>',
+    temp: '<%= source %>/.temp',
 
-    // Current Year
+    // Current year
     current_year: grunt.template.today('yyyy'),
 
-    /* ----- Tasks ----- */
+    /* ---------- Packages ---------- */
 
-    // Assemble
+    /**
+     * Assemble
+     * Build web projects from reusable templates and data
+     * https://github.com/assemble/assemble
+     */
+
     assemble: {
       options: {
-        data: ['<%= site %>/**/*.json', '<%= temp %>/**/*.json']
+        data: '{<%= source %>,<%= temp %>}/**/*.json',
+        ext: '.<%= prj.site.html_php %>'
       },
       html: {
-        src: ['<%= temp %>/.build/**/*.html'],
+        src: '<%= build %>/**/*.{html,php}',
         dest: './'
       }
     },
 
-    // Clean
-    clean: {
-      all: ['<%= temp %>', '<%= build %>']
-    },
+    /**
+     * Autoprefixer
+     * Adds vendor-prefixed CSS properties
+     * https://github.com/nDmitry/grunt-autoprefixer
+     */
 
-    // Compass
-    compass: {
+    autoprefixer: {
       options: {
-        banner: '<%= website.dev_banner_open %><%= website.dev_banner %><%= website.dev_banner_close %>',
-        boring: true,
-        cssDir: '<%= build %>/css',
-        fontsDir: '<%= build %>/fonts',
-        force: true,
-        imagesDir: '<%= build %>/img',
-        javascriptsDir: '<%= build %>/js',
-        relativeAssets: true,
-        sassDir: '<%= temp %>/scss',
-        specify: '<%= temp %>/scss/*.scss',
-        raw:
-        // Cache Buster - Adds MD5 hash string
-        'asset_cache_buster do |http_path, real_path|\n' +
-        'if File.exists?(real_path)\n' +
-        'hash = Digest::MD5.file(real_path.path).hexdigest\n' +
-        '"v=%s" % hash[0,7]\n' +
-        'end\n' +
-        'end\n' +
-        // Preferred Syntax
-        'preferred_syntax = :scss\n' +
-        // Sass Cache
-        'cache_path = "<%= temp %>/scss/.sass-cache"\n'
+        browsers: ['> 1%', 'last 2 versions', 'android 4', 'ff 17', 'ie > 7', 'ios 6', 'opera 12.1', 'safari 6']
       },
-      build: {
-        options: {
-          environment: 'production',
-          outputStyle: 'compressed'
-        }
+      stylesDev: {
+        files: [{
+          expand: true,
+          cwd: '<%= temp %>/assets/css',
+          src: '*.unprefixed.css',
+          dest: '<%= build %>/assets/css',
+          ext: '.min.css'
+        }]
       },
-      dev: {
-        options: {
-          environment: 'development',
-          outputStyle: 'expanded'
-        }
+      styles: {
+        files: [{
+          expand: true,
+          cwd: '<%= temp %>/assets/css',
+          src: '*.unprefixed.css',
+          dest: '<%= temp %>/assets/css',
+          ext: '.prefixed.css'
+        }]
       }
     },
 
-    // Connect
+    /**
+     * Clean
+     * Clear files and folders
+     * https://github.com/gruntjs/grunt-contrib-clean
+     */
+
+    clean: {
+      build: ['<%= build %>/**/{*,.*}', '!<%= build %>/.git'],
+      temp: '<%= temp %>'
+    },
+
+    /**
+     * Connect
+     * Start a static web server
+     * https://github.com/gruntjs/grunt-contrib-connect
+     */
+
     connect: {
       server: {
         options: {
-          port: '<%= website.dev_url_port %>',
           base: '<%= build %>',
-          hostname: ''
+          hostname: '*',
+          livereload: true,
+          open: '<%= prj.dev.url %>',
+          port: '<%= prj.dev.port %>'
         }
       }
     },
 
-    // Copy
+    /**
+     * Copy
+     * Copy files and folders
+     * https://github.com/gruntjs/grunt-contrib-copy
+     */
+
     copy: {
-      // Source Assets
-      sourceStyles: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/styles',
-          src: '**/*',
-          dest: '<%= temp %>/scss'
-        }]
-      },
-      // Source Content
-      sourceLayouts: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/_layouts',
-          src: ['**/*', '!_includes/**/*', '!_includes/*', '!_includes'],
-          dest: '<%= temp %>/html/_layouts'
-        }]
-      },
-      sourceRoot: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/root',
-          src: '**/{*,.*}',
-          dest: '<%= temp %>/html'
-        }]
-      },
-      // Site Assets
-      siteFonts: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/fonts',
-          src: '**/*',
-          dest: '<%= build %>/fonts'
-        }]
-      },
-      siteStyles: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/styles',
-          src: '**/*',
-          dest: '<%= temp %>/scss'
-        }]
-      },
-      // Site Content
-      siteDrafts: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/posts/_drafts',
-          src: '**/*',
-          dest: '<%= temp %>/html/_drafts'
-        }]
-      },
-      siteIncludes: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/_layouts/_includes',
-          src: '**/*',
-          dest: '<%= temp %>/html/_includes'
-        }]
-      },
-      siteLayouts: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/_layouts',
-          src: ['**/*', '!_includes/**/*', '!_includes/*', '!_includes'],
-          dest: '<%= temp %>/html/_layouts'
-        }]
-      },
-      sitePages: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/pages',
-          src: '**/*',
-          dest: '<%= temp %>/html'
-        }]
-      },
-      sitePlugins: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/_plugins',
-          src: '**/*',
-          dest: '<%= temp %>/html/_plugins'
-        }]
-      },
-      sitePosts: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/posts',
-          src: ['**/*', '!_drafts/**/*', '!_drafts/*', '!_drafts'],
-          dest: '<%= temp %>/html/_posts'
-        }]
-      },
-      siteRoot: {
-        files: [{
-          expand: true,
-          cwd: '<%= site %>/root',
-          src: '**/{*,.*}',
-          dest: '<%= temp %>/html'
-        }]
-      },
-      // Content Build
-      contentBuild: {
-        files: [{
-          expand: true,
-          cwd: '<%= temp %>/.build',
-          src: '**/{*,.*}',
-          dest: '<%= build %>'
-        }]
+      fonts: {
+        expand: true,
+        cwd: '<%= source %>/assets/fonts',
+        src: '**/*.{eot,svg,ttf,woff}',
+        dest: '<%= build %>/assets/fonts'
       }
     },
 
-    // Hashify
+    /**
+     * CSSmin
+     * Compress CSS files
+     * https://github.com/gruntjs/grunt-contrib-cssmin
+     */
+
+    cssmin: {
+      options: {
+        banner: '/* <%= prj.dev.banner %> */',
+        keepSpecialComments: 0
+      },
+      styles: {
+        expand: true,
+        cwd: '<%= temp %>/assets/css',
+        src: '*.prefixed.css',
+        dest: '<%= build %>/assets/css',
+        ext: '.min.css'
+      }
+    },
+
+    /**
+     * Curl
+     * Download files from the internet
+     * https://github.com/twolfson/grunt-curl
+     */
+
+    curl: {
+      htaccess: {
+        src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
+        dest: '<%= source %>/content/.htaccess'
+      },
+      html5shiv: {
+        src: 'http://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js',
+        dest: '<%= source %>/assets/scripts/oldie/html5shiv-printshiv.js'
+      },
+      jquery: {
+        src: 'http://code.jquery.com/jquery.js',
+        dest: '<%= source %>/assets/scripts/individual/jquery.js'
+      },
+      respond: {
+        src: 'http://raw.github.com/scottjehl/Respond/master/respond.src.js',
+        dest: '<%= source %>/assets/scripts/oldie/respond.js'
+      },
+      normalize: {
+        src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
+        dest: '<%= source %>/assets/styles/partials/_normalize.scss'
+      }
+    },
+
+    /**
+     * Hashify
+     * Cache busting
+     * https://github.com/suprMax/grunt-hashify
+     */
+
     hashify: {
       options: {
         basedir: './',
@@ -211,138 +182,137 @@ module.exports = function(grunt) {
         hashmap: '<%= temp %>/hashmap.json',
         length: '7'
       },
-      scripts: {
+      assets: {
         files: [{
-          src: '<%= build %>/js/jquery.min.js',
-          dest: '<%= build %>/js/jquery.min.js',
+          src: '<%= build %>/assets/js/jquery.min.js',
+          dest: '<%= build %>/assets/js/jquery.min.js',
           key: 'jquery_js'
         }, {
-          src: '<%= build %>/js/oldie.min.js',
-          dest: '<%= build %>/js/oldie.min.js',
+          src: '<%= build %>/assets/js/oldie.min.js',
+          dest: '<%= build %>/assets/js/oldie.min.js',
           key: 'oldie_js'
         }, {
-          src: '<%= build %>/js/script.min.js',
-          dest: '<%= build %>/js/script.min.js',
+          src: '<%= build %>/assets/js/script.min.js',
+          dest: '<%= build %>/assets/js/script.min.js',
           key: 'script_js'
-        }]
-      },
-      styles: {
-        options: {
-          copy: false
-        },
-        files: [{
-          src: '<%= temp %>/scss/style.scss',
-          dest: '<%= temp %>/scss/style.min.scss',
+        }, {
+          src: '<%= build %>/assets/css/style.min.css',
+          dest: '<%= build %>/assets/css/style.min.css',
           key: 'style_css'
         }]
       }
     },
 
-    // Imagemin
+    /**
+     * Imagemin
+     * Optimize GIF, JPG, and PNG images
+     * https://github.com/gruntjs/grunt-contrib-imagemin
+     */
+
     imagemin: {
-      options: {
-        optimizationLevel: 7,
-        progressive: true
-      },
       images: {
         files: [{
           expand: true,
-          cwd: '<%= site %>/images',
-          src: '**/*',
-          dest: '<%= build %>/img'
+          cwd: '<%= source %>/assets/images',
+          src: '**/*.{gif,jpg,png}',
+          dest: '<%= build %>/assets/img'
+        }, {
+          expand: true,
+          cwd: '<%= temp %>/assets/img',
+          src: '**/*.{gif,jpg,png}',
+          dest: '<%= build %>/assets/img'
         }]
       }
     },
 
-    // Jekyll
+    /**
+     * Jekyll
+     * Static site generator
+     * https://github.com/dannygarcia/grunt-jekyll
+     */
+
     jekyll: {
-      build: {
-        dest: '<%= temp %>/.build',
-        drafts: false,
-        future: false,
-        lsi: false,
-        src: '<%= temp %>/html',
-        raw:
-        // Website Info
-        'url: <%= website.url %>\n' +
-        'title: <%= website.title %>\n' +
-        'description: <%= website.description %>\n' +
-        'owner: <%= website.owner %>\n' +
-        'email: <%= website.email %>\n' +
-        // Custom Website Components
-        'ie_edge: <%= website.ie_edge %>\n' +
-        'responsive_design: <%= website.responsive_design %>\n' +
-        'blog_feed: <%= website.blog_feed %>\n' +
-        'head_include: <%= website.head_include %>\n' +
-        'oldie_support: <%= website.oldie_support %>\n' +
-        'jquery: <%= website.jquery %>\n' +
-        'scripts: <%= website.scripts %>\n' +
-        'foot_include: <%= website.foot_include %>\n' +
-        'google_analytics: <%= website.google_analytics %>\n' +
-        'google_analytics_id: <%= website.google_analytics_id %>\n' +
-        // Global Jekyll Configuration
-        'exclude: [<%= website.exclude %>]\n' +
-        'include: [<%= website.include %>]\n' +
-        'keep_files: [<%= website.keep_files %>]\n' +
-        'timezone: <%= website.timezone %>\n' +
-        'paginate: <%= website.paginate %>\n' +
-        'permalink: <%= website.permalink %>\n' +
-        'markdown: <%= website.markdown %>\n'
+      content: {
+        options: {
+          dest: '<%= build %>',
+          src: '<%= source %>/content',
+          raw:
+          // Site info
+          'url: <%= prj.site.url %>\n' +
+          'title: <%= prj.site.title %>\n' +
+          'description: <%= prj.site.description %>\n' +
+          'owner: <%= prj.site.owner %>\n' +
+          'email: <%= prj.site.email %>\n' +
+          'google_analytics_id: <%= prj.site.google_analytics_id %>\n' +
+          // Jekyll config
+          'exclude: <%= prj.jekyll.exclude %>\n' +
+          'future: <%= prj.jekyll.future %>\n' +
+          'include: <%= prj.jekyll.include %>\n' +
+          'keep_files: <%= prj.jekyll.keep_files %>\n' +
+          'lsi: <%= prj.jekyll.lsi %>\n' +
+          'markdown: <%= prj.jekyll.markdown %>\n' +
+          'paginate: <%= prj.jekyll.paginate %>\n' +
+          'permalink: <%= prj.jekyll.permalink %>\n' +
+          'show_drafts: <%= prj.jekyll.show_drafts %>\n' +
+          'timezone: <%= prj.jekyll.timezone %>\n'
+        }
       }
     },
 
-    // JShint
+    /**
+     * JShint
+     * Validate JavaScript files
+     * https://github.com/gruntjs/grunt-contrib-jshint
+     */
+
     jshint: {
-      siteScripts: ['<%= site %>/scripts/**/*']
+      all: ['Gruntfile.js', '<%= source %>/assets/scripts/plugins/**/*.js']
     },
 
-    // Open
-    open: {
-      browser: {
-        path: '<%= website.dev_url %>'
-      }
-    },
+    /**
+     * Sass
+     * Compile Sass to CSS
+     * https://github.com/gruntjs/grunt-contrib-sass
+     */
 
-    // Amazon S3 Deploy
-    s3: {
+    sass: {
       options: {
-        key: '<%= website.s3_key %>',
-        secret: '<%= website.s3_secret %>',
-        bucket: '<%= website.s3_bucket %>',
-        access: '<%= website.s3_access %>'
+        banner: '/* <%= prj.dev.banner %> */',
+        cacheLocation: '<%= temp %>/.sass-cache',
+        style: 'expanded'
       },
-      deploy: {
-        upload: [{
-          src: '<%= build %>/**/*',
-          dest: '',
-          gzip: true,
-          rel: '<%= build %>'
+      styles: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/assets/styles',
+          src: '*.scss',
+          dest: '<%= temp %>/assets/css',
+          ext: '.unprefixed.css'
         }]
       }
     },
 
-    // SFTP Deploy
-    'sftp-deploy': {
-      deploy: {
-        auth: {
-          host: '<%= website.sftp_host %>',
-          port: 22,
-          // Store 'authKey' credentials in root .ftppass file in this format:
-          // {
-          //   "key": {
-          //     "username": "myusername",
-          //     "password": "mypassword"
-          //   }
-          // }
-          authKey: '<%= website.sftp_key %>'
-        },
-        src: '<%= build %>',
-        dest: '<%= website.sftp_path %>',
-        server_sep: '/'
+    /**
+     * SVG2PNG
+     * Rasterize SVG to PNG using PhantomJS
+     * https://github.com/dbushell/grunt-svg2png
+     */
+
+    svg2png: {
+      svg: {
+        files: [{
+          src: '<%= source %>/assets/images/**/*.svg',
+          dest: '<%= temp %>/assets/img'
+        }]
       }
     },
 
-    // SVGmin
+    /**
+     * SVGmin
+     * Minify SVG
+     * https://github.com/sindresorhus/grunt-svgmin
+     */
+
     svgmin: {
       options: {
         plugins: [{
@@ -352,141 +322,102 @@ module.exports = function(grunt) {
       svg: {
         files: [{
           expand: true,
-          cwd: '<%= site %>/images',
-          src: '**/*',
-          dest: '<%= build %>/img'
+          cwd: '<%= source %>/assets/images',
+          src: '**/*.svg',
+          dest: '<%= build %>/assets/img'
         }]
       }
     },
 
-    // Uglify
+    /**
+     * Uglify
+     * Minify JavaScript files
+     * https://github.com/gruntjs/grunt-contrib-uglify
+     */
+
     uglify: {
       options: {
-        banner: '<%= website.dev_banner_open %><%= website.dev_banner %><%= website.dev_banner_close %>\n'
+        banner: '/* <%= prj.dev.banner %> */\n'
       },
-      sourceScripts: {
+      pluginsDev: {
+        options: {
+          beautify: true,
+          compress: false,
+          mangle: false,
+          wrap: 'plugins'
+        },
         files: [{
-          expand: true,
-          cwd: '<%= source %>/scripts',
-          src: ['**/*.js', '!oldie/**/*', '!oldie/*', '!oldie', '!jquery.js'],
-          dest: '<%= build %>/js',
-          ext: '.min.js'
-        }, {
-          src: ['<%= source %>/scripts/jquery.js'],
-          dest: '<%= build %>/js/jquery.min.js'
-        }, {
-          src: ['<%= source %>/scripts/oldie/**/*.js'],
-          dest: '<%= build %>/js/oldie.min.js'
+          src: '<%= source %>/assets/scripts/plugins/**/*.js',
+          dest: '<%= build %>/assets/js/script.min.js'
         }]
       },
-      siteScripts: {
+      plugins: {
+        options: {
+          wrap: 'plugins'
+        },
         files: [{
-          expand: true,
-          cwd: '<%= site %>/scripts',
-          src: ['**/*.js', '!plugins/**/*', '!plugins/*', '!plugins'],
-          dest: '<%= build %>/js',
-          ext: '.min.js'
+          src: '<%= source %>/assets/scripts/plugins/**/*.js',
+          dest: '<%= build %>/assets/js/script.min.js'
+        }]
+      },
+      scripts: {
+        files: [{
+          src: '<%= source %>/assets/scripts/oldie/**/*.js',
+          dest: '<%= build %>/assets/js/oldie.min.js'
         }, {
-          src: ['<%= site %>/scripts/plugins/**/*.js'],
-          dest: '<%= build %>/js/script.min.js'
+          expand: true,
+          cwd: '<%= source %>/assets/scripts/individual',
+          src: '**/*.js',
+          dest: '<%= build %>/assets/js',
+          ext: '.min.js'
         }]
       }
     },
 
-    // Watch
+    /**
+     * Watch
+     * Run tasks whenever watched files change
+     * https://github.com/gruntjs/grunt-contrib-watch
+     */
+
     watch: {
-      // Watch Source
-      source: {
-        files: ['<%= source %>/**/*'],
-        tasks: ['compile']
+      options: {
+        livereload: true,
+        spawn: false
       },
-      // Watch Assets
+      content: {
+        files: '<%= source %>/content/**/*',
+        tasks: 'jekyll'
+      },
       fonts: {
-        files: ['<%= site %>/fonts/**/*'],
-        tasks: ['fonts']
+        files: '<%= source %>/assets/fonts/**/*',
+        tasks: 'copy:fonts'
       },
       images: {
-        files: ['<%= site %>/images/**/*'],
-        tasks: ['images']
+        files: '<%= source %>/assets/images/**/*',
+        tasks: ['svg2png', 'svgmin', 'imagemin']
       },
       scripts: {
-        files: ['<%= site %>/scripts/**/*'],
-        tasks: ['siteScripts']
+        files: '<%= source %>/assets/scripts/**/*',
+        tasks: ['jshint', 'uglify:pluginsDev', 'uglify:scripts']
       },
       styles: {
-        files: ['<%= site %>/styles/**/*'],
-        tasks: ['siteStyles', 'compass:dev']
-      },
-      // Watch Content
-      content: {
-        files: ['<%= site %>/{_layouts,pages,posts,root}/**/*'],
-        tasks: ['siteContent', 'jekyll', 'copy:contentBuild']
+        files: '<%= source %>/assets/styles/**/*',
+        tasks: ['sass', 'autoprefixer:stylesDev']
       }
     }
 
   });
 
-  /* ----- Tasks ----- */
+  /* ---------- Tasks ---------- */
 
-  // Load NPM Tasks
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('assemble');
 
-  /* ----- Default Tasks ----- */
+  // Dev task 'default'
+  grunt.registerTask('default', ['clean', 'curl', 'copy', 'jshint', 'uglify:pluginsDev', 'uglify:scripts', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:stylesDev', 'jekyll', 'connect', 'watch']);
 
-  // Default Tasks - Clean generated folders
-  grunt.registerTask('default', ['clean:all']);
-
-  /* ----- Content Tasks ----- */
-
-  // Content - Source
-  grunt.registerTask('sourceContent', ['copy:sourceLayouts', 'copy:sourceRoot']);
-  // Content - Site
-  grunt.registerTask('siteContent', ['copy:siteDrafts', 'copy:siteIncludes', 'copy:siteLayouts', 'copy:sitePages', 'copy:sitePlugins', 'copy:sitePosts', 'copy:siteRoot']);
-  // Content - All
-  grunt.registerTask('content', ['sourceContent', 'siteContent', 'jekyll', 'assemble:html', 'copy:contentBuild']);
-
-  /* ----- Assets Tasks ----- */
-
-  // Fonts - All
-  grunt.registerTask('fonts', ['copy:siteFonts']);
-
-  // Scripts - Source
-  grunt.registerTask('sourceScripts', ['uglify:sourceScripts']);
-  // Scripts - Site
-  grunt.registerTask('siteScripts', ['jshint:siteScripts', 'uglify:siteScripts']);
-  // Scripts - All
-  grunt.registerTask('scripts', ['sourceScripts', 'siteScripts', 'hashify:scripts']);
-
-  // Images - All
-  grunt.registerTask('images', ['svgmin', 'imagemin']);
-
-  // Styles - Source
-  grunt.registerTask('sourceStyles', ['copy:sourceStyles']);
-  // Styles - Site
-  grunt.registerTask('siteStyles', ['copy:siteStyles']);
-  // Styles - Dev
-  grunt.registerTask('devStyles', ['sourceStyles', 'siteStyles', 'hashify:styles', 'compass:dev']);
-  // Styles - All
-  grunt.registerTask('styles', ['sourceStyles', 'siteStyles', 'hashify:styles', 'compass:build']);
-
-  /* ----- Compile / Dev / Build ----- */
-
-  // Compile
-  grunt.registerTask('compile', ['default', 'fonts', 'scripts', 'images', 'devStyles', 'content']);
-
-  // Dev
-  grunt.registerTask('dev', ['compile', 'connect', 'open', 'watch']);
-
-  // Build
-  grunt.registerTask('build', ['default', 'fonts', 'scripts', 'images', 'styles', 'content']);
-
-  /* ----- Deployment ----- */
-
-  // Amazon S3 Deploy
-  grunt.registerTask('s3deploy', ['build', 's3']);
-
-  // SFTP Deploy
-  grunt.registerTask('sftpdeploy', ['build', 'sftp-deploy']);
+  // Build task
+  grunt.registerTask('build', ['clean', 'curl', 'copy', 'jshint', 'uglify:plugins', 'uglify:scripts', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'jekyll', 'hashify', 'assemble']);
 
 };

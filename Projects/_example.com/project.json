@@ -1,0 +1,35 @@
+{
+  "name": "_example.com",
+
+  "site": {
+    "url": "http://localhost:7777",
+    "title": "Automaton",
+    "description": "Automated Static Website Generator",
+    "owner": "Michael Guerra",
+    "email": "msguerra74@gmail.com",
+    "google_analytics_id": "UA-xxxxxxxx-x",
+    "html_php": "html"
+  },
+
+  "jekyll": {
+    "exclude": "[]",
+    "future": "false",
+    "include": "['.htaccess']",
+    "keep_files": "['.git', 'assets']",
+    "lsi": "false",
+    "markdown": "rdiscount",
+    "paginate": "7",
+    "permalink": "/:categories/:title/",
+    "show_drafts": "false",
+    "timezone": ""
+  },
+
+  "dev": {
+    "name": "Michael Guerra",
+    "twitter": "@msguerra74",
+    "website": "http://msguerra74.com",
+    "banner": "Copyright <%= current_year %>, <%= prj.dev.name %> | <%= prj.dev.twitter %> | <%= prj.dev.website %>",
+    "url": "http://localhost:<%= prj.dev.port %>",
+    "port": "7777"
+  }
+}

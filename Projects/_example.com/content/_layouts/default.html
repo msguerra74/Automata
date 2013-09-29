@@ -1,0 +1,35 @@
+<!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+<html class="no-js" lang="en">
+<head>
+  <!-- {% raw %}{{ project.dev.banner }}{% endraw %} -->
+  <meta charset="utf-8">
+  <meta http-equiv"X-UA-Compatible" content="IE=edge">{% if page.title %}
+  <title>{{ page.title }} | {{ site.title }}</title>{% else %}
+  <title>{{ site.title }}</title>{% endif %}{% if page.description %}
+  <meta name="description" content="{{ page.description }}">{% else %}
+  <meta name="description" content="{{ site.description }}">{% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ relative }}feed.xml">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+  <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css?v{% raw %}{{ hashmap.style_css }}{% endraw %}">
+  <!--[if (lt IE 9)]>
+  <script src="{{ relative }}assets/js/oldie.min.js?v{% raw %}{{ hashmap.oldie_js }}{% endraw %}"></script>
+  <![endif]-->
+  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
+</head>
+<body>
+{% include header.html %}
+{{ content }}
+{% include footer.html %}
+  <script src="{{ relative }}assets/js/jquery.min.js?v{% raw %}{{ hashmap.jquery_js }}{% endraw %}"></script>
+  <script src="{{ relative }}assets/js/script.min.js?v{% raw %}{{ hashmap.script_js }}{% endraw %}"></script>
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ site.google_analytics_id }}');ga('send','pageview');
+  </script>
+</body>
+</html>

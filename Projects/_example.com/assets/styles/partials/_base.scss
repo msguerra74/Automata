@@ -1,0 +1,80 @@
+//------------------------------//
+// BASE STYLES
+//------------------------------//
+
+// Based on:
+// http://alistapart.com/article/fluid-images
+// https://github.com/h5bp/html5-boilerplate
+// http://msdn.microsoft.com/en-US/library/ie/hh772044.aspx
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+  color: $base-color;
+}
+
+html {
+  background-color: $base-background-color;
+  font-family: $base-font-family;
+  font-size: em(16);
+  line-height: $base-line-height;
+  min-width: em(320);
+  overflow-y: scroll;
+}
+
+::-moz-selection {
+  background: $selection-color;
+  text-shadow: none;
+}
+
+::selection {
+  background: $selection-color;
+  text-shadow: none;
+}
+
+audio,
+canvas,
+img,
+video {
+  vertical-align: middle;
+}
+
+canvas {
+  -ms-touch-action: auto;
+}
+
+embed,
+img,
+object,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid darken(white, 17);
+  margin: em(16) 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}

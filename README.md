@@ -1,21 +1,16 @@
 Automaton
 =========
 
-[![Dependency Status](https://david-dm.org/msguerra74/Automaton.png)](https://david-dm.org/msguerra74/Automaton) [![devDependency Status](https://david-dm.org/msguerra74/Automaton/dev-status.png)](https://david-dm.org/msguerra74/Automaton#info=devDependencies)
-
 Automated Static Website Generator
 ----------------------------------
 
-by **Michael Guerra** | [msguerra74.com][]
+by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
+
+Designed for a modern web development workflow, **Automaton** is a full-fledged HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging engine, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, MD5-hash asset cache busting, and an automated development server with LiveReload for rapid feedback.
 
 - [Project Website][]
 - [GitHub Page][]
 - [Automaton.zip][]
-
-  [msguerra74.com]: http://msguerra74.com
-  [Project Website]: http://msguerra74.github.io/Automaton/
-  [GitHub Page]: http://github.com/msguerra74/Automaton/
-  [Automaton.zip]: http://github.com/msguerra74/Automaton/archive/master.zip
 
 ### Standards:
 
@@ -23,116 +18,124 @@ by **Michael Guerra** | [msguerra74.com][]
 - [CSS3][]
 - [JavaScript][] / [jQuery][]
 
-  [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
-  [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
-  [JavaScript]: http://developer.mozilla.org/en-US/docs/Web/JavaScript/
-  [jQuery]: http://jquery.com
-
-### Add-Ons
+### Includes
 
 - CSS
-    - [normalize.css][] CSS Reset and Normalization
+    - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
     - [Google Analytics][]: Web Analytics and Reporting
-    - [html5 Shiv][]: HTML5 IE6/7/8 Enabling Script
-    - [jQuery][]: JavaScript Library
-    - [respond.js][]: Polyfill for CSS3 Media Queries
-
-  [normalize.css]: http://github.com/necolas/normalize.css/
-  [Google Analytics]: http://google.com/analytics/
-  [html5 Shiv]: http://github.com/aFarkas/html5shiv/
-  [jQuery]: http://jquery.com
-  [respond.js]: http://github.com/scottjehl/Respond/
+    - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
+    - [jQuery][]: Feature-rich JavaScript library
+    - [respond.js][]: Polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
 
-- [GitHub][]: Code Sharing Repository with Source Versioning
-- [HTML5 Boilerplate][]: Front-end Template
-- [Markdown][]: Text to HTML Converter
-- [Node.js][]: JavaScript Runtime Platform
-    - [Grunt][]: JavaScript Task Runner
-        - Project Specific Packages:
-        - [assemble][]: Task to assemble pages and templating
-        - [grunt-contrib-clean][]: Task to delete files/folders
-        - [grunt-contrib-compass][]: Compass task
-        - [grunt-contrib-connect][]: Task to create/connect to server
-        - [grunt-contrib-copy][]: Task to copy files/folders
-        - [grunt-contrib-imagemin][]: Task to optimize jpg/png images
-        - [grunt-contrib-jshint][]: Task to lint js files
-        - [grunt-contrib-uglify][]: Task to concat/compress js files
-        - [grunt-contrib-watch][]: Task to watch files/folders for changes
-        - [grunt-hashify][]: Task for creating MD5 hashes and hashmaps
-        - [grunt-jekyll][]: Static site generator and templating task
-        - [grunt-open][]: Task to open files/urls
-        - [grunt-s3][]: Task to deploy finished site to Amazon S3
-        - [grunt-sftp-deploy][]: Task to deploy finished site to SFTP
-        - [grunt-svgmin][]: SVG minifier
-        - [matchdep][]: Task to filter npm modules
+- [GitHub][]: Code sharing with version control
+- [HTML5 Boilerplate][]: Front-end template
+- [Markdown][]: Text-to-HTML conversion tool
+- [Node.js][]: JavaScript runtime platform
+    - [Grunt][]: JavaScript task runner
+        - Project Dependencies:
+        - [assemble][]: Build web projects from reusable templates and data
+        - [grunt-autoprefixer][]: Adds vendor-prefixed CSS properties
+        - [grunt-contrib-clean][]: Clear files and folders
+        - [grunt-contrib-connect][]: Start a static web server
+        - [grunt-contrib-copy][]: Copy files and folders
+        - [grunt-contrib-cssmin][]: Compress CSS files
+        - [grunt-contrib-imagemin][]: Optimize GIF, JPG, and PNG images
+        - [grunt-contrib-jshint][]: Validate JavaScript files
+        - [grunt-contrib-sass][]: Compile Sass to CSS
+        - [grunt-contrib-uglify][]: Minify JavaScript files
+        - [grunt-contrib-watch][]: Run tasks whenever watched files change
+        - [grunt-curl][]: Download files from the internet
+        - [grunt-hashify][]: Cache busting
+        - [grunt-jekyll][]: Static site generator
+        - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
+        - [grunt-svgmin][]: Minify SVG
+        - [matchdep][]: Minimatch to filter npm module dependencies by name
 - [Ruby][]: Programming Language / Runtime Environment
-    - [Compass][]: CSS Authoring Framework
-    - [Jekyll][]: Static Site Generator
-    - [RDiscount][]: Markdown Processor used by Jekyll
+    - [Jekyll][]: Static site generator
+    - [RDiscount][]: Discount implementation of John Gruber's markdown
     - [Sass][]: Extension to CSS3
-
-  [GitHub]: http://github.com/msguerra74/
-  [HTML5 Boilerplate]: http://github.com/h5bp/html5-boilerplate/
-  [Markdown]: http://daringfireball.net/projects/markdown/
-  [Node.js]: http://nodejs.org
-  [Grunt]: http://gruntjs.com
-  [assemble]: http://npmjs.org/package/assemble/
-  [grunt-contrib-clean]: http://npmjs.org/package/grunt-contrib-clean/
-  [grunt-contrib-compass]: http://npmjs.org/package/grunt-contrib-compass/
-  [grunt-contrib-connect]: http://npmjs.org/package/grunt-contrib-connect/
-  [grunt-contrib-copy]: http://npmjs.org/package/grunt-contrib-copy/
-  [grunt-contrib-imagemin]: http://npmjs.org/package/grunt-contrib-imagemin/
-  [grunt-contrib-jshint]: http://npmjs.org/package/grunt-contrib-jshint/
-  [grunt-contrib-uglify]: http://npmjs.org/package/grunt-contrib-uglify/
-  [grunt-contrib-watch]: http://npmjs.org/package/grunt-contrib-watch/
-  [grunt-hashify]: http://npmjs.org/package/grunt-hashify/
-  [grunt-jekyll]: http://npmjs.org/package/grunt-jekyll/
-  [grunt-open]: http://npmjs.org/package/grunt-open/
-  [grunt-s3]: http://npmjs.org/package/grunt-s3/
-  [grunt-sftp-deploy]: http://npmjs.org/package/grunt-sftp-deploy/
-  [grunt-svgmin]: http://github.com/sindresorhus/grunt-svgmin/
-  [matchdep]: http://npmjs.org/package/matchdep/
-  [Ruby]: http://ruby-lang.org/en/
-  [Compass]: http://compass-style.org
-  [Jekyll]: http://jekyllrb.com
-  [RDiscount]: http://github.com/davidfstr/rdiscount/
-  [Sass]: http://sass-lang.com
 
 ### Installation
 
-1. Download and unzip [Automaton.zip][] where you want it.
-2. Download and install [Node.js][] if needed.
-3. Download and install [Ruby][] if needed.
-4. From the command prompt, navigate to the "Automaton" folder and type the following commands:
-    - gem install compass jekyll rdiscount
+1. Download and install [Node.js][] if needed.
+2. Download and install [Ruby][] if needed.
+3. Download and unzip [Automaton.zip][] where you want it.
+4. From the command prompt, navigate to the 'Automaton' folder and type the following commands:
+    - gem install jekyll rdiscount sass
     - npm install -g grunt-cli
     - npm install
 5. That's it, now you can run any Grunt task!
 
-  [Automaton.zip]: http://github.com/msguerra74/Automaton/archive/master.zip
-  [Node.js]: http://nodejs.org
-  [Ruby]: http://ruby-lang.org/en/
-
 ### Usage
 
-1. Modify the Websites/_example.com/website.json file variables to match your project needs. (NOTE: You can also duplicate this directory for multiple projects, so long as you point to the appropriate 'website.json' file at the top of the Gruntfile.js file)
-2. Run Grunt tasks:
-    - 'grunt dev' to run in development mode.
-    - 'grunt build' to build developed site.
+1. Modify the 'Projects/_example.com/project.json' file variables to match your project needs. (NOTE: You can also duplicate the '_example.com' directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the 'Gruntfile.js' file)
+2. From the command prompt, navigate to the 'Automaton' folder and run either of the following Grunt tasks:
+    - 'grunt' to run in development mode.
+    - 'grunt build' to build site.
 3. More on usage later...
 
-### To-Do
-
-- Misc
-    - Icon Placeholders (favicon, Apple / Windows 8)
+### Roadmap
 
 - Widgets
-    - Categories / Tags listing
-    - Contact Form (js / php)
+    - Categories / tag page
+    - Contact form
     - Post archive page
-    - Post Comments (Disqus)
+    - Post comments (Disqus?)
     - Search
-    - Social Media
+    - Social media
+
+The MIT License (MIT)
+---------------------
+
+Copyright (c) 2013 Michael Guerra (Automaton)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+  [@msguerra74]: http://twitter.com/msguerra74
+  [assemble]: https://github.com/assemble/assemble
+  [Automaton.zip]: https://github.com/msguerra74/Automaton/archive/master.zip
+  [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
+  [GitHub]: https://github.com/msguerra74
+  [GitHub Page]: https://github.com/msguerra74/Automaton
+  [Google Analytics]: http://www.google.com/analytics/
+  [Grunt]: http://gruntjs.com/
+  [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
+  [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
+  [grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
+  [grunt-contrib-copy]: https://github.com/gruntjs/grunt-contrib-copy
+  [grunt-contrib-cssmin]: https://github.com/gruntjs/grunt-contrib-cssmin
+  [grunt-contrib-imagemin]: https://github.com/gruntjs/grunt-contrib-imagemin
+  [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
+  [grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
+  [grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
+  [grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
+  [grunt-curl]: https://github.com/twolfson/grunt-curl
+  [grunt-hashify]: https://github.com/suprMax/grunt-hashify
+  [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
+  [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
+  [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
+  [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
+  [HTML5 Boilerplate]: https://github.com/h5bp/html5-boilerplate
+  [HTML5 Shiv]: https://github.com/aFarkas/html5shiv
+  [JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  [Jekyll]: http://jekyllrb.com/
+  [jQuery]: http://jquery.com/
+  [Markdown]: http://daringfireball.net/projects/markdown/
+  [matchdep]: https://github.com/tkellen/node-matchdep
+  [msguerra74.com]: http://msguerra74.com/
+  [node.js]: http://nodejs.org/
+  [normalize.css]: https://github.com/necolas/normalize.css
+  [Project Website]: http://msguerra74.github.io/Automaton/
+  [RDiscount]: https://github.com/davidfstr/rdiscount
+  [respond.js]: https://github.com/scottjehl/Respond
+  [Ruby]: https://www.ruby-lang.org/en/
+  [Sass]: http://sass-lang.com/
