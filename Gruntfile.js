@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         data: '{<%= source %>,<%= temp %>}/**/*.json',
         ext: '.<%= prj.site.html_php %>'
       },
-      html: {
+      content: {
         src: '<%= build %>/**/*.{html,php}',
         dest: './'
       }
