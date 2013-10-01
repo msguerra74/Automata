@@ -1,5 +1,5 @@
 /**
- * Automaton
+ * Automata
  * Automated Static Website Generator
  * @author Michael Guerra | @msguerra74 | http://msguerra74.com
  * @license MIT [See README]
@@ -14,9 +14,9 @@ module.exports = function(grunt) {
     /* ---------- Variables ---------- */
 
     // Project variables file (Change '_example.com' to current project)
-    prj: grunt.file.readJSON('Projects/_example.com/project.json'),
+    prj: grunt.file.readJSON('Projects/msguerra74.com/project.json'),
 
-    // Automaton package
+    // Automata package
     pkg: grunt.file.readJSON('package.json'),
 
     // Directories

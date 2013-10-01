@@ -1,16 +1,16 @@
 {
-  "name": "Automaton",
+  "name": "Automata",
   "version": "1.0.0",
   "description": "Automated Static Site Generator",
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/msguerra74/Automaton.git"
+    "url": "https://github.com/msguerra74/Automata.git"
   },
   "author": "Michael Guerra <msguerra74@gmail.com> (http://msguerra74.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/msguerra74/Automaton/issues"
+    "url": "https://github.com/msguerra74/Automata/issues"
   },
   "dependencies": {
     "assemble": "~0.4.7",

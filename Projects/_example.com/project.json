@@ -3,7 +3,7 @@
 
   "site": {
     "url": "http://localhost:4000",
-    "title": "Automaton",
+    "title": "Automata",
     "description": "Automated Static Website Generator",
     "owner": "Michael Guerra",
     "email": "msguerra74@gmail.com",
