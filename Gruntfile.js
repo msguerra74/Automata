@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     /* ---------- Variables ---------- */
 
     // Project variables file (Change '_example.com' to current project)
-    prj: grunt.file.readJSON('Projects/msguerra74.com/project.json'),
+    prj: grunt.file.readJSON('Projects/_example.com/project.json'),
 
     // Automata package
     pkg: grunt.file.readJSON('package.json'),
