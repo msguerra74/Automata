@@ -2,7 +2,7 @@
   "name": "_example.com",
 
   "site": {
-    "url": "http://localhost:7777",
+    "url": "http://localhost:4000",
     "title": "Automaton",
     "description": "Automated Static Website Generator",
     "owner": "Michael Guerra",
@@ -12,9 +12,9 @@
   },
 
   "jekyll": {
-    "exclude": "[]",
+    "exclude": "['.htaccess']",
     "future": "false",
-    "include": "['.htaccess']",
+    "include": "[]",
     "keep_files": "['.git', 'assets']",
     "lsi": "false",
     "markdown": "rdiscount",
@@ -30,6 +30,6 @@
     "website": "http://msguerra74.com",
     "banner": "Copyright <%= current_year %>, <%= prj.dev.name %> | <%= prj.dev.twitter %> | <%= prj.dev.website %>",
     "url": "http://localhost:<%= prj.dev.port %>",
-    "port": "7777"
+    "port": "4000"
   }
 }

@@ -2,7 +2,7 @@
  * Automaton
  * Automated Static Website Generator
  * @author Michael Guerra | @msguerra74 | http://msguerra74.com
- * @license MIT License [See README]
+ * @license MIT [See README]
  */
 
 // Grunt module
@@ -54,9 +54,9 @@ module.exports = function(grunt) {
 
     autoprefixer: {
       options: {
-        browsers: ['> 1%', 'last 2 versions', 'android 4', 'ff 17', 'ie > 7', 'ios 6', 'opera 12.1', 'safari 6']
+        browsers: ['> 1%', 'last 2 versions', 'android 4', 'ff 17', 'ie >= 8', 'ios 6', 'opera 12.1', 'safari 6']
       },
-      stylesDev: {
+      devStyles: {
         files: [{
           expand: true,
           cwd: '<%= temp %>/assets/css',
@@ -117,6 +117,12 @@ module.exports = function(grunt) {
         cwd: '<%= source %>/assets/fonts',
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= build %>/assets/fonts'
+      },
+      vendorScripts: {
+        expand: true,
+        cwd: '<%= source %>/assets/scripts/vendor',
+        src: '**/*.js',
+        dest: '<%= build %>/assets/js'
       }
     },
 
@@ -151,21 +157,17 @@ module.exports = function(grunt) {
         src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
         dest: '<%= source %>/content/.htaccess'
       },
-      html5shiv: {
-        src: 'http://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js',
-        dest: '<%= source %>/assets/scripts/oldie/html5shiv-printshiv.js'
-      },
       jquery: {
-        src: 'http://code.jquery.com/jquery.js',
-        dest: '<%= source %>/assets/scripts/individual/jquery.js'
+        src: 'http://code.jquery.com/jquery.min.js',
+        dest: '<%= source %>/assets/scripts/vendor/jquery.min.js'
       },
-      respond: {
-        src: 'http://raw.github.com/scottjehl/Respond/master/respond.src.js',
-        dest: '<%= source %>/assets/scripts/oldie/respond.js'
+      oldie: {
+        src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js', 'http://raw.github.com/scottjehl/Respond/master/respond.min.js'],
+        dest: '<%= source %>/assets/scripts/vendor/oldie.min.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
-        dest: '<%= source %>/assets/styles/partials/_normalize.scss'
+        dest: '<%= source %>/assets/styles/vendor/_normalize.scss'
       }
     },
 
@@ -180,7 +182,7 @@ module.exports = function(grunt) {
         basedir: './',
         copy: true,
         hashmap: '<%= temp %>/hashmap.json',
-        length: '7'
+        length: '5'
       },
       assets: {
         files: [{
@@ -266,7 +268,7 @@ module.exports = function(grunt) {
      */
 
     jshint: {
-      all: ['Gruntfile.js', '<%= source %>/assets/scripts/plugins/**/*.js']
+      scripts: ['Gruntfile.js', '<%= source %>/assets/scripts/plugins/**/*.js']
     },
 
     /**
@@ -339,7 +341,7 @@ module.exports = function(grunt) {
       options: {
         banner: '/* <%= prj.dev.banner %> */\n'
       },
-      pluginsDev: {
+      devPlugins: {
         options: {
           beautify: true,
           compress: false,
@@ -358,18 +360,6 @@ module.exports = function(grunt) {
         files: [{
           src: '<%= source %>/assets/scripts/plugins/**/*.js',
           dest: '<%= build %>/assets/js/script.min.js'
-        }]
-      },
-      scripts: {
-        files: [{
-          src: '<%= source %>/assets/scripts/oldie/**/*.js',
-          dest: '<%= build %>/assets/js/oldie.min.js'
-        }, {
-          expand: true,
-          cwd: '<%= source %>/assets/scripts/individual',
-          src: '**/*.js',
-          dest: '<%= build %>/assets/js',
-          ext: '.min.js'
         }]
       }
     },
@@ -399,11 +389,11 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: '<%= source %>/assets/scripts/**/*',
-        tasks: ['jshint', 'uglify:pluginsDev', 'uglify:scripts']
+        tasks: ['jshint', 'uglify:devPlugins']
       },
       styles: {
         files: '<%= source %>/assets/styles/**/*',
-        tasks: ['sass', 'autoprefixer:stylesDev']
+        tasks: ['sass', 'autoprefixer:devStyles']
       }
     }
 
@@ -415,9 +405,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
 
   // Dev task 'default'
-  grunt.registerTask('default', ['clean', 'curl', 'copy', 'jshint', 'uglify:pluginsDev', 'uglify:scripts', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:stylesDev', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean', 'copy', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'jekyll', 'connect', 'watch']);
 
   // Build task
-  grunt.registerTask('build', ['clean', 'curl', 'copy', 'jshint', 'uglify:plugins', 'uglify:scripts', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'jekyll', 'hashify', 'assemble']);
+  grunt.registerTask('build', ['clean', 'copy', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'jekyll', 'hashify', 'assemble']);
+
+  // Downloads the latest versions of: .htaccess, _normalize.scss, jquery.min.js, and oldie.min.js
+  grunt.registerTask('download', ['curl']);
 
 };

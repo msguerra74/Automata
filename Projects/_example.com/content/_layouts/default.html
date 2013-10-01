@@ -17,10 +17,10 @@
   <![endif]-->
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'')}</script>
 </head>
-<body>
-{% include header.html %}
-{{ content }}
-{% include footer.html %}
+<body>{% capture header %}{% include header.html %}{% endcapture %}{% unless header contains "Included file header.html not found in _includes directory" %}
+{% include header.html %}{% endunless %}
+{{ content }}{% capture footer %}{% include footer.html %}{% endcapture %}{% unless footer contains "Included file footer.html not found in _includes directory" %}
+{% include footer.html %}{% endunless %}
   <script src="{{ relative }}assets/js/jquery.min.js?#{% raw %}{{ hashmap.jquery_js }}{% endraw %}"></script>
   <script src="{{ relative }}assets/js/script.min.js?#{% raw %}{{ hashmap.script_js }}{% endraw %}"></script>
   <script>

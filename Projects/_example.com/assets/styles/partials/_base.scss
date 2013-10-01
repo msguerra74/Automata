@@ -5,6 +5,7 @@
 // Based on:
 // http://alistapart.com/article/fluid-images
 // https://github.com/h5bp/html5-boilerplate
+// https://github.com/csswizardry/inuit.css
 // http://msdn.microsoft.com/en-US/library/ie/hh772044.aspx
 // http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 
@@ -24,10 +25,8 @@ textarea {
 
 html {
   background-color: $base-background-color;
-  font-family: $base-font-family;
-  font-size: em(16);
-  line-height: $base-line-height;
-  min-width: em(320);
+  font:#{em($base-font-size)}/#{$base-line-height} $base-font-family;
+  min-height:100%;
   overflow-y: scroll;
 }
 
@@ -60,6 +59,17 @@ video {
   max-width: 100%;
 }
 
+embed[height],
+embed[width],
+img[height],
+img[width],
+object[height],
+object[width],
+video[height],
+video[width] {
+  max-width: none;
+}
+
 fieldset {
   border: 0;
   margin: 0;
@@ -70,8 +80,8 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid darken(white, 17);
-  margin: em(16) 0;
+  border-top: 1px solid darken(white, 20);
+  margin: em($base-font-size) 0;
   padding: 0;
 }
 

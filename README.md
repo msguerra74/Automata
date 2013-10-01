@@ -71,21 +71,16 @@ Designed for a modern web development workflow, **Automaton** is a full-fledged 
 
 ### Usage
 
-1. Modify the 'Projects/_example.com/project.json' file variables to match your project needs. (NOTE: You can also duplicate the '_example.com' directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the 'Gruntfile.js' file)
-2. From the command prompt, navigate to the 'Automaton' folder and run either of the following Grunt tasks:
-    - 'grunt' to run in development mode.
-    - 'grunt build' to build site.
+1. Modify the 'Projects/_example.com/project.json' file variables to match your project needs. (NOTE: You can also duplicate the '_example.com' directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the 'Gruntfile.js' file).
+2. From the command prompt, navigate to the 'Automaton' folder and run any of the following Grunt tasks:
+    - 'grunt' to develop the site with instant feedback
+    - 'grunt build' to build the current site
+    - 'grunt download' to download the latest vendor files (.htaccess, _normalize.scss, jquery.min.js, and oldie.min.js)
 3. More on usage later...
 
-### Roadmap
+### Browser support
 
-- Widgets
-    - Categories / tag page
-    - Contact form
-    - Post archive page
-    - Post comments (Disqus?)
-    - Search
-    - Social media
+Browser support will depend on the type of project created, so any browser can be supported if needed. Out of the box, however, Automaton is designed to work with all major modern browsers (Android, Chrome, Firefox, iOS, Opera, and Safari), as well as Internet Explorer 8 and up. An 'oldie.js' script has been included by default, which allows IE8 (and lower) to understand HTML5 sectioning elements and CSS3 media queries. Normalize.css v2.x and auto vendor prefixing has also been included, which provides support for IE8+. To support IE7 and lower, normalize.css v1.x will need to be substituted and appropriate CSS 'hacks' will need to be used.
 
 The MIT License (MIT)
 ---------------------
