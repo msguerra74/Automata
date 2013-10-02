@@ -11,7 +11,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ relative }}feed.xml">
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
-  <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css?#{% raw %}{{ hashmap.style_css }}{% endraw %}">
+  <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css?#{% raw %}{{ hashmap.style_css }}{% endraw %}">{% capture head %}{% include head.html %}{% endcapture %}{% unless head contains "Included file head.html not found in _includes directory" %}
+{% include head.html %}{% endunless %}{% if page.head %}
+  {{ page.head }}{% endif %}
   <!--[if (lt IE 9)]>
   <script src="{{ relative }}assets/js/oldie.min.js?#{% raw %}{{ hashmap.oldie_js }}{% endraw %}"></script>
   <![endif]-->
@@ -22,7 +24,9 @@
 {{ content }}{% capture footer %}{% include footer.html %}{% endcapture %}{% unless footer contains "Included file footer.html not found in _includes directory" %}
 {% include footer.html %}{% endunless %}
   <script src="{{ relative }}assets/js/jquery.min.js?#{% raw %}{{ hashmap.jquery_js }}{% endraw %}"></script>
-  <script src="{{ relative }}assets/js/script.min.js?#{% raw %}{{ hashmap.script_js }}{% endraw %}"></script>
+  <script src="{{ relative }}assets/js/script.min.js?#{% raw %}{{ hashmap.script_js }}{% endraw %}"></script>{% capture foot %}{% include foot.html %}{% endcapture %}{% unless foot contains "Included file foot.html not found in _includes directory" %}
+{% include foot.html %}{% endunless %}{% if page.foot %}
+  {{ page.foot }}{% endif %}
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
