@@ -13,7 +13,6 @@
     "url": "https://github.com/msguerra74/Automata/issues"
   },
   "dependencies": {
-    "assemble": "~0.4.7",
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.3.0",
     "grunt-contrib-clean": "~0.5.0",
@@ -26,7 +25,6 @@
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-curl": "~1.1.1",
-    "grunt-hashify": "0.0.5",
     "grunt-jekyll": "~0.3.9",
     "grunt-svg2png": "~0.2.1",
     "grunt-svgmin": "~0.2.0",

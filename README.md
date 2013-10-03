@@ -8,8 +8,8 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
 Designed for a modern web development workflow, **Automata** is a full-fledged HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging engine, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, MD5-hash asset cache busting, and an automated development server with LiveReload for rapid feedback.
 
-- [Project Website][]
-- [GitHub Page][]
+- [Automata project website][]
+- [Automata GitHub page][]
 - [Automata.zip][]
 
 ### Standards:
@@ -36,7 +36,6 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 - [Node.js][]: JavaScript runtime platform
     - [Grunt][]: JavaScript task runner
         - Project Dependencies:
-        - [assemble][]: Build web projects from reusable templates and data
         - [grunt-autoprefixer][]: Adds vendor-prefixed CSS properties
         - [grunt-contrib-clean][]: Clear files and folders
         - [grunt-contrib-connect][]: Start a static web server
@@ -48,7 +47,6 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
         - [grunt-contrib-uglify][]: Minify JavaScript files
         - [grunt-contrib-watch][]: Run tasks whenever watched files change
         - [grunt-curl][]: Download files from the internet
-        - [grunt-hashify][]: Cache busting
         - [grunt-jekyll][]: Static site generator
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [grunt-svgmin][]: Minify SVG
@@ -96,11 +94,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ---
 
   [@msguerra74]: http://twitter.com/msguerra74
-  [assemble]: https://github.com/assemble/assemble
   [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
   [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
   [GitHub]: https://github.com/msguerra74
-  [GitHub Page]: https://github.com/msguerra74/Automata
+  [Automata GitHub page]: https://github.com/msguerra74/Automata
   [Google Analytics]: http://www.google.com/analytics/
   [Grunt]: http://gruntjs.com/
   [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
@@ -114,7 +111,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   [grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
   [grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
   [grunt-curl]: https://github.com/twolfson/grunt-curl
-  [grunt-hashify]: https://github.com/suprMax/grunt-hashify
   [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
   [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
   [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
@@ -129,7 +125,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   [msguerra74.com]: http://msguerra74.com/
   [node.js]: http://nodejs.org/
   [normalize.css]: https://github.com/necolas/normalize.css
-  [Project Website]: http://msguerra74.github.io/Automata/
+  [Automata project website]: http://msguerra74.github.io/Automata/
   [RDiscount]: https://github.com/davidfstr/rdiscount
   [respond.js]: https://github.com/scottjehl/Respond
   [Ruby]: https://www.ruby-lang.org/en/
