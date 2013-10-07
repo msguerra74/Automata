@@ -296,8 +296,7 @@ module.exports = function(grunt) {
         options: {
           beautify: true,
           compress: false,
-          mangle: false,
-          wrap: 'plugins'
+          mangle: false
         },
         files: [{
           src: '<%= source %>/assets/scripts/plugins/**/*.js',
@@ -305,9 +304,6 @@ module.exports = function(grunt) {
         }]
       },
       plugins: {
-        options: {
-          wrap: 'plugins'
-        },
         files: [{
           src: '<%= source %>/assets/scripts/plugins/**/*.js',
           dest: '<%= build %>/assets/js/script.min.js'
