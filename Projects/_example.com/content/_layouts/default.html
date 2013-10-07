@@ -1,8 +1,13 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+<!--[if lt IE 9]>
+<html class="no-js oldie" lang="en">
+<![endif]-->
+<!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <!-- {{ site.dev_banner }} -->{% if site.use_ie_edge == true %}
+  <!-- {{ site.dev_banner }} -->
+  <meta charset="utf-8">{% if site.use_ie_edge == true %}
   <meta http-equiv"X-UA-Compatible" content="IE=edge">{% endif %}{% if page.title %}
   <title>{{ page.title }} | {{ site.title }}</title>{% else %}
   <title>{{ site.title }}</title>{% endif %}{% if page.description %}
@@ -14,12 +19,13 @@
   <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css">{% capture head %}{% include head.html %}{% endcapture %}{% unless head contains "Included file head.html not found in _includes directory" %}
 {% include head.html %}{% endunless %}{% if page.head %}
   {{ page.head }}{% endif %}
-  <!--[if (lt IE 9)]>
+  <!--[if lt IE 9]>
+  <style>*,*:before,*:after{*behavior:url('{{ relative }}assets/js/boxsizing.htc')}</style>
   <script src="{{ relative }}assets/js/oldie.min.js"></script>
   <![endif]-->
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>
 </head>
-<body>{% capture header %}{% include header.html %}{% endcapture %}{% unless header contains "Included file header.html not found in _includes directory" %}
+<body id="top">{% capture header %}{% include header.html %}{% endcapture %}{% unless header contains "Included file header.html not found in _includes directory" %}
 {% include header.html %}{% endunless %}
 {{ content }}{% capture footer %}{% include footer.html %}{% endcapture %}{% unless footer contains "Included file footer.html not found in _includes directory" %}
 {% include footer.html %}{% endunless %}{% if site.use_jquery == true %}

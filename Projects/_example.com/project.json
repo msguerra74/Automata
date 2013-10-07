@@ -19,7 +19,7 @@
     "exclude": "['.htaccess']",
     "future": "false",
     "include": "[]",
-    "keep_files": "['.git', 'assets']",
+    "keep_files": "['.git', 'assets', 'sftp-config.json']",
     "lsi": "false",
     "markdown": "rdiscount",
     "paginate": "7",

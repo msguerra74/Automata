@@ -23,6 +23,7 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 - CSS
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
+    - [boxsizing.htc][]: A CSS box-sizing: border-box polyfill for IE 6/7
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
@@ -78,7 +79,7 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 
 ### Browser support
 
-Browser support will depend on the type of project created, so any browser can be supported if needed. Out of the box, however, Automata is designed to work with all major modern browsers (Android, Chrome, Firefox, iOS, Opera, and Safari), as well as Internet Explorer 8 and up. An 'oldie.js' script has been included by default, which allows IE8 (and lower) to understand HTML5 sectioning elements and CSS3 media queries. Normalize.css v2.x and auto vendor prefixing has also been included, which provides support for IE8+. To support IE7 and lower, normalize.css v1.x will need to be substituted and appropriate CSS 'hacks' will need to be used.
+Browser support will depend on the type of project created, so any browser can be supported if needed. Out of the box, Automata is designed to work with all major modern browsers (Android, Chrome, Firefox, iOS, Opera, and Safari), as well as Internet Explorer 6 and up. An 'oldie.js' script has been included by default, which allows IE6/7/8 to understand HTML5 sectioning elements and CSS3 media queries. Normalize.css v1.x has also been included, which provides additional support for IE6+.
 
 The MIT License (MIT)
 ---------------------
@@ -95,6 +96,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   [@msguerra74]: http://twitter.com/msguerra74
   [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
+  [boxsizing.htc]: https://github.com/Schepp/box-sizing-polyfill
   [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
   [GitHub]: https://github.com/msguerra74
   [Automata GitHub page]: https://github.com/msguerra74/Automata

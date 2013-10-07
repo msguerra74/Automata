@@ -31,6 +31,17 @@
   }
 }
 
+// Inline block
+// Usage:
+// @include inline-block;
+@mixin inline-block {
+  display: -moz-inline-stack;
+  display:inline-block;
+  *vertical-align: auto; // OldIE
+  zoom:1; // OldIE
+  *display:inline; // OldIE
+}
+
 // ---------- Helpers ---------- //
 // Based on:
 // HTML5 Boilerplate helper classes
@@ -127,4 +138,8 @@
   & {
     *zoom: 1; // OldIE
   }
+}
+
+%clear {
+  @include clear;
 }

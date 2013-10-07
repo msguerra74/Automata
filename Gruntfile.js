@@ -70,7 +70,7 @@ module.exports = function(grunt) {
      */
 
     clean: {
-      build: ['<%= build %>/**/{*,.*}', '!<%= build %>/.git'],
+      build: ['<%= build %>/**/{*,.*}', '!<%= build %>/{.git,sftp-config.json}'],
       css: '<%= build %>/assets/css/*.{prefixed,unprefixed}.css'
     },
 
@@ -104,6 +104,12 @@ module.exports = function(grunt) {
         cwd: '<%= source %>/assets/fonts',
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= build %>/assets/fonts'
+      },
+      htc: {
+        expand: true,
+        cwd: '<%= source %>/assets/scripts/vendor',
+        src: '**/*.htc',
+        dest: '<%= build %>/assets/js'
       }
     },
 
@@ -138,6 +144,10 @@ module.exports = function(grunt) {
         src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
         dest: '<%= source %>/content/.htaccess'
       },
+      boxsizing: {
+        src: 'https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc',
+        dest: '<%= source %>/assets/scripts/vendor/boxsizing.htc'
+      },
       jquery: {
         src: 'http://code.jquery.com/jquery.js',
         dest: '<%= source %>/assets/scripts/vendor/jquery.js'
@@ -147,7 +157,7 @@ module.exports = function(grunt) {
         dest: '<%= source %>/assets/scripts/vendor/oldie.js'
       },
       normalize: {
-        src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
+        src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
         dest: '<%= source %>/assets/styles/vendor/_normalize.scss'
       }
     },
@@ -186,12 +196,13 @@ module.exports = function(grunt) {
           dest: '<%= build %>',
           src: '<%= source %>/content',
           raw:
-          // Site
+          // Website
           'url: <%= prj.website.url %>\n' +
           'title: <%= prj.website.title %>\n' +
           'description: <%= prj.website.description %>\n' +
           'owner: <%= prj.website.owner %>\n' +
           'email: <%= prj.website.email %>\n' +
+          // Options
           'use_ie_edge: <%= prj.options.use_ie_edge %>\n' +
           'use_jquery: <%= prj.options.use_jquery %>\n' +
           'google_analytics_id: <%= prj.options.google_analytics_id %>\n' +
@@ -206,7 +217,7 @@ module.exports = function(grunt) {
           'permalink: <%= prj.jekyll.permalink %>\n' +
           'show_drafts: <%= prj.jekyll.show_drafts %>\n' +
           'timezone: <%= prj.jekyll.timezone %>\n' +
-          // Dev
+          // Developer
           'dev_banner: <%= banner %>\n'
         }
       }
@@ -345,7 +356,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: '<%= source %>/assets/scripts/**/*',
-        tasks: ['jshint', 'uglify:devPlugins']
+        tasks: ['jshint', 'uglify:devPlugins', 'copy:htc']
       },
       styles: {
         files: '<%= source %>/assets/styles/**/*',
@@ -365,7 +376,7 @@ module.exports = function(grunt) {
   // Build task
   grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll']);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, jquery.min.js, and oldie.min.js
+  // Downloads the latest versions of: .htaccess, _normalize.scss, boxsizing.htc, jquery.js, and oldie.js
   grunt.registerTask('download', ['curl']);
 
 };
