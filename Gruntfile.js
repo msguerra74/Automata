@@ -1,8 +1,10 @@
 /**
  * Automata
  * Automated Static Website Generator
- * @author Michael Guerra | @msguerra74 | http://msguerra74.com
- * @license MIT [See README]
+ *
+ * Michael Guerra | @msguerra74 | http://msguerra74.com
+ *
+ * MIT License [See README]
  */
 
 // Grunt module
@@ -18,6 +20,9 @@ module.exports = function(grunt) {
 
     // Automata project package
     pkg: grunt.file.readJSON('package.json'),
+
+    // Developer Banner
+    banner: 'Created by <%= prj.developer.name %> in <%= current_year %> | <%= prj.developer.contact %>',
 
     // Directories
     build: '<%= source %>/.BUILD',
@@ -81,8 +86,8 @@ module.exports = function(grunt) {
           base: '<%= build %>',
           hostname: '*',
           livereload: true,
-          open: '<%= prj.dev.url %>',
-          port: '<%= prj.dev.port %>'
+          open: 'http://localhost:<%= connect.server.options.port %>',
+          port: '4000'
         }
       }
     },
@@ -110,7 +115,7 @@ module.exports = function(grunt) {
 
     cssmin: {
       options: {
-        banner: '/* <%= prj.dev.banner %> */',
+        banner: '/* <%= banner %> */',
         keepSpecialComments: 0
       },
       styles: {
@@ -182,12 +187,14 @@ module.exports = function(grunt) {
           src: '<%= source %>/content',
           raw:
           // Site
-          'url: <%= prj.site.url %>\n' +
-          'title: <%= prj.site.title %>\n' +
-          'description: <%= prj.site.description %>\n' +
-          'owner: <%= prj.site.owner %>\n' +
-          'email: <%= prj.site.email %>\n' +
-          'google_analytics_id: <%= prj.site.google_analytics_id %>\n' +
+          'url: <%= prj.website.url %>\n' +
+          'title: <%= prj.website.title %>\n' +
+          'description: <%= prj.website.description %>\n' +
+          'owner: <%= prj.website.owner %>\n' +
+          'email: <%= prj.website.email %>\n' +
+          'use_ie_edge: <%= prj.options.use_ie_edge %>\n' +
+          'use_jquery: <%= prj.options.use_jquery %>\n' +
+          'google_analytics_id: <%= prj.options.google_analytics_id %>\n' +
           // Jekyll
           'exclude: <%= prj.jekyll.exclude %>\n' +
           'future: <%= prj.jekyll.future %>\n' +
@@ -200,7 +207,7 @@ module.exports = function(grunt) {
           'show_drafts: <%= prj.jekyll.show_drafts %>\n' +
           'timezone: <%= prj.jekyll.timezone %>\n' +
           // Dev
-          'dev_banner: <%= prj.dev.banner %>\n'
+          'dev_banner: <%= banner %>\n'
         }
       }
     },
@@ -223,7 +230,7 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        banner: '/* <%= prj.dev.banner %> */',
+        banner: '/* <%= banner %> */',
         noCache: true,
         style: 'expanded'
       },
@@ -283,7 +290,7 @@ module.exports = function(grunt) {
 
     uglify: {
       options: {
-        banner: '/* <%= prj.dev.banner %> */\n'
+        banner: '/* <%= banner %> */\n'
       },
       devPlugins: {
         options: {

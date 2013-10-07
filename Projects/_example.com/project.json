@@ -1,13 +1,18 @@
 {
   "name": "_example.com",
 
-  "site": {
+  "website": {
     "url": "http://localhost:4000",
     "title": "Website Title",
     "description": "Website description.",
     "owner": "Owner Name",
-    "email": "owner@email.com",
-    "google_analytics_id": "UA-xxxxxxxx-x"
+    "email": "owner@email.com"
+  },
+
+  "options": {
+    "use_ie_edge": "true",
+    "use_jquery": "true",
+    "google_analytics_id": "UA-XXXXXXXX-X"
   },
 
   "jekyll": {
@@ -23,12 +28,8 @@
     "timezone": ""
   },
 
-  "dev": {
+  "developer": {
     "name": "Developer Name",
-    "twitter": "@twitter_handle",
-    "website": "http://developer-website.com",
-    "banner": "Copyright <%= current_year %>, <%= prj.dev.name %> | <%= prj.dev.twitter %> | <%= prj.dev.website %>",
-    "url": "http://localhost:<%= prj.dev.port %>",
-    "port": "4000"
+    "contact": "http://website.com"
   }
 }
