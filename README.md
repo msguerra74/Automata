@@ -23,11 +23,9 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 - CSS
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
-    - [boxsizing.htc][]: A CSS box-sizing: border-box polyfill for IE 6/7
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
-    - [respond.js][]: Polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
 
@@ -92,7 +90,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   [@msguerra74]: http://twitter.com/msguerra74
   [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
-  [boxsizing.htc]: https://github.com/Schepp/box-sizing-polyfill
   [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
   [GitHub]: https://github.com/msguerra74
   [Automata GitHub page]: https://github.com/msguerra74/Automata
@@ -125,6 +122,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   [normalize.css]: https://github.com/necolas/normalize.css
   [Automata project website]: http://msguerra74.github.io/Automata/
   [RDiscount]: https://github.com/davidfstr/rdiscount
-  [respond.js]: https://github.com/scottjehl/Respond
   [Ruby]: https://www.ruby-lang.org/en/
   [Sass]: http://sass-lang.com/
