@@ -74,12 +74,8 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
     - 'grunt' to develop the site with instant feedback
     - 'grunt build' to build the current site
-    - 'grunt download' to download the latest vendor files (.htaccess, _normalize.scss, jquery.min.js, and oldie.min.js)
+    - 'grunt download' to download the latest vendor files (.htaccess, _normalize.scss, _normalize_oldie.scss, jquery.js, and oldie.js)
 3. More on usage later...
-
-### Browser support
-
-Browser support will depend on the type of project created, so any browser can be supported if needed. Out of the box, Automata is designed to work with all major modern browsers (Android, Chrome, Firefox, iOS, Opera, and Safari), as well as Internet Explorer 6 and up. An 'oldie.js' script has been included by default, which allows IE6/7/8 to understand HTML5 sectioning elements and CSS3 media queries. Normalize.css v1.x has also been included, which provides additional support for IE6+.
 
 The MIT License (MIT)
 ---------------------

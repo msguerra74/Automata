@@ -10,7 +10,6 @@
   },
 
   "options": {
-    "use_ie_edge": "true",
     "use_jquery": "true",
     "google_analytics_id": "UA-XXXXXXXX-X"
   },

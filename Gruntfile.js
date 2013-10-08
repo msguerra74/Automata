@@ -144,21 +144,21 @@ module.exports = function(grunt) {
         src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
         dest: '<%= source %>/content/.htaccess'
       },
-      boxsizing: {
-        src: 'https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc',
-        dest: '<%= source %>/assets/scripts/vendor/boxsizing.htc'
-      },
       jquery: {
         src: 'http://code.jquery.com/jquery.js',
         dest: '<%= source %>/assets/scripts/vendor/jquery.js'
       },
       oldie: {
-        src: ['http://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js', 'http://raw.github.com/scottjehl/Respond/master/respond.src.js'],
+        src: ['http://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js'],
         dest: '<%= source %>/assets/scripts/vendor/oldie.js'
       },
       normalize: {
-        src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
+        src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= source %>/assets/styles/vendor/_normalize.scss'
+      },
+      normalize_oldie: {
+        src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
+        dest: '<%= source %>/assets/styles/vendor/_normalize_oldie.scss'
       }
     },
 
@@ -203,7 +203,6 @@ module.exports = function(grunt) {
           'owner: <%= prj.website.owner %>\n' +
           'email: <%= prj.website.email %>\n' +
           // Options
-          'use_ie_edge: <%= prj.options.use_ie_edge %>\n' +
           'use_jquery: <%= prj.options.use_jquery %>\n' +
           'google_analytics_id: <%= prj.options.google_analytics_id %>\n' +
           // Jekyll
@@ -376,7 +375,7 @@ module.exports = function(grunt) {
   // Build task
   grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll']);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, boxsizing.htc, jquery.js, and oldie.js
+  // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, jquery.js, and oldie.js
   grunt.registerTask('download', ['curl']);
 
 };
