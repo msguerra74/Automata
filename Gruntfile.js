@@ -140,6 +140,10 @@ module.exports = function(grunt) {
      */
 
     curl: {
+      boxsizing: {
+        src: 'https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc',
+        dest: '<%= source %>/assets/scripts/vendor/boxsizing.htc'
+      },
       htaccess: {
         src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
         dest: '<%= source %>/content/.htaccess'

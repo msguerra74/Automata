@@ -1,0 +1,44 @@
+//------------------------------//
+// CSS PROPERTIES
+//------------------------------//
+
+// Border-box
+// Usage:
+// @include border-box;
+
+@mixin border-box {
+  box-sizing: border-box;
+  @if $oldie {
+    *behavior: url(/assets/js/boxsizing.htc);
+  }
+}
+
+// Extend border-box
+// Usage:
+// @extend %border-box;
+
+%border-box {
+  @include border-box;
+}
+
+// Inline-block
+// Usage:
+// @include inline-block;
+
+@mixin inline-block {
+  display:inline-block;
+  vertical-align: baseline;
+  @if $oldie {
+    zoom: 1; // oldie
+    *display: inline; // oldie
+    *vertical-align: auto; // oldie
+  }
+}
+
+// Extend inline-block
+// Usage:
+// @extend %inline-block;
+
+%inline-block {
+  @include inline-block;
+}
