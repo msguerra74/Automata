@@ -15,7 +15,13 @@
 // You can also use negative margins
 
 @mixin col($n: 1) {
-  @extend %inline-block;
+  display:inline-block;
+  vertical-align: top;
+  @if $oldie {
+    zoom: 1; // oldie
+    *display: inline; // oldie
+    *vertical-align: top; // oldie
+  }
   width: $n * $grid-column;
 }
 

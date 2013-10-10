@@ -51,7 +51,7 @@
 
 @mixin inline-block {
   display:inline-block;
-  vertical-align: top;
+  vertical-align: baseline;
   @if $oldie {
     zoom: 1; // oldie
     *display: inline; // oldie

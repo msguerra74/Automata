@@ -10,7 +10,7 @@
   },
 
   "options": {
-    "use_jquery": "false",
+    "use_jquery": "true",
     "google_analytics_id": ""
   },
 
