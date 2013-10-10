@@ -15,8 +15,8 @@
 // You can also use negative margins
 
 @mixin col($n: 1) {
-  width: $n * $grid-column;
   @extend %inline-block;
+  width: $n * $grid-column;
 }
 
 @mixin prepend($n: 1) {
