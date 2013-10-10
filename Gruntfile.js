@@ -1,9 +1,7 @@
 /**
  * Automata
  * Automated Static Website Generator
- *
  * Michael Guerra | @msguerra74 | http://msguerra74.com
- *
  * MIT License [See README]
  */
 
@@ -110,6 +108,12 @@ module.exports = function(grunt) {
         cwd: '<%= source %>/assets/scripts/vendor',
         src: '**/*.htc',
         dest: '<%= build %>/assets/js'
+      },
+      vendorScripts: {
+        expand: true,
+        cwd: '<%= source %>/assets/scripts/vendor',
+        src: '**/*.js',
+        dest: '<%= build %>/assets/js'
       }
     },
 
@@ -149,12 +153,12 @@ module.exports = function(grunt) {
         dest: '<%= source %>/content/.htaccess'
       },
       jquery: {
-        src: 'http://code.jquery.com/jquery.js',
-        dest: '<%= source %>/assets/scripts/vendor/jquery.js'
+        src: 'http://code.jquery.com/jquery.min.js',
+        dest: '<%= source %>/assets/scripts/vendor/jquery.min.js'
       },
       oldie: {
-        src: ['http://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js'],
-        dest: '<%= source %>/assets/scripts/vendor/oldie.js'
+        src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js'],
+        dest: '<%= source %>/assets/scripts/vendor/oldie.min.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
@@ -322,15 +326,6 @@ module.exports = function(grunt) {
           src: '<%= source %>/assets/scripts/plugins/**/*.js',
           dest: '<%= build %>/assets/js/script.min.js'
         }]
-      },
-      vendor: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/assets/scripts/vendor',
-          src: '**/*.js',
-          dest: '<%= build %>/assets/js',
-          ext: '.min.js'
-        }]
       }
     },
 
@@ -359,7 +354,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: '<%= source %>/assets/scripts/**/*',
-        tasks: ['jshint', 'uglify:devPlugins', 'copy:htc']
+        tasks: ['jshint', 'uglify:devPlugins']
       },
       styles: {
         files: '<%= source %>/assets/styles/**/*',
@@ -374,12 +369,12 @@ module.exports = function(grunt) {
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Dev task 'default'
-  grunt.registerTask('default', ['clean:build', 'copy', 'jshint', 'uglify:devPlugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean:build', 'copy', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
 
   // Build task
-  grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll']);
+  grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll']);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, jquery.js, and oldie.js
+  // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
   grunt.registerTask('download', ['curl']);
 
 };

@@ -2,12 +2,6 @@
 // BASE STYLES
 //------------------------------//
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
 html,
 button,
 input,
@@ -17,7 +11,7 @@ textarea {
 }
 
 html {
-  background-color: $base-background-color;
+  background: $base-background-color;
   font:#{em($base-font-size)}/#{$base-line-height} $base-font-family;
   min-height:100%;
   overflow-y: scroll;

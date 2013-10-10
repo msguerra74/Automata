@@ -2,18 +2,26 @@
 // VARIABLES
 //------------------------------//
 
-// Base
+// ---------- Base ---------- //
+
 $base-background-color: white;
 $base-color: lighten(black, 13); // #212121
 $base-font-family: Verdana, Geneva, sans-serif;
 $base-font-size: 16px !default; // Used in PX to EM conversion function
 $base-line-height: 1.5;
 
-// Colors
-$selection-color: darken(white, 10); // #e6e6e6
+// ---------- Breakpoints ---------- //
 
-// Breakpoints
 $small: 30.0625em !default; // 481px to $medium
 $medium: 48.0625em !default; // 769px to $large
 $large: 64.0625em !default; // 1025px to $xlarge
 $xlarge: 85.4375em !default; // 1367px and up
+
+// ---------- Colors ---------- //
+
+$selection-color: darken(white, 10); // #e6e6e6
+
+// ---------- Variables from mixins ---------- //
+
+$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default;
+$oldie: false !default;

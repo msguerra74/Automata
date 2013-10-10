@@ -6,7 +6,7 @@ Automated Static Website Generator
 
 by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
-Designed for a modern web development workflow, **Automata** is a full-fledged HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging engine, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, MD5-hash asset cache busting, and an automated development server with LiveReload for rapid feedback.
+Designed for a modern web development workflow, **Automata** is a full-fledged HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging engine, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, and an automated development server with LiveReload for rapid feedback.
 
 - [Automata project website][]
 - [Automata GitHub page][]
@@ -23,6 +23,7 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 - CSS
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
+    - [boxsizing.htc][]: A CSS box-sizing: border-box polyfill for IE 6/7
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
@@ -70,10 +71,9 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 
 1. Modify the 'Projects/_example.com/project.json' file variables to match your project needs. (NOTE: You can also duplicate the '_example.com' directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the 'Gruntfile.js' file).
 2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
-    - 'grunt' to develop the site with instant feedback
-    - 'grunt build' to build the current site
-    - 'grunt download' to download the latest vendor files (.htaccess, _normalize.scss, _normalize_oldie.scss, jquery.js, and oldie.js)
-3. More on usage later...
+    - 'grunt' to develop the site with a LiveReload server
+    - 'grunt build' to build a production version of the current site
+    - 'grunt download' to download the latest vendor files (.htaccess, _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js)
 
 The MIT License (MIT)
 ---------------------
@@ -86,41 +86,42 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
----
+<!-- Links -->
 
-  [@msguerra74]: http://twitter.com/msguerra74
-  [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
-  [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
-  [GitHub]: https://github.com/msguerra74
-  [Automata GitHub page]: https://github.com/msguerra74/Automata
-  [Google Analytics]: http://www.google.com/analytics/
-  [Grunt]: http://gruntjs.com/
-  [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
-  [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
-  [grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
-  [grunt-contrib-copy]: https://github.com/gruntjs/grunt-contrib-copy
-  [grunt-contrib-cssmin]: https://github.com/gruntjs/grunt-contrib-cssmin
-  [grunt-contrib-imagemin]: https://github.com/gruntjs/grunt-contrib-imagemin
-  [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
-  [grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
-  [grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
-  [grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
-  [grunt-curl]: https://github.com/twolfson/grunt-curl
-  [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
-  [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
-  [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
-  [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
-  [HTML5 Boilerplate]: https://github.com/h5bp/html5-boilerplate
-  [HTML5 Shiv]: https://github.com/aFarkas/html5shiv
-  [JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-  [Jekyll]: http://jekyllrb.com/
-  [jQuery]: http://jquery.com/
-  [Markdown]: http://daringfireball.net/projects/markdown/
-  [matchdep]: https://github.com/tkellen/node-matchdep
-  [msguerra74.com]: http://msguerra74.com/
-  [node.js]: http://nodejs.org/
-  [normalize.css]: https://github.com/necolas/normalize.css
-  [Automata project website]: http://msguerra74.github.io/Automata/
-  [RDiscount]: https://github.com/davidfstr/rdiscount
-  [Ruby]: https://www.ruby-lang.org/en/
-  [Sass]: http://sass-lang.com/
+[@msguerra74]: http://twitter.com/msguerra74
+[Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
+[boxsizing.htc]: https://github.com/Schepp/box-sizing-polyfill
+[CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
+[GitHub]: https://github.com/msguerra74
+[Automata GitHub page]: https://github.com/msguerra74/Automata
+[Google Analytics]: http://www.google.com/analytics/
+[Grunt]: http://gruntjs.com/
+[grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
+[grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
+[grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
+[grunt-contrib-copy]: https://github.com/gruntjs/grunt-contrib-copy
+[grunt-contrib-cssmin]: https://github.com/gruntjs/grunt-contrib-cssmin
+[grunt-contrib-imagemin]: https://github.com/gruntjs/grunt-contrib-imagemin
+[grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
+[grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
+[grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
+[grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
+[grunt-curl]: https://github.com/twolfson/grunt-curl
+[grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
+[grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
+[grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
+[HTML5]: http://www.w3.org/html/wg/drafts/html/master/
+[HTML5 Boilerplate]: https://github.com/h5bp/html5-boilerplate
+[HTML5 Shiv]: https://github.com/aFarkas/html5shiv
+[JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+[Jekyll]: http://jekyllrb.com/
+[jQuery]: http://jquery.com/
+[Markdown]: http://daringfireball.net/projects/markdown/
+[matchdep]: https://github.com/tkellen/node-matchdep
+[msguerra74.com]: http://msguerra74.com/
+[node.js]: http://nodejs.org/
+[normalize.css]: https://github.com/necolas/normalize.css
+[Automata project website]: http://msguerra74.github.io/Automata/
+[RDiscount]: https://github.com/davidfstr/rdiscount
+[Ruby]: https://www.ruby-lang.org/en/
+[Sass]: http://sass-lang.com/
