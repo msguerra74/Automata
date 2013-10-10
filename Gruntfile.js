@@ -250,6 +250,7 @@ module.exports = function(grunt) {
       options: {
         banner: '/* <%= banner %> */',
         noCache: true,
+        precision: 16,
         style: 'expanded'
       },
       styles: {

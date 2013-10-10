@@ -9,14 +9,14 @@ $base-color: lighten(black, 13) !default; // #212121
 $base-font-family: Verdana, Geneva, sans-serif !default;
 $base-font-size: 16px !default; // Used in PX to EM conversion function
 $base-line-height: 1.5 !default;
-$base-website-max-width: auto !default; // Websites maximum width
+$base-website-max-width: auto !default;
 
 // ---------- Breakpoints ---------- //
 
-$small: 30.0625em !default; // 481px to $medium
-$medium: 48.0625em !default; // 769px to $large
-$large: 64.0625em !default; // 1025px to $xlarge
-$xlarge: 85.4375em !default; // 1367px and up
+$small: 30.0625em !default; // 481px
+$medium: 48.0625em !default; // 769px
+$large: 64.0625em !default; // 1025px
+$xlarge: 85.4375em !default; // 1367px
 
 // ---------- Colors ---------- //
 
@@ -24,10 +24,12 @@ $selection-color: darken(white, 10) !default; // #e6e6e6
 
 // ---------- Grid ---------- //
 
+$baseline-overlay: false !default; // Baseline grid overlay
 $grid-columns: 48 !default; // Number of grid columns
 
 // ---------- Variables used in mixins that don't change ---------- //
 
+$baseline: $base-font-size * $base-line-height !default; // Baseline grid mixin
 $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default; // Breakpoint mixin
 $grid-column: 100% / $grid-columns !default; // Grid mixin
 $oldie: false !default; // Set to true on oldie.scss to pull in 'oldie' styles

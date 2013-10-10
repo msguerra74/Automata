@@ -1,6 +1,26 @@
 //------------------------------//
-// GRID
+// GRIDS
 //------------------------------//
+
+// ---------- Baseline grid ---------- //
+
+// Based on:
+// http://joshnh.com/tools/em-baseline-generator.html
+// Usage:
+// @include baseline(16);
+
+@mixin baseline($fs) {
+  font-size: em($fs);
+  @if $fs > $baseline {
+    line-height: strip-units(em($baseline, $fs)) * 2;
+  }
+  @else {
+    line-height: strip-units(em($baseline, $fs));
+  }
+  margin-bottom: em($baseline, $fs);
+}
+
+// ---------- Semantic / responsive grid ---------- //
 
 // Based on:
 // https://github.com/studiowolf/taiga-grid
@@ -15,13 +35,7 @@
 // You can also use negative margins
 
 @mixin col($n: 1) {
-  display:inline-block;
-  vertical-align: top;
-  @if $oldie {
-    zoom: 1; // oldie
-    *display: inline; // oldie
-    *vertical-align: top; // oldie
-  }
+  @include inline-block(top);
   width: $n * $grid-column;
 }
 

@@ -4,7 +4,7 @@ description: The requested page could not be found.
 layout: default
 ---
 
-  {% if page.title %}<h1>{{ page.title }}</h1>{% else %}
-  <h1>{{ site.title }}</h1>{% endif %}{% if page.description %}
-  <p>{{ page.description }}</p>{% else %}
-  <p>{{ site.description }}</p>{% endif %}
+    <main class="main" role="main">
+      <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+      <p>{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}</p>
+    </main>

@@ -47,15 +47,15 @@
 // ---------- inline-block ---------- //
 
 // Usage:
-// @include inline-block;
+// @include inline-block(top);
 
-@mixin inline-block {
+@mixin inline-block($vertical-align: baseline) {
   display:inline-block;
-  vertical-align: baseline;
+  vertical-align: $vertical-align;
   @if $oldie {
     zoom: 1; // oldie
     *display: inline; // oldie
-    *vertical-align: auto; // oldie
+    *vertical-align: $vertical-align; // oldie
   }
 }
 
