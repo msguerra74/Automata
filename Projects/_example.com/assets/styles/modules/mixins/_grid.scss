@@ -1,0 +1,34 @@
+//------------------------------//
+// GRID
+//------------------------------//
+
+// Based on:
+// https://github.com/studiowolf/taiga-grid
+// Usage:
+// @include grid(12, 2); to make a column
+// The first unit (12) is the column width
+// The second unit (2) is the margin on both sides
+// The margin will be auto-substracted from the column width
+// or
+// @include grid(12, 2, 3); sets different margins on both sides
+// Note:
+// You can also use negative margins
+
+@mixin col($n: 1) {
+  width: $n * $grid-column;
+  @extend %inline-block;
+}
+
+@mixin prepend($n: 1) {
+  margin-left: $grid-column * $n;
+}
+
+@mixin append($n: 1) {
+  margin-right: $grid-column * $n;
+}
+
+@mixin grid($cols: 1, $grid-margin-left: 0, $grid-margin-right: $grid-margin-left) {
+  @include col($cols - ($grid-margin-left + $grid-margin-right));
+  @include prepend($grid-margin-left);
+  @include append($grid-margin-right);
+}

@@ -2,12 +2,14 @@
 // STYLESHEET
 //------------------------------//
 
+$base-website-max-width: 60em; // 960px
 $oldie: true;
 
 @import
   'modules/variables',
   'modules/functions',
   'modules/mixins/css',
+  'modules/mixins/grid',
   'modules/mixins/helpers',
   'vendor/normalize_oldie',
   'partials/base',

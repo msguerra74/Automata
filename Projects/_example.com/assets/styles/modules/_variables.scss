@@ -4,11 +4,12 @@
 
 // ---------- Base ---------- //
 
-$base-background-color: white;
-$base-color: lighten(black, 13); // #212121
-$base-font-family: Verdana, Geneva, sans-serif;
+$base-background-color: white !default;
+$base-color: lighten(black, 13) !default; // #212121
+$base-font-family: Verdana, Geneva, sans-serif !default;
 $base-font-size: 16px !default; // Used in PX to EM conversion function
-$base-line-height: 1.5;
+$base-line-height: 1.5 !default;
+$base-website-max-width: auto !default; // Websites maximum width
 
 // ---------- Breakpoints ---------- //
 
@@ -19,9 +20,14 @@ $xlarge: 85.4375em !default; // 1367px and up
 
 // ---------- Colors ---------- //
 
-$selection-color: darken(white, 10); // #e6e6e6
+$selection-color: darken(white, 10) !default; // #e6e6e6
 
-// ---------- Variables from mixins ---------- //
+// ---------- Grid ---------- //
 
-$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default;
-$oldie: false !default;
+$grid-columns: 48 !default; // Number of grid columns
+
+// ---------- Variables used in mixins that don't change ---------- //
+
+$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default; // Breakpoint mixin
+$grid-column: 100% / $grid-columns !default; // Grid mixin
+$oldie: false !default; // Set to true on oldie.scss to pull in 'oldie' styles
