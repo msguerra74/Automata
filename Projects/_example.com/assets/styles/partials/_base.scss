@@ -12,7 +12,7 @@ textarea {
 
 html {
   @if $baseline-overlay {
-    background: linear-gradient(#cccccc, #eeeeee 0.1em);
+    background: linear-gradient(#ccc, #eee 0.1em);
     background-size: 1.5em 1.5em;
   }
   @else {
@@ -93,12 +93,12 @@ h6,
 
 h1,
 .alpha {
-  @include baseline(48);
+  @include baseline(32);
 }
 
 h2,
 .beta {
-  @include baseline(36);
+  @include baseline(28);
 }
 
 h3,
@@ -126,12 +126,13 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid darken(white, 20);
-  margin: em($base-font-size) 0;
+  margin: ($base-line-height + em) 0;
   padding: 0;
 }
 
 p,
 blockquote {
+  margin: 0;
   @include baseline(16);
 }
 

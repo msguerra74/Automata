@@ -4,20 +4,18 @@
 
 // ---------- Baseline grid ---------- //
 
-// Based on:
-// http://joshnh.com/tools/em-baseline-generator.html
 // Usage:
-// @include baseline(16);
+// @include baseline(16, 24);
 
-@mixin baseline($fs) {
-  font-size: em($fs);
-  @if $fs > $baseline {
-    line-height: strip-units(em($baseline, $fs)) * 2;
+@mixin baseline($target, $context: $base-font-size) {
+  font-size: em($target, $context);
+  @if $target >= $baseline {
+    line-height: strip-units(em($baseline, $target)) * 2;
   }
   @else {
-    line-height: strip-units(em($baseline, $fs));
+    line-height: strip-units(em($baseline, $target));
   }
-  margin-bottom: em($baseline, $fs);
+  margin-bottom: em($baseline, $target);
 }
 
 // ---------- Semantic / responsive grid ---------- //
