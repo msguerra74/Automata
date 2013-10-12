@@ -48,6 +48,7 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
         - [grunt-contrib-watch][]: Run tasks whenever watched files change
         - [grunt-curl][]: Download files from the internet
         - [grunt-jekyll][]: Static site generator
+        - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [grunt-svgmin][]: Minify SVG
         - [matchdep][]: Minimatch to filter npm module dependencies by name
@@ -108,6 +109,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
 [grunt-curl]: https://github.com/twolfson/grunt-curl
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
+[grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
 [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/

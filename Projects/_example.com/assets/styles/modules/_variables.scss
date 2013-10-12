@@ -5,11 +5,14 @@
 // ---------- Base ---------- //
 
 $base-background-color: white !default;
-$base-color: lighten(black, 13) !default; // #212121
+$base-color: #222222 !default;
 $base-font-family: Verdana, Geneva, sans-serif !default;
-$base-font-size: 16px !default; // Used in PX to EM conversion function
+$base-font-family-code: Georgia, Times, 'Times New Roman', serif !default;
+$base-font-family-heading: Verdana, Geneva, sans-serif !default;
+$base-font-size: 16px !default;
 $base-line-height: 1.5 !default;
-$base-website-max-width: auto !default;
+$base-max-width: none !default;
+$oldie-width: 60em !default; // 960px
 
 // ---------- Breakpoints ---------- //
 
@@ -20,12 +23,14 @@ $xlarge: 85.4375em !default; // 1367px
 
 // ---------- Colors ---------- //
 
-$selection-color: darken(white, 10) !default; // #e6e6e6
+$selection-color: #eeeeee !default;
 
 // ---------- Grid ---------- //
 
-$baseline-overlay: false !default; // Baseline grid overlay
-$grid-columns: 48 !default; // Number of grid columns
+$baseline-grid-overlay: false !default; // Overlay baseline grid
+$grid-columns: 48 !default;
+
+// Number of grid columns
 
 // ---------- Variables used in mixins that don't change ---------- //
 

@@ -11,14 +11,14 @@
 // or (target, context)
 // font-size: em(16, 32); // .5em
 
-@function em($px, $base: $base-font-size) {
-  @if not unitless($px) {
-    $px: strip-units($px);
+@function em($target, $context: $base-font-size) {
+  @if not unitless($target) {
+    $target: strip-units($target);
   }
-  @if not unitless($base) {
-    $base: strip-units($base);
+  @if not unitless($context) {
+    $context: strip-units($context);
   }
-  @return ($px / $base) * 1em;
+  @return ($target / $context) * 1em;
 }
 
 // ---------- strip-units ---------- //

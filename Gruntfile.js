@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     banner: 'Created by <%= prj.developer.name %> in <%= current_year %> | <%= prj.developer.contact %>',
 
     // Directories
-    build: '<%= source %>/.BUILD',
+    build: '<%= source %>/_BUILD',
     source: 'Projects/<%= prj.name %>',
 
     // Current year
@@ -241,6 +241,27 @@ module.exports = function(grunt) {
     },
 
     /**
+     * Prettify
+     * Prettify HTML
+     * https://github.com/jonschlinkert/grunt-prettify
+     */
+
+    prettify: {
+      options: {
+        brace_style: 'collapse',
+        indent_inner_html: false,
+        indent_scripts: 'normal',
+        unformatted: ['a', 'abbr', 'acronym', 'b', 'bdo', 'big', 'cite', 'code', 'dd', 'del', 'dfn', 'dt', 'em', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'i', 'ins', 'kbd', 'li', 'p', 'pre', 'q', 's', 'samp', 'small', 'span', 'strike', 'strong', 'sub', 'sup', 'tt', 'u', 'var']
+      },
+      content: {
+        expand: true,
+        cwd: '<%= build %>',
+        src: '**/*.{html,php}',
+        dest: '<%= build %>'
+      }
+    },
+
+    /**
      * Sass
      * Compile Sass to CSS
      * https://github.com/gruntjs/grunt-contrib-sass
@@ -373,7 +394,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['clean:build', 'copy', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
 
   // Build task
-  grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll']);
+  grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'prettify']);
 
   // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
   grunt.registerTask('download', ['curl']);

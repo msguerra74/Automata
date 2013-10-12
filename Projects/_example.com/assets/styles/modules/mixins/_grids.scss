@@ -15,7 +15,7 @@
   @else {
     line-height: strip-units(em($baseline, $target));
   }
-  margin-bottom: em($baseline, $target);
+  margin: em($baseline, $target) 0;
 }
 
 // ---------- Semantic / responsive grid ---------- //
@@ -23,7 +23,7 @@
 // Based on:
 // https://github.com/studiowolf/taiga-grid
 // Usage:
-// @include grid(12, 2); to make a column
+// @include grid(12, 2);
 // The first unit (12) is the column width
 // The second unit (2) is the margin on both sides
 // The margin will be auto-substracted from the column width

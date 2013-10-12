@@ -2,6 +2,30 @@
 // BASE STYLES
 //------------------------------//
 
+h1,.alpha,
+h2,.beta,
+h3,.gamma,
+h4,.delta,
+h5,.epsilon,
+h6,.zeta,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+form,
+fieldset,
+legend,
+table,
+th,
+td,
+caption {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 button,
 input,
@@ -11,8 +35,8 @@ textarea {
 }
 
 html {
-  @if $baseline-overlay {
-    background: linear-gradient(#ccc, #eee 0.1em);
+  @if $baseline-grid-overlay {
+    background: linear-gradient(#aaa, #eee 0.1em);
     background-size: 1.5em 1.5em;
   }
   @else {
@@ -21,10 +45,10 @@ html {
   font: #{em($base-font-size)}/#{$base-line-height} $base-font-family;
   margin: 0 auto;
   @if $oldie {
-    max-width: 60em; // 960px
+    width: $oldie-width;
   }
   @else {
-    max-width: $base-website-max-width;
+    max-width: $base-max-width;
   }
   min-height: 100%;
   overflow-y: scroll;
@@ -51,6 +75,12 @@ canvas {
   -ms-touch-action: auto;
 }
 
+dl,
+ol,
+ul {
+  @include baseline(16);
+}
+
 embed,
 img,
 object,
@@ -58,66 +88,48 @@ video {
   max-width: 100%;
 }
 
-embed[height],
-embed[width],
-img[height],
-img[width],
-object[height],
-object[width],
-video[height],
-video[width] {
+embed[height],embed[width],
+img[height],img[width],
+object[height],object[width],
+video[height],video[width] {
   max-width: none;
 }
 
 fieldset {
   border: 0;
-  margin: 0;
-  padding: 0;
 }
 
-h1,
-.alpha,
-h2,
-.beta,
-h3,
-.gamma,
-h4,
-.delta,
-h5,
-.epsilon,
-h6,
-.zeta {
+h1,.alpha,
+h2,.beta,
+h3,.gamma,
+h4,.delta,
+h5,.epsilon,
+h6,.zeta {
+  font-family: $base-font-family-heading;
   font-weight: bold;
-  margin: 0;
 }
 
-h1,
-.alpha {
+h1,.alpha {
   @include baseline(32);
 }
 
-h2,
-.beta {
+h2,.beta {
   @include baseline(28);
 }
 
-h3,
-.gamma {
+h3,.gamma {
   @include baseline(24);
 }
 
-h4,
-.delta {
+h4,.delta {
   @include baseline(21);
 }
 
-h5,
-.epsilon {
+h5,.epsilon {
   @include baseline(18);
 }
 
-h6,
-.zeta {
+h6,.zeta {
   @include baseline(16);
 }
 
@@ -125,14 +137,13 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid darken(white, 20);
-  margin: ($base-line-height + em) 0;
+  border-top: 1px solid #ccc;
+  margin: $base-line-height + em 0;
   padding: 0;
 }
 
 p,
 blockquote {
-  margin: 0;
   @include baseline(16);
 }
 

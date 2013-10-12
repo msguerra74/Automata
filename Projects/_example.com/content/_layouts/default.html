@@ -7,22 +7,25 @@
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ relative }}feed.xml">
+  <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
   <!--[if (gt IE 8) | (IEMobile)]><!-->
   <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css">
-  <!--<![endif]-->{% if page.head %}
-  {{ page.head }}{% endif %}
+  <!--<![endif]-->
   <!--[if (lt IE 9) & (!IEMobile)]>
   <link rel="stylesheet" href="{{ relative }}assets/css/oldie.min.css">
   <script src="{{ relative }}assets/js/oldie.min.js"></script>
   <![endif]-->
-  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>
+  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% if page.head %}
+  {{ page.head }}{% endif %}
 </head>
 <body>
-{% include header.html %}
-{{ content }}
-{% include footer.html %}{% if site.use_jquery == true %}
+  {% include header.html %}
+  <div class="content">
+    {% include main.html %}
+    {% include aside.html %}
+  </div><!-- /content -->
+  {% include footer.html %}{% if site.use_jquery %}
   <script src="{{ relative }}assets/js/jquery.min.js"></script>{% endif %}
   <script src="{{ relative }}assets/js/script.min.js"></script>{% if page.foot %}
   {{ page.foot }}{% endif %}{% if site.google_analytics_id %}

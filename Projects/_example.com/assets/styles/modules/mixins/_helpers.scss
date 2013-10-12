@@ -16,7 +16,7 @@
   border: 0;
   overflow: hidden;
   @if $oldie {
-    *text-indent: -9999px; // oldie
+    *text-indent: -9999px;
   }
 
   &:before {
@@ -127,7 +127,7 @@
 
   @if $oldie {
     & {
-      *zoom: 1; // oldie
+      *zoom: 1;
     }
   }
 }

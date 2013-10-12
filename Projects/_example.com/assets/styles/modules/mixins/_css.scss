@@ -53,9 +53,9 @@
   display:inline-block;
   vertical-align: $vertical-align;
   @if $oldie {
-    zoom: 1; // oldie
-    *display: inline; // oldie
-    *vertical-align: $vertical-align; // oldie
+    zoom: 1;
+    *display: inline;
+    *vertical-align: $vertical-align;
   }
 }
 

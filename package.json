@@ -26,6 +26,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-curl": "~1.1.1",
     "grunt-jekyll": "~0.3.9",
+    "grunt-prettify": "~0.2.9",
     "grunt-svg2png": "~0.2.1",
     "grunt-svgmin": "~0.2.0",
     "matchdep": "~0.1.2"
