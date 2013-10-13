@@ -1,7 +1,7 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 <html class="no-js" lang="en">
 <head>
-  <!-- {{ site.dev_banner }} -->
+  <!-- {{ site.banner }} -->
   <meta charset="utf-8">
   <meta http-equiv"X-UA-Compatible" content="IE=edge">
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
@@ -25,7 +25,7 @@
     {% include main.html %}
     {% include aside.html %}
   </div><!-- /content -->
-  {% include footer.html %}{% if site.use_jquery %}
+  {% include footer.html %}{% if site.jquery %}
   <script src="{{ relative }}assets/js/jquery.min.js"></script>{% endif %}
   <script src="{{ relative }}assets/js/script.min.js"></script>{% if page.foot %}
   {{ page.foot }}{% endif %}{% if site.google_analytics_id %}

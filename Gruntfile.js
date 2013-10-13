@@ -14,20 +14,17 @@ module.exports = function(grunt) {
     /* ---------- Variables ---------- */
 
     // Project variables file (Change '_example.com' to current project)
-    prj: grunt.file.readJSON('Projects/_example.com/project.json'),
+    prj: grunt.file.readYAML('Projects/_example.com/project.yml'),
 
     // Automata project package
     pkg: grunt.file.readJSON('package.json'),
 
     // Developer Banner
-    banner: 'Created by <%= prj.developer.name %> in <%= current_year %> | <%= prj.developer.contact %>',
+    banner: '<%= prj.banner %>',
 
     // Directories
     build: '<%= source %>/_BUILD',
-    source: 'Projects/<%= prj.name %>',
-
-    // Current year
-    current_year: grunt.template.today('yyyy'),
+    source: 'Projects/<%= prj.directory %>',
 
     /* ---------- Packages ---------- */
 
@@ -201,31 +198,9 @@ module.exports = function(grunt) {
     jekyll: {
       content: {
         options: {
+          config: '<%= source %>/project.yml',
           dest: '<%= build %>',
-          src: '<%= source %>/content',
-          raw:
-          // Website
-          'url: <%= prj.website.url %>\n' +
-          'title: <%= prj.website.title %>\n' +
-          'description: <%= prj.website.description %>\n' +
-          'owner: <%= prj.website.owner %>\n' +
-          'email: <%= prj.website.email %>\n' +
-          // Options
-          'use_jquery: <%= prj.options.use_jquery %>\n' +
-          'google_analytics_id: <%= prj.options.google_analytics_id %>\n' +
-          // Jekyll
-          'exclude: <%= prj.jekyll.exclude %>\n' +
-          'future: <%= prj.jekyll.future %>\n' +
-          'include: <%= prj.jekyll.include %>\n' +
-          'keep_files: <%= prj.jekyll.keep_files %>\n' +
-          'lsi: <%= prj.jekyll.lsi %>\n' +
-          'markdown: <%= prj.jekyll.markdown %>\n' +
-          'paginate: <%= prj.jekyll.paginate %>\n' +
-          'permalink: <%= prj.jekyll.permalink %>\n' +
-          'show_drafts: <%= prj.jekyll.show_drafts %>\n' +
-          'timezone: <%= prj.jekyll.timezone %>\n' +
-          // Developer
-          'dev_banner: <%= banner %>\n'
+          src: '<%= source %>/content'
         }
       }
     },

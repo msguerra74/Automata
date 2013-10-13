@@ -1,17 +1,24 @@
+# Project directory
 directory: _example.com
 
+# Build directory
+destination: _BUILD
+
+# Website info
 url: http://localhost:4000
 title: Website Title
 description: Website description
 owner: Owner Name
 email: owner@email.com
 
+# Options
 jquery: true
 google_analytics_id:
 
+# Jekyll options
 exclude: ['.htaccess']
 future: false
-include: []
+include: ['']
 keep_files: ['.git', 'assets', 'sftp-config.json']
 lsi: false
 markdown: rdiscount
@@ -20,4 +27,5 @@ permalink: /:categories/:title/
 show_drafts: false
 timezone:
 
+# Misc
 banner: Created by Michael Guerra in 2013 | http://msguerra74.com
