@@ -19,7 +19,7 @@ banner: Created by Developer in 2013 | http://website.com
 # Jekyll options
 include: ['']
 exclude: ['.htaccess']
-keep_files: ['.git', 'assets', 'sftp-config.json']
+keep_files: ['.git', 'sftp-config.json']
 show_drafts: false
 future: false
 lsi: false
