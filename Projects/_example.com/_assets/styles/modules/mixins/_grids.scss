@@ -33,6 +33,7 @@
 // You can also use negative margins
 
 @mixin col($n: 1) {
+  @include border-box;
   @include inline-block(top);
   width: $n * $grid-column;
 }
