@@ -70,7 +70,7 @@ Designed for a modern web development workflow, **Automata** is a full-fledged H
 
 ### Usage
 
-1. Modify the 'Projects/_example.com/project.json' file variables to match your project needs. (NOTE: You can also duplicate the '_example.com' directory for multiple projects, so long as you point to the appropriate 'project.json' file at the top of the 'Gruntfile.js' file).
+1. Modify the 'Projects/_example.com/_config.yml' file variables to match your project needs. (NOTE: You can also duplicate the '_example.com' directory to create multiple projects, so long as you point to the appropriate '_config.yml' file at the top of the 'Gruntfile.js' file).
 2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
     - 'grunt' to develop the site with a LiveReload server
     - 'grunt build' to build a production version of the current site

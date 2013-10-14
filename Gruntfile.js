@@ -41,18 +41,18 @@ module.exports = function(grunt) {
       devStyles: {
         files: [{
           expand: true,
-          cwd: '<%= build %>/assets/css',
+          cwd: '<%= source %>/assets/css',
           src: '*.unprefixed.css',
-          dest: '<%= build %>/assets/css',
+          dest: '<%= source %>/assets/css',
           ext: '.min.css'
         }]
       },
       styles: {
         files: [{
           expand: true,
-          cwd: '<%= build %>/assets/css',
+          cwd: '<%= source %>/assets/css',
           src: '*.unprefixed.css',
-          dest: '<%= build %>/assets/css',
+          dest: '<%= source %>/assets/css',
           ext: '.prefixed.css'
         }]
       }
@@ -65,8 +65,8 @@ module.exports = function(grunt) {
      */
 
     clean: {
-      build: ['<%= build %>/**/{*,.*}', '!<%= build %>/{.git,sftp-config.json}'],
-      css: '<%= build %>/assets/css/*.{prefixed,unprefixed}.css'
+      generated: ['<%= build %>/**/{*,.*}', '!<%= build %>/{.git,sftp-config.json}', '<%= source %>/assets'],
+      css: '<%= source %>/assets/css/*.{prefixed,unprefixed}.css'
     },
 
     /**
@@ -94,23 +94,41 @@ module.exports = function(grunt) {
      */
 
     copy: {
+      buildFonts: {
+        expand: true,
+        cwd: '<%= source %>/assets/fonts',
+        src: '**/*.{eot,svg,ttf,woff}',
+        dest: '<%= build %>/assets/fonts'
+      },
+      buildImages: {
+        expand: true,
+        cwd: '<%= source %>/assets/img',
+        src: '**/*.css',
+        dest: '<%= build %>/assets/img'
+      },
+      buildScripts: {
+        expand: true,
+        cwd: '<%= source %>/assets/js',
+        src: '**/*.js',
+        dest: '<%= build %>/assets/js'
+      },
+      buildStyles: {
+        expand: true,
+        cwd: '<%= source %>/assets/css',
+        src: '**/*.css',
+        dest: '<%= build %>/assets/css'
+      },
       fonts: {
         expand: true,
         cwd: '<%= source %>/_assets/fonts',
         src: '**/*.{eot,svg,ttf,woff}',
-        dest: '<%= build %>/assets/fonts'
-      },
-      htc: {
-        expand: true,
-        cwd: '<%= source %>/_assets/scripts/vendor',
-        src: '**/*.htc',
-        dest: '<%= build %>/assets/js'
+        dest: '<%= source %>/assets/fonts'
       },
       vendorScripts: {
         expand: true,
         cwd: '<%= source %>/_assets/scripts/vendor',
-        src: '**/*.js',
-        dest: '<%= build %>/assets/js'
+        src: '**/*.{htc,js}',
+        dest: '<%= source %>/assets/js'
       }
     },
 
@@ -127,9 +145,9 @@ module.exports = function(grunt) {
       },
       styles: {
         expand: true,
-        cwd: '<%= build %>/assets/css',
+        cwd: '<%= source %>/assets/css',
         src: '*.prefixed.css',
-        dest: '<%= build %>/assets/css',
+        dest: '<%= source %>/assets/css',
         ext: '.min.css'
       }
     },
@@ -179,12 +197,12 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= source %>/_assets/images',
           src: '**/*.{gif,jpg,png}',
-          dest: '<%= build %>/assets/img'
+          dest: '<%= source %>/assets/img'
         }, {
           expand: true,
-          cwd: '<%= build %>/assets/img',
+          cwd: '<%= source %>/assets/img',
           src: '**/*.{gif,jpg,png}',
-          dest: '<%= build %>/assets/img'
+          dest: '<%= source %>/assets/img'
         }]
       }
     },
@@ -253,7 +271,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= source %>/_assets/styles',
           src: '*.scss',
-          dest: '<%= build %>/assets/css',
+          dest: '<%= source %>/assets/css',
           ext: '.unprefixed.css'
         }]
       }
@@ -269,7 +287,7 @@ module.exports = function(grunt) {
       svg: {
         files: [{
           src: '<%= source %>/_assets/images/**/*.svg',
-          dest: '<%= build %>/assets/img'
+          dest: '<%= source %>/assets/img'
         }]
       }
     },
@@ -291,7 +309,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= source %>/_assets/images',
           src: '**/*.svg',
-          dest: '<%= build %>/assets/img'
+          dest: '<%= source %>/assets/img'
         }]
       }
     },
@@ -314,13 +332,13 @@ module.exports = function(grunt) {
         },
         files: [{
           src: '<%= source %>/_assets/scripts/plugins/**/*.js',
-          dest: '<%= build %>/assets/js/script.min.js'
+          dest: '<%= source %>/assets/js/script.min.js'
         }]
       },
       plugins: {
         files: [{
           src: '<%= source %>/_assets/scripts/plugins/**/*.js',
-          dest: '<%= build %>/assets/js/script.min.js'
+          dest: '<%= source %>/assets/js/script.min.js'
         }]
       }
     },
@@ -337,24 +355,24 @@ module.exports = function(grunt) {
         spawn: false
       },
       content: {
-        files: ['<%= source %>/**/*', '!<%= source %>/_assets/**/*', '!<%= build %>/**/*'],
+        files: ['<%= source %>/**/*', '!<%= source %>/_assets/**/*', '!<%= build %>/**/*', '!<%= source %>/assets/**/*'],
         tasks: 'jekyll'
       },
       fonts: {
         files: '<%= source %>/_assets/fonts/**/*',
-        tasks: 'copy:fonts'
+        tasks: ['copy:fonts', 'copy:buildFonts']
       },
       images: {
         files: '<%= source %>/_assets/images/**/*',
-        tasks: ['svg2png', 'svgmin', 'imagemin']
+        tasks: ['svg2png', 'svgmin', 'imagemin', 'copy:buildImages']
       },
       scripts: {
         files: '<%= source %>/_assets/scripts/**/*',
-        tasks: ['jshint', 'uglify:devPlugins']
+        tasks: ['jshint', 'uglify:devPlugins', 'copy:buildScripts']
       },
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
-        tasks: ['sass', 'autoprefixer:devStyles']
+        tasks: ['sass', 'autoprefixer:devStyles', 'copy:buildStyles']
       }
     }
 
@@ -365,10 +383,10 @@ module.exports = function(grunt) {
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Dev task 'default'
-  grunt.registerTask('default', ['clean:build', 'copy', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
 
   // Build task
-  grunt.registerTask('build', ['clean:build', 'copy', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'prettify']);
+  grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'prettify']);
 
   // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
   grunt.registerTask('download', ['curl']);
