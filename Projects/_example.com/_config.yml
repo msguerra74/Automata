@@ -14,7 +14,7 @@ email: owner@email.com
 # Options
 jquery: true
 google_analytics_id:
-banner: Created by Michael Guerra in 2013 | http://msguerra74.com
+banner: Created by Developer in 2013 | http://website.com
 
 # Jekyll options
 include: ['']
