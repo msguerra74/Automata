@@ -20,12 +20,28 @@
   {{ page.head }}{% endif %}
 </head>
 <body>
-  {% include header.html %}
+  <div class="header">
+    <header role="banner">
+{% include header.html %}
+    </header>
+  </div><!-- /header -->
   <div class="content">
-    {% include main.html %}
-    {% include aside.html %}
+    <div class="main">
+      <main role="main">
+{{ content }}
+      </main>
+    </div><!-- /main -->
+    <div class="aside">
+      <aside role="complimentary">
+{% include aside.html %}
+      </aside>
+    </div><!-- /aside -->
   </div><!-- /content -->
-  {% include footer.html %}{% if site.jquery %}
+  <div class="footer">
+    <footer role="contentinfo">
+{% include footer.html %}
+    </footer>
+  </div><!-- /footer -->{% if site.jquery %}
   <script src="{{ relative }}assets/js/jquery.min.js"></script>{% endif %}
   <script src="{{ relative }}assets/js/script.min.js"></script>{% if page.foot %}
   {{ page.foot }}{% endif %}{% if site.google_analytics_id %}

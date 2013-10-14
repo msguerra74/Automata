@@ -14,18 +14,16 @@ email: owner@email.com
 # Options
 jquery: true
 google_analytics_id:
+banner: Created by Michael Guerra in 2013 | http://msguerra74.com
 
 # Jekyll options
-exclude: ['.htaccess']
-future: false
 include: ['']
+exclude: ['.htaccess']
 keep_files: ['.git', 'assets', 'sftp-config.json']
+show_drafts: false
+future: false
 lsi: false
-markdown: rdiscount
 paginate: 7
 permalink: /:categories/:title/
-show_drafts: false
 timezone:
-
-# Misc
-banner: Created by Michael Guerra in 2013 | http://msguerra74.com
+markdown: rdiscount
