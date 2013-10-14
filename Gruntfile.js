@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     banner: '<%= prj.banner %>',
 
     // Directories
-    build: '<%= source %>/<%= prj.destination %>',
+    build: '<%= source %>/_site',
     source: 'Projects/<%= prj.folder %>',
 
     /* ---------- Packages ---------- */

@@ -1,9 +1,6 @@
 # Project folder
 folder: _example.com
 
-# Build directory
-destination: _BUILD
-
 # Website info
 url: http://localhost:4000
 title: Website Title
