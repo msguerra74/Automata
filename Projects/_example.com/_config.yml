@@ -1,5 +1,5 @@
-# Project directory
-directory: _example.com
+# Project folder
+folder: _example.com
 
 # Build directory
 destination: _BUILD

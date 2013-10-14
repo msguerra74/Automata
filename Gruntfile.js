@@ -13,18 +13,18 @@ module.exports = function(grunt) {
 
     /* ---------- Variables ---------- */
 
-    // Project variables file (Change '_example.com' to current project)
+    // Project settings ----- (Change '_example.com' to project folder)
     prj: grunt.file.readYAML('Projects/_example.com/_config.yml'),
 
-    // Automata project package
+    // Automata packages
     pkg: grunt.file.readJSON('package.json'),
 
     // Developer Banner
     banner: '<%= prj.banner %>',
 
     // Directories
-    build: '<%= source %>/_BUILD',
-    source: 'Projects/<%= prj.directory %>',
+    build: '<%= source %>/<%= prj.destination %>',
+    source: 'Projects/<%= prj.folder %>',
 
     /* ---------- Packages ---------- */
 
@@ -198,7 +198,6 @@ module.exports = function(grunt) {
     jekyll: {
       content: {
         options: {
-          config: '<%= source %>/_config.yml',
           dest: '<%= build %>',
           src: '<%= source %>'
         }
