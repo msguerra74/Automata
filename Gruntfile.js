@@ -179,7 +179,7 @@ module.exports = function(grunt) {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
       },
-      normalize_oldie: {
+      normalizeOldie: {
         src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize_oldie.scss'
       }
@@ -240,10 +240,10 @@ module.exports = function(grunt) {
 
     prettify: {
       options: {
-        brace_style: 'collapse',
-        indent_inner_html: false,
-        indent_scripts: 'normal',
-        unformatted: ['a', 'abbr', 'acronym', 'b', 'bdo', 'big', 'cite', 'code', 'dd', 'del', 'dfn', 'dt', 'em', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'i', 'ins', 'kbd', 'li', 'p', 'pre', 'q', 's', 'samp', 'small', 'span', 'strike', 'strong', 'sub', 'sup', 'tt', 'u', 'var']
+        'brace_style': 'collapse',
+        'indent_inner_html': false,
+        'indent_scripts': 'normal',
+        unformatted: ['a', 'abbr', 'acronym', 'b', 'bdo', 'big', 'cite', 'code', 'dd', 'del', 'dfn', 'dt', 'em', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'ins', 'kbd', 'li', 'p', 'pre', 'q', 's', 'samp', 'small', 'span', 'strike', 'strong', 'sub', 'sup', 'tt', 'u', 'var']
       },
       content: {
         expand: true,
