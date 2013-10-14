@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     /* ---------- Variables ---------- */
 
     // Project variables file (Change '_example.com' to current project)
-    prj: grunt.file.readYAML('Projects/_example.com/project.yml'),
+    prj: grunt.file.readYAML('Projects/_example.com/_config.yml'),
 
     // Automata project package
     pkg: grunt.file.readJSON('package.json'),
@@ -96,19 +96,19 @@ module.exports = function(grunt) {
     copy: {
       fonts: {
         expand: true,
-        cwd: '<%= source %>/assets/fonts',
+        cwd: '<%= source %>/_assets/fonts',
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= build %>/assets/fonts'
       },
       htc: {
         expand: true,
-        cwd: '<%= source %>/assets/scripts/vendor',
+        cwd: '<%= source %>/_assets/scripts/vendor',
         src: '**/*.htc',
         dest: '<%= build %>/assets/js'
       },
       vendorScripts: {
         expand: true,
-        cwd: '<%= source %>/assets/scripts/vendor',
+        cwd: '<%= source %>/_assets/scripts/vendor',
         src: '**/*.js',
         dest: '<%= build %>/assets/js'
       }
@@ -143,27 +143,27 @@ module.exports = function(grunt) {
     curl: {
       boxsizing: {
         src: 'https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc',
-        dest: '<%= source %>/assets/scripts/vendor/boxsizing.htc'
+        dest: '<%= source %>/_assets/scripts/vendor/boxsizing.htc'
       },
       htaccess: {
         src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
-        dest: '<%= source %>/content/.htaccess'
+        dest: '<%= source %>/.htaccess'
       },
       jquery: {
         src: 'http://code.jquery.com/jquery.min.js',
-        dest: '<%= source %>/assets/scripts/vendor/jquery.min.js'
+        dest: '<%= source %>/_assets/scripts/vendor/jquery.min.js'
       },
       oldie: {
         src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js'],
-        dest: '<%= source %>/assets/scripts/vendor/oldie.min.js'
+        dest: '<%= source %>/_assets/scripts/vendor/oldie.min.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
-        dest: '<%= source %>/assets/styles/vendor/_normalize.scss'
+        dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
       },
       normalize_oldie: {
         src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
-        dest: '<%= source %>/assets/styles/vendor/_normalize_oldie.scss'
+        dest: '<%= source %>/_assets/styles/vendor/_normalize_oldie.scss'
       }
     },
 
@@ -177,7 +177,7 @@ module.exports = function(grunt) {
       images: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/assets/images',
+          cwd: '<%= source %>/_assets/images',
           src: '**/*.{gif,jpg,png}',
           dest: '<%= build %>/assets/img'
         }, {
@@ -198,9 +198,9 @@ module.exports = function(grunt) {
     jekyll: {
       content: {
         options: {
-          config: '<%= source %>/project.yml',
+          config: '<%= source %>/_config.yml',
           dest: '<%= build %>',
-          src: '<%= source %>/content'
+          src: '<%= source %>'
         }
       }
     },
@@ -212,7 +212,7 @@ module.exports = function(grunt) {
      */
 
     jshint: {
-      scripts: ['Gruntfile.js', '<%= source %>/assets/scripts/plugins/**/*.js']
+      scripts: ['Gruntfile.js', '<%= source %>/_assets/scripts/plugins/**/*.js']
     },
 
     /**
@@ -252,7 +252,7 @@ module.exports = function(grunt) {
       styles: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/assets/styles',
+          cwd: '<%= source %>/_assets/styles',
           src: '*.scss',
           dest: '<%= build %>/assets/css',
           ext: '.unprefixed.css'
@@ -269,7 +269,7 @@ module.exports = function(grunt) {
     svg2png: {
       svg: {
         files: [{
-          src: '<%= source %>/assets/images/**/*.svg',
+          src: '<%= source %>/_assets/images/**/*.svg',
           dest: '<%= build %>/assets/img'
         }]
       }
@@ -290,7 +290,7 @@ module.exports = function(grunt) {
       svg: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/assets/images',
+          cwd: '<%= source %>/_assets/images',
           src: '**/*.svg',
           dest: '<%= build %>/assets/img'
         }]
@@ -314,13 +314,13 @@ module.exports = function(grunt) {
           mangle: false
         },
         files: [{
-          src: '<%= source %>/assets/scripts/plugins/**/*.js',
+          src: '<%= source %>/_assets/scripts/plugins/**/*.js',
           dest: '<%= build %>/assets/js/script.min.js'
         }]
       },
       plugins: {
         files: [{
-          src: '<%= source %>/assets/scripts/plugins/**/*.js',
+          src: '<%= source %>/_assets/scripts/plugins/**/*.js',
           dest: '<%= build %>/assets/js/script.min.js'
         }]
       }
@@ -338,23 +338,23 @@ module.exports = function(grunt) {
         spawn: false
       },
       content: {
-        files: '<%= source %>/content/**/*',
+        files: ['<%= source %>/**/*', '!<%= source %>/_assets/**/*', '!<%= build %>/**/*'],
         tasks: 'jekyll'
       },
       fonts: {
-        files: '<%= source %>/assets/fonts/**/*',
+        files: '<%= source %>/_assets/fonts/**/*',
         tasks: 'copy:fonts'
       },
       images: {
-        files: '<%= source %>/assets/images/**/*',
+        files: '<%= source %>/_assets/images/**/*',
         tasks: ['svg2png', 'svgmin', 'imagemin']
       },
       scripts: {
-        files: '<%= source %>/assets/scripts/**/*',
+        files: '<%= source %>/_assets/scripts/**/*',
         tasks: ['jshint', 'uglify:devPlugins']
       },
       styles: {
-        files: '<%= source %>/assets/styles/**/*',
+        files: '<%= source %>/_assets/styles/**/*',
         tasks: ['sass', 'autoprefixer:devStyles']
       }
     }
