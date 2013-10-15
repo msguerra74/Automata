@@ -1,0 +1,87 @@
+//------------------------------//
+// BREAKPOINTS
+//------------------------------//
+
+// ---------- Baseline grid ---------- //
+
+// Usage:
+// @include baseline(16, 24); /* 16px / 24px */
+
+@mixin baseline($target, $context: $base__font-size) {
+  font-size: em($target, $context);
+  @if $target >= $baseline {
+    line-height: strip-units(em($baseline, $target)) * 2;
+  }
+  @else {
+    line-height: strip-units(em($baseline, $target));
+  }
+  margin: em($baseline, $target) 0;
+}
+
+// ---------- Breakpoints ---------- //
+
+// Usage:
+// @include breakpoint(medium) {}
+
+@mixin breakpoint($point) {
+  @if $oldie {
+    @if ($point == small) or ($point == medium) {
+      @content;
+    }
+  }
+  @else {
+    @each $breakpoint in $breakpoints {
+      @if $point == nth($breakpoint, 1) {
+        @media (min-width: nth($breakpoint, 2)) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// ---------- Grid ---------- //
+
+// Based on:
+// https://github.com/studiowolf/taiga-grid
+// Usage:
+// @include grid(12, 2); /* 12 columns w/ margin-left: 2%; margin-right: 2%; */
+// or
+// @include grid(12, 2, 3); /* 12 columns w/ margin-left: 2%; margin-right: 3%; */
+// Note:
+// You can also use negative margins
+
+@mixin col($n: 1) {
+  @extend %border-box;
+  width: $n * $grid__column;
+  @include inline-block(top);
+}
+
+@mixin prepend($n: 1) {
+  margin-left: $grid__column * $n;
+}
+
+@mixin append($n: 1) {
+  margin-right: $grid__column * $n;
+}
+
+@mixin grid($cols: 1, $grid__margin--left: 0, $grid__margin--right: $grid__margin--left) {
+  @include col($cols - ($grid__margin--left + $grid__margin--right));
+  @include prepend($grid__margin--left);
+  @include append($grid__margin--right);
+}
+
+// ---------- inline-block ---------- //
+
+// Usage:
+// @include inline-block(top); /* vertical-align: top; */
+
+@mixin inline-block($vertical-align: baseline) {
+  display:inline-block;
+  vertical-align: $vertical-align;
+  @if $oldie {
+    zoom: 1;
+    *display: inline;
+    *vertical-align: $vertical-align;
+  }
+}

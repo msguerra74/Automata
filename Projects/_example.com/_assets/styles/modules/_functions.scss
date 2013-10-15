@@ -7,9 +7,9 @@
 // Based on:
 // https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/functions/_px-to-em.scss
 // Usage:
-// font-size: em(32); // 2em
-// or (target, context)
-// font-size: em(16, 32); // .5em
+// font-size: em(32); /* 32px */
+// or
+// font-size: em(16, 32); /* 16px / 32px */
 
 @function em($target, $context: $base__font-size) {
   @if not unitless($target) {

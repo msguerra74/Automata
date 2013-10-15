@@ -43,12 +43,12 @@ html {
     background: $base__background-color;
   }
   font: #{em($base__font-size)}/#{$base__line-height} $base__font-family;
-  margin: 0 auto;
-  @if $oldie {
-    width: $oldie__width;
-  }
   min-height: 100%;
   overflow-y: scroll;
+  @if $oldie {
+    margin: 0 auto;
+    width: $oldie__width;
+  }
 }
 
 ::-moz-selection {

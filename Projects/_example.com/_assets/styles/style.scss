@@ -5,11 +5,8 @@
 @import
   'modules/variables',
   'modules/functions',
-  'modules/mixins/breakpoints',
-  'modules/mixins/grids',
-  'modules/mixins/helpers',
-  'modules/mixins/objects',
-  'modules/mixins/properties',
+  'modules/mixins',
+  'modules/placeholders',
   'vendor/normalize',
   'partials/base',
   'partials/header',
