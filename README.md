@@ -8,7 +8,6 @@ by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
 Designed for a modern web development workflow, **Automata** is a complete HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, and an automated development server with LiveReload for rapid feedback.
 
-- [Automata project website][]
 - [Automata GitHub page][]
 - [Automata.zip][]
 
@@ -123,7 +122,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [msguerra74.com]: http://msguerra74.com/
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css
-[Automata project website]: http://msguerra74.github.io/Automata/
 [RDiscount]: https://github.com/davidfstr/rdiscount
 [Ruby]: https://www.ruby-lang.org/en/
 [Sass]: http://sass-lang.com/
