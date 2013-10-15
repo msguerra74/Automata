@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
     /* ---------- Variables ---------- */
 
-    // Project settings ----- (Change '_example.com' to project folder)
+    // Project settings ----- (Change '_example.com' to working project folder)
     prj: grunt.file.readYAML('Projects/_example.com/_config.yml'),
 
     // Automata packages
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     banner: '<%= prj.banner %>',
 
     // Directories
-    build: '<%= source %>/_site',
+    site: '<%= source %>/_site',
     source: 'Projects/<%= prj.folder %>',
 
     /* ---------- Packages ---------- */
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
      */
 
     clean: {
-      generated: ['<%= build %>/**/{*,.*}', '!<%= build %>/{.git,sftp-config.json}', '<%= source %>/assets'],
+      generated: ['<%= site %>/**/{*,.*}', '!<%= site %>/{.git,sftp-config.json}', '<%= source %>/assets'],
       css: '<%= source %>/assets/css/*.{prefixed,unprefixed}.css'
     },
 
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          base: '<%= build %>',
+          base: '<%= site %>',
           hostname: '*',
           livereload: true,
           open: 'http://localhost:<%= connect.server.options.port %>',
@@ -98,25 +98,25 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= source %>/assets/fonts',
         src: '**/*.{eot,svg,ttf,woff}',
-        dest: '<%= build %>/assets/fonts'
+        dest: '<%= site %>/assets/fonts'
       },
       buildImages: {
         expand: true,
         cwd: '<%= source %>/assets/img',
         src: '**/*.css',
-        dest: '<%= build %>/assets/img'
+        dest: '<%= site %>/assets/img'
       },
       buildScripts: {
         expand: true,
         cwd: '<%= source %>/assets/js',
         src: '**/*.js',
-        dest: '<%= build %>/assets/js'
+        dest: '<%= site %>/assets/js'
       },
       buildStyles: {
         expand: true,
         cwd: '<%= source %>/assets/css',
         src: '**/*.css',
-        dest: '<%= build %>/assets/css'
+        dest: '<%= site %>/assets/css'
       },
       fonts: {
         expand: true,
@@ -179,7 +179,7 @@ module.exports = function(grunt) {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
       },
-      normalizeOldie: {
+      'normalize_oldie': {
         src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize_oldie.scss'
       }
@@ -216,7 +216,7 @@ module.exports = function(grunt) {
     jekyll: {
       content: {
         options: {
-          dest: '<%= build %>',
+          dest: '<%= site %>',
           src: '<%= source %>'
         }
       }
@@ -247,9 +247,9 @@ module.exports = function(grunt) {
       },
       content: {
         expand: true,
-        cwd: '<%= build %>',
+        cwd: '<%= site %>',
         src: '**/*.{html,php}',
-        dest: '<%= build %>'
+        dest: '<%= site %>'
       }
     },
 
@@ -355,7 +355,7 @@ module.exports = function(grunt) {
         spawn: false
       },
       content: {
-        files: ['<%= source %>/**/*', '!<%= source %>/_assets/**/*', '!<%= build %>/**/*', '!<%= source %>/assets/**/*'],
+        files: ['<%= source %>/**/*', '!<%= source %>/_assets/**/*', '!<%= site %>/**/*', '!<%= source %>/assets/**/*'],
         tasks: 'jekyll'
       },
       fonts: {
@@ -385,7 +385,7 @@ module.exports = function(grunt) {
   // Dev task 'default'
   grunt.registerTask('default', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
 
-  // Build task
+  // Build task (builds to the '_site' folder)
   grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'prettify']);
 
   // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
