@@ -1,5 +1,5 @@
 //------------------------------//
-// BASE STYLES
+// BASE
 //------------------------------//
 
 h1,.alpha,
@@ -62,6 +62,15 @@ html {
 ::selection {
   background: $selection-color;
   text-shadow: none;
+}
+
+a {
+  border-bottom: 1px solid;
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: none;
+  }
 }
 
 audio,

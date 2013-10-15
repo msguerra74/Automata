@@ -1,5 +1,5 @@
 //------------------------------//
-// DEFAULT STYLESHEET
+// MAIN STYLESHEET
 //------------------------------//
 
 @import
@@ -8,6 +8,7 @@
   'modules/mixins/css',
   'modules/mixins/grids',
   'modules/mixins/helpers',
+  'modules/mixins/objects',
   'vendor/normalize',
   'partials/base',
   'partials/header',
