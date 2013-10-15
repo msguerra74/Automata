@@ -7,10 +7,11 @@ $oldie: true;
 @import
   'modules/variables',
   'modules/functions',
-  'modules/mixins/css',
+  'modules/mixins/breakpoints',
   'modules/mixins/grids',
   'modules/mixins/helpers',
   'modules/mixins/objects',
+  'modules/mixins/properties',
   'vendor/normalize_oldie',
   'partials/base',
   'partials/header',

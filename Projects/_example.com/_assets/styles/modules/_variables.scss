@@ -4,15 +4,15 @@
 
 // ---------- Base ---------- //
 
-$base-background-color: white !default;
-$base-color: #222 !default;
-$base-font-family: Verdana, Geneva, sans-serif !default;
-$base-font-family-code: Georgia, Times, 'Times New Roman', serif !default;
-$base-font-family-heading: Verdana, Geneva, sans-serif !default;
-$base-font-size: 16px !default;
-$base-line-height: 1.5 !default;
-$base-max-width: none !default;
-$oldie-width: 60em !default; // 960px
+$base__background-color: white !default;
+$base__color: #222 !default;
+$base__font-family: Verdana, Geneva, sans-serif !default;
+$base__font-family--code: Georgia, Times, 'Times New Roman', serif !default;
+$base__font-family--heading: Verdana, Geneva, sans-serif !default;
+$base__font-size: 16px !default;
+$base__line-height: 1.5 !default;
+$base__max-width: none !default;
+$oldie__width: 60em !default; // 960px
 
 // ---------- Breakpoints ---------- //
 
@@ -23,18 +23,18 @@ $xlarge: 85.4375em !default; // 1367px
 
 // ---------- Colors ---------- //
 
-$selection-color: #eee !default;
+$selection__background-color: #eee !default;
 
 // ---------- Grid ---------- //
 
-$baseline-grid-overlay: false !default; // Overlay baseline grid
-$grid-columns: 48 !default;
+$baseline-grid__overlay: false !default; // Overlay baseline grid
+$grid__columns: 48 !default;
 
 // Number of grid columns
 
 // ---------- Variables used in mixins that don't change ---------- //
 
-$baseline: $base-font-size * $base-line-height !default; // Baseline grid mixin
+$baseline: $base__font-size * $base__line-height !default; // Baseline grid mixin
 $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default; // Breakpoint mixin
-$grid-column: 100% / $grid-columns !default; // Grid mixin
+$grid__column: 100% / $grid__columns !default; // Grid mixin
 $oldie: false !default; // Set to true on oldie.scss to pull in 'oldie' styles

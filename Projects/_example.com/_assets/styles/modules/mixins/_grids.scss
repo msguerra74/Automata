@@ -7,7 +7,7 @@
 // Usage:
 // @include baseline(16, 24);
 
-@mixin baseline($target, $context: $base-font-size) {
+@mixin baseline($target, $context: $base__font-size) {
   font-size: em($target, $context);
   @if $target >= $baseline {
     line-height: strip-units(em($baseline, $target)) * 2;
@@ -35,19 +35,19 @@
 @mixin col($n: 1) {
   @include border-box;
   @include inline-block(top);
-  width: $n * $grid-column;
+  width: $n * $grid__column;
 }
 
 @mixin prepend($n: 1) {
-  margin-left: $grid-column * $n;
+  margin-left: $grid__column * $n;
 }
 
 @mixin append($n: 1) {
-  margin-right: $grid-column * $n;
+  margin-right: $grid__column * $n;
 }
 
-@mixin grid($cols: 1, $grid-margin-left: 0, $grid-margin-right: $grid-margin-left) {
-  @include col($cols - ($grid-margin-left + $grid-margin-right));
-  @include prepend($grid-margin-left);
-  @include append($grid-margin-right);
+@mixin grid($cols: 1, $grid__margin--left: 0, $grid__margin--right: $grid__margin--left) {
+  @include col($cols - ($grid__margin--left + $grid__margin--right));
+  @include prepend($grid__margin--left);
+  @include append($grid__margin--right);
 }

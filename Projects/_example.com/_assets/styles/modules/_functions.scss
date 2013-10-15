@@ -11,7 +11,7 @@
 // or (target, context)
 // font-size: em(16, 32); // .5em
 
-@function em($target, $context: $base-font-size) {
+@function em($target, $context: $base__font-size) {
   @if not unitless($target) {
     $target: strip-units($target);
   }
