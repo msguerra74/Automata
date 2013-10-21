@@ -7,13 +7,15 @@ title: Website Title
 description: Website description
 owner: Owner Name
 email: owner@email.com
-
-# Options
-jquery: true
-google_analytics_id:
 banner: Created by Developer in 2013 | http://website.com
 
+# Options
+google_analytics_id:
+google_fonts:
+jquery: true
+
 # Jekyll options
+destination: ./_site
 include: ['']
 exclude: ['.htaccess']
 keep_files: ['.git', 'sftp-config.json']

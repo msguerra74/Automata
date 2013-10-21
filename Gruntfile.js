@@ -19,11 +19,8 @@ module.exports = function(grunt) {
     // Automata packages
     pkg: grunt.file.readJSON('package.json'),
 
-    // Developer Banner
-    banner: '<%= prj.banner %>',
-
     // Directories
-    site: '<%= source %>/_site',
+    site: '<%= source %>/<%= prj.destination %>',
     source: 'Projects/<%= prj.folder %>',
 
     /* ---------- Packages ---------- */
@@ -140,7 +137,7 @@ module.exports = function(grunt) {
 
     cssmin: {
       options: {
-        banner: '/* <%= banner %> */',
+        banner: '/* <%= prj.banner %> */',
         keepSpecialComments: 0
       },
       styles: {
@@ -261,7 +258,7 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        banner: '/* <%= banner %> */',
+        banner: '/* <%= prj.banner %> */',
         noCache: true,
         precision: 16,
         style: 'expanded'
@@ -322,7 +319,7 @@ module.exports = function(grunt) {
 
     uglify: {
       options: {
-        banner: '/* <%= banner %> */\n'
+        banner: '/* <%= prj.banner %> */\n'
       },
       devPlugins: {
         options: {
