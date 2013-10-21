@@ -10,8 +10,8 @@ email: owner@email.com
 banner: Created by Developer in 2013 | http://website.com
 
 # Options
-google_analytics_id:
-google_fonts:
+google_analytics_id: # UA-xxxxxxxx-x
+google_fonts: # Open+Sans:400italic,400,700,800
 jquery: true
 
 # Jekyll options
@@ -24,5 +24,5 @@ future: false
 lsi: false
 paginate: 7
 permalink: /:categories/:title/
-timezone:
+timezone: # nil
 markdown: rdiscount
