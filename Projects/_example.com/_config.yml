@@ -10,7 +10,7 @@ email: owner@email.com
 banner: Created by Developer in 2013 | http://website.com
 
 # Options
-google_analytics_id:
+google_analytics_id: # UA-xxxxxx-x
 jquery: false
 
 # Jekyll options

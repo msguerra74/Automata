@@ -73,7 +73,7 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
     - 'grunt' to develop the site with a LiveReload server
     - 'grunt build' to build a production version of the current site
-    - 'grunt download' to download the latest vendor files (.htaccess, \_normalize.scss, \_normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js)
+    - 'grunt download' to download the latest vendor files (\_normalize.scss, \_normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js)
 
 The MIT License (MIT)
 ---------------------

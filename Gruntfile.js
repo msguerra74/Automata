@@ -160,10 +160,6 @@ module.exports = function(grunt) {
         src: 'https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc',
         dest: '<%= source %>/_assets/scripts/vendor/boxsizing.htc'
       },
-      htaccess: {
-        src: 'http://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
-        dest: '<%= source %>/.htaccess'
-      },
       jquery: {
         src: 'http://code.jquery.com/jquery.min.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.min.js'
@@ -385,7 +381,7 @@ module.exports = function(grunt) {
   // Build task (builds to the '_site' folder)
   grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'prettify']);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
+  // Downloads the latest versions of: _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
   grunt.registerTask('download', ['curl']);
 
 };
