@@ -77,7 +77,7 @@
 // @include inline-block(top); /* vertical-align: top; */
 
 @mixin inline-block($vertical-align: baseline) {
-  display:inline-block;
+  display: inline-block;
   vertical-align: $vertical-align;
   @if $oldie {
     zoom: 1;
