@@ -8,8 +8,7 @@
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% if site.google_fonts %}
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.google_fonts }}">{% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
   <!--[if (gt IE 8) | (IEMobile)]><!-->
   <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css">
   <!--<![endif]-->
