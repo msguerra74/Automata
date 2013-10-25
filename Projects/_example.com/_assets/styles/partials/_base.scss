@@ -44,6 +44,7 @@ html {
   }
   font: #{em($base__font-size)}/#{$base__line-height} $base__font-family;
   min-height: 100%;
+  min-width: em(320);
   overflow-y: scroll;
   @if $oldie {
     margin: 0 auto;

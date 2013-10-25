@@ -11,6 +11,7 @@ banner: Created by Developer in 2013 | http://website.com
 
 # Options
 google_analytics_id: # UA-xxxxxxxx-x
+google_fonts: # Open+Sans:400,400italic,700,800
 jquery: false
 
 # Jekyll options

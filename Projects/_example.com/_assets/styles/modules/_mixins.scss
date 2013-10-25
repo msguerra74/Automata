@@ -6,8 +6,12 @@
 
 // Usage:
 // @include baseline(16, 24); /* 16px / 24px */
+// or
+// @include baseline(16, 24, 0); /* 16px / 24px / margin-bottom: 0; */
+// or
+// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: default * 2;
 
-@mixin baseline($target, $context: $base__font-size) {
+@mixin baseline($target, $context: $base__font-size, $margin-bottom: em($baseline, $target)) {
   font-size: em($target, $context);
   @if $target >= $baseline {
     line-height: strip-units(em($baseline, $target)) * 2;
@@ -15,7 +19,15 @@
   @else {
     line-height: strip-units(em($baseline, $target));
   }
-  margin: em($baseline, $target) 0;
+  @if $margin-bottom == 0 {
+    margin-bottom: $margin-bottom;
+  }
+  @elseif $margin-bottom != em($baseline, $target) {
+    margin-bottom: em($baseline, $target) * $margin-bottom;
+  }
+  @else {
+    margin-bottom: em($baseline, $target);
+  }
 }
 
 // ---------- Breakpoints ---------- //
