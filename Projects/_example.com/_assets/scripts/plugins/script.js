@@ -16,5 +16,5 @@
   }
 }());
 
-// ---------- JavaScript / jQuery plugins ---------- //
+/* ---------- JavaScript / jQuery plugins ---------- */
 
