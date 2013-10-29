@@ -11,11 +11,11 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}{% if site.google_fonts %}
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.google_fonts }}">{% endif %}{% if site.oldie %}
   <!--[if (gt IE 8) | (IEMobile)]><!-->{% endif %}
-  <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css">{% if site.oldie %}
+  <link rel="stylesheet" href="{{ relative }}assets/css/style.css">{% if site.oldie %}
   <!--<![endif]-->
   <!--[if (lt IE 9) & (!IEMobile)]>
-  <link rel="stylesheet" href="{{ relative }}assets/css/oldie.min.css">
-  <script src="{{ relative }}assets/js/oldie.min.js"></script>
+  <link rel="stylesheet" href="{{ relative }}assets/css/oldie.css">
+  <script src="{{ relative }}assets/js/oldie.js"></script>
   <![endif]-->{% endif %}{% if site.jquery or site.js_plugins %}
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% if page.head %}
   {{ page.head }}{% endif %}
@@ -43,8 +43,8 @@
 {% include footer.html %}
     </footer>
   </div><!-- /footer -->{% endif %}{% if site.jquery %}
-  <script src="{{ relative }}assets/js/jquery.min.js"></script>{% endif %}{% if site.js_plugins %}
-  <script src="{{ relative }}assets/js/script.min.js"></script>{% endif %}{% if page.foot %}
+  <script src="{{ relative }}assets/js/jquery.js"></script>{% endif %}{% if site.js_plugins %}
+  <script src="{{ relative }}assets/js/script.js"></script>{% endif %}{% if page.foot %}
   {{ page.foot }}{% endif %}{% if site.google_analytics_id %}
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

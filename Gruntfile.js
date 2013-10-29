@@ -41,7 +41,7 @@ module.exports = function(grunt) {
           cwd: '<%= source %>/assets/css',
           src: '*.unprefixed.css',
           dest: '<%= source %>/assets/css',
-          ext: '.min.css'
+          ext: '.css'
         }]
       },
       styles: {
@@ -100,13 +100,13 @@ module.exports = function(grunt) {
       buildImages: {
         expand: true,
         cwd: '<%= source %>/assets/img',
-        src: '**/*.css',
+        src: '**/*.{gif,jpg,png,svg}',
         dest: '<%= site %>/assets/img'
       },
       buildScripts: {
         expand: true,
         cwd: '<%= source %>/assets/js',
-        src: '**/*.js',
+        src: '**/*.{htc,js}',
         dest: '<%= site %>/assets/js'
       },
       buildStyles: {
@@ -121,10 +121,10 @@ module.exports = function(grunt) {
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= source %>/assets/fonts'
       },
-      vendorScripts: {
+      vendorHTC: {
         expand: true,
         cwd: '<%= source %>/_assets/scripts/vendor',
-        src: '**/*.{htc,js}',
+        src: '**/*.htc',
         dest: '<%= source %>/assets/js'
       }
     },
@@ -145,7 +145,7 @@ module.exports = function(grunt) {
         cwd: '<%= source %>/assets/css',
         src: '*.prefixed.css',
         dest: '<%= source %>/assets/css',
-        ext: '.min.css'
+        ext: '.css'
       }
     },
 
@@ -161,12 +161,12 @@ module.exports = function(grunt) {
         dest: '<%= source %>/_assets/scripts/vendor/boxsizing.htc'
       },
       jquery: {
-        src: 'http://code.jquery.com/jquery.min.js',
-        dest: '<%= source %>/_assets/scripts/vendor/jquery.min.js'
+        src: 'http://code.jquery.com/jquery.js',
+        dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       oldie: {
-        src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/respond.min.js'],
-        dest: '<%= source %>/_assets/scripts/vendor/oldie.min.js'
+        src: ['https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/respond.src.js'],
+        dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
@@ -175,6 +175,29 @@ module.exports = function(grunt) {
       'normalize_oldie': {
         src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize_oldie.scss'
+      }
+    },
+
+    /**
+     * Hashres
+     * Hashes asset files and renames links in html/php/etc
+     * https://github.com/luismahou/grunt-hashres
+     */
+
+    hashres: {
+      assets: {
+        options: {
+          fileNameFormat: '${name}-${hash}.${ext}'
+        },
+        src: '<%= site %>/assets/**/*.{gif,htc,jpg,png,svg}',
+        dest: '<%= site %>/**/*.{css,html,js,php}'
+      },
+      minifiedAssets: {
+        options: {
+          fileNameFormat: '${name}-${hash}.min.${ext}'
+        },
+        src: '<%= site %>/assets/**/*.{css,js}',
+        dest: '<%= site %>/**/*.{css,html,js,php}'
       }
     },
 
@@ -325,13 +348,21 @@ module.exports = function(grunt) {
         },
         files: [{
           src: '<%= source %>/_assets/scripts/plugins/**/*.js',
-          dest: '<%= source %>/assets/js/script.min.js'
+          dest: '<%= source %>/assets/js/script.js'
         }]
       },
       plugins: {
         files: [{
           src: '<%= source %>/_assets/scripts/plugins/**/*.js',
-          dest: '<%= source %>/assets/js/script.min.js'
+          dest: '<%= source %>/assets/js/script.js'
+        }]
+      },
+      vendor: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/_assets/scripts/vendor',
+          src: '**/*.js',
+          dest: '<%= source %>/assets/js'
         }]
       }
     },
@@ -361,7 +392,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: '<%= source %>/_assets/scripts/**/*',
-        tasks: ['jshint', 'uglify:devPlugins', 'copy:buildScripts']
+        tasks: ['jshint', 'uglify:devPlugins', 'uglify:vendor', 'copy:buildScripts']
       },
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
@@ -376,10 +407,10 @@ module.exports = function(grunt) {
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Dev task 'default'
-  grunt.registerTask('default', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:devPlugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', ['clean:generated', 'copy:fonts', 'copy:vendorHTC', 'jshint', 'uglify:devPlugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
 
   // Build task (builds to the '_site' folder)
-  grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorScripts', 'jshint', 'uglify:plugins', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'prettify']);
+  grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorHTC', 'jshint', 'uglify:plugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'hashres', 'prettify']);
 
   // Downloads the latest versions of: _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
   grunt.registerTask('download', ['curl']);

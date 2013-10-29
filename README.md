@@ -6,7 +6,7 @@ Automated Static Website Generator
 
 by **Michael Guerra** | [@msguerra74][] | [msguerra74.com][]
 
-Designed for a modern web development workflow, **Automata** is a complete HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, and an automated development server with LiveReload for rapid feedback.
+Designed for a modern web development workflow, **Automata** is a complete HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for rapid feedback.
 
 - [Automata GitHub page][]
 - [Automata.zip][]
@@ -20,12 +20,14 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 ### Includes
 
 - CSS
+    - [Google Fonts][]: Support for Google Web Fonts
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
     - [boxsizing.htc][]: A CSS box-sizing: border-box polyfill for IE 6/7
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
+    - [respond.js][]: Polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
 
@@ -46,6 +48,7 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
         - [grunt-contrib-uglify][]: Minify JavaScript files
         - [grunt-contrib-watch][]: Run tasks whenever watched files change
         - [grunt-curl][]: Download files from the internet
+        - [grunt-hashres][]: Hashes asset files and renames links in html/php/etc
         - [grunt-jekyll][]: Static site generator
         - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
@@ -95,6 +98,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [GitHub]: https://github.com/msguerra74
 [Automata GitHub page]: https://github.com/msguerra74/Automata
 [Google Analytics]: http://www.google.com/analytics/
+[Google Fonts]: http://www.google.com/fonts
 [Grunt]: http://gruntjs.com/
 [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
 [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
@@ -107,6 +111,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
 [grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
 [grunt-curl]: https://github.com/twolfson/grunt-curl
+[grunt-hashres]: https://github.com/luismahou/grunt-hashres
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
@@ -123,5 +128,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css
 [RDiscount]: https://github.com/davidfstr/rdiscount
+[respond.js]: https://github.com/scottjehl/Respond
 [Ruby]: https://www.ruby-lang.org/en/
 [Sass]: http://sass-lang.com/
