@@ -1,12 +1,12 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 <html class="no-js" lang="en">
-<head>
-  <!-- {{ site.banner }} -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>{% if site.banner %}
+  <!-- {{ site.banner }} -->{% endif %}
+  <meta charset="utf-8">{% if site.ie_edge %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.responsive %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}
   <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% if site.google_fonts %}
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.google_fonts }}">{% endif %}

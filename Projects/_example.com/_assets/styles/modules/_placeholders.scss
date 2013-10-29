@@ -99,6 +99,10 @@
 
 %media__body {
   overflow: hidden;
+  @if $oldie {
+    _overflow: visible;
+    zoom: 1;
+  }
 }
 
 // ---------- visually-hidden ---------- //

@@ -42,23 +42,18 @@ html {
   @else {
     background: $base__background-color;
   }
-  font: #{em($base__font-size)}/#{$base__line-height} $base__font-family;
+  font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
   min-height: 100%;
-  min-width: em(320);
   overflow-y: scroll;
-  @if $oldie {
-    margin: 0 auto;
-    width: $oldie__width;
-  }
 }
 
 ::-moz-selection {
-  background: $selection__background-color;
+  background: $base__background-color--selection;
   text-shadow: none;
 }
 
 ::selection {
-  background: $selection__background-color;
+  background: $base__background-color--selection;
   text-shadow: none;
 }
 
@@ -86,13 +81,14 @@ canvas {
 dl,
 ol,
 ul {
-  @include baseline(16);
+  @include baseline;
 }
 
 embed,
 img,
 object,
 video {
+  height: auto;
   max-width: 100%;
 }
 
@@ -138,7 +134,7 @@ h5,.epsilon {
 }
 
 h6,.zeta {
-  @include baseline(16);
+  @include baseline;
 }
 
 hr {
@@ -146,13 +142,19 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
-  margin: $base__line-height + em 0;
+  margin: em(24) 0;
   padding: 0;
+}
+
+img {
+  @if $oldie {
+    -ms-interpolation-mode: bicubic;
+  }
 }
 
 p,
 blockquote {
-  @include baseline(16);
+  @include baseline;
 }
 
 textarea {

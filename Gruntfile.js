@@ -165,7 +165,7 @@ module.exports = function(grunt) {
         dest: '<%= source %>/_assets/scripts/vendor/jquery.min.js'
       },
       oldie: {
-        src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js'],
+        src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/respond.min.js'],
         dest: '<%= source %>/_assets/scripts/vendor/oldie.min.js'
       },
       normalize: {

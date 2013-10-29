@@ -11,7 +11,7 @@
 // or
 // @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: default * 2;
 
-@mixin baseline($target, $context: $base__font-size, $margin-bottom: em($baseline, $target)) {
+@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin-bottom: em($baseline, $target)) {
   font-size: em($target, $context);
   @if $target >= $baseline {
     line-height: strip-units(em($baseline, $target)) * 2;
@@ -36,17 +36,10 @@
 // @include breakpoint(medium) {}
 
 @mixin breakpoint($point) {
-  @if $oldie {
-    @if ($point == small) or ($point == medium) {
-      @content;
-    }
-  }
-  @else {
-    @each $breakpoint in $breakpoints {
-      @if $point == nth($breakpoint, 1) {
-        @media (min-width: nth($breakpoint, 2)) {
-          @content;
-        }
+  @each $breakpoint in $breakpoints {
+    @if $point == nth($breakpoint, 1) {
+      @media (min-width: nth($breakpoint, 2)) {
+        @content;
       }
     }
   }
