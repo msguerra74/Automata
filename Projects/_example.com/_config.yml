@@ -17,7 +17,7 @@ google_fonts: # Open+Sans:400,400italic,700,800
 blog_feed: true
 canonical_link: true
 ie_edge: false
-jquery: # 1.10.2
+jquery: false
 js_plugins: true
 oldie: true
 responsive_design: true
