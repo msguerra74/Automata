@@ -1,50 +1,50 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
-<html class="no-js" lang="en">
-<head>{% if site.banner %}
-  <!-- {{ site.banner }} -->{% endif %}
+<html {% if site.jquery or site.js_plugins %}class="no-js" {% endif %}lang="en">
+<head>
+  <!-- {{ site.banner }} -->
   <meta charset="utf-8">{% if site.ie_edge %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.responsive %}
-  <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}
-  <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% if site.google_fonts %}
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.google_fonts }}">{% endif %}
-  <!--[if (gt IE 8) | (IEMobile)]><!-->
-  <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css">
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.responsive_design %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.blog_feed %}
+  <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.canonical_link %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}{% if site.google_fonts %}
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.google_fonts }}">{% endif %}{% if site.oldie %}
+  <!--[if (gt IE 8) | (IEMobile)]><!-->{% endif %}
+  <link rel="stylesheet" href="{{ relative }}assets/css/style.min.css">{% if site.oldie %}
   <!--<![endif]-->
   <!--[if (lt IE 9) & (!IEMobile)]>
   <link rel="stylesheet" href="{{ relative }}assets/css/oldie.min.css">
   <script src="{{ relative }}assets/js/oldie.min.js"></script>
-  <![endif]-->
-  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% if page.head %}
+  <![endif]-->{% endif %}{% if site.jquery or site.js_plugins %}
+  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% if page.head %}
   {{ page.head }}{% endif %}
 </head>
-<body>
+<body>{% if site.header %}
   <div class="header">
     <header role="banner">
 {% include header.html %}
     </header>
-  </div><!-- /header -->
-  <div class="content">
+  </div><!-- /header -->{% endif %}{% if site.aside %}
+  <div class="content">{% endif %}
     <div class="main">
       <main role="main">
 {{ content }}
       </main>
-    </div><!-- /main -->
+    </div><!-- /main -->{% if site.aside %}
     <div class="aside">
       <aside role="complementary">
 {% include aside.html %}
       </aside>
     </div><!-- /aside -->
-  </div><!-- /content -->
+  </div><!-- /content -->{% endif %}{% if site.footer %}
   <div class="footer">
     <footer role="contentinfo">
 {% include footer.html %}
     </footer>
-  </div><!-- /footer -->{% if site.jquery %}
-  <script src="{{ relative }}assets/js/jquery.min.js"></script>{% endif %}
-  <script src="{{ relative }}assets/js/script.min.js"></script>{% if page.foot %}
+  </div><!-- /footer -->{% endif %}{% if site.jquery %}
+  <script src="{{ relative }}assets/js/jquery-{{ site.jquery}}.min.js"></script>{% endif %}{% if site.js_plugins %}
+  <script src="{{ relative }}assets/js/script.min.js"></script>{% endif %}{% if page.foot %}
   {{ page.foot }}{% endif %}{% if site.google_analytics_id %}
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

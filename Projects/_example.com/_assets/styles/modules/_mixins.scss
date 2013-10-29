@@ -9,24 +9,24 @@
 // or
 // @include baseline(16, 24, 0); /* 16px / 24px / margin-bottom: 0; */
 // or
-// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: default * 2;
+// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: margin-bottom * 2; */
 
-@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin-bottom: em($baseline, $target)) {
+@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin-bottom: em($base__line-height, $target)) {
   font-size: em($target, $context);
-  @if $target >= $baseline {
-    line-height: strip-units(em($baseline, $target)) * 2;
+  @if $target >= $base__line-height {
+    line-height: strip-units(em($base__line-height, $target)) * 2;
   }
   @else {
-    line-height: strip-units(em($baseline, $target));
+    line-height: strip-units(em($base__line-height, $target));
   }
   @if $margin-bottom == 0 {
     margin-bottom: $margin-bottom;
   }
-  @elseif $margin-bottom != em($baseline, $target) {
-    margin-bottom: em($baseline, $target) * $margin-bottom;
+  @elseif $margin-bottom != em($base__line-height, $target) {
+    margin-bottom: em($base__line-height, $target) * $margin-bottom;
   }
   @else {
-    margin-bottom: em($baseline, $target);
+    margin-bottom: em($base__line-height, $target);
   }
 }
 
@@ -45,18 +45,24 @@
   }
 }
 
-// ---------- Grid ---------- //
+// ---------- Grid (float/inline-block) ---------- //
 
 // Based on:
 // https://github.com/studiowolf/taiga-grid
 // Usage:
-// @include grid(12, 2); /* 12 columns w/ margin-left: 2%; margin-right: 2%; */
+// @include grid--(float/inline-block)(12, 2); /* 12 columns w/ margin-left: 2%; margin-right: 2%; */
 // or
-// @include grid(12, 2, 3); /* 12 columns w/ margin-left: 2%; margin-right: 3%; */
+// @include grid--(float/inline-block)(12, 2, 3); /* 12 columns w/ margin-left: 2%; margin-right: 3%; */
 // Note:
 // You can also use negative margins
 
-@mixin col($n: 1) {
+@mixin col--float($n: 1) {
+  @extend %border-box;
+  @extend %left;
+  width: $n * $grid__column;
+}
+
+@mixin col--inline-block($n: 1) {
   @extend %border-box;
   width: $n * $grid__column;
   @include inline-block(top);
@@ -70,10 +76,16 @@
   margin-right: $grid__column * $n;
 }
 
-@mixin grid($cols: 1, $grid__margin--left: 0, $grid__margin--right: $grid__margin--left) {
-  @include col($cols - ($grid__margin--left + $grid__margin--right));
-  @include prepend($grid__margin--left);
-  @include append($grid__margin--right);
+@mixin grid--float($cols: 1, $grid__margin-left: 0, $grid__margin-right: $grid__margin-left) {
+  @include col--float($cols - ($grid__margin-left + $grid__margin-right));
+  @include prepend($grid__margin-left);
+  @include append($grid__margin-right);
+}
+
+@mixin grid--inline-block($cols: 1, $grid__margin-left: 0, $grid__margin-right: $grid__margin-left) {
+  @include col--inline-block($cols - ($grid__margin-left + $grid__margin-right));
+  @include prepend($grid__margin-left);
+  @include append($grid__margin-right);
 }
 
 // ---------- inline-block ---------- //

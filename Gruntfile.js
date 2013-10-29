@@ -162,7 +162,7 @@ module.exports = function(grunt) {
       },
       jquery: {
         src: 'http://code.jquery.com/jquery.min.js',
-        dest: '<%= source %>/_assets/scripts/vendor/jquery.min.js'
+        dest: '<%= source %>/_assets/scripts/vendor/jquery-<%= prj.jquery %>.min.js'
       },
       oldie: {
         src: ['http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/respond.min.js'],

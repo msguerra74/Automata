@@ -31,6 +31,16 @@
   }
 }
 
+// ---------- Floats ---------- //
+
+%left {
+  float: left;
+}
+
+%right {
+  float: right;
+}
+
 // ---------- hidden ---------- //
 
 // Hide from both screenreaders and browsers
@@ -51,7 +61,7 @@
   }
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 0;
     height: 150%;
@@ -78,7 +88,7 @@
 // Media image
 
 %media__image {
-  float: left;
+  @extend %left;
 
   & img {
     display: block;
@@ -88,7 +98,7 @@
 // Media image reversed
 
 %media__image--rev {
-  float: right;
+  @extend %right;
 
   & img {
     display: block;

@@ -57,6 +57,15 @@ html {
   text-shadow: none;
 }
 
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: em($base__line-height) 0;
+  padding: 0;
+}
+
 a {
   border-bottom: 1px solid;
   text-decoration: none;
@@ -81,7 +90,7 @@ canvas {
 dl,
 ol,
 ul {
-  @include baseline;
+  @include baseline(16);
 }
 
 embed,
@@ -134,16 +143,7 @@ h5,.epsilon {
 }
 
 h6,.zeta {
-  @include baseline;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: em(24) 0;
-  padding: 0;
+  @include baseline(16);
 }
 
 img {
@@ -154,7 +154,7 @@ img {
 
 p,
 blockquote {
-  @include baseline;
+  @include baseline(16);
 }
 
 textarea {

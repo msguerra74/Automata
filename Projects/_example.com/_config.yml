@@ -7,14 +7,25 @@ title: Website Title
 description: Website description
 owner: Owner Name
 email: owner@email.com
-banner: # Created by Developer in 2013 | http://website.com
+banner: Created by Developer in 2013 | http://website.com
 
-# Website options
+# Additional website info
 google_analytics_id: # UA-xxxxxxxx-x
 google_fonts: # Open+Sans:400,400italic,700,800
-ie_edge: true
-jquery: false
-responsive: true
+
+# Website options
+blog_feed: true
+canonical_link: true
+ie_edge: false
+jquery: # 1.10.2
+js_plugins: true
+oldie: true
+responsive_design: true
+
+# Website sections
+header: true
+aside: true
+footer: true
 
 # Jekyll options
 destination: _site
