@@ -27,7 +27,6 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
-    - [respond.js][]: Polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
 
@@ -76,7 +75,7 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
     - 'grunt' to develop the site with a LiveReload server
     - 'grunt build' to build a production version of the current site
-    - 'grunt download' to download the latest vendor files (\_normalize.scss, \_normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js)
+    - 'grunt download' to download the latest vendor files (\_normalize.scss, \_normalize_oldie.scss, boxsizing.htc, jquery.js, and oldie.js)
 
 The MIT License (MIT)
 ---------------------
@@ -128,6 +127,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css
 [RDiscount]: https://github.com/davidfstr/rdiscount
-[respond.js]: https://github.com/scottjehl/Respond
 [Ruby]: https://www.ruby-lang.org/en/
 [Sass]: http://sass-lang.com/

@@ -36,10 +36,17 @@
 // @include breakpoint(medium) {}
 
 @mixin breakpoint($point) {
-  @each $breakpoint in $breakpoints {
-    @if $point == nth($breakpoint, 1) {
-      @media (min-width: nth($breakpoint, 2)) {
-        @content;
+  @if $oldie {
+    @if ($point == small) or ($point == medium) {
+      @content;
+    }
+  }
+  @else {
+    @each $breakpoint in $breakpoints {
+      @if $point == nth($breakpoint, 1) {
+        @media (min-width: nth($breakpoint, 2)) {
+          @content;
+        }
       }
     }
   }

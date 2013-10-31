@@ -18,6 +18,7 @@ $base__font-family--heading: Verdana, Geneva, sans-serif !default;
 $base__font-size: 16px !default;
 $base__line-height: 24px !default;
 $base__line-height--ratio: $base__line-height / $base__font-size !default;
+$base__max-width: none !default;
 
 // ---------- Breakpoints ---------- //
 
@@ -28,11 +29,15 @@ $xlarge: (1367px  / $base__font-size) + em !default;
 
 // ---------- Grid ---------- //
 
-$baseline-grid--overlay: false !default; // Overlay baseline grid
-$grid__columns: 48 !default; // Number of grid columns
+$baseline-grid--overlay: false !default;
+$grid__columns: 48 !default;
 
-// ---------- Variables used in modules ---------- //
+// ---------- Misc variables ---------- //
 
-$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default; // Breakpoints mixin
-$grid__column: 100% / $grid__columns !default; // Grid mixin
-$oldie: false !default; // Set to true on oldie.scss to pull in 'oldie' styles
+$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default;
+$grid__column: 100% / $grid__columns !default;
+
+// ---------- Oldie ---------- //
+
+$oldie: false !default;
+$oldie__width: (960px / $base__font-size) + em !default;

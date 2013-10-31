@@ -165,7 +165,7 @@ module.exports = function(grunt) {
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       oldie: {
-        src: ['https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/respond.src.js'],
+        src: ['https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js'],
         dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
@@ -208,6 +208,9 @@ module.exports = function(grunt) {
      */
 
     imagemin: {
+      options: {
+        pngquant: true
+      },
       images: {
         files: [{
           expand: true,
@@ -412,7 +415,7 @@ module.exports = function(grunt) {
   // Build task (builds to the '_site' folder)
   grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorHTC', 'jshint', 'uglify:plugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'hashres', 'prettify']);
 
-  // Downloads the latest versions of: _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.min.js, and oldie.min.js
+  // Downloads the latest versions of: _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.js, and oldie.js
   grunt.registerTask('download', ['curl']);
 
 };
