@@ -7,11 +7,8 @@ title: Website Title
 description: Website description
 owner: Owner Name
 email: owner@email.com
-banner: Created by Developer in 2013 | http://website.com
-
-# Additional website info
 google_analytics_id: # UA-xxxxxxxx-x
-google_fonts: # Open+Sans:400,400italic,700,800
+banner: Created by Developer in 2013 | http://website.com
 
 # Website options
 blog_feed: true

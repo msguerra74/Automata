@@ -1,0 +1,8 @@
+node_modules
+!Projects/
+Projects/*
+!Projects/_*
+_site
+assets
+.DS_Store
+*sublime-*

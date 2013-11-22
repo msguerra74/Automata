@@ -22,8 +22,8 @@ table,
 th,
 td,
 caption {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html,
@@ -31,54 +31,54 @@ button,
 input,
 select,
 textarea {
-  color: $base__color;
+    color: $base__color;
 }
 
 html {
-  @if $baseline-grid__overlay {
-    background: linear-gradient(#aaa, #eee 0.1em);
-    background-size: 1.5em 1.5em;
-  }
-  @else {
-    background: $base__background-color;
-  }
-  font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
-  @if $oldie {
-    margin: 0 auto;
-  }
-  min-height: 100%;
-  overflow-y: scroll;
-  @if $oldie {
-    width: $oldie__width;
-  }
+    @if $baseline-grid__overlay {
+        background: linear-gradient(#aaa, #eee 0.1em);
+        background-size: 1.5em 1.5em;
+    }
+    @else {
+        background: $base__background-color;
+    }
+        font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
+    @if $oldie {
+        margin: 0 auto;
+    }
+    min-height: 100%;
+    overflow-y: scroll;
+    @if $oldie {
+        width: $oldie__width;
+    }
 }
 
 ::-moz-selection {
-  background: $base__background-color--selection;
-  text-shadow: none;
+    background: $base__background-color--selection;
+    text-shadow: none;
 }
 
 ::selection {
-  background: $base__background-color--selection;
-  text-shadow: none;
+    background: $base__background-color--selection;
+    text-shadow: none;
 }
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: em($base__line-height) 0;
-  padding: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: em($base__line-height) 0;
+    padding: 0;
 }
 
 a {
-  border-bottom: 1px solid;
-  text-decoration: none;
+    border-bottom: 1px solid;
+    text-decoration: none;
 
-  &:hover {
-    border-bottom: none;
-  }
+    &:hover {
+        border-bottom: none;
+    }
 }
 
 audio,
@@ -86,36 +86,36 @@ canvas,
 img,
 svg,
 video {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 canvas {
-  -ms-touch-action: auto;
+    -ms-touch-action: auto;
 }
 
 dl,
 ol,
 ul {
-  @include baseline(16);
+    @include baseline(16);
 }
 
 embed,
 img,
 object,
 video {
-  height: auto;
-  max-width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
 embed[height],embed[width],
 img[height],img[width],
 object[height],object[width],
 video[height],video[width] {
-  max-width: none;
+    max-width: none;
 }
 
 fieldset {
-  border: 0;
+    border: 0;
 }
 
 h1,.alpha,
@@ -124,45 +124,45 @@ h3,.gamma,
 h4,.delta,
 h5,.epsilon,
 h6,.zeta {
-  font-family: $base__font-family--heading;
-  font-weight: bold;
+    font-family: $base__font-family--heading;
+    font-weight: bold;
 }
 
 h1,.alpha {
-  @include baseline(32);
+    @include baseline(32);
 }
 
 h2,.beta {
-  @include baseline(28);
+    @include baseline(28);
 }
 
 h3,.gamma {
-  @include baseline(24);
+    @include baseline(24);
 }
 
 h4,.delta {
-  @include baseline(21);
+    @include baseline(21);
 }
 
 h5,.epsilon {
-  @include baseline(18);
+    @include baseline(18);
 }
 
 h6,.zeta {
-  @include baseline(16);
+    @include baseline(16);
 }
 
 img {
-  @if $oldie {
-    -ms-interpolation-mode: bicubic;
-  }
+    @if $oldie {
+        -ms-interpolation-mode: bicubic;
+    }
 }
 
 p,
 blockquote {
-  @include baseline(16);
+    @include baseline(16);
 }
 
 textarea {
-  resize: vertical;
+    resize: vertical;
 }
