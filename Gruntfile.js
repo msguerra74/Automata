@@ -180,7 +180,7 @@ module.exports = function(grunt) {
 
         /**
          * Hashres
-         * Hashes asset files and renames links in html/php/etc
+         * Hashes asset files and renames links in css/html/php/etc
          * https://github.com/luismahou/grunt-hashres
          */
 
