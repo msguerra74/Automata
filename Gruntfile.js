@@ -33,7 +33,16 @@ module.exports = function(grunt) {
 
     autoprefixer: {
       options: {
-        browsers: ['> 1%', 'last 2 versions', 'android 4', 'ff 17', 'ie >= 8', 'ios 6', 'opera 12.1', 'safari 6']
+        browsers: [
+          '> 1%',
+          'last 2 versions',
+          'android 4',
+          'ff 17',
+          'ie >= 8',
+          'ios 6',
+          'opera 12.1',
+          'safari 6'
+          ]
       },
       devStyles: {
         files: [{
@@ -62,7 +71,11 @@ module.exports = function(grunt) {
      */
 
     clean: {
-      generated: ['<%= site %>/**/{*,.*}', '!<%= site %>/{.git,sftp-config.json}', '<%= source %>/assets'],
+      generated: [
+        '<%= site %>/**/{*,.*}',
+        '!<%= site %>/{.git,sftp-config.json}',
+        '<%= source %>/assets'
+        ],
       css: '<%= source %>/assets/css/*.{prefixed,unprefixed}.css'
     },
 
@@ -165,7 +178,7 @@ module.exports = function(grunt) {
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       oldie: {
-        src: ['https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js'],
+        src: 'https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js',
         dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
@@ -245,7 +258,10 @@ module.exports = function(grunt) {
      */
 
     jshint: {
-      scripts: ['Gruntfile.js', '<%= source %>/_assets/scripts/plugins/**/*.js']
+      scripts: [
+        'Gruntfile.js',
+        '<%= source %>/_assets/scripts/plugins/**/*.js'
+        ]
     },
 
     /**
@@ -256,11 +272,50 @@ module.exports = function(grunt) {
 
     prettify: {
       options: {
-        'brace_style': 'collapse',
+        'brace_style': 'end-expand',
         indent: 2,
         'indent_inner_html': false,
         'indent_scripts': 'normal',
-        unformatted: ['a', 'abbr', 'acronym', 'b', 'bdo', 'big', 'cite', 'code', 'dd', 'del', 'dfn', 'dt', 'em', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'ins', 'kbd', 'li', 'p', 'pre', 'q', 's', 'samp', 'small', 'span', 'strike', 'strong', 'sub', 'sup', 'tt', 'u', 'var']
+        unformatted: [
+          'a',
+          'abbr',
+          'acronym',
+          'b',
+          'bdo',
+          'big',
+          'cite',
+          'code',
+          'dd',
+          'del',
+          'dfn',
+          'dt',
+          'em',
+          'font',
+          'h1',
+          'h2',
+          'h3',
+          'h4',
+          'h5',
+          'h6',
+          'i',
+          'ins',
+          'kbd',
+          'li',
+          'p',
+          'pre',
+          'q',
+          's',
+          'samp',
+          'small',
+          'span',
+          'strike',
+          'strong',
+          'sub',
+          'sup',
+          'tt',
+          'u',
+          'var'
+          ]
       },
       content: {
         expand: true,
@@ -380,24 +435,46 @@ module.exports = function(grunt) {
         spawn: false
       },
       content: {
-        files: ['<%= source %>/**/*', '!<%= source %>/_assets/**/*', '!<%= site %>/**/*', '!<%= source %>/assets/**/*'],
+        files: [
+          '<%= source %>/**/*',
+          '!<%= source %>/_assets/**/*',
+          '!<%= site %>/**/*',
+          '!<%= source %>/assets/**/*'
+          ],
         tasks: 'jekyll'
       },
       fonts: {
         files: '<%= source %>/_assets/fonts/**/*',
-        tasks: ['copy:fonts', 'copy:buildFonts']
+        tasks: [
+          'copy:fonts',
+          'copy:buildFonts'
+          ]
       },
       images: {
         files: '<%= source %>/_assets/images/**/*',
-        tasks: ['svg2png', 'svgmin', 'imagemin', 'copy:buildImages']
+        tasks: [
+          'svg2png',
+          'svgmin',
+          'imagemin',
+          'copy:buildImages'
+          ]
       },
       scripts: {
         files: '<%= source %>/_assets/scripts/**/*',
-        tasks: ['jshint', 'uglify:devPlugins', 'uglify:vendor', 'copy:buildScripts']
+        tasks: [
+          'jshint',
+          'uglify:devPlugins',
+          'uglify:vendor',
+          'copy:buildScripts'
+          ]
       },
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
-        tasks: ['sass', 'autoprefixer:devStyles', 'copy:buildStyles']
+        tasks: [
+          'sass',
+          'autoprefixer:devStyles',
+          'copy:buildStyles'
+          ]
       }
     }
 
@@ -408,12 +485,47 @@ module.exports = function(grunt) {
   require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Dev task 'default'
-  grunt.registerTask('default', ['clean:generated', 'copy:fonts', 'copy:vendorHTC', 'jshint', 'uglify:devPlugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:devStyles', 'clean:css', 'jekyll', 'connect', 'watch']);
+  grunt.registerTask('default', [
+    'clean:generated',
+    'copy:fonts',
+    'copy:vendorHTC',
+    'jshint',
+    'uglify:devPlugins',
+    'uglify:vendor',
+    'svg2png',
+    'svgmin',
+    'imagemin',
+    'sass',
+    'autoprefixer:devStyles',
+    'clean:css',
+    'jekyll',
+    'connect',
+    'watch'
+    ]);
 
   // Build task (builds to the '_site' folder)
-  grunt.registerTask('build', ['clean:generated', 'copy:fonts', 'copy:vendorHTC', 'jshint', 'uglify:plugins', 'uglify:vendor', 'svg2png', 'svgmin', 'imagemin', 'sass', 'autoprefixer:styles', 'cssmin', 'clean:css', 'jekyll', 'hashres', 'prettify']);
+  grunt.registerTask('build', [
+    'clean:generated',
+    'copy:fonts',
+    'copy:vendorHTC',
+    'jshint',
+    'uglify:plugins',
+    'uglify:vendor',
+    'svg2png',
+    'svgmin',
+    'imagemin',
+    'sass',
+    'autoprefixer:styles',
+    'cssmin',
+    'clean:css',
+    'jekyll',
+    'hashres',
+    'prettify'
+    ]);
 
   // Downloads the latest versions of: _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.js, and oldie.js
-  grunt.registerTask('download', ['curl']);
+  grunt.registerTask('download', [
+    'curl'
+    ]);
 
 };

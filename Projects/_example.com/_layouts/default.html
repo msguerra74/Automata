@@ -18,29 +18,10 @@
   <![endif]-->{% endif %}{% if site.jquery or site.js_plugins %}
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% if page.head %} {{ page.head }}{% endif %}
 </head>
-<body>{% if site.header %}
-  <div class="header">
-    <header role="banner">
+<body>
 {% include header.html %}
-    </header>
-  </div><!-- /header -->{% endif %}{% if site.aside %}
-  <div class="content">{% endif %}
-    <div class="main">
-      <main role="main">
-{{ content }}
-      </main>
-    </div><!-- /main -->{% if site.aside %}
-    <div class="aside">
-      <aside role="complementary">
-{% include aside.html %}
-      </aside>
-    </div><!-- /aside -->
-  </div><!-- /content -->{% endif %}{% if site.footer %}
-  <div class="footer">
-    <footer role="contentinfo">
-{% include footer.html %}
-    </footer>
-  </div><!-- /footer -->{% endif %}{% if site.jquery %}
+{% include main.html %}
+{% include footer.html %}{% if site.jquery %}
   <script src="{{ relative }}assets/js/jquery.js"></script>{% endif %}{% if site.js_plugins %}
   <script src="{{ relative }}assets/js/script.js"></script>{% endif %}{% if page.foot %} {{ page.foot }}{% endif %}{% if site.google_analytics_id %}
   <script>
