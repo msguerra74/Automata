@@ -12,22 +12,22 @@
 // @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: margin-bottom * 2; */
 
 @mixin baseline($target: $base__font-size, $context: $base__font-size, $margin-bottom: em($base__line-height, $target)) {
-    font-size: em($target, $context);
-    @if $target >= $base__line-height {
-        line-height: strip-units(em($base__line-height, $target)) * 2;
-    }
-    @else {
-        line-height: strip-units(em($base__line-height, $target));
-    }
-    @if $margin-bottom == 0 {
-        margin-bottom: $margin-bottom;
-    }
-    @elseif $margin-bottom != em($base__line-height, $target) {
-        margin-bottom: em($base__line-height, $target) * $margin-bottom;
-    }
-    @else {
-        margin-bottom: em($base__line-height, $target);
-    }
+  font-size: em($target, $context);
+  @if $target >= $base__line-height {
+    line-height: strip-units(em($base__line-height, $target)) * 2;
+  }
+  @else {
+    line-height: strip-units(em($base__line-height, $target));
+  }
+  @if $margin-bottom == 0 {
+    margin-bottom: $margin-bottom;
+  }
+  @elseif $margin-bottom != em($base__line-height, $target) {
+    margin-bottom: em($base__line-height, $target) * $margin-bottom;
+  }
+  @else {
+    margin-bottom: em($base__line-height, $target);
+  }
 }
 
 // ---------- Breakpoints ---------- //
@@ -36,20 +36,20 @@
 // @include breakpoint(medium) {}
 
 @mixin breakpoint($point) {
-    @if $oldie {
-        @if ($point == small) or ($point == medium) {
-            @content;
-        }
+  @if $oldie {
+    @if ($point == small) or ($point == medium) {
+      @content;
     }
-    @else {
-        @each $breakpoint in $breakpoints {
-            @if $point == nth($breakpoint, 1) {
-                @media (min-width: nth($breakpoint, 2)) {
-                    @content;
-                }
-            }
+  }
+  @else {
+    @each $breakpoint in $breakpoints {
+      @if $point == nth($breakpoint, 1) {
+        @media (min-width: nth($breakpoint, 2)) {
+          @content;
         }
+      }
     }
+  }
 }
 
 // ---------- Font Face ---------- //
@@ -62,17 +62,16 @@
 // @include font-face('Open Sans', '../fonts/OpenSans-Regular-webfont', 400, normal, OpenSansRegular);
 
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $svg: $font-family) {
-    @font-face {
-        font-family: $font-family;
-        font-weight: $weight;
-        font-style: $style;
-
-        src: url('#{$file-path}.eot');
-        src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
-        url('#{$file-path}.woff') format('woff'),
-        url('#{$file-path}.ttf') format('truetype'),
-        url('#{$file-path}.svg##{$svg}') format('svg');
-    }
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    src: url('#{$file-path}.eot');
+    src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+    url('#{$file-path}.woff') format('woff'),
+    url('#{$file-path}.ttf') format('truetype'),
+    url('#{$file-path}.svg##{$svg}') format('svg');
+  }
 }
 
 // ---------- Grid (float/inline-block) ---------- //
@@ -87,35 +86,35 @@
 // You can also use negative margins
 
 @mixin col--float($n: 1) {
-    @extend %border-box;
-    @extend %left;
-    width: $n * $grid__column;
+  @extend %border-box;
+  @extend %left;
+  width: $n * $grid__column;
 }
 
 @mixin col--inline-block($n: 1) {
-    @extend %border-box;
-    width: $n * $grid__column;
-    @include inline-block(top);
+  @extend %border-box;
+  width: $n * $grid__column;
+  @include inline-block(top);
 }
 
 @mixin prepend($n: 1) {
-    margin-left: $grid__column * $n;
+  margin-left: $grid__column * $n;
 }
 
 @mixin append($n: 1) {
-    margin-right: $grid__column * $n;
+  margin-right: $grid__column * $n;
 }
 
 @mixin grid--float($cols: 1, $grid__margin-left: 0, $grid__margin-right: $grid__margin-left) {
-    @include col--float($cols - ($grid__margin-left + $grid__margin-right));
-    @include prepend($grid__margin-left);
-    @include append($grid__margin-right);
+  @include col--float($cols - ($grid__margin-left + $grid__margin-right));
+  @include prepend($grid__margin-left);
+  @include append($grid__margin-right);
 }
 
 @mixin grid--inline-block($cols: 1, $grid__margin-left: 0, $grid__margin-right: $grid__margin-left) {
-    @include col--inline-block($cols - ($grid__margin-left + $grid__margin-right));
-    @include prepend($grid__margin-left);
-    @include append($grid__margin-right);
+  @include col--inline-block($cols - ($grid__margin-left + $grid__margin-right));
+  @include prepend($grid__margin-left);
+  @include append($grid__margin-right);
 }
 
 // ---------- inline-block ---------- //
@@ -124,11 +123,11 @@
 // @include inline-block(top); /* vertical-align: top; */
 
 @mixin inline-block($vertical-align: baseline) {
-    display: inline-block;
-    vertical-align: $vertical-align;
-    @if $oldie {
-        zoom: 1;
-        *display: inline;
-        *vertical-align: $vertical-align;
-    }
+  display: inline-block;
+  vertical-align: $vertical-align;
+  @if $oldie {
+    zoom: 1;
+    *display: inline;
+    *vertical-align: $vertical-align;
+  }
 }

@@ -12,13 +12,13 @@
 // font-size: em(16, 32); /* 16px / 32px */
 
 @function em($target, $context: $base__font-size) {
-    @if not unitless($target) {
-        $target: strip-units($target);
-    }
-    @if not unitless($context) {
-        $context: strip-units($context);
-    }
-    @return ($target / $context) * 1em;
+  @if not unitless($target) {
+    $target: strip-units($target);
+  }
+  @if not unitless($context) {
+    $context: strip-units($context);
+  }
+  @return ($target / $context) * 1em;
 }
 
 // ---------- strip-units ---------- //
@@ -30,5 +30,5 @@
 // 16px -> 16
 
 @function strip-units($val) {
-    @return ($val / ($val * 0 + 1));
+  @return ($val / ($val * 0 + 1));
 }
