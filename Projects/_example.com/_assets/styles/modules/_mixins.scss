@@ -9,7 +9,7 @@
 // or
 // @include baseline(16, 24, 0); /* 16px / 24px / margin-bottom: 0; */
 // or
-// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: margin-bottom * 2; */
+// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: margin-bottom x 2; */
 
 @mixin baseline($target: $base__font-size, $context: $base__font-size, $margin-bottom: em($base__line-height, $target)) {
   font-size: em($target, $context);

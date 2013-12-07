@@ -2,12 +2,12 @@
 // BASE
 //------------------------------//
 
-h1,.alpha,
-h2,.beta,
-h3,.gamma,
-h4,.delta,
-h5,.epsilon,
-h6,.zeta,
+h1, .alpha,
+h2, .beta,
+h3, .gamma,
+h4, .delta,
+h5, .epsilon,
+h6, .zeta,
 p,
 blockquote,
 pre,
@@ -107,10 +107,10 @@ video {
   max-width: 100%;
 }
 
-embed[height],embed[width],
-img[height],img[width],
-object[height],object[width],
-video[height],video[width] {
+embed[height], embed[width],
+img[height], img[width],
+object[height], object[width],
+video[height], video[width] {
   max-width: none;
 }
 
@@ -118,37 +118,37 @@ fieldset {
   border: 0;
 }
 
-h1,.alpha,
-h2,.beta,
-h3,.gamma,
-h4,.delta,
-h5,.epsilon,
-h6,.zeta {
+h1, .alpha,
+h2, .beta,
+h3, .gamma,
+h4, .delta,
+h5, .epsilon,
+h6, .zeta {
   font-family: $base__font-family--heading;
   font-weight: bold;
 }
 
-h1,.alpha {
+h1, .alpha {
   @include baseline(32);
 }
 
-h2,.beta {
+h2, .beta {
   @include baseline(28);
 }
 
-h3,.gamma {
+h3, .gamma {
   @include baseline(24);
 }
 
-h4,.delta {
+h4, .delta {
   @include baseline(21);
 }
 
-h5,.epsilon {
+h5, .epsilon {
   @include baseline(18);
 }
 
-h6,.zeta {
+h6, .zeta {
   @include baseline(16);
 }
 

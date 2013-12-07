@@ -1,7 +1,7 @@
 /**
  * Automata
  * Automated Static Website Generator
- * Michael Guerra | @msguerra74 | http://msguerra74.com
+ * Michael Guerra | http://msguerra74.com
  * MIT License [See README]
  */
 
