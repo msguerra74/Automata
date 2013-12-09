@@ -19,11 +19,6 @@ js_plugins: true
 oldie: true
 responsive_design: true
 
-# Website sections
-header: true
-aside: true
-footer: true
-
 # Jekyll options
 destination: _site
 include: ['']
