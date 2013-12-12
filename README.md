@@ -20,7 +20,6 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 ### Includes
 
 - CSS
-    - [Google Fonts][]: Support for Google Web Fonts
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
     - [boxsizing.htc][]: A CSS box-sizing: border-box polyfill for IE 6/7
@@ -97,7 +96,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [GitHub]: https://github.com/msguerra74
 [Automata GitHub page]: https://github.com/msguerra74/Automata
 [Google Analytics]: http://www.google.com/analytics/
-[Google Fonts]: http://www.google.com/fonts
 [Grunt]: http://gruntjs.com/
 [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
 [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
