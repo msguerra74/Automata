@@ -2,42 +2,47 @@
 // VARIABLES
 //------------------------------//
 
+// Fonts
+$courier: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+$georgia: Georgia, Times, 'Times New Roman', serif;
+$verdana: Verdana, Geneva, sans-serif;
+
 // ---------- Base ---------- //
 
 // Base colors
-$base__background-color: white !default;
-$base__background-color--selection: #eee !default;
-$base__color: #222 !default;
+$base__background-color: white;
+$base__background-color--selection: #eee;
+$base__color: #222;
 
 // Base fonts
-$base__font-family: Georgia, Times, 'Times New Roman', serif !default;
-$base__font-family--code: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace !default;
-$base__font-family--heading: Verdana, Geneva, sans-serif !default;
+$base__font-family: $georgia;
+$base__font-family--code: $courier;
+$base__font-family--heading: $verdana;
 
 // Bases sizes
-$base__font-size: 16px !default;
-$base__line-height: 24px !default;
-$base__line-height--ratio: $base__line-height / $base__font-size !default;
-$base__max-width: none !default;
+$base__font-size: 16px;
+$base__line-height: 24px;
+$base__line-height--ratio: $base__line-height / $base__font-size;
+$base__max-width: none;
 
 // ---------- Breakpoints ---------- //
 
-$small: (481px / $base__font-size) + em !default;
-$medium: (769px  / $base__font-size) + em !default;
-$large: (1025px  / $base__font-size) + em !default;
-$xlarge: (1367px  / $base__font-size) + em !default;
+$small: (481px / $base__font-size) + em;
+$medium: (769px  / $base__font-size) + em;
+$large: (1025px  / $base__font-size) + em;
+$xlarge: (1367px  / $base__font-size) + em;
 
 // ---------- Grid ---------- //
 
-$baseline-grid--overlay: false !default;
-$grid__columns: 48 !default;
+$baseline-grid--overlay: false;
+$grid__columns: 48;
 
 // ---------- Misc variables ---------- //
 
-$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default;
-$grid__column: 100% / $grid__columns !default;
+$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
+$grid__column: 100% / $grid__columns;
 
 // ---------- Oldie ---------- //
 
-$oldie: false !default;
-$oldie__width: (960px / $base__font-size) + em !default;
+$oldie: false;
+$oldie__width: (960px / $base__font-size) + em;

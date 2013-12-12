@@ -93,6 +93,11 @@ canvas {
   -ms-touch-action: auto;
 }
 
+code {
+  font-family: $base__font-family--code;
+  vertical-align: bottom;
+}
+
 dl,
 ol,
 ul {
@@ -129,27 +134,51 @@ h6, .zeta {
 }
 
 h1, .alpha {
-  @include baseline(32);
+  @include baseline(24);
+
+  @include breakpoint(large) {
+    @include baseline(32);
+  }
 }
 
 h2, .beta {
-  @include baseline(28);
+  @include baseline(22);
+
+  @include breakpoint(large) {
+    @include baseline(28);
+  }
 }
 
 h3, .gamma {
-  @include baseline(24);
+  @include baseline(20);
+
+  @include breakpoint(large) {
+    @include baseline(24);
+  }
 }
 
 h4, .delta {
-  @include baseline(21);
+  @include baseline(18);
+
+  @include breakpoint(large) {
+    @include baseline(21);
+  }
 }
 
 h5, .epsilon {
-  @include baseline(18);
+  @include baseline(16);
+
+  @include breakpoint(large) {
+    @include baseline(18);
+  }
 }
 
 h6, .zeta {
-  @include baseline(16);
+  @include baseline(14);
+
+  @include breakpoint(large) {
+    @include baseline(16);
+  }
 }
 
 img {
@@ -159,7 +188,8 @@ img {
 }
 
 p,
-blockquote {
+blockquote,
+pre {
   @include baseline(16);
 }
 

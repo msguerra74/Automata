@@ -19,9 +19,9 @@
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% if page.head %} {{ page.head }}{% endif %}
 </head>
 <body>
-{% include header.html %}
-{% include main.html %}
-{% include footer.html %}{% if site.jquery %}
+  {% include header.html %}
+  {% include content.html %}
+  {% include footer.html %}{% if site.jquery %}
   <script src="{{ relative }}assets/js/jquery.js"></script>{% endif %}{% if site.js_plugins %}
   <script src="{{ relative }}assets/js/script.js"></script>{% endif %}{% if page.foot %} {{ page.foot }}{% endif %}{% if site.google_analytics_id %}
   <script>
