@@ -134,51 +134,27 @@ h6, .zeta {
 }
 
 h1, .alpha {
-  @include baseline(24);
-
-  @include breakpoint(large) {
-    @include baseline(32);
-  }
+  @include baseline(36);
 }
 
 h2, .beta {
-  @include baseline(22);
-
-  @include breakpoint(large) {
-    @include baseline(28);
-  }
+  @include baseline(30);
 }
 
 h3, .gamma {
-  @include baseline(20);
-
-  @include breakpoint(large) {
-    @include baseline(24);
-  }
+  @include baseline(24);
 }
 
 h4, .delta {
-  @include baseline(18);
-
-  @include breakpoint(large) {
-    @include baseline(21);
-  }
+  @include baseline(20);
 }
 
 h5, .epsilon {
   @include baseline(16);
-
-  @include breakpoint(large) {
-    @include baseline(18);
-  }
 }
 
 h6, .zeta {
   @include baseline(14);
-
-  @include breakpoint(large) {
-    @include baseline(16);
-  }
 }
 
 img {
