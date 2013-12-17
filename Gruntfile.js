@@ -482,7 +482,7 @@ module.exports = function(grunt) {
 
   /* ---------- Tasks ---------- */
 
-  require('matchdep').filterAll('grunt-*').forEach(grunt.loadNpmTasks);
+  require('load-grunt-tasks')(grunt);
 
   // Dev task 'default'
   grunt.registerTask('default', [
