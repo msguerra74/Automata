@@ -51,7 +51,7 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
         - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [grunt-svgmin][]: Minify SVG
-        - [matchdep][]: Minimatch to filter npm module dependencies by name
+        - [load-grunt-tasks][]: Load multiple grunt tasks using globbing patterns
 - [Ruby][]: Programming Language / Runtime Environment
     - [Jekyll][]: Static site generator
     - [RDiscount][]: Discount implementation of John Gruber's markdown
@@ -119,6 +119,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Jekyll]: http://jekyllrb.com/
 [jQuery]: http://jquery.com/
+[load-grunt-tasks]: https://github.com/sindresorhus/load-grunt-tasks
 [Markdown]: http://daringfireball.net/projects/markdown/
 [matchdep]: https://github.com/tkellen/node-matchdep
 [msguerra74.com]: http://msguerra74.com/
