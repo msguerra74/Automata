@@ -10,7 +10,7 @@
   <author>
     <name>{{ site.owner }}</name>
     <email>{{ site.email }}</email>
-  </author>{% for post in site.posts limit: site.paginate %}
+  </author>{% for post in site.posts limit: site.blog_feed_post_limit %}
   <entry>
     <title>{{ post.title }}</title>
     <link href="{{ site.url }}{{ post.url }}" />

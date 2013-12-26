@@ -11,8 +11,8 @@ $verdana: Verdana, Geneva, sans-serif !default;
 
 // Base colors
 $base__background-color: white !default;
-$base__background-color--selection: #eee !default;
-$base__color: #222 !default;
+$base__background-color--selection: darken(white, 7) !default;
+$base__color: lighten(black, 13) !default;
 
 // Base fonts
 $base__font-family: $georgia !default;
@@ -34,7 +34,6 @@ $xlarge: (1367px  / $base__font-size) + em !default;
 
 // ---------- Grid ---------- //
 
-$baseline-grid--overlay: false !default;
 $grid__columns: 48 !default;
 
 // ---------- Misc variables ---------- //
