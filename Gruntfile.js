@@ -5,64 +5,25 @@
  * MIT License [See README]
  */
 
-// Grunt module
+// Grunt Module
 module.exports = function(grunt) {
 
-  // Grunt configurations
+  // Grunt Configurations
   grunt.initConfig({
 
     /* ---------- Variables ---------- */
 
-    // Project settings ----- (Change '_example.com' to working project folder)
+    // Project Settings ------ Change /_example.com/ to working project folder.
     prj: grunt.file.readYAML('Projects/_example.com/_config.yml'),
 
-    // Automata packages
+    // Automata Packages
     pkg: grunt.file.readJSON('package.json'),
 
     // Directories
     site: '<%= source %>/<%= prj.destination %>',
     source: 'Projects/<%= prj.folder %>',
 
-    /* ---------- Packages ---------- */
-
-    /**
-     * Autoprefixer
-     * Adds vendor-prefixed CSS properties
-     * https://github.com/nDmitry/grunt-autoprefixer
-     */
-
-    autoprefixer: {
-      options: {
-        browsers: [
-          '> 1%',
-          'last 2 versions',
-          'android 4',
-          'ff 17',
-          'ie >= 8',
-          'ios 6',
-          'opera 12.1',
-          'safari 6'
-          ]
-      },
-      devStyles: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/assets/css',
-          src: '*.unprefixed.css',
-          dest: '<%= source %>/assets/css',
-          ext: '.css'
-        }]
-      },
-      styles: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/assets/css',
-          src: '*.unprefixed.css',
-          dest: '<%= source %>/assets/css',
-          ext: '.prefixed.css'
-        }]
-      }
-    },
+    /* ---------- Common / Shared ---------- */
 
     /**
      * Clean
@@ -143,26 +104,6 @@ module.exports = function(grunt) {
     },
 
     /**
-     * CSSmin
-     * Compress CSS files
-     * https://github.com/gruntjs/grunt-contrib-cssmin
-     */
-
-    cssmin: {
-      options: {
-        banner: '/* <%= prj.banner %> */',
-        keepSpecialComments: 0
-      },
-      styles: {
-        expand: true,
-        cwd: '<%= source %>/assets/css',
-        src: '*.prefixed.css',
-        dest: '<%= source %>/assets/css',
-        ext: '.css'
-      }
-    },
-
-    /**
      * Curl
      * Download files from the internet
      * https://github.com/twolfson/grunt-curl
@@ -215,26 +156,146 @@ module.exports = function(grunt) {
     },
 
     /**
-     * Imagemin
-     * Optimize GIF, JPG, and PNG images
-     * https://github.com/gruntjs/grunt-contrib-imagemin
+     * Watch
+     * Run tasks whenever watched files change
+     * https://github.com/gruntjs/grunt-contrib-watch
      */
 
-    imagemin: {
+    watch: {
+      options: {
+        livereload: true,
+        spawn: false
+      },
+      content: {
+        files: [
+          '<%= source %>/**/*',
+          '!<%= source %>/_assets/**/*',
+          '!<%= site %>/**/*',
+          '!<%= source %>/assets/**/*'
+          ],
+        tasks: 'jekyll'
+      },
+      fonts: {
+        files: '<%= source %>/_assets/fonts/**/*',
+        tasks: [
+          'copy:fonts',
+          'copy:buildFonts'
+          ]
+      },
       images: {
+        files: '<%= source %>/_assets/images/**/*',
+        tasks: [
+          'svg2png',
+          'svgmin',
+          'imagemin',
+          'copy:buildImages'
+          ]
+      },
+      scripts: {
+        files: '<%= source %>/_assets/scripts/**/*',
+        tasks: [
+          'jshint',
+          'uglify:devPlugins',
+          'uglify:vendor',
+          'copy:buildScripts'
+          ]
+      },
+      styles: {
+        files: '<%= source %>/_assets/styles/**/*',
+        tasks: [
+          'sass',
+          'autoprefixer:devStyles',
+          'copy:buildStyles'
+          ]
+      }
+    },
+
+    /* ---------- CSS / Sass ---------- */
+
+    /**
+     * Autoprefixer
+     * Adds vendor-prefixed CSS properties
+     * https://github.com/nDmitry/grunt-autoprefixer
+     */
+
+    autoprefixer: {
+      options: {
+        browsers: [
+          '> 1%',
+          'last 2 versions',
+          'android 4',
+          'ff 17',
+          'ie 8',
+          'ios 6',
+          'opera 12.1',
+          'safari 6'
+          ]
+      },
+      devStyles: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/_assets/images',
-          src: '**/*.{gif,jpg,png}',
-          dest: '<%= source %>/assets/img'
-        }, {
+          cwd: '<%= source %>/assets/css',
+          src: '*.unprefixed.css',
+          dest: '<%= source %>/assets/css',
+          ext: '.css'
+        }]
+      },
+      styles: {
+        files: [{
           expand: true,
-          cwd: '<%= source %>/assets/img',
-          src: '**/*.{gif,jpg,png}',
-          dest: '<%= source %>/assets/img'
+          cwd: '<%= source %>/assets/css',
+          src: '*.unprefixed.css',
+          dest: '<%= source %>/assets/css',
+          ext: '.prefixed.css'
         }]
       }
     },
+
+    /**
+     * CSSmin
+     * Compress CSS files
+     * https://github.com/gruntjs/grunt-contrib-cssmin
+     */
+
+    cssmin: {
+      options: {
+        banner: '/* <%= prj.banner %> */',
+        keepSpecialComments: 0
+      },
+      styles: {
+        expand: true,
+        cwd: '<%= source %>/assets/css',
+        src: '*.prefixed.css',
+        dest: '<%= source %>/assets/css',
+        ext: '.css'
+      }
+    },
+
+    /**
+     * Sass
+     * Compile Sass to CSS
+     * https://github.com/gruntjs/grunt-contrib-sass
+     */
+
+    sass: {
+      options: {
+        banner: '/* <%= prj.banner %> */',
+        noCache: true,
+        precision: 16,
+        style: 'expanded'
+      },
+      styles: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/_assets/styles',
+          src: '*.scss',
+          dest: '<%= source %>/assets/css',
+          ext: '.unprefixed.css'
+        }]
+      }
+    },
+
+    /* ---------- HTML / PHP ---------- */
 
     /**
      * Jekyll
@@ -249,19 +310,6 @@ module.exports = function(grunt) {
           src: '<%= source %>'
         }
       }
-    },
-
-    /**
-     * JShint
-     * Validate JavaScript files
-     * https://github.com/gruntjs/grunt-contrib-jshint
-     */
-
-    jshint: {
-      scripts: [
-        'Gruntfile.js',
-        '<%= source %>/_assets/scripts/plugins/**/*.js'
-        ]
     },
 
     /**
@@ -325,26 +373,26 @@ module.exports = function(grunt) {
       }
     },
 
+    /* ---------- Images / SVGs ---------- */
+
     /**
-     * Sass
-     * Compile Sass to CSS
-     * https://github.com/gruntjs/grunt-contrib-sass
+     * Imagemin
+     * Optimize GIF, JPG, and PNG images
+     * https://github.com/gruntjs/grunt-contrib-imagemin
      */
 
-    sass: {
-      options: {
-        banner: '/* <%= prj.banner %> */',
-        noCache: true,
-        precision: 16,
-        style: 'expanded'
-      },
-      styles: {
+    imagemin: {
+      images: {
         files: [{
           expand: true,
-          cwd: '<%= source %>/_assets/styles',
-          src: '*.scss',
-          dest: '<%= source %>/assets/css',
-          ext: '.unprefixed.css'
+          cwd: '<%= source %>/_assets/images',
+          src: '**/*.{gif,jpg,png}',
+          dest: '<%= source %>/assets/img'
+        }, {
+          expand: true,
+          cwd: '<%= source %>/assets/img',
+          src: '**/*.{gif,jpg,png}',
+          dest: '<%= source %>/assets/img'
         }]
       }
     },
@@ -386,6 +434,21 @@ module.exports = function(grunt) {
       }
     },
 
+    /* ---------- Scripts ---------- */
+
+    /**
+     * JShint
+     * Validate JavaScript files
+     * https://github.com/gruntjs/grunt-contrib-jshint
+     */
+
+    jshint: {
+      scripts: [
+        'Gruntfile.js',
+        '<%= source %>/_assets/scripts/plugins/**/*.js'
+        ]
+    },
+
     /**
      * Uglify
      * Minify JavaScript files
@@ -420,61 +483,6 @@ module.exports = function(grunt) {
           src: '**/*.js',
           dest: '<%= source %>/assets/js'
         }]
-      }
-    },
-
-    /**
-     * Watch
-     * Run tasks whenever watched files change
-     * https://github.com/gruntjs/grunt-contrib-watch
-     */
-
-    watch: {
-      options: {
-        livereload: true,
-        spawn: false
-      },
-      content: {
-        files: [
-          '<%= source %>/**/*',
-          '!<%= source %>/_assets/**/*',
-          '!<%= site %>/**/*',
-          '!<%= source %>/assets/**/*'
-          ],
-        tasks: 'jekyll'
-      },
-      fonts: {
-        files: '<%= source %>/_assets/fonts/**/*',
-        tasks: [
-          'copy:fonts',
-          'copy:buildFonts'
-          ]
-      },
-      images: {
-        files: '<%= source %>/_assets/images/**/*',
-        tasks: [
-          'svg2png',
-          'svgmin',
-          'imagemin',
-          'copy:buildImages'
-          ]
-      },
-      scripts: {
-        files: '<%= source %>/_assets/scripts/**/*',
-        tasks: [
-          'jshint',
-          'uglify:devPlugins',
-          'uglify:vendor',
-          'copy:buildScripts'
-          ]
-      },
-      styles: {
-        files: '<%= source %>/_assets/styles/**/*',
-        tasks: [
-          'sass',
-          'autoprefixer:devStyles',
-          'copy:buildStyles'
-          ]
       }
     }
 
