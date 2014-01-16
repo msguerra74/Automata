@@ -94,12 +94,6 @@ module.exports = function(grunt) {
         cwd: '<%= source %>/_assets/fonts',
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= source %>/assets/fonts'
-      },
-      vendorHTC: {
-        expand: true,
-        cwd: '<%= source %>/_assets/scripts/vendor',
-        src: '**/*.htc',
-        dest: '<%= source %>/assets/js'
       }
     },
 
@@ -110,25 +104,17 @@ module.exports = function(grunt) {
      */
 
     curl: {
-      boxsizing: {
-        src: 'https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc',
-        dest: '<%= source %>/_assets/scripts/vendor/boxsizing.htc'
-      },
       jquery: {
         src: 'http://code.jquery.com/jquery.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       oldie: {
-        src: 'https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js',
+        src: ['https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js'],
         dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
-      },
-      'normalize_oldie': {
-        src: 'http://raw.github.com/necolas/normalize.css/v1/normalize.css',
-        dest: '<%= source %>/_assets/styles/vendor/_normalize_oldie.scss'
       }
     },
 
@@ -496,7 +482,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean:generated',
     'copy:fonts',
-    'copy:vendorHTC',
     'jshint',
     'uglify:devPlugins',
     'uglify:vendor',
@@ -515,7 +500,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean:generated',
     'copy:fonts',
-    'copy:vendorHTC',
     'jshint',
     'uglify:plugins',
     'uglify:vendor',
@@ -531,7 +515,7 @@ module.exports = function(grunt) {
     'prettify'
     ]);
 
-  // Downloads the latest versions of: _normalize.scss, _normalize_oldie.scss, boxsizing.htc, jquery.js, and oldie.js
+  // Downloads the latest versions of: _normalize.scss, jquery.js, and oldie.js
   grunt.registerTask('download', [
     'curl'
     ]);

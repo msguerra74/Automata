@@ -22,7 +22,6 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 - CSS
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
-    - [boxsizing.htc][]: A CSS box-sizing: border-box polyfill for IE 6/7
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
@@ -74,7 +73,7 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
     - 'grunt' to develop the site with a LiveReload server
     - 'grunt build' to build a production version of the current site
-    - 'grunt download' to download the latest vendor files (\_normalize.scss, \_normalize_oldie.scss, boxsizing.htc, jquery.js, and oldie.js)
+    - 'grunt download' to download the latest vendor files (\_normalize.scss, jquery.js, and oldie.js)
 
 The MIT License (MIT)
 ---------------------
@@ -91,7 +90,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [@msguerra74]: http://twitter.com/msguerra74
 [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
-[boxsizing.htc]: https://github.com/Schepp/box-sizing-polyfill
 [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
 [GitHub]: https://github.com/msguerra74
 [Automata GitHub page]: https://github.com/msguerra74/Automata

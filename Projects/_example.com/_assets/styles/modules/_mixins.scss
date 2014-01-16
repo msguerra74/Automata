@@ -1,5 +1,5 @@
 //------------------------------//
-// BREAKPOINTS
+// Mixins
 //------------------------------//
 
 // ---------- Baseline grid ---------- //
@@ -86,13 +86,11 @@
 // You can also use negative margins
 
 @mixin col--float($n: 1) {
-  @extend %border-box;
   @extend %left;
   width: $n * $grid__column;
 }
 
 @mixin col--inline-block($n: 1) {
-  @extend %border-box;
   width: $n * $grid__column;
   @include inline-block(top);
 }

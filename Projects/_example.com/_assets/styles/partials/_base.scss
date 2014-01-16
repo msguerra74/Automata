@@ -1,56 +1,21 @@
 //------------------------------//
-// BASE
+// Base
 //------------------------------//
 
-// Reset
+// Universal Reset / border-box
 
-blockquote,
-caption,
-dd,
-dl,
-fieldset,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-legend,
-ol,
-p,
-pre,
-table,
-td,
-th,
-ul {
+* {
   margin: 0;
   padding: 0;
-}
 
-// Elements
-
-html,
-button,
-input,
-select,
-textarea {
-  color: $base__color;
-}
-
-html {
-  background: $base__background-color;
-  font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
-  @if $oldie {
-    margin: 0 auto;
-  }
-  min-height: 100%;
-  overflow-y: scroll;
-  @if $oldie {
-    width: $oldie__width;
+  &,
+  &:after,
+  &:before {
+    box-sizing: border-box;
   }
 }
+
+// Misc
 
 ::-moz-selection {
   background: $base__background-color--selection;
@@ -60,6 +25,16 @@ html {
 ::selection {
   background: $base__background-color--selection;
   text-shadow: none;
+}
+
+// Elements
+
+html {
+  background: $base__background-color;
+  color: $base__color;
+  font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
+  min-height: 100%;
+  overflow-y: scroll;
 }
 
 hr {

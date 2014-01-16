@@ -1,15 +1,6 @@
 //------------------------------//
-// PLACEHOLDERS
+// Placeholders
 //------------------------------//
-
-// ---------- border-box ---------- //
-
-%border-box {
-  box-sizing: border-box;
-  @if $oldie  {
-    *behavior: url(/assets/js/boxsizing.htc);
-  }
-}
 
 // ---------- clear ---------- //
 
@@ -22,12 +13,6 @@
 
   &:after {
     clear: both;
-  }
-
-  @if $oldie {
-    & {
-        *zoom: 1;
-    }
   }
 }
 
@@ -56,9 +41,6 @@
   background-color: transparent;
   border: 0;
   overflow: hidden;
-  @if $oldie {
-    *text-indent: -9999px;
-  }
 
   &:before {
     content: '';
@@ -109,10 +91,6 @@
 
 %media__body {
   overflow: hidden;
-  @if $oldie {
-    _overflow: visible;
-    zoom: 1;
-  }
 }
 
 // ---------- visually-hidden ---------- //
