@@ -63,6 +63,14 @@ video {
   vertical-align: middle;
 }
 
+blockquote {
+  @include baseline(20);
+
+  @include breakpoint(medium) {
+    @include baseline(24);
+  }
+}
+
 canvas {
   -ms-touch-action: auto;
 }
@@ -108,31 +116,54 @@ h6, .zeta {
 }
 
 h1, .alpha {
-  @include baseline(26);
+  @include baseline(32);
+
+  @include breakpoint(medium) {
+    @include baseline(40);
+  }
+
+  @include breakpoint(large) {
+    @include baseline(48);
+  }
 }
 
 h2, .beta {
-  @include baseline(24);
+  @include baseline(26);
+
+  @include breakpoint(medium) {
+    @include baseline(32);
+  }
+
+  @include breakpoint(large) {
+    @include baseline(36);
+  }
 }
 
 h3, .gamma {
   @include baseline(22);
+
+  @include breakpoint(medium) {
+    @include baseline(24);
+  }
+
+  @include breakpoint(large) {
+    @include baseline(28);
+  }
 }
 
 h4, .delta {
-  @include baseline(20);
-}
-
-h5, .epsilon {
   @include baseline(18);
 }
 
-h6, .zeta {
+h5, .epsilon {
   @include baseline(16);
 }
 
+h6, .zeta {
+  @include baseline(14);
+}
+
 p,
-blockquote,
 pre {
   @include baseline(16);
 }
