@@ -39,7 +39,6 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
         - [grunt-contrib-clean][]: Clear files and folders
         - [grunt-contrib-connect][]: Start a static web server
         - [grunt-contrib-copy][]: Copy files and folders
-        - [grunt-contrib-cssmin][]: Compress CSS files
         - [grunt-contrib-imagemin][]: Optimize GIF, JPG, and PNG images
         - [grunt-contrib-jshint][]: Validate JavaScript files
         - [grunt-contrib-sass][]: Compile Sass to CSS
@@ -100,7 +99,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
 [grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
 [grunt-contrib-copy]: https://github.com/gruntjs/grunt-contrib-copy
-[grunt-contrib-cssmin]: https://github.com/gruntjs/grunt-contrib-cssmin
 [grunt-contrib-imagemin]: https://github.com/gruntjs/grunt-contrib-imagemin
 [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
 [grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass

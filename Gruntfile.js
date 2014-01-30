@@ -189,8 +189,8 @@ module.exports = function(grunt) {
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
         tasks: [
-          'sass',
-          'autoprefixer:devStyles',
+          'sass:devStyles',
+          'autoprefixer',
           'copy:buildStyles'
           ]
       }
@@ -217,43 +217,13 @@ module.exports = function(grunt) {
           'safari 6'
           ]
       },
-      devStyles: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/assets/css',
-          src: '*.unprefixed.css',
-          dest: '<%= source %>/assets/css',
-          ext: '.css'
-        }]
-      },
       styles: {
         files: [{
           expand: true,
           cwd: '<%= source %>/assets/css',
-          src: '*.unprefixed.css',
-          dest: '<%= source %>/assets/css',
-          ext: '.prefixed.css'
+          src: '*.css',
+          dest: '<%= source %>/assets/css'
         }]
-      }
-    },
-
-    /**
-     * CSSmin
-     * Compress CSS files
-     * https://github.com/gruntjs/grunt-contrib-cssmin
-     */
-
-    cssmin: {
-      options: {
-        banner: '/* <%= prj.banner %> */',
-        keepSpecialComments: 0
-      },
-      styles: {
-        expand: true,
-        cwd: '<%= source %>/assets/css',
-        src: '*.prefixed.css',
-        dest: '<%= source %>/assets/css',
-        ext: '.css'
       }
     },
 
@@ -268,15 +238,29 @@ module.exports = function(grunt) {
         banner: '/* <%= prj.banner %> */',
         noCache: true,
         precision: 16,
-        style: 'expanded'
       },
-      styles: {
+      devStyles: {
+        options: {
+          style: 'expanded'
+        },
         files: [{
           expand: true,
           cwd: '<%= source %>/_assets/styles',
           src: '*.scss',
           dest: '<%= source %>/assets/css',
-          ext: '.unprefixed.css'
+          ext: '.css'
+        }]
+      },
+      styles: {
+        options: {
+          style: 'compressed'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/_assets/styles',
+          src: '*.scss',
+          dest: '<%= source %>/assets/css',
+          ext: '.css'
         }]
       }
     },
@@ -488,8 +472,8 @@ module.exports = function(grunt) {
     'svg2png',
     'svgmin',
     'imagemin',
-    'sass',
-    'autoprefixer:devStyles',
+    'sass:devStyles',
+    'autoprefixer',
     'clean:css',
     'jekyll',
     'connect',
@@ -506,9 +490,8 @@ module.exports = function(grunt) {
     'svg2png',
     'svgmin',
     'imagemin',
-    'sass',
-    'autoprefixer:styles',
-    'cssmin',
+    'sass:styles',
+    'autoprefixer',
     'clean:css',
     'jekyll',
     'hashres',
