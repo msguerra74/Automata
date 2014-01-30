@@ -25,6 +25,7 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
+    - [Respond.js][]: A fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
 
@@ -124,5 +125,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css
 [RDiscount]: https://github.com/davidfstr/rdiscount
+[Respond.js]: https://github.com/scottjehl/Respond
 [Ruby]: https://www.ruby-lang.org/en/
 [Sass]: http://sass-lang.com/

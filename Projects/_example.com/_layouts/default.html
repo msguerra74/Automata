@@ -8,12 +8,9 @@
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.responsive_design %}
   <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.blog_feed %}
   <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.canonical_link %}
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}{% if site.oldie %}
-  <!--[if (gt IE 8) | (IEMobile)]><!-->{% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}
   <link rel="stylesheet" href="{{ relative }}assets/css/style.css">{% if site.oldie %}
-  <!--<![endif]-->
   <!--[if (lt IE 9) & (!IEMobile)]>
-  <link rel="stylesheet" href="{{ relative }}assets/css/oldie.css">
   <script src="{{ relative }}assets/js/oldie.js"></script>
   <![endif]-->{% endif %}{% if site.jquery or site.js_plugins %}
   <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% if page.head %} {{ page.head }}{% endif %}
