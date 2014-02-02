@@ -36,17 +36,10 @@
 // @include breakpoint(medium) {}
 
 @mixin breakpoint($point) {
-  @if $oldie {
-    @if ($point == small) or ($point == medium) {
-      @content;
-    }
-  }
-  @else {
-    @each $breakpoint in $breakpoints {
-      @if $point == nth($breakpoint, 1) {
-        @media (min-width: nth($breakpoint, 2)) {
-          @content;
-        }
+  @each $breakpoint in $breakpoints {
+    @if $point == nth($breakpoint, 1) {
+      @media (min-width: nth($breakpoint, 2)) {
+        @content;
       }
     }
   }
@@ -123,9 +116,4 @@
 @mixin inline-block($vertical-align: baseline) {
   display: inline-block;
   vertical-align: $vertical-align;
-  @if $oldie {
-    zoom: 1;
-    *display: inline;
-    *vertical-align: $vertical-align;
-  }
 }

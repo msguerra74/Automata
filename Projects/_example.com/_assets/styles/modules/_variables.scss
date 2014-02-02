@@ -2,45 +2,33 @@
 // Variables
 //------------------------------//
 
-// Fonts
-$courier: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace !default;
-$georgia: Georgia, Times, 'Times New Roman', serif !default;
-$verdana: Verdana, Geneva, sans-serif !default;
-
 // ---------- Base ---------- //
 
 // Base colors
-$base__background-color: white !default;
-$base__background-color--selection: darken(white, 7) !default;
-$base__color: lighten(black, 13) !default;
+$base__background-color: #fff;
+$base__background-color--selection: #eee;
+$base__color: #222;
 
 // Base fonts
-$base__font-family: $georgia !default;
-$base__font-family--code: $courier !default;
-$base__font-family--heading: $verdana !default;
+$base__font-family: Georgia, Times, 'Times New Roman', serif;
+$base__font-family--code: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+$base__font-family--heading: Verdana, Geneva, sans-serif;
 
 // Bases sizes
-$base__font-size: 16px !default;
-$base__line-height: 24px !default;
-$base__line-height--ratio: $base__line-height / $base__font-size !default;
-$base__max-width: none !default;
+$base__font-size: 16px;
+$base__line-height: 24px;
+$base__line-height--ratio: $base__line-height / $base__font-size;
 
 // ---------- Breakpoints ---------- //
 
-$small: (481px / $base__font-size) + em !default;
-$medium: (769px  / $base__font-size) + em !default;
-$large: (1025px  / $base__font-size) + em !default;
-$xlarge: (1367px  / $base__font-size) + em !default;
+$small: (481px / $base__font-size) + em;
+$medium: (769px  / $base__font-size) + em;
+$large: (1025px  / $base__font-size) + em;
+$xlarge: (1367px  / $base__font-size) + em;
+
+$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
 
 // ---------- Grid ---------- //
 
-$grid__columns: 48 !default;
-
-// ---------- Misc variables ---------- //
-
-$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge !default;
-$grid__column: 100% / $grid__columns !default;
-
-// ---------- Oldie ---------- //
-
-$oldie: false !default;
+$grid__columns: 48;
+$grid__column: 100% / $grid__columns;
