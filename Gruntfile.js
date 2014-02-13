@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         '<%= site %>/**/{*,.*}',
         '!<%= site %>/{.git,sftp-config.json}',
         '<%= source %>/assets'
-        ],
+      ],
       css: '<%= source %>/assets/css/*.{prefixed,unprefixed}.css'
     },
 
@@ -104,6 +104,10 @@ module.exports = function(grunt) {
      */
 
     curl: {
+      htaccess: {
+        src: 'https://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
+        dest: '<%= source %>/.htaccess'
+      },
       jquery: {
         src: 'http://code.jquery.com/jquery.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
@@ -158,7 +162,7 @@ module.exports = function(grunt) {
           '!<%= source %>/_assets/**/*',
           '!<%= site %>/**/*',
           '!<%= source %>/assets/**/*'
-          ],
+        ],
         tasks: 'jekyll'
       },
       fonts: {
@@ -166,7 +170,7 @@ module.exports = function(grunt) {
         tasks: [
           'copy:fonts',
           'copy:buildFonts'
-          ]
+        ]
       },
       images: {
         files: '<%= source %>/_assets/images/**/*',
@@ -175,7 +179,7 @@ module.exports = function(grunt) {
           'svgmin',
           'imagemin',
           'copy:buildImages'
-          ]
+        ]
       },
       scripts: {
         files: '<%= source %>/_assets/scripts/**/*',
@@ -184,7 +188,7 @@ module.exports = function(grunt) {
           'uglify:devPlugins',
           'uglify:vendor',
           'copy:buildScripts'
-          ]
+        ]
       },
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
@@ -192,7 +196,7 @@ module.exports = function(grunt) {
           'sass:devStyles',
           'autoprefixer',
           'copy:buildStyles'
-          ]
+        ]
       }
     },
 
@@ -215,7 +219,7 @@ module.exports = function(grunt) {
           'ios 6',
           'opera 12.1',
           'safari 6'
-          ]
+        ]
       },
       styles: {
         files: [{
@@ -333,7 +337,7 @@ module.exports = function(grunt) {
           'tt',
           'u',
           'var'
-          ]
+        ]
       },
       content: {
         expand: true,
@@ -416,7 +420,7 @@ module.exports = function(grunt) {
       scripts: [
         'Gruntfile.js',
         '<%= source %>/_assets/scripts/plugins/**/*.js'
-        ]
+      ]
     },
 
     /**
@@ -478,7 +482,7 @@ module.exports = function(grunt) {
     'jekyll',
     'connect',
     'watch'
-    ]);
+  ]);
 
   // Build task (builds to the '_site' folder)
   grunt.registerTask('build', [
@@ -496,11 +500,11 @@ module.exports = function(grunt) {
     'jekyll',
     'hashres',
     'prettify'
-    ]);
+  ]);
 
   // Downloads the latest versions of: _normalize.scss, jquery.js, and oldie.js
   grunt.registerTask('download', [
     'curl'
-    ]);
+  ]);
 
 };
