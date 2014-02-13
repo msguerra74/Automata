@@ -193,7 +193,7 @@ module.exports = function(grunt) {
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
         tasks: [
-          'sass:devStyles',
+          'sass',
           'autoprefixer',
           'copy:buildStyles'
         ]
@@ -232,6 +232,25 @@ module.exports = function(grunt) {
     },
 
     /**
+     * CSSmin
+     * Compress CSS files
+     * https://github.com/gruntjs/grunt-contrib-cssmin
+     */
+
+    cssmin: {
+      options: {
+        banner: '/* <%= prj.banner %> */',
+        keepSpecialComments: 0
+      },
+      styles: {
+        expand: true,
+        cwd: '<%= source %>/assets/css',
+        src: '*.css',
+        dest: '<%= source %>/assets/css'
+      }
+    },
+
+    /**
      * Sass
      * Compile Sass to CSS
      * https://github.com/gruntjs/grunt-contrib-sass
@@ -243,21 +262,9 @@ module.exports = function(grunt) {
         noCache: true,
         precision: 16,
       },
-      devStyles: {
-        options: {
-          style: 'expanded'
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/_assets/styles',
-          src: '*.scss',
-          dest: '<%= source %>/assets/css',
-          ext: '.css'
-        }]
-      },
       styles: {
         options: {
-          style: 'compressed'
+          style: 'expanded'
         },
         files: [{
           expand: true,
@@ -476,7 +483,7 @@ module.exports = function(grunt) {
     'svg2png',
     'svgmin',
     'imagemin',
-    'sass:devStyles',
+    'sass',
     'autoprefixer',
     'clean:css',
     'jekyll',
@@ -494,8 +501,9 @@ module.exports = function(grunt) {
     'svg2png',
     'svgmin',
     'imagemin',
-    'sass:styles',
+    'sass',
     'autoprefixer',
+    'cssmin',
     'clean:css',
     'jekyll',
     'hashres',
