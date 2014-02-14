@@ -84,8 +84,9 @@
 }
 
 @mixin col--inline-block($n: 1) {
+  display: inline-block;
+  vertical-align: top;
   width: $n * $grid__column;
-  @include inline-block(top);
 }
 
 @mixin prepend($n: 1) {
@@ -106,14 +107,4 @@
   @include col--inline-block($cols - ($grid__margin-left + $grid__margin-right));
   @include prepend($grid__margin-left);
   @include append($grid__margin-right);
-}
-
-// ---------- inline-block ---------- //
-
-// Usage:
-// @include inline-block(top); /* vertical-align: top; */
-
-@mixin inline-block($vertical-align: baseline) {
-  display: inline-block;
-  vertical-align: $vertical-align;
 }

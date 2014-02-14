@@ -6,7 +6,7 @@ Automated Static Website Generator
 
 by **Michael Guerra** | [msguerra74.com][]
 
-Designed for a modern web development workflow, **Automata** is a complete HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for rapid feedback.
+Created as a modern web development workflow, **Automata** is a complete HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for rapid feedback.
 
 - [Automata GitHub page][]
 - [Automata.zip][]
@@ -62,24 +62,24 @@ Designed for a modern web development workflow, **Automata** is a complete HTML5
 1. Download and install [Node.js][] if needed.
 2. Download and install [Ruby][] if needed.
 3. Download and unzip [Automata.zip][] where you want it.
-4. From the command prompt, navigate to the 'Automata' folder and type the following commands:
-    - gem install jekyll rdiscount sass
-    - npm install -g grunt-cli
-    - npm install
+4. From the command prompt, navigate to the `Automata` folder and type the following commands:
+    - `gem install jekyll rdiscount sass`
+    - `npm install -g grunt-cli`
+    - `npm install`
 5. That's it, now you can run any Grunt task!
 
 ### Usage
 
-1. Modify the 'Projects/\_example.com/\_config.yml' file variables to match your project needs. (NOTE: You can also duplicate the '\_example.com' directory to create multiple projects, so long as you point to the appropriate '\_config.yml' file at the top of the 'Gruntfile.js' file).
-2. From the command prompt, navigate to the 'Automata' folder and run any of the following Grunt tasks:
-    - 'grunt' to develop the site with a LiveReload server
-    - 'grunt build' to build a production version of the current site
-    - 'grunt download' to download the latest vendor files (\_normalize.scss, jquery.js, and oldie.js)
+1. Modify the `Projects/_example.com/_config.yml` file variables to match your project needs. (NOTE: You can also duplicate the `_example.com` directory to create multiple projects, so long as you point to the appropriate `_config.yml` file at the top of the `Gruntfile.js` file).
+2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
+    - `grunt` to develop the site with a LiveReload server
+    - `grunt build` to build a production version of the current site
+    - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, and oldie.js (HTML5 Shiv and Respond.js)`
 
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2013 Michael Guerra (Automata)
+Copyright (c) 2014 Michael Guerra (Automata)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
