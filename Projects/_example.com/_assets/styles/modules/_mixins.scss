@@ -7,11 +7,13 @@
 // Usage:
 // @include baseline(16, 24); /* 16px / 24px */
 // or
-// @include baseline(16, 24, 0); /* 16px / 24px / margin-bottom: 0; */
+// @include baseline(16, 24, 0); /* 16px / 24px / margin-(top/bottom): 0; */
 // or
-// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: margin-bottom x 2; */
+// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: x 2; */
+// or
+// @include baseline(16, 24, 1, both); /* 16px / 24px / margin-(top/bottom): x 1 */
 
-@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin-bottom: em($base__line-height, $target)) {
+@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin: em($base__line-height, $target), $margins: bottom) {
   font-size: em($target, $context);
   @if $target >= $base__line-height {
     line-height: strip-units(em($base__line-height, $target)) * 2;
@@ -19,14 +21,27 @@
   @else {
     line-height: strip-units(em($base__line-height, $target));
   }
-  @if $margin-bottom == 0 {
-    margin-bottom: $margin-bottom;
+  @if $margin == 0 {
+    margin-bottom: $margin;
+    margin-top: $margin;
   }
-  @elseif $margin-bottom != em($base__line-height, $target) {
-    margin-bottom: em($base__line-height, $target) * $margin-bottom;
+  @elseif $margin == em($base__line-height, $target) {
+    margin-bottom: $margin;
+    @if $margins == both {
+      margin-top: $margin;
+    }
+    @else {
+      margin-top: 0;
+    }
   }
   @else {
-    margin-bottom: em($base__line-height, $target);
+    margin-bottom: em($base__line-height, $target) * $margin;
+    @if $margins == both {
+      margin-top: em($base__line-height, $target) * $margin;
+    }
+    @else {
+      margin-top: 0;
+    }
   }
 }
 
@@ -84,8 +99,7 @@
 }
 
 @mixin col--inline-block($n: 1) {
-  display: inline-block;
-  vertical-align: top;
+  @include inline-block(top);
   width: $n * $grid__column;
 }
 
@@ -107,4 +121,29 @@
   @include col--inline-block($cols - ($grid__margin-left + $grid__margin-right));
   @include prepend($grid__margin-left);
   @include append($grid__margin-right);
+}
+
+// ---------- inline-block ---------- //
+
+// Usage:
+// @include inline-block(top);
+
+@mixin inline-block($vertical-align: baseline) {
+  display: inline-block;
+  vertical-align: $vertical-align;
+}
+
+// ---------- Vertical Align Middle---------- //
+
+// Based on:
+// http://hackingui.com/front-end/10-best-scss-utilities/
+// Usage:
+// @include vertical-align-middle(after);
+
+@mixin vertical-align-middle($pseudo: before) {
+  &:#{$pseudo} {
+    content: '';
+    height: 100%;
+    @include inline-block(middle);
+  }
 }
