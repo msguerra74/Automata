@@ -6,7 +6,7 @@ Automated Static Website Generator
 
 by **Michael Guerra** | [msguerra74.com][]
 
-Created as a modern web development workflow, **Automata** is a complete HTML5 / CSS3 *Automated Static Website Generator* that harnesses the power of Jekyll as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for rapid feedback.
+**Automata** is a CSS3 / HTML5 *Automated Static Website Generator*. It utilizes Jekyll (with MarkDown and Liquid) as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for near-instant feedback.
 
 - [Automata GitHub page][]
 - [Automata.zip][]
