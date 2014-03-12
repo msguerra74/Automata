@@ -125,7 +125,7 @@ h1, .alpha {
 }
 
 h2, .beta {
-  @include baseline(26);
+  @include baseline(28);
 
   @include breakpoint(medium) {
     @include baseline(32);
@@ -137,10 +137,10 @@ h2, .beta {
 }
 
 h3, .gamma {
-  @include baseline(22);
+  @include baseline(24);
 
   @include breakpoint(medium) {
-    @include baseline(24);
+    @include baseline(26);
   }
 
   @include breakpoint(large) {
@@ -149,15 +149,15 @@ h3, .gamma {
 }
 
 h4, .delta {
-  @include baseline(18);
+  @include baseline(20);
 }
 
 h5, .epsilon {
-  @include baseline(16);
+  @include baseline(18);
 }
 
 h6, .zeta {
-  @include baseline(14);
+  @include baseline(16);
 }
 
 p,

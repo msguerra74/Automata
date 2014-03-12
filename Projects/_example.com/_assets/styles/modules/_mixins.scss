@@ -60,7 +60,21 @@
   }
 }
 
-// ---------- Font Face ---------- //
+// ---------- Clearfix ---------- //
+
+@mixin clear {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// ---------- Font face ---------- //
 
 // Based on:
 // https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_font-face.scss
@@ -94,7 +108,7 @@
 // You can also use negative margins
 
 @mixin col--float($n: 1) {
-  @extend %left;
+  float: left;
   width: $n * $grid__column;
 }
 
@@ -123,7 +137,31 @@
   @include append($grid__margin-right);
 }
 
-// ---------- inline-block ---------- //
+// ---------- Hidden ---------- //
+
+// Hide from both screenreaders and browsers
+
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+// ---------- Image replacement ---------- //
+
+@mixin image-replacement {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+
+// ---------- Inline block ---------- //
 
 // Usage:
 // @include inline-block(top);
@@ -133,7 +171,50 @@
   vertical-align: $vertical-align;
 }
 
-// ---------- Vertical Align Middle---------- //
+// ---------- Invisible ---------- //
+
+// Hide visually and from screenreaders, but maintain layout
+
+@mixin invisible {
+  visibility: hidden;
+}
+
+// ---------- Media object ---------- //
+
+// Media container
+
+@mixin media {
+  display: block;
+  @include clear;
+}
+
+// Media image
+
+@mixin media__image {
+  float: left;
+
+  & img {
+    display: block;
+  }
+}
+
+// Media image reversed
+
+@mixin media__image--rev {
+  float: right;
+
+  & img {
+    display: block;
+  }
+}
+
+// Media body
+
+@mixin media__body {
+  overflow: hidden;
+}
+
+// ---------- Vertical align middle ---------- //
 
 // Based on:
 // http://hackingui.com/front-end/10-best-scss-utilities/
@@ -145,5 +226,32 @@
     content: '';
     height: 100%;
     @include inline-block(middle);
+  }
+}
+
+// ---------- Visually hidden ---------- //
+
+// Hide only visually, but have it available for screenreaders
+
+@mixin visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  // Extends visually-hidden to allow the element to be focusable when navigated to via the keyboard
+
+  &.focusable:active,
+  &.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
   }
 }

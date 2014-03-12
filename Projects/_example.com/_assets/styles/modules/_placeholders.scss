@@ -2,60 +2,32 @@
 // Placeholders
 //------------------------------//
 
-// ---------- clear ---------- //
+// ---------- Clearfix ---------- //
 
 %clear {
-  &:before,
-  &:after {
-    content: ' ';
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
+  @include clear;
 }
 
-// ---------- Floats ---------- //
-
-%left {
-  float: left;
-}
-
-%right {
-  float: right;
-}
-
-// ---------- hidden ---------- //
+// ---------- Hidden ---------- //
 
 // Hide from both screenreaders and browsers
 
 %hidden {
-  display: none !important;
-  visibility: hidden;
+  @include hidden;
 }
 
-// ---------- image-replacement ---------- //
+// ---------- Image replacement ---------- //
 
 %image-replacement {
-  background-color: transparent;
-  border: 0;
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    display: block;
-    width: 0;
-    height: 150%;
-  }
+  @include image-replacement;
 }
 
-// ---------- invisible ---------- //
+// ---------- Invisible ---------- //
 
 // Hide visually and from screenreaders, but maintain layout
 
 %invisible {
-  visibility: hidden;
+  @include invisible;
 }
 
 // ---------- Media object ---------- //
@@ -63,59 +35,31 @@
 // Media container
 
 %media {
-  @extend %clear;
-  display: block;
+  @include media;
 }
 
 // Media image
 
 %media__image {
-  @extend %left;
-
-  & img {
-    display: block;
-  }
+  @include media__image;
 }
 
 // Media image reversed
 
 %media__image--rev {
-  @extend %right;
-
-  & img {
-    display: block;
-  }
+  @include media__image--rev;
 }
 
 // Media body
 
 %media__body {
-  overflow: hidden;
+  @include media__body;
 }
 
-// ---------- visually-hidden ---------- //
+// ---------- Visually hidden ---------- //
 
 // Hide only visually, but have it available for screenreaders
 
 %visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-
-  // Extends visually-hidden to allow the element to be focusable when navigated to via the keyboard
-
-  &.focusable:active,
-  &.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-  }
+  @include visually-hidden;
 }
