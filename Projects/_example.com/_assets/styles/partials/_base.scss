@@ -15,19 +15,19 @@
 // Misc
 
 ::-moz-selection {
-  background: $base__background-color--selection;
+  background-color: $base__background-color--selection;
   text-shadow: none;
 }
 
 ::selection {
-  background: $base__background-color--selection;
+  background-color: $base__background-color--selection;
   text-shadow: none;
 }
 
 // Elements
 
 html {
-  background: $base__background-color;
+  background-color: $base__background-color;
   color: $base__color;
   font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
   min-height: 100%;
@@ -39,7 +39,8 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
-  margin: em($base__line-height) 0;
+  margin-bottom: em($base__line-height);
+  margin-top: em($base__line-height);
 }
 
 a {
