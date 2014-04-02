@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         '!<%= site %>/{.git,sftp-config.json}',
         '<%= source %>/assets'
       ],
-      css: '<%= source %>/assets/css/*.{prefixed,unprefixed}.css'
+      temp: '<%= source %>/assets/temp'
     },
 
     /**
@@ -371,7 +371,7 @@ module.exports = function(grunt) {
           dest: '<%= source %>/assets/img'
         }, {
           expand: true,
-          cwd: '<%= source %>/assets/img',
+          cwd: '<%= source %>/assets/temp/img',
           src: '**/*.{gif,jpg,png}',
           dest: '<%= source %>/assets/img'
         }]
@@ -388,7 +388,7 @@ module.exports = function(grunt) {
       svg: {
         files: [{
           src: '<%= source %>/_assets/images/**/*.svg',
-          dest: '<%= source %>/assets/img'
+          dest: '<%= source %>/assets/temp/img'
         }]
       }
     },
@@ -485,7 +485,7 @@ module.exports = function(grunt) {
     'imagemin',
     'sass',
     'autoprefixer',
-    'clean:css',
+    'clean:temp',
     'jekyll',
     'connect',
     'watch'
@@ -504,7 +504,7 @@ module.exports = function(grunt) {
     'sass',
     'autoprefixer',
     'cssmin',
-    'clean:css',
+    'clean:temp',
     'jekyll',
     'hashres',
     'prettify'
