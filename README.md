@@ -1,8 +1,6 @@
-Automata
-=========
+# Automata
 
-Automated Static Website Generator
-----------------------------------
+## Automated Static Website Generator
 
 by **Michael Guerra** | [msguerra74.com][]
 
@@ -76,8 +74,7 @@ by **Michael Guerra** | [msguerra74.com][]
     - `grunt build` to build a production version of the current site
     - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, and oldie.js (HTML5 Shiv and Respond.js)`
 
-The MIT License (MIT)
----------------------
+## The MIT License (MIT)
 
 Copyright (c) 2014 Michael Guerra (Automata)
 

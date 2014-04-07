@@ -15,7 +15,7 @@ blog_feed: true
 blog_feed_post_limit: 10
 canonical_link: true
 ie_edge: false
-jquery: false
+jquery: true
 js_plugins: true
 oldie: true
 responsive_design: true
