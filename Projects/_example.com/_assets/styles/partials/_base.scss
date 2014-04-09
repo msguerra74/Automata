@@ -2,14 +2,37 @@
 // Base
 //------------------------------//
 
-// Universal reset / border-box
+// Universal border-box
+// Based on:
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 
 *,
 :before,
 :after {
   box-sizing: border-box;
-  margin: 0;
+}
+
+// Reset
+// Based on:
+// https://github.com/inuitcss/generic.reset/blob/master/_generic.reset.scss
+
+blockquote, body, caption, dd, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, legend, ol, p, pre, table, td, th, ul {
+  margin:  0;
   padding: 0;
+}
+
+abbr[title],
+dfn[title] {
+  cursor: help;
+}
+
+ins,
+u {
+  text-decoration: none;
+}
+
+ins {
+  border-bottom: 1px solid;
 }
 
 // Misc
@@ -31,6 +54,7 @@ html {
   color: $base__color;
   font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
   min-height: 100%;
+  min-width: em(320);
   overflow-y: scroll;
 }
 
@@ -38,7 +62,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid $gray--lightest;
   margin-bottom: em($base__line-height);
   margin-top: em($base__line-height);
 }
