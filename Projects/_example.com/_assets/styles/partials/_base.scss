@@ -2,37 +2,14 @@
 // Base
 //------------------------------//
 
-// Universal border-box
-// Based on:
-// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+// Universal border-box / reset
 
 *,
 :before,
 :after {
   box-sizing: border-box;
-}
-
-// Reset
-// Based on:
-// https://github.com/inuitcss/generic.reset/blob/master/_generic.reset.scss
-
-blockquote, body, caption, dd, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, legend, ol, p, pre, table, td, th, ul {
-  margin:  0;
+  margin: 0;
   padding: 0;
-}
-
-abbr[title],
-dfn[title] {
-  cursor: help;
-}
-
-ins,
-u {
-  text-decoration: none;
-}
-
-ins {
-  border-bottom: 1px solid;
 }
 
 // Misc
@@ -62,7 +39,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid $gray--lightest;
+  border-top: 1px solid LightGray;
   margin-bottom: em($base__line-height);
   margin-top: em($base__line-height);
 }
@@ -105,7 +82,7 @@ code {
 dl,
 ol,
 ul {
-  @include baseline(16);
+  @include baseline($base__font-size);
 }
 
 embed,
@@ -138,14 +115,14 @@ h6, .zeta {
 }
 
 h1, .alpha {
-  @include baseline(32);
+  @include baseline(32, $base__font-size, 1, both);
 
   @include breakpoint(medium) {
-    @include baseline(40);
+    @include baseline(40, $base__font-size, 1, both);
   }
 
   @include breakpoint(large) {
-    @include baseline(48);
+    @include baseline(48, $base__font-size, 1, both);
   }
 }
 
@@ -182,12 +159,12 @@ h5, .epsilon {
 }
 
 h6, .zeta {
-  @include baseline(16);
+  @include baseline($base__font-size);
 }
 
 p,
 pre {
-  @include baseline(16);
+  @include baseline($base__font-size);
 }
 
 pre {
