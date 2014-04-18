@@ -15,7 +15,10 @@
 
 @mixin baseline($target: $base__font-size, $context: $base__font-size, $margin: em($base__line-height, $target), $margins: bottom) {
   font-size: em($target, $context);
-  @if $target >= $base__line-height {
+  @if $target >= $base__font-size * 3 {
+    line-height: strip-units(em($base__line-height, $target)) * 3;
+  }
+  @elseif $target >= $base__font-size * 1.5 {
     line-height: strip-units(em($base__line-height, $target)) * 2;
   }
   @else {
