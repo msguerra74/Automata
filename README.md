@@ -47,6 +47,7 @@ by **Michael Guerra** | [msguerra74.com][]
         - [grunt-hashres][]: Hashes asset files and renames links in html/php/etc
         - [grunt-jekyll][]: Static site generator
         - [grunt-prettify][]: Prettify HTML
+        - [grunt-sftp-deploy][]: Grunt task for code deployment over sftp
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [grunt-svgmin][]: Minify SVG
         - [load-grunt-tasks][]: Load multiple grunt tasks using globbing patterns
@@ -107,6 +108,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-hashres]: https://github.com/luismahou/grunt-hashres
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
+[grunt-sftp-deploy]: https://github.com/thrashr888/grunt-sftp-deploy
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
 [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/

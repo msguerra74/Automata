@@ -10,6 +10,12 @@ email: owner@email.com
 google_analytics_id: # UA-xxxxxxxx-x
 banner: Created by Developer in 2014 | http://website.com
 
+# Website SFTP deployment
+sftp_host: # _example.com
+sftp_key: # _example.com (see .ftppass)
+sftp_path: # /path/to/destination/folder
+sftp_exclusions: # ['/path/to/source/file-exclude.ext']
+
 # Website options
 blog_feed: true
 blog_feed_post_limit: 10
