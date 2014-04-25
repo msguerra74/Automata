@@ -113,7 +113,10 @@ module.exports = function(grunt) {
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       oldie: {
-        src: ['https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js', 'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js'],
+        src: [
+          'https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js',
+          'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js'
+        ],
         dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
@@ -134,14 +137,20 @@ module.exports = function(grunt) {
           fileNameFormat: '${name}-${hash}.${ext}'
         },
         src: '<%= site %>/assets/**/*.{eot,gif,jpg,png,svg,ttf,woff}',
-        dest: '<%= site %>/**/*.{css,html,js,php}'
+        dest: [
+          '<%= site %>/**/*.{css,html,js,php}',
+          '!<%= site %>/**/{jquery*,oldie*}.js'
+        ]
       },
       minifiedAssets: {
         options: {
           fileNameFormat: '${name}-${hash}.min.${ext}'
         },
         src: '<%= site %>/assets/**/*.{css,js}',
-        dest: '<%= site %>/**/*.{css,html,js,php}'
+        dest: [
+          '<%= site %>/**/*.{css,html,js,php}',
+          '!<%= site %>/**/{jquery*,oldie*}.js'
+        ]
       }
     },
 
@@ -167,7 +176,10 @@ module.exports = function(grunt) {
         },
         src: '<%= site %>',
         dest: '<%= prj.sftp_path %>',
-        exclusions: ['<%= prj.keep_files %>', '<%= prj.sftp_exclusions %>'],
+        exclusions: [
+          '<%= prj.keep_files %>',
+          '<%= prj.sftp_exclusions %>'
+        ],
         server_sep: '/'
       }
     },
