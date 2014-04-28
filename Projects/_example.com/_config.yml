@@ -14,7 +14,7 @@ banner: Created by Developer in 2014 | http://website.com
 sftp_host: # _example.com
 sftp_key: # _example.com (see .ftppass)
 sftp_path: # /path/to/destination/folder
-sftp_exclusions: # ['/path/to/source/file-exclude.ext']
+sftp_exclusions: # ['/path/to/source/excluded-file.ext']
 
 # Website options
 blog_feed: true
