@@ -112,11 +112,12 @@ module.exports = function(grunt) {
         src: 'http://code.jquery.com/jquery.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
+      modernizr: {
+        src: 'http://modernizr.com/downloads/modernizr-latest.js',
+        dest: '<%= source %>/_assets/scripts/vendor/modernizr.js'
+      },
       oldie: {
-        src: [
-          'https://raw.github.com/aFarkas/html5shiv/master/src/html5shiv-printshiv.js',
-          'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js'
-        ],
+        src: 'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js',
         dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
@@ -139,7 +140,7 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{eot,gif,jpg,png,svg,ttf,woff}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,oldie*}.js'
+          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
         ]
       },
       minifiedAssets: {
@@ -149,7 +150,7 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{css,js}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,oldie*}.js'
+          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
         ]
       }
     },

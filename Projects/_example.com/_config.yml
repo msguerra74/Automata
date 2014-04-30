@@ -23,6 +23,7 @@ canonical_link: true
 ie_edge: false
 jquery: true
 js_plugins: true
+modernizr: true
 oldie: true
 responsive_design: true
 
