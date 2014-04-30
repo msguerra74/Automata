@@ -21,8 +21,8 @@ by **Michael Guerra** | [msguerra74.com][]
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
     - [Google Analytics][]: Web Analytics and Reporting
-    - [HTML5 Shiv][]: Enables use of HTML5 sectioning elements in legacy Internet Explorer
     - [jQuery][]: Feature-rich JavaScript library
+    - [Modernizr][]: JavaScript library that detects HTML5 and CSS3 features in the users browser
     - [Respond.js][]: A fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
@@ -73,7 +73,8 @@ by **Michael Guerra** | [msguerra74.com][]
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, and oldie.js (HTML5 Shiv and Respond.js)`
+    - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, modernizr.js, and oldie.js (Respond.js)`
+    - `grunt sftp` to upload to SFTP server specified in `_config.yml` and `.ftppass`
 
 ## The MIT License (MIT)
 
@@ -113,13 +114,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
 [HTML5 Boilerplate]: https://github.com/h5bp/html5-boilerplate
-[HTML5 Shiv]: https://github.com/aFarkas/html5shiv
 [JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Jekyll]: http://jekyllrb.com/
 [jQuery]: http://jquery.com/
 [load-grunt-tasks]: https://github.com/sindresorhus/load-grunt-tasks
 [Markdown]: http://daringfireball.net/projects/markdown/
-[matchdep]: https://github.com/tkellen/node-matchdep
+[Modernizr]: http://modernizr.com
 [msguerra74.com]: http://msguerra74.com/
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css
