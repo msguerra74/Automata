@@ -4,6 +4,8 @@
 
 by **Michael Guerra** | [msguerra74.com][]
 
+> **Automata** */aw-tom-uh-tuh/* - Machines that performs a function according to a predetermined set of coded instructions, especially ones capable of a range of programmed responses to different circumstances.
+
 **Automata** is a CSS3 / HTML5 *Automated Static Website Generator*. It utilizes Jekyll (with MarkDown and Liquid) as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for near-instant feedback.
 
 - [Automata GitHub page][]
@@ -47,7 +49,6 @@ by **Michael Guerra** | [msguerra74.com][]
         - [grunt-hashres][]: Hashes asset files and renames links in html/php/etc
         - [grunt-jekyll][]: Static site generator
         - [grunt-prettify][]: Prettify HTML
-        - [grunt-sftp-deploy][]: Grunt task for code deployment over sftp
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [grunt-svgmin][]: Minify SVG
         - [load-grunt-tasks][]: Load multiple grunt tasks using globbing patterns
@@ -73,8 +74,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, modernizr.js, and oldie.js (Respond.js)`
-    - `grunt sftp` to upload to SFTP server specified in `_config.yml` and `.ftppass`
+    - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, modernizr.js, and oldIE.js (Respond.js)`
 
 ## The MIT License (MIT)
 
@@ -109,7 +109,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-hashres]: https://github.com/luismahou/grunt-hashres
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
-[grunt-sftp-deploy]: https://github.com/thrashr888/grunt-sftp-deploy
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
 [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/

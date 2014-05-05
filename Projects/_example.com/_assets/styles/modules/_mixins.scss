@@ -154,6 +154,7 @@
 @mixin image-replacement {
   background-color: transparent;
   border: 0;
+  line-height: 0;
   overflow: hidden;
 
   &:before {

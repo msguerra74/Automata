@@ -32,12 +32,10 @@ module.exports = function(grunt) {
      */
 
     clean: {
-      generated: [
-        '<%= site %>/**/{*,.*}',
-        '!<%= site %>/{.git,sftp-config.json}',
+      pre: [
+        '<%= site %>',
         '<%= source %>/assets'
-      ],
-      temp: '<%= source %>/assets/temp'
+      ]
     },
 
     /**
@@ -116,9 +114,9 @@ module.exports = function(grunt) {
         src: 'http://modernizr.com/downloads/modernizr-latest.js',
         dest: '<%= source %>/_assets/scripts/vendor/modernizr.js'
       },
-      oldie: {
+      oldIE: {
         src: 'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js',
-        dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
+        dest: '<%= source %>/_assets/scripts/vendor/oldIE.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
@@ -140,7 +138,7 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{eot,gif,jpg,png,svg,ttf,woff}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
+          '!<%= site %>/**/{jquery*,modernizr*,oldIE*}.js'
         ]
       },
       minifiedAssets: {
@@ -150,38 +148,8 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{css,js}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
+          '!<%= site %>/**/{jquery*,modernizr*,oldIE*}.js'
         ]
-      }
-    },
-
-    /**
-     * SFTP Deploy
-     * Grunt task for code deployment over sftp
-     * https://github.com/thrashr888/grunt-sftp-deploy
-     */
-
-    'sftp-deploy': {
-      deploy: {
-        auth: {
-          host: '<%= prj.sftp_host %>',
-          port: 22,
-          authKey: '<%= prj.sftp_key %>'
-          // Store credentials in .ftppass file with this format:
-          // {
-          //   "_example.com": {
-          //     "username": "username",
-          //     "password": "password"
-          //   }
-          // }
-        },
-        src: '<%= site %>',
-        dest: '<%= prj.sftp_path %>',
-        exclusions: [
-          '<%= prj.keep_files %>',
-          '<%= prj.sftp_exclusions %>'
-        ],
-        server_sep: '/'
       }
     },
 
@@ -217,8 +185,7 @@ module.exports = function(grunt) {
         tasks: [
           'svg2png',
           'svgmin',
-          'imagemin:tempImages',
-          'imagemin:images',
+          'imagemin',
           'copy:buildImages'
         ]
       },
@@ -254,12 +221,9 @@ module.exports = function(grunt) {
         browsers: [
           '> 1%',
           'last 2 versions',
-          'android 4',
-          'ff 17',
+          'ff ESR',
           'ie 8',
-          'ios 6',
           'opera 12.1',
-          'safari 6'
         ]
       },
       styles: {
@@ -398,17 +362,21 @@ module.exports = function(grunt) {
      */
 
     imagemin: {
-      images: {
-        expand: true,
-        cwd: '<%= source %>/_assets/images',
-        src: '**/*.{gif,jpg,png}',
-        dest: '<%= source %>/assets/img'
+      options: {
+        optimizationLevel: 7
       },
-      tempImages: {
-        expand: true,
-        cwd: '<%= source %>/assets/temp/img',
-        src: '**/*.{gif,jpg,png}',
-        dest: '<%= source %>/assets/img'
+      images: {
+        files: [{
+          expand: true,
+          cwd: '<%= source %>/_assets/images',
+          src: '**/*.{gif,jpg,png}',
+          dest: '<%= source %>/assets/img'
+        }, {
+          expand: true,
+          cwd: '<%= source %>/assets/img',
+          src: '**/*.{gif,jpg,png}',
+          dest: '<%= source %>/assets/img'
+        }]
       }
     },
 
@@ -422,7 +390,7 @@ module.exports = function(grunt) {
       svg: {
         files: [{
           src: '<%= source %>/_assets/images/**/*.svg',
-          dest: '<%= source %>/assets/temp/img'
+          dest: '<%= source %>/assets/img'
         }]
       }
     },
@@ -501,18 +469,16 @@ module.exports = function(grunt) {
 
   // Dev task 'default'
   grunt.registerTask('default', [
-    'clean:generated',
+    'clean:pre',
     'copy:fonts',
     'jshint',
     'uglify:devPlugins',
     'uglify:vendor',
     'svg2png',
     'svgmin',
-    'imagemin:tempImages',
-    'imagemin:images',
+    'imagemin',
     'sass',
     'autoprefixer',
-    'clean:temp',
     'jekyll',
     'connect',
     'watch'
@@ -520,30 +486,23 @@ module.exports = function(grunt) {
 
   // Build task (builds to the '_site' folder)
   grunt.registerTask('build', [
-    'clean:generated',
+    'clean:pre',
     'copy:fonts',
     'jshint',
     'uglify:plugins',
     'uglify:vendor',
     'svg2png',
     'svgmin',
-    'imagemin:tempImages',
-    'imagemin:images',
+    'imagemin',
     'sass',
     'autoprefixer',
     'cssmin',
-    'clean:temp',
     'jekyll',
     'hashres',
-    'prettify'
+    'prettify',
   ]);
 
-  // Deploy via SFTP
-  grunt.registerTask('sftp', [
-    'sftp-deploy'
-  ]);
-
-  // Downloads the latest versions of: _normalize.scss, jquery.js, and oldie.js
+  // Downloads the latest versions of: _normalize.scss, jquery.js, and oldIE.js
   grunt.registerTask('download', [
     'curl'
   ]);

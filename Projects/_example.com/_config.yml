@@ -10,32 +10,26 @@ email: owner@email.com
 google_analytics_id: # UA-xxxxxxxx-x
 banner: Created by Developer in 2014 | http://website.com
 
-# Website SFTP deployment
-sftp_host: # _example.com
-sftp_key: # _example.com (see .ftppass)
-sftp_path: # /path/to/destination/folder
-sftp_exclusions: # ['/path/to/source/excluded-file.ext']
-
 # Website options
 blog_feed: true
-blog_feed_post_limit: 10
+blog_feed_post_limit: 14
 canonical_link: true
 ie_edge: false
 jquery: true
 js_plugins: true
 modernizr: true
-oldie: true
+oldIE: true
 responsive_design: true
 
 # Jekyll options
 destination: _site
 include: ['']
 exclude: ['.htaccess']
-keep_files: ['.git', 'sftp-config.json']
+keep_files: ['.git']
 show_drafts: false
 future: false
 lsi: false
-paginate: 5
+paginate: 7
 permalink: /:categories/:title/
 timezone: # nil
 markdown: rdiscount

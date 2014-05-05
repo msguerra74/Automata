@@ -14,11 +14,6 @@
 
 // Misc
 
-::-moz-selection {
-  background-color: $base__background-color--selection;
-  text-shadow: none;
-}
-
 ::selection {
   background-color: $base__background-color--selection;
   text-shadow: none;
@@ -29,7 +24,9 @@
 html {
   background-color: $base__background-color;
   color: $base__color;
-  font: #{em($base__font-size)}/#{$base__line-height--ratio} $base__font-family;
+  font-family: $base__font-family;
+  font-size: em($base__font-size);
+  line-height: $base__line-height--ratio;
   min-height: 100%;
   min-width: em(320);
   overflow-y: scroll;
@@ -47,11 +44,6 @@ hr {
 a {
   border-bottom: 1px solid;
   text-decoration: none;
-
-  &:active,
-  &:hover {
-    border-bottom: 1px solid transparent;
-  }
 }
 
 audio,
@@ -64,10 +56,6 @@ video {
 
 blockquote {
   @include baseline(20);
-
-  @include breakpoint(medium) {
-    @include baseline(24);
-  }
 }
 
 canvas {
@@ -104,17 +92,17 @@ fieldset {
   border: 0;
 }
 
-h1, .alpha,
-h2, .beta,
-h3, .gamma,
-h4, .delta,
-h5, .epsilon,
-h6, .zeta {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   font-family: $base__font-family--heading;
   font-weight: bold;
 }
 
-h1, .alpha {
+h1, .h1 {
   @include baseline(32, $base__font-size, 1, both);
 
   @include breakpoint(medium) {
@@ -126,7 +114,7 @@ h1, .alpha {
   }
 }
 
-h2, .beta {
+h2, .h2 {
   @include baseline(28);
 
   @include breakpoint(medium) {
@@ -138,7 +126,7 @@ h2, .beta {
   }
 }
 
-h3, .gamma {
+h3, .h3 {
   @include baseline(24);
 
   @include breakpoint(medium) {
@@ -150,15 +138,15 @@ h3, .gamma {
   }
 }
 
-h4, .delta {
+h4, .h4 {
   @include baseline(20);
 }
 
-h5, .epsilon {
+h5, .h5 {
   @include baseline(18);
 }
 
-h6, .zeta {
+h6, .h6 {
   @include baseline($base__font-size);
 }
 

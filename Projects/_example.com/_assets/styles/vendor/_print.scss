@@ -1,3 +1,7 @@
+//------------------------------//
+// Print
+//------------------------------//
+
 @media print {
   * {
     background: transparent !important;
@@ -19,8 +23,8 @@
     content: " (" attr(title) ")";
   }
 
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
     content: "";
   }
 
