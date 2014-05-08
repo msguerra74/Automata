@@ -33,7 +33,8 @@ module.exports = function(grunt) {
 
     clean: {
       pre: [
-        '<%= site %>',
+        '<%= site %>/**/{*,.*}',
+        '!<%= site %>/{.git,sftp-config.json}',
         '<%= source %>/assets'
       ]
     },

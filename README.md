@@ -4,9 +4,9 @@
 
 by **Michael Guerra** | [msguerra74.com][]
 
-> **Automata** */aw-tom-uh-tuh/* - Machines that performs a function according to a predetermined set of coded instructions, especially ones capable of a range of programmed responses to different circumstances.
+> **Automata** */aw-tom-uh-tuh/* - Machines that perform a function according to a predetermined set of coded instructions, especially ones capable of a range of programmed responses to different circumstances.
 
-**Automata** is a CSS3 / HTML5 *Automated Static Website Generator*. It utilizes Jekyll (with MarkDown and Liquid) as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache busting with MD5-hash naming / linking, and an automated development server with LiveReload for near-instant feedback.
+**Automata** is a CSS3 / HTML5 *Automated Static Website Generator*. It utilizes Jekyll (with MarkDown and Liquid) as it's HTML / templating / blogging platform, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF / JPG / PNG / SVG image optimization, asset cache-busting with MD5-hash naming / linking, and an automated development server with LiveReload for near-instant feedback.
 
 - [Automata GitHub page][]
 - [Automata.zip][]

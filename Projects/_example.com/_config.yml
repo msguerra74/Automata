@@ -25,7 +25,7 @@ responsive_design: true
 destination: _site
 include: ['']
 exclude: ['.htaccess']
-keep_files: ['.git']
+keep_files: ['.git', 'sftp-config.json']
 show_drafts: false
 future: false
 lsi: false
