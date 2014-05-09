@@ -9,13 +9,13 @@
 // ---------- Base ---------- //
 
 // Base colors
-$base__background-color: White;
-$base__background-color--selection: LightGray;
-$base__color: Black;
+$base__background-color: white;
+$base__background-color--selection: lightgray;
+$base__color: black;
 
 // Base fonts
-$base__font-family: Georgia, Times, 'Times New Roman', serif;
-$base__font-family--code: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+$base__font-family: Georgia, Times, "Times New Roman", serif;
+$base__font-family--code: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 $base__font-family--heading: Verdana, Geneva, sans-serif;
 
 // Bases sizes
@@ -25,10 +25,10 @@ $base__line-height--ratio: $base__line-height / $base__font-size;
 
 // ---------- Breakpoints ---------- //
 
-$small: (481px / $base__font-size) + em;
-$medium: (769px  / $base__font-size) + em;
-$large: (1025px  / $base__font-size) + em;
-$xlarge: (1281px  / $base__font-size) + em;
+$small: 481px / $base__font-size + em;
+$medium: 769px / $base__font-size + em;
+$large: 1025px / $base__font-size + em;
+$xlarge: 1281px / $base__font-size + em;
 
 $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
 

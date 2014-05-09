@@ -335,6 +335,7 @@ module.exports = function(grunt) {
           'q',
           's',
           'samp',
+          'script',
           'small',
           'span',
           'strike',

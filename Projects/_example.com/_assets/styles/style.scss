@@ -2,15 +2,14 @@
 // Stylesheet
 //------------------------------//
 
-@import
-  'modules/variables',
-  'modules/functions',
-  'modules/mixins',
-  'modules/placeholders',
-  'vendor/normalize',
-  'partials/base',
-  'partials/header',
-  'partials/content',
-  'partials/footer',
-  'partials/classes',
-  'vendor/print';
+@import "modules/variables";
+@import "modules/functions";
+@import "modules/mixins";
+@import "modules/placeholders";
+@import "vendor/normalize";
+@import "partials/base";
+@import "partials/header";
+@import "partials/content";
+@import "partials/footer";
+@import "partials/classes";
+@import "vendor/print";

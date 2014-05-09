@@ -5,20 +5,20 @@
 // ---------- Baseline grid ---------- //
 
 // Usage:
-// @include baseline(16, 24); /* 16px / 24px */
+// @include baseline(16, 24); // 16px / 24px
 // or
-// @include baseline(16, 24, 0); /* 16px / 24px / margin-(top/bottom): 0; */
+// @include baseline(16, 24, 0); // 16px / 24px / margin-(top/bottom): 0
 // or
-// @include baseline(16, 24, 2); /* 16px / 24px / margin-bottom: x 2; */
+// @include baseline(16, 24, 2); // 16px / 24px / margin-bottom: x 2
 // or
-// @include baseline(16, 24, 1, both); /* 16px / 24px / margin-(top/bottom): x 1 */
+// @include baseline(16, 24, 1, both); // 16px / 24px / margin-(top/bottom): x 1
 
 @mixin baseline($target: $base__font-size, $context: $base__font-size, $margin: em($base__line-height, $target), $margins: bottom) {
   font-size: em($target, $context);
   @if $target >= $base__font-size * 3 {
     line-height: strip-units(em($base__line-height, $target)) * 3;
   }
-  @elseif $target >= $base__font-size * 1.5 {
+  @else if $target >= $base__font-size * 1.5 {
     line-height: strip-units(em($base__line-height, $target)) * 2;
   }
   @else {
@@ -28,7 +28,7 @@
     margin-bottom: $margin;
     margin-top: $margin;
   }
-  @elseif $margin == em($base__line-height, $target) {
+  @else if $margin == em($base__line-height, $target) {
     margin-bottom: $margin;
     @if $margins == both {
       margin-top: $margin;
@@ -68,10 +68,9 @@
 @mixin clear {
   &:before,
   &:after {
-    content: ' ';
+    content: " ";
     display: table;
   }
-
   &:after {
     clear: both;
   }
@@ -84,18 +83,15 @@
 // Order includes by:
 // normal, bold, italic, bold+italic
 // Usage:
-// @include font-face('Open Sans', '../fonts/OpenSans-Regular-webfont', 400, normal, OpenSansRegular);
+// @include font-face("Open Sans", "../fonts/OpenSans-Regular-webfont", 400, normal, OpenSansRegular);
 
 @mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $svg: $font-family) {
   @font-face {
     font-family: $font-family;
     font-weight: $weight;
     font-style: $style;
-    src: url('#{$file-path}.eot');
-    src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
-    url('#{$file-path}.woff') format('woff'),
-    url('#{$file-path}.ttf') format('truetype'),
-    url('#{$file-path}.svg##{$svg}') format('svg');
+    src: url("#{$file-path}.eot");
+    src: url("#{$file-path}.eot?#iefix") format("embedded-opentype"), url("#{$file-path}.woff") format("woff"), url("#{$file-path}.ttf") format("truetype"), url("#{$file-path}.svg##{$svg}") format("svg");
   }
 }
 
@@ -104,9 +100,9 @@
 // Based on:
 // https://github.com/studiowolf/taiga-grid
 // Usage:
-// @include grid--(float/inline-block)(12, 2); /* 12 columns w/ margin-left: 2%; margin-right: 2%; */
+// @include grid--(float/inline-block)(12, 2); // 12 columns with margin-left: 2% and margin-right: 2%
 // or
-// @include grid--(float/inline-block)(12, 2, 3); /* 12 columns w/ margin-left: 2%; margin-right: 3%; */
+// @include grid--(float/inline-block)(12, 2, 3); // 12 columns with margin-left: 2% and margin-right: 3%
 // Note:
 // You can also use negative margins
 
@@ -156,9 +152,8 @@
   border: 0;
   line-height: 0;
   overflow: hidden;
-
   &:before {
-    content: '';
+    content: "";
     display: block;
     width: 0;
     height: 150%;
@@ -196,7 +191,6 @@
 
 @mixin media__image {
   float: left;
-
   & img {
     display: block;
   }
@@ -206,7 +200,6 @@
 
 @mixin media__image--rev {
   float: right;
-
   & img {
     display: block;
   }
@@ -227,7 +220,7 @@
 
 @mixin vertical-align-middle($pseudo: before) {
   &:#{$pseudo} {
-    content: '';
+    content: "";
     height: 100%;
     @include inline-block(middle);
   }
@@ -246,9 +239,7 @@
   padding: 0;
   position: absolute;
   width: 1px;
-
   // Extends visually-hidden to allow the element to be focusable when navigated to via the keyboard
-
   &.focusable:active,
   &.focusable:focus {
     clip: auto;

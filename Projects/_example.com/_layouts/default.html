@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="{{ relative }}assets/css/style.css">{% if site.oldIE %}
   <!--[if (lt IE 9) & (!IEMobile)]>
   <script src="{{ relative }}assets/js/oldIE.js"></script>
-  <![endif]-->{% endif %}{% if site.jquery or site.js_plugins %}{% if site.modernizr %}
-  <script src="{{ relative }}assets/js/modernizr.js"></script>{% endif %}{% endif %}{% if page.head %} {{ page.head }}{% endif %}
+  <![endif]-->{% endif %}{% if site.modernizr %}
+  <script src="{{ relative }}assets/js/modernizr.js"></script>{% endif %}{% if page.head %} {{ page.head }}{% endif %}
 </head>
 <body>
   {% include header.html %}

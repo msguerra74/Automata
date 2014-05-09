@@ -44,6 +44,9 @@ hr {
 a {
   border-bottom: 1px solid;
   text-decoration: none;
+  &:hover {
+    border-bottom: 1px solid transparent;
+  }
 }
 
 audio,
@@ -55,7 +58,7 @@ video {
 }
 
 blockquote {
-  @include baseline(20);
+  @include baseline(16);
 }
 
 canvas {
@@ -70,7 +73,7 @@ code {
 dl,
 ol,
 ul {
-  @include baseline($base__font-size);
+  @include baseline(16);
 }
 
 embed,
@@ -103,39 +106,15 @@ h6, .h6 {
 }
 
 h1, .h1 {
-  @include baseline(32, $base__font-size, 1, both);
-
-  @include breakpoint(medium) {
-    @include baseline(40, $base__font-size, 1, both);
-  }
-
-  @include breakpoint(large) {
-    @include baseline(48, $base__font-size, 1, both);
-  }
+  @include baseline(32);
 }
 
 h2, .h2 {
   @include baseline(28);
-
-  @include breakpoint(medium) {
-    @include baseline(32);
-  }
-
-  @include breakpoint(large) {
-    @include baseline(36);
-  }
 }
 
 h3, .h3 {
   @include baseline(24);
-
-  @include breakpoint(medium) {
-    @include baseline(26);
-  }
-
-  @include breakpoint(large) {
-    @include baseline(28);
-  }
 }
 
 h4, .h4 {
@@ -147,12 +126,12 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  @include baseline($base__font-size);
+  @include baseline(16);
 }
 
 p,
 pre {
-  @include baseline($base__font-size);
+  @include baseline(16);
 }
 
 pre {
