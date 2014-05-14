@@ -63,7 +63,8 @@ by **Michael Guerra** | [msguerra74.com][]
 2. Download and install [Ruby][] if needed.
 3. Download and unzip [Automata.zip][] where you want it.
 4. From the command prompt, navigate to the `Automata` folder and type the following commands:
-    - `gem install jekyll rdiscount sass`
+    - `gem install jekyll -v 1.5.1`
+    - `gem install rdiscount sass`
     - `npm install -g grunt-cli`
     - `npm install`
 5. That's it, now you can run any Grunt task!
