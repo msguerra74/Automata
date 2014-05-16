@@ -433,6 +433,23 @@ module.exports = function(grunt) {
     },
 
     /**
+     * Modernizr
+     * Build out a lean, mean Modernizr machine
+     * https://github.com/Modernizr/grunt-modernizr
+     */
+
+    modernizr: {
+      build: {
+        devFile: '<%= source %>/_assets/scripts/vendor/modernizr.js',
+        outputFile: '<%= source %>/assets/js/modernizr.js',
+        uglify: false,
+        files: {
+          src: ['<%= source %>/assets/**/*.{css,js}']
+        }
+      }
+    },
+
+    /**
      * Uglify
      * Minify JavaScript files
      * https://github.com/gruntjs/grunt-contrib-uglify
@@ -460,6 +477,12 @@ module.exports = function(grunt) {
         cwd: '<%= source %>/_assets/scripts/vendor',
         src: '**/*.js',
         dest: '<%= source %>/assets/js'
+      },
+      vendorModernizr: {
+        expand: true,
+        cwd: '<%= source %>/assets/js',
+        src: '**/modernizr.js',
+        dest: '<%= source %>/assets/js'
       }
     }
 
@@ -471,7 +494,7 @@ module.exports = function(grunt) {
 
   // Dev task 'default'
   grunt.registerTask('default', [
-    'clean:pre',
+    'clean',
     'copy:fonts',
     'jshint',
     'uglify:devPlugins',
@@ -488,7 +511,7 @@ module.exports = function(grunt) {
 
   // Build task (builds to the '_site' folder)
   grunt.registerTask('build', [
-    'clean:pre',
+    'clean',
     'copy:fonts',
     'jshint',
     'uglify:plugins',
@@ -499,12 +522,14 @@ module.exports = function(grunt) {
     'sass',
     'autoprefixer',
     'cssmin',
+    'modernizr',
+    'uglify:vendorModernizr',
     'jekyll',
     'hashres',
     'prettify',
   ]);
 
-  // Downloads the latest versions of: _normalize.scss, jquery.js, and oldIE.js
+  // Downloads the latest versions of: .htaccess, _normalize.scss, jquery.js, modernizr, and oldIE.js (respond.js)
   grunt.registerTask('download', [
     'curl'
   ]);

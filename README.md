@@ -48,6 +48,7 @@ by **Michael Guerra** | [msguerra74.com][]
         - [grunt-curl][]: Download files from the internet
         - [grunt-hashres][]: Hashes asset files and renames links in html/php/etc
         - [grunt-jekyll][]: Static site generator
+        - [grunt-modernizr][]: Build out a lean, mean Modernizr machine
         - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [grunt-svgmin][]: Minify SVG
@@ -75,7 +76,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `_normalize.scss, jquery.js, modernizr.js, and oldIE.js (Respond.js)`
+    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, jquery.js, modernizr.js, and oldIE.js (respond.js)`
 
 ## The MIT License (MIT)
 
@@ -109,6 +110,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-curl]: https://github.com/twolfson/grunt-curl
 [grunt-hashres]: https://github.com/luismahou/grunt-hashres
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
+[grunt-modernizr]: https://github.com/Modernizr/grunt-modernizr
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
 [grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin

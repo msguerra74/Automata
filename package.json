@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/msguerra74/Automata/issues"
   },
+  "homepage": "https://github.com/msguerra74/Automata",
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.3",
@@ -27,6 +28,7 @@
     "grunt-curl": "^1.5.1",
     "grunt-hashres": "^0.4.1",
     "grunt-jekyll": "^0.4.2",
+    "grunt-modernizr": "^0.5.2",
     "grunt-prettify": "^0.3.4",
     "grunt-svg2png": "^0.2.1",
     "grunt-svgmin": "^0.4.0",
