@@ -1,33 +1,33 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
-<html {% if site.jquery or site.js_plugins %}class="no-js" {% endif %}lang="en">
+<html class="no-js{% if page.include.class %} {{ page.include.class }}{% endif %}" lang="en">
 <head>
   <!-- {{ site.banner }} -->
-  <meta charset="utf-8">{% if site.ie_edge %}
+  <meta charset="utf-8">{% if site.IEedge %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.responsive_design %}
-  <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.blog_feed %}
-  <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.canonical_link %}
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.responsive %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.feed %}
+  <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.canonical %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}
   <link rel="stylesheet" href="{{ relative }}assets/css/style.css">{% if site.oldIE %}
   <!--[if (lt IE 9) & (!IEMobile)]>
   <script src="{{ relative }}assets/js/oldIE.js"></script>
   <![endif]-->{% endif %}{% if site.modernizr %}
-  <script src="{{ relative }}assets/js/modernizr.js"></script>{% endif %}{% if page.head %} {{ page.head }}{% endif %}
+  <script src="{{ relative }}assets/js/modernizr.js"></script>{% endif %}{% if page.include.head %} {{ page.include.head }}{% endif %}
 </head>
 <body>
   {% include header.html %}
   {% include content.html %}
   {% include footer.html %}{% if site.jquery %}
-  <script src="{{ relative }}assets/js/jquery.js"></script>{% endif %}{% if site.js_plugins %}
-  <script src="{{ relative }}assets/js/script.js"></script>{% endif %}{% if page.foot %} {{ page.foot }}{% endif %}{% if site.google_analytics_id %}
+  <script src="{{ relative }}assets/js/jquery.js"></script>{% endif %}{% if site.javascript %}
+  <script src="{{ relative }}assets/js/script.js"></script>{% endif %}{% if page.include.foot %} {{ page.include.foot }}{% endif %}{% if site.analytics %}
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
     e=o.createElement(i);r=o.getElementsByTagName(i)[0];
     e.src='//www.google-analytics.com/analytics.js';
     r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','{{ site.google_analytics_id }}');ga('send','pageview');
+    ga('create','{{ site.analytics }}');ga('send','pageview');
   </script>{% endif %}
 </body>
 </html>

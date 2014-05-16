@@ -183,8 +183,8 @@
 // Media container
 
 @mixin media {
-  display: block;
   @include clear;
+  display: block;
 }
 
 // Media image
@@ -220,9 +220,9 @@
 
 @mixin vertical-align-middle($pseudo: before) {
   &:#{$pseudo} {
+    @include inline-block(middle);
     content: "";
     height: 100%;
-    @include inline-block(middle);
   }
 }
 

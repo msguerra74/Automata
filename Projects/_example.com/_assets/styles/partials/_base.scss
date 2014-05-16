@@ -28,7 +28,6 @@ html {
   font-size: em($base__font-size);
   line-height: $base__line-height--ratio;
   min-height: 100%;
-  min-width: em(320);
   overflow-y: scroll;
 }
 
@@ -36,7 +35,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid LightGray;
+  border-top: 1px solid lightgray;
   margin-bottom: em($base__line-height);
   margin-top: em($base__line-height);
 }

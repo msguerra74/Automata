@@ -7,21 +7,21 @@ title: Website Title
 description: Website description
 owner: Owner Name
 email: owner@email.com
-google_analytics_id: # UA-xxxxxxxx-x
+analytics: # UA-xxxxxxxx-x
 banner: Created by Developer in 2014 | http://website.com
 
-# Website options
-blog_feed: true
-blog_feed_post_limit: 14
-canonical_link: true
-ie_edge: false
+# Website settings
+canonical: true
+feed: true
+feed_count: 14
+IEedge: false
+javascript: true
 jquery: true
-js_plugins: true
 modernizr: true
 oldIE: true
-responsive_design: true
+responsive: true
 
-# Jekyll options
+# Jekyll settings
 destination: _site
 include: ['']
 exclude: ['.htaccess']
