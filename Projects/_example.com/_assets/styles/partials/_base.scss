@@ -26,7 +26,7 @@ html {
   color: $base__color;
   font-family: $base__font-family;
   font-size: em($base__font-size);
-  line-height: $base__line-height--ratio;
+  line-height: $base__line-height / $base__font-size;
   min-height: 100%;
   overflow-y: scroll;
 }
@@ -35,7 +35,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid silver;
   margin-bottom: em($base__line-height);
   margin-top: em($base__line-height);
 }
@@ -57,7 +57,7 @@ video {
 }
 
 blockquote {
-  @include baseline(16);
+  @include baseline;
 }
 
 canvas {
@@ -72,7 +72,7 @@ code {
 dl,
 ol,
 ul {
-  @include baseline(16);
+  @include baseline;
 }
 
 embed,
@@ -125,12 +125,12 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  @include baseline(16);
+  @include baseline;
 }
 
 p,
 pre {
-  @include baseline(16);
+  @include baseline;
 }
 
 pre {

@@ -12,37 +12,27 @@
 // @include baseline(16, 24, 2); // 16px / 24px / margin-bottom: x 2
 // or
 // @include baseline(16, 24, 1, both); // 16px / 24px / margin-(top/bottom): x 1
+// or
+// @include baseline(16, 24, 1, top); // 16px / 24px / margin-top x 1
 
-@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin: em($base__line-height, $target), $margins: bottom) {
+@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin: 1, $margins: bottom) {
   font-size: em($target, $context);
-  @if $target >= $base__font-size * 3 {
-    line-height: strip-units(em($base__line-height, $target)) * 3;
-  }
-  @else if $target >= $base__font-size * 1.5 {
-    line-height: strip-units(em($base__line-height, $target)) * 2;
-  }
-  @else {
-    line-height: strip-units(em($base__line-height, $target));
-  }
+  line-height: ceil($target / $base__line-height) * $base__line-height / $target;
   @if $margin == 0 {
     margin-bottom: $margin;
     margin-top: $margin;
   }
-  @else if $margin == em($base__line-height, $target) {
-    margin-bottom: $margin;
+  @else if $margin >= 1 {
     @if $margins == both {
-      margin-top: $margin;
+      margin-bottom: em($base__line-height, $target) * $margin;
+      margin-top: em($base__line-height, $target) * $margin;
     }
-    @else {
-      margin-top: 0;
-    }
-  }
-  @else {
-    margin-bottom: em($base__line-height, $target) * $margin;
-    @if $margins == both {
+    @else if $margins == top {
+      margin-bottom: 0;
       margin-top: em($base__line-height, $target) * $margin;
     }
     @else {
+      margin-bottom: em($base__line-height, $target) * $margin;
       margin-top: 0;
     }
   }

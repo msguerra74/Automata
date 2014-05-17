@@ -367,18 +367,17 @@ module.exports = function(grunt) {
       options: {
         optimizationLevel: 7
       },
+      generatedImages: {
+        expand: true,
+        cwd: '<%= source %>/assets/img',
+        src: '**/*.{gif,jpg,png}',
+        dest: '<%= source %>/assets/img'
+      },
       images: {
-        files: [{
-          expand: true,
-          cwd: '<%= source %>/_assets/images',
-          src: '**/*.{gif,jpg,png}',
-          dest: '<%= source %>/assets/img'
-        }, {
-          expand: true,
-          cwd: '<%= source %>/assets/img',
-          src: '**/*.{gif,jpg,png}',
-          dest: '<%= source %>/assets/img'
-        }]
+        expand: true,
+        cwd: '<%= source %>/_assets/images',
+        src: '**/*.{gif,jpg,png}',
+        dest: '<%= source %>/assets/img'
       }
     },
 

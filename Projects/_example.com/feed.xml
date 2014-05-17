@@ -8,9 +8,9 @@
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ site.url }}{{ page.url | replace:'feed.xml','' }}</id>
   <author>
-    <name>{{ site.owner }}</name>
-    <email>{{ site.email }}</email>
-  </author>{% for post in site.posts limit: site.feed_count %}
+    <name>{{ site.owner.name }}</name>
+    <email>{{ site.owner.email }}</email>
+  </author>{% for post in site.posts limit: site.paginate %}
   <entry>
     <title>{{ post.title }}</title>
     <link href="{{ site.url }}{{ post.url }}" />

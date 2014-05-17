@@ -1,7 +1,10 @@
 ---
+disallow:
 ---
-# robotstxt.org
+# robotstxt.org{% if site.link.sitemap %}
 
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: {{ site.url }}/sitemap.xml{% endif %}
 
-User-agent: *
+User-agent: *{% if page.disallow %}{% for directory in page.disallow %}
+Disallow: {{ directory }}{% endfor %}{% else %}
+Disallow:{% endif %}
