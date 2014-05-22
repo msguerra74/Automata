@@ -2,47 +2,11 @@
 // Mixins
 //------------------------------//
 
-// ---------- Baseline grid ---------- //
-
-// Usage:
-// @include baseline(16, 24); // 16px / 24px
-// or
-// @include baseline(16, 24, 0); // 16px / 24px / margin-(top/bottom): 0
-// or
-// @include baseline(16, 24, 2); // 16px / 24px / margin-bottom: x 2
-// or
-// @include baseline(16, 24, 1, both); // 16px / 24px / margin-(top/bottom): x 1
-// or
-// @include baseline(16, 24, 1, top); // 16px / 24px / margin-top x 1
-
-@mixin baseline($target: $base__font-size, $context: $base__font-size, $margin: 1, $margins: bottom) {
-  font-size: em($target, $context);
-  line-height: ceil($target / $base__line-height) * $base__line-height / $target;
-  @if $margin == 0 {
-    margin-bottom: $margin;
-    margin-top: $margin;
-  }
-  @else if $margin >= 1 {
-    @if $margins == both {
-      margin-bottom: em($base__line-height, $target) * $margin;
-      margin-top: em($base__line-height, $target) * $margin;
-    }
-    @else if $margins == top {
-      margin-bottom: 0;
-      margin-top: em($base__line-height, $target) * $margin;
-    }
-    @else {
-      margin-bottom: em($base__line-height, $target) * $margin;
-      margin-top: 0;
-    }
-  }
-}
-
 // ---------- Breakpoints ---------- //
 
-// Usage:
-// @include breakpoint(medium) {}
-
+// Usage: @include breakpoint(point) {}
+// point: small, medium, large, xlarge
+// Example: @include breakpoint(small) {}
 @mixin breakpoint($point) {
   @each $breakpoint in $breakpoints {
     @if $point == nth($breakpoint, 1) {
@@ -55,6 +19,7 @@
 
 // ---------- Clearfix ---------- //
 
+// Usage: @include clear;
 @mixin clear {
   &:before,
   &:after {
@@ -66,77 +31,153 @@
   }
 }
 
+// Usage: @extend %clear;
+%clear {
+  @include clear;
+}
+
+// ---------- EM-based baseline grid typography ---------- //
+
+// Usage: @include em-baseline(target, context, line-height-multiplier, margin-multiplier, margins);
+// margins: both, bottom, top
+// Example: @include em-baseline(16, 16, 1, 1, bottom);
+@mixin em-baseline($target: $base__font-size, $context: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
+  font-size: em($target, $context);
+  line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  @if $margin-multiplier == 0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @else {
+    $margin: em($base__line-height, $target) * strip-units($margin-multiplier);
+    @if $margins == both {
+      margin-bottom: $margin;
+      margin-top: $margin;
+    }
+    @else if $margins == top {
+      margin-bottom: 0;
+      margin-top: $margin;
+    }
+    @else {
+      margin-bottom: $margin;
+      margin-top: 0;
+    }
+  }
+}
+
+// ---------- EM-based typography ------- //
+
+// Usage: @include em-type(target, context, line-height, margin-multiplier, margins);
+// margins: both, bottom, top
+// Example: @include em-type(16, 16, 1.5, 1, bottom);
+@mixin em-type($target: $base__font-size, $context: $base__font-size, $line-height: $base__line-height / $base__font-size, $margin-multiplier: 1, $margins: bottom) {
+  font-size: em($target, $context);
+  line-height: strip-units($line-height);
+  @if $margin-multiplier == 0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @else {
+    $margin: em($base__line-height, $target) * strip-units($margin-multiplier);
+    @if $margins == both {
+      margin-bottom: $margin;
+      margin-top: $margin;
+    }
+    @else if $margins == top {
+      margin-bottom: 0;
+      margin-top: $margin;
+    }
+    @else {
+      margin-bottom: $margin;
+      margin-top: 0;
+    }
+  }
+}
+
 // ---------- Font face ---------- //
 
-// Based on:
-// https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_font-face.scss
-// Order includes by:
-// normal, bold, italic, bold+italic
-// Usage:
-// @include font-face("Open Sans", "../fonts/OpenSans-Regular-webfont", 400, normal, OpenSansRegular);
-
-@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $svg: $font-family) {
+// Usage: @include font-face(font-family, file-path, weight, style);
+// Include in order: normal, bold, italic, bold+italic
+// Example: @include font-face(OpenSans, "../fonts/OpenSans", normal, italic);
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
   @font-face {
     font-family: $font-family;
     font-weight: $weight;
     font-style: $style;
     src: url("#{$file-path}.eot");
-    src: url("#{$file-path}.eot?#iefix") format("embedded-opentype"), url("#{$file-path}.woff") format("woff"), url("#{$file-path}.ttf") format("truetype"), url("#{$file-path}.svg##{$svg}") format("svg");
+    src: url("#{$file-path}.eot?#iefix") format("embedded-opentype"), url("#{$file-path}.woff") format("woff"), url("#{$file-path}.ttf") format("truetype"), url("#{$file-path}.svg##{$font-family}") format("svg");
   }
 }
 
-// ---------- Grid (float/inline-block) ---------- //
+// ---------- Grid {float,inline-block} ---------- //
 
-// Based on:
-// https://github.com/studiowolf/taiga-grid
-// Usage:
-// @include grid--(float/inline-block)(12, 2); // 12 columns with margin-left: 2% and margin-right: 2%
-// or
-// @include grid--(float/inline-block)(12, 2, 3); // 12 columns with margin-left: 2% and margin-right: 3%
-// Note:
-// You can also use negative margins
-
-@mixin col--float($n: 1) {
-  float: left;
-  width: $n * $grid__column;
+// Usage: @include grid--{float,inline-block}(columns, margin-{left,right}, margin-right);
+// Example: @include grid--float(24, 1);
+@mixin grid--float($columns: 1, $margin-left: 0, $margin-right: $margin-left) {
+  @include column--float($columns - ($margin-left + $margin-right));
+  @include prepend($margin-left);
+  @include append($margin-right);
 }
 
-@mixin col--inline-block($n: 1) {
+@mixin grid--inline-block($columns: 1, $margin-left: 0, $margin-right: $margin-left) {
+  @include column--inline-block($columns - ($margin-left + $margin-right));
+  @include prepend($margin-left);
+  @include append($margin-right);
+}
+
+@mixin column--float($n: 1) {
+  float: left;
+  width: $n * $column;
+}
+
+@mixin column--inline-block($n: 1) {
   @include inline-block(top);
-  width: $n * $grid__column;
+  width: $n * $column;
 }
 
 @mixin prepend($n: 1) {
-  margin-left: $grid__column * $n;
+  margin-left: $column * $n;
 }
 
 @mixin append($n: 1) {
-  margin-right: $grid__column * $n;
+  margin-right: $column * $n;
 }
 
-@mixin grid--float($cols: 1, $grid__margin-left: 0, $grid__margin-right: $grid__margin-left) {
-  @include col--float($cols - ($grid__margin-left + $grid__margin-right));
-  @include prepend($grid__margin-left);
-  @include append($grid__margin-right);
+// Grid reset
+
+// Usage: @include grid__reset;
+@mixin grid__reset {
+  clear: both;
+  display: block;
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
 }
 
-@mixin grid--inline-block($cols: 1, $grid__margin-left: 0, $grid__margin-right: $grid__margin-left) {
-  @include col--inline-block($cols - ($grid__margin-left + $grid__margin-right));
-  @include prepend($grid__margin-left);
-  @include append($grid__margin-right);
+// Usage: @extend %grid__reset;
+%grid__reset {
+  @include grid__reset;
 }
 
 // ---------- Hidden ---------- //
 
 // Hide from both screenreaders and browsers
 
+// Usage: @include hidden;
 @mixin hidden {
   display: none !important;
   visibility: hidden;
 }
 
+// Usage: @extend %hidden;
+%hidden {
+  @include hidden;
+}
+
 // ---------- Image replacement ---------- //
 
+// Usage: @include image-replacement;
 @mixin image-replacement {
   background-color: transparent;
   border: 0;
@@ -150,11 +191,16 @@
   }
 }
 
+// Usage: @extend %image-replacement;
+%image-replacement {
+  @include image-replacement;
+}
+
 // ---------- Inline block ---------- //
 
-// Usage:
-// @include inline-block(top);
-
+// Usage: @include inline-block(vertical-align);
+// vertical-align: %, baseline, bottom, inherit, initial, length, middle, sub, super, text-bottom, text-top, top
+// Example: @include inline-block(baseline);
 @mixin inline-block($vertical-align: baseline) {
   display: inline-block;
   vertical-align: $vertical-align;
@@ -164,21 +210,46 @@
 
 // Hide visually and from screenreaders, but maintain layout
 
+// Usage: @include invisible;
 @mixin invisible {
   visibility: hidden;
+}
+
+// Usage: @extend %invisible;
+%invisible {
+  @include invisible;
 }
 
 // ---------- Media object ---------- //
 
 // Media container
 
+// Usage: @include media;
 @mixin media {
   @include clear;
   display: block;
 }
 
+// Usage: @extend %media;
+%media {
+  @include media;
+}
+
+// Media body
+
+// Usage: @include media__body;
+@mixin media__body {
+  overflow: hidden;
+}
+
+// Usage: @extend %media__body;
+%media__body {
+  @include media__body;
+}
+
 // Media image
 
+// Usage: @include media__image;
 @mixin media__image {
   float: left;
   & img {
@@ -186,8 +257,14 @@
   }
 }
 
+// Usage: @extend %media__image;
+%media__image {
+  @include media__image;
+}
+
 // Media image reversed
 
+// Usage: @inclue media__image--rev;
 @mixin media__image--rev {
   float: right;
   & img {
@@ -195,19 +272,204 @@
   }
 }
 
-// Media body
+// Usage: @extend %media__image--rev;
+%media__image--rev {
+  @include media__image--rev;
+}
 
-@mixin media__body {
-  overflow: hidden;
+// ---------- REM-based baseline grid typography with PX fallback ---------- //
+
+// Usage: @include rem-baseline(target, line-height, margin-multiplier, margins);
+// margins: both, bottom, top
+// Example: @include rem-baseline(16, 1, 1, bottom);
+@mixin rem-baseline($target: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
+  font-size: #{strip-units($target)}px;
+  font-size: rem($target);
+  line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  @if $margin-multiplier == 0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @else {
+    $margin-px: #{strip-units($base__line-height) * strip-units($margin-multiplier)}px;
+    $margin-rem: rem($base__line-height) * strip-units($margin-multiplier);
+    @if $margins == both {
+      margin-bottom: $margin-px;
+      margin-bottom: $margin-rem;
+      margin-top: $margin-px;
+      margin-top: $margin-rem;
+    }
+    @else if $margins == top {
+      margin-bottom: 0;
+      margin-top: $margin-px;
+      margin-top: $margin-rem;
+    }
+    @else {
+      margin-bottom: $margin-px;
+      margin-bottom: $margin-rem;
+      margin-top: 0;
+    }
+  }
+}
+
+// ---------- REM-based properties with PX fallback ---------- //
+
+// Usage: @include rem-px(property, values...);
+// Example: @include rem-px(margin, 12px, 24px);
+@mixin rem-px($property, $values...) {
+  $all: length($values);
+  $px: "";
+  $rem: "";
+  @for $i from 1 through $all {
+    $value: nth($values, $i);
+    @if type-of($value) == number {
+      $unitless-value: strip-units($value);
+      @if $value == 0 {
+        $px: 0;
+        $rem: 0;
+      }
+      @else {
+        $px: #{$px + $unitless-value}px;
+        $rem: #{$rem + rem($unitless-value)};
+      }
+    }
+    @else {
+      $px: #{$px + $value};
+      $rem: #{$rem + $value};
+    }
+    @if $i < $all {
+      $px: #{$px + " "};
+      $rem: #{$rem + " "};
+    }
+  }
+  @if $px == $rem {
+    #{$property}: $px;
+  }
+  @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+}
+
+// ---------- REM-based typography with PX fallback ------- //
+
+// Usage: @include rem-type(target, line-height, margin-multiplier, margins);
+// margins: both, bottom, top
+// Example: @include rem-type(16, 1.5, 1, bottom);
+@mixin rem-type($target: $base__font-size, $line-height: $base__line-height / $base__font-size, $margin-multiplier: 1, $margins: bottom) {
+  font-size: #{strip-units($target)}px;
+  font-size: rem($target);
+  line-height: strip-units($line-height);
+  @if $margin-multiplier == 0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @else {
+    $margin-px: #{strip-units($base__line-height) * strip-units($margin-multiplier)}px;
+    $margin-rem: rem($base__line-height) * strip-units($margin-multiplier);
+    @if $margins == both {
+      margin-bottom: $margin-px;
+      margin-bottom: $margin-rem;
+      margin-top: $margin-px;
+      margin-top: $margin-rem;
+    }
+    @else if $margins == top {
+      margin-bottom: 0;
+      margin-top: $margin-px;
+      margin-top: $margin-rem;
+    }
+    @else {
+      margin-bottom: $margin-px;
+      margin-bottom: $margin-rem;
+      margin-top: 0;
+    }
+  }
+}
+
+// ---------- Triangles ---------- //
+
+// Usage: @include triangle(direction, size, color);
+// direction: down, down--left, down--rev, down--right, left, left--rev, right, right--rev, up, up--left, up--rev, up--right
+// Example: @include triangle(down, 16px, #000);
+@mixin triangle($direction: down, $size: $base__font-size, $color: $base__color) {
+  $colored: $size solid $color;
+  $transparent: $size solid transparent;
+  @if $direction == down {
+    border-top: $colored;
+    border-left: $transparent;
+    border-right: $transparent;
+  }
+  @else if $direction == down--left {
+    border-bottom: $colored;
+    border-left: $colored;
+    border-right: $transparent;
+    border-top: $transparent;
+  }
+  @else if $direction == down--rev {
+    border-left: $colored;
+    border-right: $colored;
+    border-top: $transparent;
+  }
+  @else if $direction == down--right {
+    border-bottom: $colored;
+    border-left: $transparent;
+    border-right: $colored;
+    border-top: $transparent;
+  }
+  @else if $direction == left {
+    border-top: $transparent;
+    border-bottom: $transparent;
+    border-right: $colored;
+  }
+  @else if $direction == left--rev {
+    border-bottom: $colored;
+    border-right: $transparent;
+    border-top: $colored;
+  }
+  @else if $direction == right {
+    border-top: $transparent;
+    border-bottom: $transparent;
+    border-left: $colored;
+  }
+  @else if $direction == right--rev {
+    border-bottom: $colored;
+    border-left: $transparent;
+    border-top: $colored;
+  }
+  @else if $direction == up {
+    border-bottom: $colored;
+    border-left: $transparent;
+    border-right: $transparent;
+  }
+  @else if $direction == up--left {
+    border-bottom: $transparent;
+    border-left: $colored;
+    border-right: $transparent;
+    border-top: $colored;
+  }
+  @else if $direction == up--rev {
+    border-bottom: $transparent;
+    border-left: $colored;
+    border-right: $colored;
+  }
+  @else if $direction == up--right {
+    border-bottom: $transparent;
+    border-left: $transparent;
+    border-right: $colored;
+    border-top: $colored;
+  }
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  width: 0;
 }
 
 // ---------- Vertical align middle ---------- //
 
-// Based on:
-// http://hackingui.com/front-end/10-best-scss-utilities/
-// Usage:
-// @include vertical-align-middle(after);
-
+// Usage: @include vertical-align-middle(pseudo);
+// psuedo: after, before
+// Example: @include vertical-align-middle(before);
 @mixin vertical-align-middle($pseudo: before) {
   &:#{$pseudo} {
     @include inline-block(middle);
@@ -220,6 +482,7 @@
 
 // Hide only visually, but have it available for screenreaders
 
+// Usage: @include visually-hidden;
 @mixin visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -239,4 +502,9 @@
     position: static;
     width: auto;
   }
+}
+
+// Usage: @extend %visually-hidden;
+%visually-hidden {
+  @include visually-hidden;
 }

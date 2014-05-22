@@ -41,11 +41,18 @@ hr {
 }
 
 a {
-  border-bottom: 1px solid;
-  text-decoration: none;
+  &:link {
+    border-bottom: 1px solid;
+    text-decoration: none;
+  }
+  &:visited {}
+  &:focus {
+    outline: thin dotted;
+  }
   &:hover {
     border-bottom: 1px solid transparent;
   }
+  &:active {}
 }
 
 audio,
@@ -56,9 +63,7 @@ video {
   vertical-align: middle;
 }
 
-blockquote {
-  @include baseline;
-}
+blockquote {}
 
 canvas {
   -ms-touch-action: auto;
@@ -71,9 +76,7 @@ code {
 
 dl,
 ol,
-ul {
-  @include baseline;
-}
+ul {}
 
 embed,
 img,
@@ -81,13 +84,10 @@ object,
 video {
   height: auto;
   max-width: 100%;
-}
-
-embed[height], embed[width],
-img[height], img[width],
-object[height], object[width],
-video[height], video[width] {
-  max-width: none;
+  &[height],
+  &[width] {
+    max-width: none;
+  }
 }
 
 fieldset {
@@ -104,34 +104,20 @@ h6, .h6 {
   font-weight: bold;
 }
 
-h1, .h1 {
-  @include baseline(32);
-}
+h1, .h1 {}
 
-h2, .h2 {
-  @include baseline(28);
-}
+h2, .h2 {}
 
-h3, .h3 {
-  @include baseline(24);
-}
+h3, .h3 {}
 
-h4, .h4 {
-  @include baseline(20);
-}
+h4, .h4 {}
 
-h5, .h5 {
-  @include baseline(18);
-}
+h5, .h5 {}
 
-h6, .h6 {
-  @include baseline;
-}
+h6, .h6 {}
 
 p,
-pre {
-  @include baseline;
-}
+pre {}
 
 pre {
   overflow: auto;

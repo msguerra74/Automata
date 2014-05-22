@@ -2,7 +2,7 @@
 // Variables
 //------------------------------//
 
-// ---------- Project variables ---------- //
+// ---------- Project ---------- //
 
 
 
@@ -24,14 +24,14 @@ $base__line-height: 24px;
 
 // ---------- Breakpoints ---------- //
 
-$small: 481px / $base__font-size + em;
-$medium: 769px / $base__font-size + em;
-$large: 1025px / $base__font-size + em;
-$xlarge: 1281px / $base__font-size + em;
+$small: #{481px / $base__font-size}em;
+$medium: #{769px / $base__font-size}em;
+$large: #{1025px / $base__font-size}em;
+$xlarge: #{1281px / $base__font-size}em;
 
 $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
 
 // ---------- Grid ---------- //
 
-$grid__columns: 48;
-$grid__column: 100% / $grid__columns;
+$total-columns: 48;
+$column: 100% / $total-columns;

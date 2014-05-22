@@ -236,6 +236,19 @@ module.exports = function(grunt) {
     },
 
     /**
+     * Combine media queries
+     * Combines media queries
+     * https://github.com/buildingblocks/grunt-combine-media-queries
+     */
+
+    cmq: {
+      styles: {
+        dest: '<%= source %>/assets/css',
+        src: '<%= source %>/assets/css/**/*.css'
+      }
+    },
+
+    /**
      * CSSmin
      * Compress CSS files
      * https://github.com/gruntjs/grunt-contrib-cssmin
@@ -520,6 +533,7 @@ module.exports = function(grunt) {
     'imagemin',
     'sass',
     'autoprefixer',
+    'cmq',
     'cssmin',
     'modernizr',
     'uglify:vendorModernizr',
