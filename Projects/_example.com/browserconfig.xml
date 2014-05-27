@@ -1,13 +1,16 @@
 ---
+tile:
+  square: tile.png
+  wide: tile-wide.png
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
   <msapplication>
     <tile>
-      <square70x70logo src="tile.png"/>
-      <square150x150logo src="tile.png"/>
-      <wide310x150logo src="tile-wide.png"/>
-      <square310x310logo src="tile.png"/>
+      <square70x70logo src="{{ page.tile.square }}"/>
+      <square150x150logo src="{{ page.tile.square }}"/>
+      <wide310x150logo src="{{ page.tile.wide }}"/>
+      <square310x310logo src="{{ page.tile.square }}"/>
     </tile>
   </msapplication>
 </browserconfig>

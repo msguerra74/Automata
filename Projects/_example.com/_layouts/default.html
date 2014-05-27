@@ -1,3 +1,16 @@
+---
+file:
+  feed: feed.xml
+  jquery: jquery.js
+  modernizr: modernizr.js
+  oldie: oldIE.js
+  script: script.js
+  sitemap: sitemap.xml
+  stylesheet: style.css
+path:
+  css: assets/css/
+  js: assets/js/
+---
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 <html class="no-js{% if page.include.class %} {{ page.include.class }}{% endif %}" lang="en">
 <head>
@@ -7,21 +20,21 @@
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.meta.responsive %}
   <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.link.feed %}
-  <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.link.canonical %}
+  <link rel="alternate" href="{{ relative }}{{ page.file.feed }}" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.link.canonical %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}{% if site.link.sitemap %}
-  <link rel="sitemap" href="{{ relative }}sitemap.xml" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}
-  <link rel="stylesheet" href="{{ relative }}assets/css/style.css">{% if site.script.oldIE %}
+  <link rel="sitemap" href="{{ relative }}{{ page.file.sitemap }}" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}
+  <link rel="stylesheet" href="{{ relative }}{{ page.path.css }}{{ page.file.stylesheet }}">{% if site.script.oldIE %}
   <!--[if (lt IE 9) & (!IEMobile)]>
-  <script src="{{ relative }}assets/js/oldIE.js"></script>
+  <script src="{{ relative }}{{ page.path.js }}{{ page.file.oldie }}"></script>
   <![endif]-->{% endif %}{% if site.script.modernizr %}
-  <script src="{{ relative }}assets/js/modernizr.js"></script>{% endif %}{% if page.include.head %} {{ page.include.head }}{% endif %}
+  <script src="{{ relative }}{{ page.path.js }}{{ page.file.modernizr }}"></script>{% endif %}{% if page.include.head %} {{ page.include.head }}{% endif %}
 </head>
 <body>
   {% include header.html %}
   {% include content.html %}
   {% include footer.html %}{% if site.script.jquery %}
-  <script src="{{ relative }}assets/js/jquery.js"></script>{% endif %}{% if site.script.plugins %}
-  <script src="{{ relative }}assets/js/script.js"></script>{% endif %}{% if page.include.foot %} {{ page.include.foot }}{% endif %}{% if site.analytics %}
+  <script src="{{ relative }}{{ page.path.js }}{{ page.file.jquery }}"></script>{% endif %}{% if site.script.plugins %}
+  <script src="{{ relative }}{{ page.path.js }}{{ page.file.script }}"></script>{% endif %}{% if page.include.foot %} {{ page.include.foot }}{% endif %}{% if site.analytics %}
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

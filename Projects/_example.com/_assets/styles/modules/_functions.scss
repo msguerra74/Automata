@@ -4,7 +4,8 @@
 
 // ---------- PX to EM ---------- //
 
-// em(target, context);
+// Usage: em(target, context);
+// Example: em(18, 16);
 @function em($target, $context: $base__font-size) {
   @if not unitless($target) {
     $target: strip-units($target);
@@ -17,7 +18,8 @@
 
 // ---------- PX to REM ---------- //
 
-// em(target);
+// Usage: em(target);
+// Example: em(18);
 @function rem($target) {
   @if not unitless($target) {
     $target: strip-units($target);
@@ -30,6 +32,7 @@
 
 // ---------- Strip units ---------- //
 
+// Used in mixins only
 @function strip-units($value) {
   @return $value / ($value * 0 + 1);
 }
