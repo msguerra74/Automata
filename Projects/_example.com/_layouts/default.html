@@ -8,7 +8,7 @@
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.meta.responsive %}
   <meta name="viewport" content="width=device-width, initial-scale=1">{% endif %}{% if site.link.feed %}
   <link rel="alternate" href="{{ relative }}feed.xml" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% if site.link.canonical %}
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">{% endif %}{% if site.link.sitemap %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
   <link rel="sitemap" href="{{ relative }}sitemap.xml" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}
   <link rel="stylesheet" href="{{ relative }}assets/css/style.css">{% if site.script.oldIE %}
   <!--[if (lt IE 9) & (!IEMobile)]>
