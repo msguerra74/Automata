@@ -27,7 +27,7 @@ script:
 
 # Jekyll
 destination: _site
-include: ['']
+include: []
 exclude: ['.htaccess']
 keep_files: ['.git', 'sftp-config.json']
 show_drafts: false
@@ -35,5 +35,4 @@ future: false
 lsi: false
 paginate: 7
 permalink: /:categories/:title/
-timezone: # nil
 markdown: rdiscount

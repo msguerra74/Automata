@@ -65,7 +65,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. Download and install [Ruby][] if needed.
 3. Download and unzip [Automata.zip][] where you want it.
 4. From the command prompt, navigate to the `Automata` folder and type the following commands:
-    - `gem install jekyll -v 1.5.1`
+    - `gem install jekyll`
     - `gem install rdiscount sass`
     - `npm install -g grunt-cli`
     - `npm install`
