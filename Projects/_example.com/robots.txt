@@ -1,10 +1,9 @@
 ---
 disallow:
-sitemap: sitemap.xml
 ---
 # robotstxt.org{% if site.link.sitemap %}
 
-Sitemap: {{ site.url }}/{{ page.sitemap }}{% endif %}
+Sitemap: {{ site.url }}/sitemap.xml{% endif %}
 
 User-agent: *{% if page.disallow %}{% for directory in page.disallow %}
 Disallow: {{ directory }}{% endfor %}{% else %}

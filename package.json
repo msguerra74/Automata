@@ -31,7 +31,7 @@
     "grunt-hashres": "^0.4.1",
     "grunt-jekyll": "^0.4.2",
     "grunt-modernizr": "^0.5.2",
-    "grunt-prettify": "^0.3.4",
+    "grunt-prettify": "^0.3.5",
     "grunt-svg2png": "^0.2.1",
     "grunt-svgmin": "^0.4.0",
     "load-grunt-tasks": "^0.4.0"
