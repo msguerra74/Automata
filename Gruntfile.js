@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     // Directories
-    site: '<%= source %>/<%= prj.destination %>',
+    site: '<%= source %>/_site',
     source: 'Projects/<%= prj.folder %>',
 
     /* ---------- Common / Shared ---------- */

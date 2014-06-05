@@ -26,7 +26,6 @@ script:
   plugins: true
 
 # Jekyll
-destination: _site
 include: []
 exclude: ['.htaccess']
 keep_files: ['.git', 'sftp-config.json']
