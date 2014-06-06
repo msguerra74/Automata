@@ -342,7 +342,6 @@ module.exports = function(grunt) {
           'i',
           'ins',
           'kbd',
-          'li',
           'p',
           'pre',
           'q',
