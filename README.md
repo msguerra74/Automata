@@ -65,7 +65,8 @@ by **Michael Guerra** | [msguerra74.com][]
 2. Download and install [Ruby][] if needed.
 3. Download and unzip [Automata.zip][] where you want it.
 4. From the command prompt, navigate to the `Automata` folder and type the following commands:
-    - `gem install jekyll rdiscount sass`
+    - `gem install jekyll -v 1.5.1`
+    - `gem install rdiscount sass`
     - `npm install -g grunt-cli`
     - `npm install`
 5. That's it, now you can run any Grunt task!
@@ -76,7 +77,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, jquery.js, modernizr.js, and oldIE.js (respond.js)`
+    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, jquery.js, modernizr.js, and oldie.js (respond.js)`
 
 ## The MIT License (MIT)
 

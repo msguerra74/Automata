@@ -117,7 +117,7 @@ module.exports = function(grunt) {
       },
       oldIE: {
         src: 'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js',
-        dest: '<%= source %>/_assets/scripts/vendor/oldIE.js'
+        dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
       },
       normalize: {
         src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
@@ -139,7 +139,7 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{eot,gif,jpg,png,svg,ttf,woff}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,modernizr*,oldIE*}.js'
+          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
         ]
       },
       minifiedAssets: {
@@ -149,7 +149,7 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{css,js}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,modernizr*,oldIE*}.js'
+          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
         ]
       }
     },
@@ -541,7 +541,7 @@ module.exports = function(grunt) {
     'prettify',
   ]);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, jquery.js, modernizr, and oldIE.js (respond.js)
+  // Downloads the latest versions of: .htaccess, _normalize.scss, jquery.js, modernizr, and oldie.js (respond.js)
   grunt.registerTask('download', [
     'curl'
   ]);
