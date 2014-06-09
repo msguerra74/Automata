@@ -383,7 +383,7 @@
 // ---------- Triangles ---------- //
 
 // Usage: @include triangle(direction, size, color);
-// direction: down, down--left, down--rev, down--right, left, left--rev, right, right--rev, up, up--left, up--rev, up--right
+// direction: down, down--inverse, down--left, down--right, left, left--inverse, right, right--inverse, up, up--inverse, up--left, up--right
 // Example: @include triangle(down, 16px, #000);
 @mixin triangle($direction: down, $size: $base__font-size, $color: $base__color) {
   $colored: $size solid $color;
@@ -393,15 +393,15 @@
     border-left: $transparent;
     border-right: $transparent;
   }
+  @else if $direction == down--inverse {
+    border-left: $colored;
+    border-right: $colored;
+    border-top: $transparent;
+  }
   @else if $direction == down--left {
     border-bottom: $colored;
     border-left: $colored;
     border-right: $transparent;
-    border-top: $transparent;
-  }
-  @else if $direction == down--rev {
-    border-left: $colored;
-    border-right: $colored;
     border-top: $transparent;
   }
   @else if $direction == down--right {
@@ -415,7 +415,7 @@
     border-bottom: $transparent;
     border-right: $colored;
   }
-  @else if $direction == left--rev {
+  @else if $direction == left--inverse {
     border-bottom: $colored;
     border-right: $transparent;
     border-top: $colored;
@@ -425,7 +425,7 @@
     border-bottom: $transparent;
     border-left: $colored;
   }
-  @else if $direction == right--rev {
+  @else if $direction == right--inverse {
     border-bottom: $colored;
     border-left: $transparent;
     border-top: $colored;
@@ -435,16 +435,16 @@
     border-left: $transparent;
     border-right: $transparent;
   }
+  @else if $direction == up--inverse {
+    border-bottom: $transparent;
+    border-left: $colored;
+    border-right: $colored;
+  }
   @else if $direction == up--left {
     border-bottom: $transparent;
     border-left: $colored;
     border-right: $transparent;
     border-top: $colored;
-  }
-  @else if $direction == up--rev {
-    border-bottom: $transparent;
-    border-left: $colored;
-    border-right: $colored;
   }
   @else if $direction == up--right {
     border-bottom: $transparent;
