@@ -2,6 +2,16 @@
 // Mixins
 //------------------------------//
 
+// ---------- Background opacity with solid color fallback ---------- //
+
+// Usage: @include background-opacity(bg-color, opacity);
+// opacity: value between 0 and 1
+// Example: @inlcude background-opacity(white, .5);
+@mixin background-opacity($bg-color, $opacity) {
+  background-color: $bg-color;
+  background-color: rgba($bg-color, $opacity);
+}
+
 // ---------- Breakpoints ---------- //
 
 // Usage: @include breakpoint(point) {}
@@ -98,14 +108,14 @@
 
 // Usage: @include font-face(font-family, file-path, weight, style);
 // Include in order: normal, bold, italic, bold+italic
-// Example: @include font-face(OpenSans, "../fonts/OpenSans", normal, italic);
-@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
+// Example: @include font-face(OpenSans, "OpenSans", normal, italic);
+@mixin font-face($font-family, $font-name: $font-family, $weight: normal, $style: normal) {
   @font-face {
     font-family: $font-family;
     font-weight: $weight;
     font-style: $style;
-    src: url("#{$file-path}.eot");
-    src: url("#{$file-path}.eot?#iefix") format("embedded-opentype"), url("#{$file-path}.woff") format("woff"), url("#{$file-path}.ttf") format("truetype"), url("#{$file-path}.svg##{$font-family}") format("svg");
+    src: url("#{$base__font-path}#{$font-name}.eot");
+    src: url("#{$base__font-path}#{$font-name}.eot?#iefix") format("embedded-opentype"), url("#{$base__font-path}#{$font-name}.woff") format("woff"), url("#{$base__font-path}#{$font-name}.ttf") format("truetype"), url("#{$base__font-path}#{$font-name}.svg##{$font-family}") format("svg");
   }
 }
 
@@ -143,13 +153,33 @@
   margin-right: $column * $n;
 }
 
+// Grid container
+
+// Usage: @include grid__container;
+@mixin grid__container {
+  @include clear;
+  max-width: $base__max-width;
+  margin: auto;
+}
+
+// Usage @extend %grid__container;
+%grid__container {
+  @include grid__container;
+}
+
 // Grid reset
 
-// Usage: @include grid__reset;
-@mixin grid__reset {
+// Usage: @include grid__reset(grid);
+// grid: float, inline-block
+// Example: @include grid__reset(float);
+@mixin grid__reset($grid: float) {
   clear: both;
-  display: block;
-  float: none;
+  @if $grid == inline-block {
+    display: block;
+  }
+  @if $grid == float {
+    float: none;
+  }
   margin-left: 0;
   margin-right: 0;
   width: auto;
@@ -277,6 +307,16 @@
   @include media__image--rev;
 }
 
+// ---------- Opacity with oldIE fallback ---------- //
+
+// Usage: @include opacity(opacity);
+// opacity: value between 0 and 1
+// Example: @include opacity(.5);
+@mixin opacity($opacity) {
+  filter: alpha(opacity = $opacity * 100);
+  opacity: $opacity;
+}
+
 // ---------- REM-based baseline grid typography with PX fallback ---------- //
 
 // Usage: @include rem-baseline(target, line-height, margin-multiplier, margins);
@@ -378,6 +418,15 @@
       margin-top: 0;
     }
   }
+}
+
+// ---------- SVG background with PNG fallback ---------- //
+
+// Usage: @include svg-background(svg);
+// Example: @include svg-background(image-name);
+@mixin svg-background($svg, $png: $svg) {
+  background-image: url(#{$base__image-path}#{$png}.png);
+  background-image: url(#{$base__image-path}#{$svg}.svg), none;
 }
 
 // ---------- Triangles ---------- //
