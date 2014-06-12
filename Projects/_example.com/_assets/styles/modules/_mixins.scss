@@ -155,16 +155,12 @@
 
 // Grid container
 
-// Usage: @include grid__container;
-@mixin grid__container {
+// Usage: @include grid__container(max-width);
+// Example: @include grid__container(1280)
+@mixin grid__container($max-width: $base__max-width) {
   @include clear;
-  max-width: $base__max-width;
+  max-width: #{strip-units($max-width)}px;
   margin: auto;
-}
-
-// Usage @extend %grid__container;
-%grid__container {
-  @include grid__container;
 }
 
 // Grid reset
@@ -183,11 +179,6 @@
   margin-left: 0;
   margin-right: 0;
   width: auto;
-}
-
-// Usage: @extend %grid__reset;
-%grid__reset {
-  @include grid__reset;
 }
 
 // ---------- Hidden ---------- //
