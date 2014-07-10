@@ -310,7 +310,7 @@
 
 // ---------- REM-based baseline grid typography with PX fallback ---------- //
 
-// Usage: @include rem-baseline(target, line-height, margin-multiplier, margins);
+// Usage: @include rem-baseline(target, line-height-multiplier, margin-multiplier, margins);
 // margins: both, bottom, top
 // Example: @include rem-baseline(16, 1, 1, bottom);
 @mixin rem-baseline($target: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
