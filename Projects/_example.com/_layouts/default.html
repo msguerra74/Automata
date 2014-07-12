@@ -1,4 +1,5 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
+<!--[if lt IE 9]><html class="no-js oldie{% if page.include.class %} {{ page.include.class }}{% endif %}" lang="en"><![endif]-->
 <html class="no-js{% if page.include.class %} {{ page.include.class }}{% endif %}" lang="en">
 <head>
   <!-- {{ site.banner }} -->
