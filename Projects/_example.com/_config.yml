@@ -33,5 +33,6 @@ show_drafts: false
 future: false
 lsi: false
 paginate: 7
+paginate_path: 'page:num'
 permalink: /:categories/:title/
 markdown: rdiscount

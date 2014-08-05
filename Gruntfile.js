@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 
     curl: {
       htaccess: {
-        src: 'https://raw.github.com/h5bp/html5-boilerplate/master/.htaccess',
+        src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
         dest: '<%= source %>/.htaccess'
       },
       jquery: {

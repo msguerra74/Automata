@@ -6,9 +6,11 @@
 
 // Usage: @include background-opacity(bg-color, opacity);
 // opacity: value between 0 and 1
-// Example: @inlcude background-opacity(white, .5);
+// Example: @include background-opacity(white, .5);
 @mixin background-opacity($bg-color, $opacity) {
-  background-color: $bg-color;
+  @if $oldie {
+    background-color: $bg-color;
+  }
   background-color: rgba($bg-color, $opacity);
 }
 
@@ -53,7 +55,12 @@
 // Example: @include em-baseline(16, 16, 1, 1, bottom);
 @mixin em-baseline($target: $base__font-size, $context: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
   font-size: em($target, $context);
-  line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  @if $line-height-multiplier == 0 {
+    line-height: 1;
+  }
+  @else {
+    line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  }
   @if $margin-multiplier == 0 {
     margin-bottom: 0;
     margin-top: 0;
@@ -156,11 +163,16 @@
 // Grid container
 
 // Usage: @include grid__container(max-width);
-// Example: @include grid__container(1280)
+// Example: @include grid__container(1280);
 @mixin grid__container($max-width: $base__max-width) {
   @include clear;
-  max-width: #{strip-units($max-width)}px;
-  margin: auto;
+  @if $max-width == 100% {
+    max-width: $max-width;
+  }
+  @else {
+    margin: auto;
+    @include rem-px(max-width, $max-width);
+  }
 }
 
 // Grid reset
@@ -304,7 +316,9 @@
 // opacity: value between 0 and 1
 // Example: @include opacity(.5);
 @mixin opacity($opacity) {
-  filter: alpha(opacity = $opacity * 100);
+  @if $oldie {
+    filter: alpha(opacity = $opacity * 100);
+  }
   opacity: $opacity;
 }
 
@@ -314,9 +328,16 @@
 // margins: both, bottom, top
 // Example: @include rem-baseline(16, 1, 1, bottom);
 @mixin rem-baseline($target: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
-  font-size: #{strip-units($target)}px;
+  @if $oldie {
+    font-size: #{strip-units($target)}px;
+  }
   font-size: rem($target);
-  line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  @if $line-height-multiplier == 0 {
+    line-height: 1;
+  }
+  @else {
+    line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  }
   @if $margin-multiplier == 0 {
     margin-bottom: 0;
     margin-top: 0;
@@ -325,18 +346,24 @@
     $margin-px: #{strip-units($base__line-height) * strip-units($margin-multiplier)}px;
     $margin-rem: rem($base__line-height) * strip-units($margin-multiplier);
     @if $margins == both {
-      margin-bottom: $margin-px;
+      @if $oldie {
+        margin-bottom: $margin-px;
+        margin-top: $margin-px;
+      }
       margin-bottom: $margin-rem;
-      margin-top: $margin-px;
       margin-top: $margin-rem;
     }
     @else if $margins == top {
       margin-bottom: 0;
-      margin-top: $margin-px;
+      @if $oldie {
+        margin-top: $margin-px;
+      }
       margin-top: $margin-rem;
     }
     @else {
-      margin-bottom: $margin-px;
+      @if $oldie {
+        margin-bottom: $margin-px;
+      }
       margin-bottom: $margin-rem;
       margin-top: 0;
     }
@@ -368,10 +395,14 @@
     }
   }
   @if $px == $rem {
-    #{$property}: $px;
+    @if $oldie {
+      #{$property}: $px;
+    }
   }
   @else {
-    #{$property}: $px;
+    @if $oldie {
+      #{$property}: $px;
+    }
     #{$property}: $rem;
   }
 }
@@ -382,7 +413,9 @@
 // margins: both, bottom, top
 // Example: @include rem-type(16, 1.5, 1, bottom);
 @mixin rem-type($target: $base__font-size, $line-height: $base__line-height / $base__font-size, $margin-multiplier: 1, $margins: bottom) {
-  font-size: #{strip-units($target)}px;
+  @if $oldie {
+    font-size: #{strip-units($target)}px;
+  }
   font-size: rem($target);
   line-height: strip-units($line-height);
   @if $margin-multiplier == 0 {
@@ -393,18 +426,24 @@
     $margin-px: #{strip-units($base__line-height) * strip-units($margin-multiplier)}px;
     $margin-rem: rem($base__line-height) * strip-units($margin-multiplier);
     @if $margins == both {
-      margin-bottom: $margin-px;
+      @if $oldie {
+        margin-bottom: $margin-px;
+        margin-top: $margin-px;
+      }
       margin-bottom: $margin-rem;
-      margin-top: $margin-px;
       margin-top: $margin-rem;
     }
     @else if $margins == top {
       margin-bottom: 0;
-      margin-top: $margin-px;
+      @if $oldie {
+        margin-top: $margin-px;
+      }
       margin-top: $margin-rem;
     }
     @else {
-      margin-bottom: $margin-px;
+      @if $oldie {
+        margin-bottom: $margin-px;
+      }
       margin-bottom: $margin-rem;
       margin-top: 0;
     }
@@ -416,7 +455,9 @@
 // Usage: @include svg-background(svg);
 // Example: @include svg-background(image-name);
 @mixin svg-background($svg, $png: $svg) {
-  background-image: url(#{$base__image-path}#{$png}.png);
+  @if $oldie {
+    background-image: url(#{$base__image-path}#{$png}.png);
+  }
   background-image: url(#{$base__image-path}#{$svg}.svg), none;
 }
 

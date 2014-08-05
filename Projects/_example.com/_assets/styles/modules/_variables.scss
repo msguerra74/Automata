@@ -25,7 +25,7 @@ $base__image-path: "../img/";
 // Bases sizes
 $base__font-size: 16px;
 $base__line-height: 24px;
-$base__max-width: 1280px;
+$base__max-width: 100%;
 
 // ---------- Breakpoints ---------- //
 
@@ -40,3 +40,7 @@ $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
 
 $total-columns: 48;
 $column: 100% / $total-columns;
+
+// ---------- oldIE ---------- //
+
+$oldie: true;

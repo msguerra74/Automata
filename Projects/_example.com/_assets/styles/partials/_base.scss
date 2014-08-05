@@ -36,8 +36,8 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid silver;
-  margin-bottom: em($base__line-height);
-  margin-top: em($base__line-height);
+  @include rem-px(margin-bottom, $base__line-height);
+  @include rem-px(margin-top, $base__line-height);
 }
 
 a {
@@ -116,8 +116,7 @@ h5, .h5 {}
 
 h6, .h6 {}
 
-p,
-pre {}
+p {}
 
 pre {
   overflow: auto;
