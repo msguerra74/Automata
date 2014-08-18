@@ -17,12 +17,13 @@
 // ---------- Breakpoints ---------- //
 
 // Usage: @include breakpoint(point) {}
+// maxmin: min, max
 // point: small, medium, large, xlarge
 // Example: @include breakpoint(small) {}
-@mixin breakpoint($point) {
+@mixin breakpoint($point, $maxmin: min) {
   @each $breakpoint in $breakpoints {
     @if $point == nth($breakpoint, 1) {
-      @media (min-width: nth($breakpoint, 2)) {
+      @media (#{$maxmin}-width: nth($breakpoint, 2)) {
         @content;
       }
     }
@@ -163,14 +164,21 @@
 // Grid container
 
 // Usage: @include grid__container(max-width);
-// Example: @include grid__container(1280);
-@mixin grid__container($max-width: $base__max-width) {
+// align: center, left, right
+// Example: @include grid__container(1280, left);
+@mixin grid__container($max-width: $base__max-width, $align: center) {
   @include clear;
   @if $max-width == 100% {
     max-width: $max-width;
   }
   @else {
-    margin: auto;
+    @if $align == left {}
+    @else if $align == right {
+      float: right;
+    }
+    @else {
+      margin: auto;
+    }
     @include rem-px(max-width, $max-width);
   }
 }
@@ -206,6 +214,21 @@
 // Usage: @extend %hidden;
 %hidden {
   @include hidden;
+}
+
+// ---------- Hidden reversed ---------- //
+
+// Reverses hidden
+
+// Usage: @include hidden--rev;
+@mixin hidden--rev {
+  display: block !important;
+  visibility: visible;
+}
+
+// Usage: @extend %hidden--rev;
+%hidden--rev {
+  @include hidden--rev;
 }
 
 // ---------- Image replacement ---------- //
@@ -251,6 +274,20 @@
 // Usage: @extend %invisible;
 %invisible {
   @include invisible;
+}
+
+// ---------- Invisible reversed ---------- //
+
+// Reverses invisible
+
+// Usage: @include invisible--rev;
+@mixin invisible--rev {
+  visibility: visible;
+}
+
+// Usage: @extend %invisible--rev;
+%invisible--rev {
+  @include invisible--rev;
 }
 
 // ---------- Media object ---------- //
@@ -465,7 +502,14 @@
 
 // Usage: @include triangle(direction, size, color);
 // direction: down, down--inverse, down--left, down--right, left, left--inverse, right, right--inverse, up, up--inverse, up--left, up--right
-// Example: @include triangle(down, 16px, #000);
+// Example:
+// selector {
+//   position: relative;
+//   &:after {
+//     @include triangle(down, 16px, black);
+//     position: absolute;
+//   }
+// }
 @mixin triangle($direction: down, $size: $base__font-size, $color: $base__color) {
   $colored: $size solid $color;
   $transparent: $size solid transparent;
@@ -544,7 +588,15 @@
 
 // Usage: @include vertical-align-middle(pseudo);
 // psuedo: after, before
-// Example: @include vertical-align-middle(before);
+// Example:
+// selector {
+//   @include vertical-align-middle(before);
+//   height: 300px; // Any height
+//   inner-selector {
+//     @include inline-block(middle);
+//     width: auto;
+//   }
+// }
 @mixin vertical-align-middle($pseudo: before) {
   &:#{$pseudo} {
     @include inline-block(middle);
@@ -583,4 +635,24 @@
 // Usage: @extend %visually-hidden;
 %visually-hidden {
   @include visually-hidden;
+}
+
+// ---------- Visually hidden reversed ---------- //
+
+// Reverses visually-hidden
+
+// Usage: @include visually-hidden--rev;
+@mixin visually-hidden--rev {
+  clip: auto;
+  clip: rect(auto auto auto auto);
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+// Usage: @extend %visually-hidden--rev;
+%visually-hidden--rev {
+  @include visually-hidden--rev;
 }
