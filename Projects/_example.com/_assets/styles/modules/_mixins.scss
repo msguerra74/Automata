@@ -365,10 +365,7 @@
 // margins: both, bottom, top
 // Example: @include rem-baseline(16, 1, 1, bottom);
 @mixin rem-baseline($target: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
-  @if $oldie {
-    font-size: #{strip-units($target)}px;
-  }
-  font-size: rem($target);
+  @include rem-px(font-size, $target);
   @if $line-height-multiplier == 0 {
     line-height: 1;
   }
@@ -380,28 +377,17 @@
     margin-top: 0;
   }
   @else {
-    $margin-px: #{strip-units($base__line-height) * strip-units($margin-multiplier)}px;
-    $margin-rem: rem($base__line-height) * strip-units($margin-multiplier);
+    $margin-size: strip-units($base__line-height) * strip-units($margin-multiplier);
     @if $margins == both {
-      @if $oldie {
-        margin-bottom: $margin-px;
-        margin-top: $margin-px;
-      }
-      margin-bottom: $margin-rem;
-      margin-top: $margin-rem;
+      @include rem-px(margin-bottom, $margin-size);
+      @include rem-px(margin-top, $margin-size);
     }
     @else if $margins == top {
       margin-bottom: 0;
-      @if $oldie {
-        margin-top: $margin-px;
-      }
-      margin-top: $margin-rem;
+      @include rem-px(margin-top, $margin-size);
     }
     @else {
-      @if $oldie {
-        margin-bottom: $margin-px;
-      }
-      margin-bottom: $margin-rem;
+      @include rem-px(margin-bottom, $margin-size);
       margin-top: 0;
     }
   }
@@ -450,38 +436,24 @@
 // margins: both, bottom, top
 // Example: @include rem-type(16, 1.5, 1, bottom);
 @mixin rem-type($target: $base__font-size, $line-height: $base__line-height / $base__font-size, $margin-multiplier: 1, $margins: bottom) {
-  @if $oldie {
-    font-size: #{strip-units($target)}px;
-  }
-  font-size: rem($target);
+  @include rem-px(font-size, $target);
   line-height: strip-units($line-height);
   @if $margin-multiplier == 0 {
     margin-bottom: 0;
     margin-top: 0;
   }
   @else {
-    $margin-px: #{strip-units($base__line-height) * strip-units($margin-multiplier)}px;
-    $margin-rem: rem($base__line-height) * strip-units($margin-multiplier);
+    $margin-size: strip-units($base__line-height) * strip-units($margin-multiplier);
     @if $margins == both {
-      @if $oldie {
-        margin-bottom: $margin-px;
-        margin-top: $margin-px;
-      }
-      margin-bottom: $margin-rem;
-      margin-top: $margin-rem;
+      @include rem-px(margin-bottom, $margin-size);
+      @include rem-px(margin-top, $margin-size);
     }
     @else if $margins == top {
       margin-bottom: 0;
-      @if $oldie {
-        margin-top: $margin-px;
-      }
-      margin-top: $margin-rem;
+      @include rem-px(margin-top, $margin-size);
     }
     @else {
-      @if $oldie {
-        margin-bottom: $margin-px;
-      }
-      margin-bottom: $margin-rem;
+      @include rem-px(margin-bottom, $margin-size);
       margin-top: 0;
     }
   }
