@@ -218,15 +218,6 @@ module.exports = function(grunt) {
      */
 
     autoprefixer: {
-      options: {
-        browsers: [
-          '> 1%',
-          'last 2 versions',
-          'ff ESR',
-          'ie 8',
-          'opera 12.1',
-        ]
-      },
       styles: {
         expand: true,
         cwd: '<%= source %>/assets/css',
@@ -257,7 +248,9 @@ module.exports = function(grunt) {
     cssmin: {
       options: {
         banner: '/* <%= prj.banner %> */',
-        keepSpecialComments: 0
+        compatibility: 'ie8',
+        keepSpecialComments: 0,
+        noAdvanced: true
       },
       styles: {
         expand: true,
@@ -277,7 +270,6 @@ module.exports = function(grunt) {
       options: {
         banner: '/* <%= prj.banner %> */',
         noCache: true,
-        precision: 16,
         style: 'expanded'
       },
       styles: {
@@ -352,6 +344,7 @@ module.exports = function(grunt) {
           'span',
           'strike',
           'strong',
+          'style',
           'sub',
           'sup',
           'tt',
@@ -402,7 +395,6 @@ module.exports = function(grunt) {
     svg2png: {
       svg: {
         files: [{
-          expand: false,
           cwd: '<%= source %>/_assets/images/',
           src: ['**/*.svg'],
           dest: '<%= source %>/assets/img'
@@ -417,11 +409,6 @@ module.exports = function(grunt) {
      */
 
     svgmin: {
-      options: {
-        plugins: [{
-          removeViewBox: false
-        }]
-      },
       svg: {
         expand: true,
         cwd: '<%= source %>/_assets/images',
@@ -439,6 +426,9 @@ module.exports = function(grunt) {
      */
 
     jshint: {
+      options: {
+        force: true
+      },
       scripts: [
         'Gruntfile.js',
         '<%= source %>/_assets/scripts/plugins/**/*.js'
