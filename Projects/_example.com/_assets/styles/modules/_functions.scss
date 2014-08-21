@@ -18,8 +18,8 @@
 
 // ---------- PX to REM ---------- //
 
-// Usage: em(target);
-// Example: em(18);
+// Usage: rem(target);
+// Example: rem(18);
 @function rem($target) {
   @if not unitless($target) {
     $target: strip-units($target);
