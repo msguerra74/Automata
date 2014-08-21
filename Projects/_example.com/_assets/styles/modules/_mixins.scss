@@ -204,6 +204,7 @@
 // ---------- Hidden ---------- //
 
 // Hide from both screenreaders and browsers
+// See: Hidden reversed
 
 // Usage: @include hidden;
 @mixin hidden {
@@ -265,6 +266,7 @@
 // ---------- Invisible ---------- //
 
 // Hide visually and from screenreaders, but maintain layout
+// See: Invisible reversed
 
 // Usage: @include invisible;
 @mixin invisible {
@@ -581,6 +583,7 @@
 // ---------- Visually hidden ---------- //
 
 // Hide only visually, but have it available for screenreaders
+// See: Visually hidden reversed
 
 // Usage: @include visually-hidden;
 @mixin visually-hidden {

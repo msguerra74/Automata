@@ -41,9 +41,9 @@ hr {
 }
 
 a {
+  text-decoration: none;
   &:link {
     border-bottom: 1px solid;
-    text-decoration: none;
   }
   &:visited {}
   &:focus {
