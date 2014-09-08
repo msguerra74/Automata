@@ -21,13 +21,14 @@
 // Usage: rem(target);
 // Example: rem(18);
 @function rem($target) {
+  $base: $base__font-size;
   @if not unitless($target) {
     $target: strip-units($target);
   }
-  @if not unitless($base__font-size) {
-    $base__font-size: strip-units($base__font-size);
+  @if not unitless($base) {
+    $base: strip-units($base);
   }
-  @return $target / $base__font-size * 1rem;
+  @return $target / $base * 1rem;
 }
 
 // ---------- Strip units ---------- //
