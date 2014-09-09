@@ -49,6 +49,18 @@
   @include clear;
 }
 
+// ---------- Ellipsis ---------- //
+
+// Usage: @include ellipsis(width);
+// Example: @include ellipsis(50%);
+@mixin ellipsis($width: 100%) {
+  @include inline-block;
+  max-width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // ---------- EM-based baseline grid typography ---------- //
 
 // Usage: @include em-baseline(target, context, line-height-multiplier, margin-multiplier, margins);
