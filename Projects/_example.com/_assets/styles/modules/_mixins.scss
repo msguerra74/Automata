@@ -304,6 +304,49 @@
   @include invisible--rev;
 }
 
+// ---------- Linear gradient ---------- //
+
+// Usage: @include linear-gradient(position, color, fallback);
+// Examples:
+// @include linear-gradient(#333, #ccc);
+// @include linear-gradient(to top, #333, #ccc);
+// @include linear-gradient(to top, #333, #ccc, $fallback: #777);
+// @include linear-gradient(50deg, #333 0%, #555 50%, #777 51%, #ccc 100%);
+@mixin linear-gradient($pos, $G1, $G2: null, $G3: null, $G4: null, $G5: null, $G6: null, $G7: null, $G8: null, $G9: null, $G10: null, $fallback: null) {
+  // Detect what type of value exists in $pos
+  $pos-type: type-of(nth($pos, 1));
+  $pos-spec: null;
+  $pos-degree: null;
+  // If $pos is missing from mixin, reassign vars and add default position
+  @if $pos-type == color or nth($pos, 1) == "transparent" {
+    $G10: $G9;
+    $G9: $G8;
+    $G8: $G7;
+    $G7: $G6;
+    $G6: $G5;
+    $G5: $G4;
+    $G4: $G3;
+    $G3: $G2;
+    $G2: $G1;
+    $G1: $pos;
+    $pos: null;
+  }
+  @if $pos {
+    $positions: _linear-positions-parser($pos);
+    $pos-degree: nth($positions, 1);
+    $pos-spec: nth($positions, 2);
+  }
+  $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
+  // Set $G1 as the default fallback color
+  $fallback-color: nth($G1, 1);
+  // If $fallback is a color use that color as the fallback color
+  @if type-of($fallback) == color or $fallback == "transparent" {
+    $fallback-color: $fallback;
+  }
+  background-color: $fallback-color;
+  background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
+}
+
 // ---------- Media object ---------- //
 
 // Media container
@@ -486,88 +529,86 @@
 
 // ---------- Triangles ---------- //
 
-// Usage: @include triangle(direction, size, color);
-// direction: down, down--inverse, down--left, down--right, left, left--inverse, right, right--inverse, up, up--inverse, up--left, up--right
+// Usage: @include triangle(size, color, direction);
+// direction: down, down--inset, down--left, down--right, left, left--inset, right, right--inset, up, up--inset, up--left, up--right
 // Example:
 // selector {
 //   position: relative;
 //   &:after {
-//     @include triangle(down, 16px, black);
-//     position: absolute;
+//     @include triangle(24px, black, down);
 //   }
 // }
-@mixin triangle($direction: down, $size: $base__font-size, $color: $base__color) {
-  $colored: $size solid $color;
-  $transparent: $size solid transparent;
-  @if $direction == down {
-    border-top: $colored;
-    border-left: $transparent;
-    border-right: $transparent;
-  }
-  @else if $direction == down--inverse {
-    border-left: $colored;
-    border-right: $colored;
-    border-top: $transparent;
-  }
-  @else if $direction == down--left {
-    border-bottom: $colored;
-    border-left: $colored;
-    border-right: $transparent;
-    border-top: $transparent;
-  }
-  @else if $direction == down--right {
-    border-bottom: $colored;
-    border-left: $transparent;
-    border-right: $colored;
-    border-top: $transparent;
-  }
-  @else if $direction == left {
-    border-top: $transparent;
-    border-bottom: $transparent;
-    border-right: $colored;
-  }
-  @else if $direction == left--inverse {
-    border-bottom: $colored;
-    border-right: $transparent;
-    border-top: $colored;
-  }
-  @else if $direction == right {
-    border-top: $transparent;
-    border-bottom: $transparent;
-    border-left: $colored;
-  }
-  @else if $direction == right--inverse {
-    border-bottom: $colored;
-    border-left: $transparent;
-    border-top: $colored;
-  }
-  @else if $direction == up {
-    border-bottom: $colored;
-    border-left: $transparent;
-    border-right: $transparent;
-  }
-  @else if $direction == up--inverse {
-    border-bottom: $transparent;
-    border-left: $colored;
-    border-right: $colored;
-  }
-  @else if $direction == up--left {
-    border-bottom: $transparent;
-    border-left: $colored;
-    border-right: $transparent;
-    border-top: $colored;
-  }
-  @else if $direction == up--right {
-    border-bottom: $transparent;
-    border-left: $transparent;
-    border-right: $colored;
-    border-top: $colored;
-  }
-  content: "";
-  display: block;
+@mixin triangle($size: $spacer, $color: $base__color, $direction: down) {
+  content: '';
   height: 0;
   position: absolute;
   width: 0;
+  $width: nth($size, 1);
+  $height: nth($size, length($size));
+  $foreground-color: nth($color, 1);
+  $background-color: if(length($color) == 2, nth($color, 2), transparent);
+  @if $direction == up or $direction == down or $direction == right or $direction == left {
+    $width: $width / 2;
+    $height: if(length($size) > 1, $height, $height / 2);
+    @if $direction == up {
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+      border-bottom: $height solid $foreground-color;
+    }
+    @else if $direction == right {
+      border-top: $width solid $background-color;
+      border-bottom: $width solid $background-color;
+      border-left: $height solid $foreground-color;
+    }
+    @else if $direction == down {
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+      border-top: $height solid $foreground-color;
+    }
+    @else if $direction == left {
+      border-top: $width solid $background-color;
+      border-bottom: $width solid $background-color;
+      border-right: $height solid $foreground-color;
+    }
+  }
+  @else if $direction == up--right or $direction == up--left {
+    border-top: $height solid $foreground-color;
+    @if $direction == up--right {
+      border-left: $width solid $background-color;
+    }
+    @else if $direction == up--left {
+      border-right: $width solid $background-color;
+    }
+  }
+  @else if $direction == down--right or $direction == down--left {
+    border-bottom: $height solid $foreground-color;
+    @if $direction == down--right {
+      border-left: $width solid $background-color;
+    }
+    @else if $direction == down--left {
+      border-right: $width solid $background-color;
+    }
+  }
+  @else if $direction == up--inset {
+    border-width: $height $width;
+    border-style: solid;
+    border-color: $background-color $background-color $foreground-color;
+  }
+  @else if $direction == down--inset {
+    border-width: $height $width;
+    border-style: solid;
+    border-color: $foreground-color $background-color $background-color;
+  }
+  @else if $direction == right--inset {
+    border-width: $width $height;
+    border-style: solid;
+    border-color: $background-color $background-color $background-color $foreground-color;
+  }
+  @else if $direction == left--inset {
+    border-width: $width $height;
+    border-style: solid;
+    border-color: $background-color $foreground-color $background-color $background-color;
+  }
 }
 
 // ---------- Vertical align middle ---------- //
