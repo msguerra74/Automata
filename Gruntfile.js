@@ -270,7 +270,8 @@ module.exports = function(grunt) {
       options: {
         banner: '/* <%= prj.banner %> */',
         noCache: true,
-        style: 'expanded'
+        style: 'expanded',
+        sourcemap: 'none'
       },
       styles: {
         expand: true,
