@@ -141,22 +141,24 @@
 
 // ---------- Grid {float,inline-block} ---------- //
 
-// Usage: @include grid--{float,inline-block}(columns, margin-{left,right}, margin-right);
-// Example: @include grid--float(24, 1);
-@mixin grid--float($columns: 1, $margin-left: 0, $margin-right: $margin-left) {
-  @include column--float($columns - ($margin-left + $margin-right));
+// Usage: @include grid--float(columns, float, margin-{left,right}, margin-right);
+// Usage: @include grid--inline-block(columns, float, margin-{left,right}, margin-right);
+// Example: @include grid--float(24, left, 1);
+// Example: @include grid--inline-block(24, 1);
+@mixin grid--float($columns: 1, $float: left, $margin-left: 0, $margin-right: $margin-left) {
+  float: $float;
   @include prepend($margin-left);
   @include append($margin-right);
+  @include column--float($columns - ($margin-left + $margin-right));
 }
 
 @mixin grid--inline-block($columns: 1, $margin-left: 0, $margin-right: $margin-left) {
-  @include column--inline-block($columns - ($margin-left + $margin-right));
   @include prepend($margin-left);
   @include append($margin-right);
+  @include column--inline-block($columns - ($margin-left + $margin-right));
 }
 
 @mixin column--float($n: 1) {
-  float: left;
   width: $n * $column;
 }
 
