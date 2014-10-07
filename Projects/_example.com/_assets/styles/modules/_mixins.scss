@@ -177,7 +177,7 @@
 
 // Grid container
 
-// Usage: @include grid__container(max-width);
+// Usage: @include grid__container(max-width, align);
 // align: center, left, right
 // Example: @include grid__container(1280, left);
 @mixin grid__container($max-width: $base__max-width, $align: center) {
