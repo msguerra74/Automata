@@ -1,0 +1,42 @@
+//------------------------------//
+// REM Baseline Typography
+//------------------------------//
+// With PX fallback
+
+// Usage
+// @include rem-baseline(target, line-height-multiplier, margin-multiplier, margins);
+
+// Arguments
+// $target: Number - (Default: Base font size)
+// $line-height-multiplier: Number - (Default: 1)
+// $margin-multiplier: Number - (Default: 1)
+// $margins: both, bottom, top - (Default: bottom)
+
+@mixin rem-baseline($target: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
+  @include rem-px(font-size, $target);
+  @if $line-height-multiplier == 0 {
+    line-height: 1;
+  }
+  @else {
+    line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+  }
+  @if $margin-multiplier == 0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @else {
+    $margin-size: strip-units($base__line-height) * strip-units($margin-multiplier);
+    @if $margins == both {
+      @include rem-px(margin-bottom, $margin-size);
+      @include rem-px(margin-top, $margin-size);
+    }
+    @else if $margins == top {
+      margin-bottom: 0;
+      @include rem-px(margin-top, $margin-size);
+    }
+    @else {
+      @include rem-px(margin-bottom, $margin-size);
+      margin-top: 0;
+    }
+  }
+}

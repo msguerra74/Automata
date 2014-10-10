@@ -1,10 +1,10 @@
 //------------------------------//
-// Functions
+// Linear Gradient Position
 //------------------------------//
 
-// ---------- Linear gradient position parser ---------- //
+// Note
+// Used only in linear-gradient mixin
 
-// Used by: linear-gradient mixin
 @function _linear-positions-parser($pos) {
   $type: type-of(nth($pos, 1));
   $spec: null;
@@ -55,43 +55,9 @@
   @return $degree $spec;
 }
 
-// Used by: _linear-positions-parser function
+// Note
+// Used only in above function
+
 @function _position-flipper($pos) {
   @return if($pos == left, right, null) if($pos == right, left, null) if($pos == top, bottom, null) if($pos == bottom, top, null);
-}
-
-// ---------- PX to EM ---------- //
-
-// Usage: em(target, context);
-// Example: em(18, 16);
-@function em($target, $context: $base__font-size) {
-  @if not unitless($target) {
-    $target: strip-units($target);
-  }
-  @if not unitless($context) {
-    $context: strip-units($context);
-  }
-  @return $target / $context * 1em;
-}
-
-// ---------- PX to REM ---------- //
-
-// Usage: rem(target);
-// Example: rem(18);
-@function rem($target) {
-  $base: $base__font-size;
-  @if not unitless($target) {
-    $target: strip-units($target);
-  }
-  @if not unitless($base) {
-    $base: strip-units($base);
-  }
-  @return $target / $base * 1rem;
-}
-
-// ---------- Strip units ---------- //
-
-// Used in mixins only
-@function strip-units($value) {
-  @return $value / ($value * 0 + 1);
 }

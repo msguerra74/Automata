@@ -1,0 +1,25 @@
+//------------------------------//
+// Font Face
+//------------------------------//
+
+// Usage
+// @include font-face(font-family, font-name, weight, style);
+
+// Arguments
+// $font-family: Font name
+// $font-name: Font name - (Default: Font family)
+// $weight: bold, extra-bold, normal, semi-bold - (Default: normal)
+// $style: italic, normal - (Default: normal)
+
+// Notes
+// Include order: normal, bold, italic, bold + italic
+
+@mixin font-face($font-family, $font-name: $font-family, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    src: url("#{$base__font-path}#{$font-name}.eot");
+    src: url("#{$base__font-path}#{$font-name}.eot?#iefix") format("embedded-opentype"), url("#{$base__font-path}#{$font-name}.woff") format("woff"), url("#{$base__font-path}#{$font-name}.ttf") format("truetype"), url("#{$base__font-path}#{$font-name}.svg##{$font-family}") format("svg");
+  }
+}

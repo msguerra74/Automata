@@ -1,0 +1,10 @@
+//------------------------------//
+// Strip Units
+//------------------------------//
+
+// Note
+// Used only in mixins
+
+@function strip-units($value) {
+  @return $value / ($value * 0 + 1);
+}

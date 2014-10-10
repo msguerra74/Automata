@@ -1,0 +1,20 @@
+//------------------------------//
+// PX to EM
+//------------------------------//
+
+// Usage
+// em(target, context);
+
+// Arguments
+// $target: Number
+// $context: Number - (Default: Base font size)
+
+@function em($target, $context: $base__font-size) {
+  @if not unitless($target) {
+    $target: strip-units($target);
+  }
+  @if not unitless($context) {
+    $context: strip-units($context);
+  }
+  @return $target / $context * 1em;
+}

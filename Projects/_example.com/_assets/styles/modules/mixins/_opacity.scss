@@ -1,0 +1,17 @@
+//------------------------------//
+// Opacity
+//------------------------------//
+// with old IE fallback
+
+// Usage
+// @include opacity(opacity);
+
+// Arguments
+// $opacity: 0 to 1
+
+@mixin opacity($opacity) {
+  @if $oldie {
+    filter: alpha(opacity = $opacity * 100);
+  }
+  opacity: $opacity;
+}

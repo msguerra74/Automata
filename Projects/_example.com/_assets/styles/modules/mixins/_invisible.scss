@@ -1,0 +1,34 @@
+// ---------- Invisible ---------- //
+
+// Description
+// Hide visually and from screenreaders, but maintain layout
+
+// Usage
+// @include invisible;
+
+@mixin invisible {
+  visibility: hidden;
+}
+
+// Usage
+// @extend %invisible;
+
+%invisible {
+  @include invisible;
+}
+
+// ---------- Undo Invisible ---------- //
+
+// Usage
+// @include invisible--undo;
+
+@mixin invisible--undo {
+  visibility: visible;
+}
+
+// Usage
+// @extend %invisible--undo;
+
+%invisible--undo {
+  @include invisible--undo;
+}

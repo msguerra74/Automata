@@ -1,8 +1,8 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
 <html class="no-js{% if page.include.class %} {{ page.include.class }}{% endif %}" lang="en">
 <head>
-  <!-- {{ site.banner }} -->
-  <meta charset="utf-8">{% if site.meta.IEedge %}
+  <meta charset="utf-8">
+  <!-- {{ site.banner }} -->{% if site.meta.IEedge %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">{% endif %}
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if site.meta.responsive %}

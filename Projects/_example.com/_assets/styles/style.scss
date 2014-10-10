@@ -2,13 +2,58 @@
 // Stylesheet
 //------------------------------//
 
+// ---------- Variables ---------- //
+
 @import "modules/variables";
-@import "modules/functions";
-@import "modules/mixins";
+
+// ---------- Functions ---------- //
+
+@import "modules/functions/linear-gradient";
+@import "modules/functions/px-em";
+@import "modules/functions/px-rem";
+@import "modules/functions/strip-units";
+
+// ---------- Mixins ---------- //
+
+@import "modules/mixins/background-opacity";
+@import "modules/mixins/breakpoints";
+@import "modules/mixins/clearfix";
+@import "modules/mixins/ellipsis";
+@import "modules/mixins/em-baseline";
+@import "modules/mixins/em-type";
+@import "modules/mixins/font-face";
+@import "modules/mixins/grid";
+@import "modules/mixins/height-width";
+@import "modules/mixins/hidden";
+@import "modules/mixins/image-replacement";
+@import "modules/mixins/inline-block";
+@import "modules/mixins/invisible";
+@import "modules/mixins/linear-gradient";
+@import "modules/mixins/media-object";
+@import "modules/mixins/opacity";
+@import "modules/mixins/rem-baseline";
+@import "modules/mixins/rem-px";
+@import "modules/mixins/rem-type";
+@import "modules/mixins/svg-background";
+@import "modules/mixins/triangles";
+@import "modules/mixins/vertical-align-middle";
+@import "modules/mixins/visually-hidden";
+
+// ---------- Resets ---------- //
+
 @import "vendor/normalize";
+
+// ---------- Partials ---------- //
+
 @import "partials/base";
 @import "partials/header";
 @import "partials/content";
 @import "partials/footer";
 @import "partials/classes";
+
+// ---------- Print ---------- //
+
 @import "vendor/print";
+
+// ---------- Additional ---------- //
+

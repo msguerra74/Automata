@@ -1,0 +1,28 @@
+//------------------------------//
+// Ellipsis
+//------------------------------//
+
+// Usage
+// @include ellipsis(max-width, type);
+
+// Arguments
+// $max-width: Number - (Default: 100)
+// $type: fixed, fluid - (Default: fluid)
+
+@mixin ellipsis($max-width: 100, $type: fluid) {
+  @include inline-block;
+  @if $type == "fixed" {
+    @include rem-px(max-width, $max-width);
+  }
+  @else {
+    @if $max-width > 100 or $max-width > 100% {
+      max-width: 100%;
+    }
+    @else {
+      max-width: strip-units($max-width) * 1%;
+    }
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

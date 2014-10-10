@@ -8,21 +8,21 @@
 
 // ---------- Base ---------- //
 
-// Base colors
+// Colors
 $base__background-color: white;
 $base__background-color--selection: silver;
 $base__color: black;
 
-// Base fonts
+// Fonts
 $base__font-family: Georgia, Times, "Times New Roman", serif;
 $base__font-family--code: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 $base__font-family--heading: Verdana, Geneva, sans-serif;
 
-// Base paths
+// Paths
 $base__font-path: "../fonts/";
 $base__image-path: "../img/";
 
-// Bases sizes
+// Sizes
 $base__font-size: 16px;
 $base__line-height: 24px;
 $base__max-width: 100%;
@@ -39,8 +39,8 @@ $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
 
 // ---------- Grid ---------- //
 
-$total-columns: 48;
-$column: 100% / $total-columns;
+$grid__columns: 12;
+$grid__spacer: $spacer / 2;
 
 // ---------- oldIE ---------- //
 

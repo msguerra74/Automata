@@ -1,0 +1,26 @@
+//------------------------------//
+// Image Replacement
+//------------------------------//
+
+// Usage
+// @include image-replacement;
+
+@mixin image-replacement {
+  background-color: transparent;
+  border: 0;
+  line-height: 0;
+  overflow: hidden;
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+
+// Usage
+// @extend %image-replacement;
+
+%image-replacement {
+  @include image-replacement;
+}

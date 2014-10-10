@@ -1,0 +1,37 @@
+//------------------------------//
+// EM Typography
+//------------------------------//
+
+// Usage
+// @include em-type(target, context, line-height, margin-multiplier, margins);
+
+// Arguments
+// $target: Number - (Default: Base font size)
+// $context: Number - (Default: Base font size)
+// $line-height: Number - (Default: Base line height)
+// $margin-multiplier: Number - (Default: 1)
+// $margins: both, bottom, top - (Default: bottom)
+
+@mixin em-type($target: $base__font-size, $context: $base__font-size, $line-height: $base__line-height / $base__font-size, $margin-multiplier: 1, $margins: bottom) {
+  font-size: em($target, $context);
+  line-height: strip-units($line-height);
+  @if $margin-multiplier == 0 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  @else {
+    $margin: em($base__line-height, $target) * strip-units($margin-multiplier);
+    @if $margins == both {
+      margin-bottom: $margin;
+      margin-top: $margin;
+    }
+    @else if $margins == top {
+      margin-bottom: 0;
+      margin-top: $margin;
+    }
+    @else {
+      margin-bottom: $margin;
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+//------------------------------//
+// Background Opacity
+//------------------------------//
+// With solid color fallback
+
+// Usage
+// @include background-opacity(bg-color, opacity);
+
+// Arguments
+// $bg-color: Color
+// $opacity: 0 to 1
+
+@mixin background-opacity($bg-color, $opacity) {
+  @if $oldie {
+    background-color: $bg-color;
+  }
+  background-color: rgba($bg-color, $opacity);
+}

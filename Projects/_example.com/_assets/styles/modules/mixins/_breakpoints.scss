@@ -1,0 +1,20 @@
+//------------------------------//
+// Breakpoints
+//------------------------------//
+
+// Usage
+// @include breakpoint(point, m-width) {}
+
+// Arguments
+// $point: small, medium, large, xlarge
+// $m-width: max, min - (Default: min)
+
+@mixin breakpoint($point, $m-width: min) {
+  @each $breakpoint in $breakpoints {
+    @if $point == nth($breakpoint, 1) {
+      @media (#{$m-width}-width: nth($breakpoint, 2)) {
+        @content;
+      }
+    }
+  }
+}

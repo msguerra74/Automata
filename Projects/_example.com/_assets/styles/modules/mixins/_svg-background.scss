@@ -1,0 +1,21 @@
+//------------------------------//
+// SVG Background
+//------------------------------//
+// With PNG fallback
+
+// Usage
+// @include svg-background(svg, width, height, png);
+
+// Arguments
+// $svg: SVG filename
+// $width: Number
+// $height: Number
+// $png: PNG filename - (Default: SVG filename)
+
+@mixin svg-background($svg, $width, $height, $png: $svg) {
+  @if $oldie {
+    background-image: url(#{$base__image-path}#{$png}.png);
+  }
+  background-image: url(#{$base__image-path}#{$svg}.svg), none;
+  @include height-width($width, $height);
+}
