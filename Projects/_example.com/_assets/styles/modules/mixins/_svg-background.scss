@@ -7,15 +7,15 @@
 // @include svg-background(svg, width, height, png);
 
 // Arguments
-// $svg: SVG filename
-// $width: Number
-// $height: Number
-// $png: PNG filename - (Default: SVG filename)
+// $_svg: SVG filename
+// $_width: Number
+// $_height: Number
+// $_png: PNG filename - (Default: SVG filename)
 
-@mixin svg-background($svg, $width, $height, $png: $svg) {
+@mixin svg-background($_svg, $_width, $_height, $_png: $_svg) {
   @if $oldie {
-    background-image: url(#{$base__image-path}#{$png}.png);
+    background-image: url(#{$base__image-path}#{$_png}.png);
   }
-  background-image: url(#{$base__image-path}#{$svg}.svg), none;
-  @include height-width($width, $height);
+  background-image: url(#{$base__image-path}#{$_svg}.svg), none;
+  @include height-width($_width, $_height);
 }

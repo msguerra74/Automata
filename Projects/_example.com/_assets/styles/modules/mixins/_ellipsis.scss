@@ -6,20 +6,20 @@
 // @include ellipsis(max-width, type);
 
 // Arguments
-// $max-width: Number - (Default: 100)
-// $type: fixed, fluid - (Default: fluid)
+// $_max-width: Number - (Default: 100)
+// $_type: fixed, fluid - (Default: fluid)
 
-@mixin ellipsis($max-width: 100, $type: fluid) {
+@mixin ellipsis($_max-width: 100, $_type: fluid) {
   @include inline-block;
-  @if $type == "fixed" {
-    @include rem-px(max-width, $max-width);
+  @if $_type == "fixed" {
+    @include rem-px(max-width, $_max-width);
   }
   @else {
-    @if $max-width > 100 or $max-width > 100% {
+    @if $_max-width > 100 or $_max-width > 100% {
       max-width: 100%;
     }
     @else {
-      max-width: strip-units($max-width) * 1%;
+      max-width: strip-units($_max-width) * 1%;
     }
   }
   overflow: hidden;

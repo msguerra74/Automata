@@ -7,11 +7,11 @@
 // @include opacity(opacity);
 
 // Arguments
-// $opacity: 0 to 1
+// $_opacity: 0 to 1
 
-@mixin opacity($opacity) {
+@mixin opacity($_opacity) {
   @if $oldie {
-    filter: alpha(opacity = $opacity * 100);
+    filter: alpha(opacity = $_opacity * 100);
   }
-  opacity: $opacity;
+  opacity: $_opacity;
 }

@@ -6,36 +6,36 @@
 // @include em-baseline(target, context, line-height-multiplier, margin-multiplier, margins);
 
 // Arguments
-// $target: Number - (Default: Base font size)
-// $context: Number - (Default: Base font size)
-// $line-height-multiplier: Number - (Default: 1)
-// $margin-multiplier: Number - (Default: 1)
-// $margins: both, bottom, top - (Default: bottom)
+// $_target: Number - (Default: Base font size)
+// $_context: Number - (Default: Base font size)
+// $_line-height-multiplier: Number - (Default: 1)
+// $_margin-multiplier: Number - (Default: 1)
+// $_margins: both, bottom, top - (Default: bottom)
 
-@mixin em-baseline($target: $base__font-size, $context: $base__font-size, $line-height-multiplier: 1, $margin-multiplier: 1, $margins: bottom) {
-  font-size: em($target, $context);
-  @if $line-height-multiplier == 0 {
+@mixin em-baseline($_target: $base__font-size, $_context: $base__font-size, $_line-height-multiplier: 1, $_margin-multiplier: 1, $_margins: bottom) {
+  font-size: em($_target, $_context);
+  @if $_line-height-multiplier == 0 {
     line-height: 1;
   }
   @else {
-    line-height: ceil($target / $base__line-height) * $base__line-height / $target * strip-units($line-height-multiplier);
+    line-height: ceil($_target / $base__line-height) * $base__line-height / $_target * strip-units($_line-height-multiplier);
   }
-  @if $margin-multiplier == 0 {
+  @if $_margin-multiplier == 0 {
     margin-bottom: 0;
     margin-top: 0;
   }
   @else {
-    $margin: em($base__line-height, $target) * strip-units($margin-multiplier);
-    @if $margins == both {
-      margin-bottom: $margin;
-      margin-top: $margin;
+    $_margin: em($base__line-height, $_target) * strip-units($_margin-multiplier);
+    @if $_margins == both {
+      margin-bottom: $_margin;
+      margin-top: $_margin;
     }
-    @else if $margins == top {
+    @else if $_margins == top {
       margin-bottom: 0;
-      margin-top: $margin;
+      margin-top: $_margin;
     }
     @else {
-      margin-bottom: $margin;
+      margin-bottom: $_margin;
       margin-top: 0;
     }
   }

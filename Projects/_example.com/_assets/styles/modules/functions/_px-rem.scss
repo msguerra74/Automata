@@ -6,15 +6,15 @@
 // rem(target);
 
 // Arguments
-// $target: Number
+// $_target: Number
 
-@function rem($target) {
-  $base: $base__font-size;
-  @if not unitless($target) {
-    $target: strip-units($target);
+@function rem($_target) {
+  $_base: $base__font-size;
+  @if not unitless($_target) {
+    $_target: strip-units($_target);
   }
-  @if not unitless($base) {
-    $base: strip-units($base);
+  @if not unitless($_base) {
+    $_base: strip-units($_base);
   }
-  @return $target / $base * 1rem;
+  @return $_target / $_base * 1rem;
 }

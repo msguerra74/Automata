@@ -7,12 +7,12 @@
 // @include background-opacity(bg-color, opacity);
 
 // Arguments
-// $bg-color: Color
-// $opacity: 0 to 1
+// $_bg-color: Color
+// $_opacity: 0 to 1
 
-@mixin background-opacity($bg-color, $opacity) {
+@mixin background-opacity($_bg-color, $_opacity) {
   @if $oldie {
-    background-color: $bg-color;
+    background-color: $_bg-color;
   }
-  background-color: rgba($bg-color, $opacity);
+  background-color: rgba($_bg-color, $_opacity);
 }

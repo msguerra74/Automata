@@ -3,44 +3,42 @@
 //------------------------------//
 // With PX fallback
 
-// ---------- REM-based properties with PX fallback ---------- //
-
 // Usage
 // @include rem-px(property, values...);
 
 // Arguments
-// $property: CSS property
-// $values: CSS property values
+// $_property: CSS property
+// $_values: CSS property values
 
-@mixin rem-px($property, $values...) {
-  $all: length($values);
-  $px: "";
-  $rem: "";
-  @for $i from 1 through $all {
-    $value: nth($values, $i);
-    @if type-of($value) == number {
-      $unitless-value: strip-units($value);
-      $px: #{$px + $unitless-value}px;
-      $rem: #{$rem + rem($unitless-value)};
+@mixin rem-px($_property, $_values...) {
+  $_all: length($_values);
+  $_px: "";
+  $_rem: "";
+  @for $_i from 1 through $_all {
+    $_value: nth($_values, $_i);
+    @if type-of($_value) == number {
+      $_unitless-value: strip-units($_value);
+      $_px: #{$_px + $_unitless-value}px;
+      $_rem: #{$_rem + rem($_unitless-value)};
     }
     @else {
-      $px: #{$px + $value};
-      $rem: #{$rem + $value};
+      $_px: #{$_px + $_value};
+      $_rem: #{$_rem + $_value};
     }
-    @if $i < $all {
-      $px: #{$px + " "};
-      $rem: #{$rem + " "};
+    @if $_i < $_all {
+      $_px: #{$_px + " "};
+      $_rem: #{$_rem + " "};
     }
   }
-  @if $px == $rem {
+  @if $_px == $_rem {
     @if $oldie {
-      #{$property}: $px;
+      #{$_property}: $_px;
     }
   }
   @else {
     @if $oldie {
-      #{$property}: $px;
+      #{$_property}: $_px;
     }
-    #{$property}: $rem;
+    #{$_property}: $_rem;
   }
 }

@@ -5,6 +5,6 @@
 // Note
 // Used only in mixins
 
-@function strip-units($value) {
-  @return $value / ($value * 0 + 1);
+@function strip-units($_value) {
+  @return $_value / ($_value * 0 + 1);
 }

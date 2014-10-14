@@ -5,59 +5,59 @@
 // Note
 // Used only in linear-gradient mixin
 
-@function _linear-positions-parser($pos) {
-  $type: type-of(nth($pos, 1));
-  $spec: null;
-  $degree: null;
-  $side: null;
-  $corner: null;
-  $length: length($pos);
-  @if $length > 1 {
-    @if nth($pos, 1) == "to" {
-      $side: nth($pos, 2);
-      @if $length == 2 {
-        $degree: _position-flipper(nth($pos, 2));
+@function _linear-positions-parser($_pos) {
+  $_type: type-of(nth($_pos, 1));
+  $_spec: null;
+  $_degree: null;
+  $_side: null;
+  $_corner: null;
+  $_length: length($_pos);
+  @if $_length > 1 {
+    @if nth($_pos, 1) == "to" {
+      $_side: nth($_pos, 2);
+      @if $_length == 2 {
+        $_degree: _position-flipper(nth($_pos, 2));
       }
-      @else if $length == 3 {
-        $corner: nth($pos, 3);
+      @else if $_length == 3 {
+        $_corner: nth($_pos, 3);
       }
     }
-    @else if $length == 2 {
-      $side: _position-flipper(nth($pos, 1));
-      $corner: _position-flipper(nth($pos, 2));
+    @else if $_length == 2 {
+      $_side: _position-flipper(nth($_pos, 1));
+      $_corner: _position-flipper(nth($_pos, 2));
     }
-    @if "#{$side} #{$corner}" == "left top" or "#{$side} #{$corner}" == "top left" {
-      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
+    @if "#{$_side} #{$_corner}" == "left top" or "#{$_side} #{$_corner}" == "top left" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
     }
-    @else if "#{$side} #{$corner}" == "right top" or "#{$side} #{$corner}" == "top right" {
-      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
+    @else if "#{$_side} #{$_corner}" == "right top" or "#{$_side} #{$_corner}" == "top right" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
     }
-    @else if "#{$side} #{$corner}" == "right bottom" or "#{$side} #{$corner}" == "bottom right" {
-      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
+    @else if "#{$_side} #{$_corner}" == "right bottom" or "#{$_side} #{$_corner}" == "bottom right" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
     }
-    @else if "#{$side} #{$corner}" == "left bottom" or "#{$side} #{$corner}" == "bottom left" {
-      $degree: _position-flipper(#{$side}) _position-flipper(#{$corner});
+    @else if "#{$_side} #{$_corner}" == "left bottom" or "#{$_side} #{$_corner}" == "bottom left" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
     }
-    $spec: to $side $corner;
+    $_spec: to $_side $_corner;
   }
-  @else if $length == 1 {
-    @if $type == string {
-      $degree: $pos;
-      $spec: to _position-flipper($pos);
+  @else if $_length == 1 {
+    @if $_type == string {
+      $_degree: $_pos;
+      $_spec: to _position-flipper($_pos);
     }
     @else {
-      $degree: -270 - $pos;
-      $spec: $pos;
+      $_degree: -270 - $_pos;
+      $_spec: $_pos;
     }
   }
-  $degree: unquote($degree + ",");
-  $spec: unquote($spec + ",");
-  @return $degree $spec;
+  $_degree: unquote($_degree + ",");
+  $_spec: unquote($_spec + ",");
+  @return $_degree $_spec;
 }
 
 // Note
 // Used only in above function
 
-@function _position-flipper($pos) {
-  @return if($pos == left, right, null) if($pos == right, left, null) if($pos == top, bottom, null) if($pos == bottom, top, null);
+@function _position-flipper($_pos) {
+  @return if($_pos == left, right, null) if($_pos == right, left, null) if($_pos == top, bottom, null) if($_pos == bottom, top, null);
 }

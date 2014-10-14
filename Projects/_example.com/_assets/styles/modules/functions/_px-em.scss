@@ -6,15 +6,15 @@
 // em(target, context);
 
 // Arguments
-// $target: Number
-// $context: Number - (Default: Base font size)
+// $_target: Number
+// $_context: Number - (Default: Base font size)
 
-@function em($target, $context: $base__font-size) {
-  @if not unitless($target) {
-    $target: strip-units($target);
+@function em($_target, $_context: $base__font-size) {
+  @if not unitless($_target) {
+    $_target: strip-units($_target);
   }
-  @if not unitless($context) {
-    $context: strip-units($context);
+  @if not unitless($_context) {
+    $_context: strip-units($_context);
   }
-  @return $target / $context * 1em;
+  @return $_target / $_context * 1em;
 }

@@ -6,9 +6,9 @@
 // @include inline-block(vertical-align);
 
 // Arguments
-// $vertical-align: %, baseline, bottom, inherit, initial, length, middle, sub, super, text-bottom, text-top, top - (Default: baseline)
+// $_vertical-align: %, baseline, bottom, inherit, initial, length, middle, sub, super, text-bottom, text-top, top - (Default: baseline)
 
-@mixin inline-block($vertical-align: baseline) {
+@mixin inline-block($_vertical-align: baseline) {
   display: inline-block;
-  vertical-align: $vertical-align;
+  vertical-align: $_vertical-align;
 }

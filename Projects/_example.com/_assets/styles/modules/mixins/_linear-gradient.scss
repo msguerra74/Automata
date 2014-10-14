@@ -6,37 +6,37 @@
 // @include linear-gradient(position, color, fallback);
 
 // Arguments
-// $pos: (n)deg, to bottom, to left, to right, to top
-// $G(n): Color and Color Stop
-// $fallback: Color
+// $_pos: (n)deg, to bottom, to left, to right, to top
+// $_G(n): Color and Color Stop
+// $_fallback: Color
 
-@mixin linear-gradient($pos, $G1, $G2: null, $G3: null, $G4: null, $G5: null, $G6: null, $G7: null, $G8: null, $G9: null, $G10: null, $fallback: null) {
-  $pos-type: type-of(nth($pos, 1));
-  $pos-spec: null;
-  $pos-degree: null;
-  @if $pos-type == color or nth($pos, 1) == "transparent" {
-    $G10: $G9;
-    $G9: $G8;
-    $G8: $G7;
-    $G7: $G6;
-    $G6: $G5;
-    $G5: $G4;
-    $G4: $G3;
-    $G3: $G2;
-    $G2: $G1;
-    $G1: $pos;
-    $pos: null;
+@mixin linear-gradient($_pos, $_G1, $_G2: null, $_G3: null, $_G4: null, $_G5: null, $_G6: null, $_G7: null, $_G8: null, $_G9: null, $_G10: null, $_fallback: null) {
+  $_pos-type: type-of(nth($_pos, 1));
+  $_pos-spec: null;
+  $_pos-degree: null;
+  @if $_pos-type == color or nth($_pos, 1) == "transparent" {
+    $_G10: $_G9;
+    $_G9: $_G8;
+    $_G8: $_G7;
+    $_G7: $_G6;
+    $_G6: $_G5;
+    $_G5: $_G4;
+    $_G4: $_G3;
+    $_G3: $_G2;
+    $_G2: $_G1;
+    $_G1: $_pos;
+    $_pos: null;
   }
-  @if $pos {
-    $positions: _linear-positions-parser($pos);
-    $pos-degree: nth($positions, 1);
-    $pos-spec: nth($positions, 2);
+  @if $_pos {
+    $_positions: _linear-positions-parser($_pos);
+    $_pos-degree: nth($_positions, 1);
+    $_pos-spec: nth($_positions, 2);
   }
-  $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
-  $fallback-color: nth($G1, 1);
-  @if type-of($fallback) == color or $fallback == "transparent" {
-    $fallback-color: $fallback;
+  $full: $_G1, $_G2, $_G3, $_G4, $_G5, $_G6, $_G7, $_G8, $_G9, $_G10;
+  $_fallback-color: nth($_G1, 1);
+  @if type-of($_fallback) == color or $_fallback == "transparent" {
+    $_fallback-color: $_fallback;
   }
-  background-color: $fallback-color;
-  background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
+  background-color: $_fallback-color;
+  background-image: unquote("linear-gradient(#{$_pos-spec}#{$full})");
 }

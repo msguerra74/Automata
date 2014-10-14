@@ -6,33 +6,33 @@
 // @include vertical-align-middle(height, child, type, psuedo);
 
 // Arguments
-// $height: Number
-// $child: Child selector
-// $type: class, element, id - (Default: element)
-// $psuedo: after, before - (Default: before)
+// $_height: Number
+// $_child: Child selector
+// $_type: class, element, id - (Default: element)
+// $_pseudo-element: after, before - (Default: before)
 
-@mixin vertical-align-middle($height, $child, $type: element, $pseudo: before) {
-  height: $height;
-  &:#{$pseudo} {
+@mixin vertical-align-middle($_height, $_child, $_type: element, $_pseudo-element: before) {
+  height: $_height;
+  &:#{$_pseudo-element} {
     @include inline-block(middle);
     content: "";
     height: 100%;
     width: .1px;
   }
-  @if $type == "class" {
-    & .#{$child} {
+  @if $_type == "class" {
+    & .#{$_child} {
       @include inline-block(middle);
       width: auto;
     }
   }
-  @if $type == "id" {
-    & ##{$child} {
+  @if $_type == "id" {
+    & ##{$_child} {
       @include inline-block(middle);
       width: auto;
     }
   }
   @else {
-    & #{$child} {
+    & #{$_child} {
       @include inline-block(middle);
       width: auto;
     }

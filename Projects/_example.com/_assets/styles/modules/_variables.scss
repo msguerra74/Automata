@@ -39,8 +39,8 @@ $breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
 
 // ---------- Grid ---------- //
 
-$grid__columns: 12;
-$grid__spacer: $spacer / 2;
+$columns: 12;
+$gutter: $spacer / 2;
 
 // ---------- oldIE ---------- //
 

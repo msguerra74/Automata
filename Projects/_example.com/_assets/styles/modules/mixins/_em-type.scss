@@ -6,31 +6,31 @@
 // @include em-type(target, context, line-height, margin-multiplier, margins);
 
 // Arguments
-// $target: Number - (Default: Base font size)
-// $context: Number - (Default: Base font size)
-// $line-height: Number - (Default: Base line height)
-// $margin-multiplier: Number - (Default: 1)
-// $margins: both, bottom, top - (Default: bottom)
+// $_target: Number - (Default: Base font size)
+// $_context: Number - (Default: Base font size)
+// $_line-height: Number - (Default: Base line height)
+// $_margin-multiplier: Number - (Default: 1)
+// $_margins: both, bottom, top - (Default: bottom)
 
-@mixin em-type($target: $base__font-size, $context: $base__font-size, $line-height: $base__line-height / $base__font-size, $margin-multiplier: 1, $margins: bottom) {
-  font-size: em($target, $context);
-  line-height: strip-units($line-height);
-  @if $margin-multiplier == 0 {
+@mixin em-type($_target: $base__font-size, $_context: $base__font-size, $_line-height: $base__line-height / $base__font-size, $_margin-multiplier: 1, $_margins: bottom) {
+  font-size: em($_target, $_context);
+  line-height: strip-units($_line-height);
+  @if $_margin-multiplier == 0 {
     margin-bottom: 0;
     margin-top: 0;
   }
   @else {
-    $margin: em($base__line-height, $target) * strip-units($margin-multiplier);
-    @if $margins == both {
-      margin-bottom: $margin;
-      margin-top: $margin;
+    $_margin: em($base__line-height, $_target) * strip-units($_margin-multiplier);
+    @if $_margins == both {
+      margin-bottom: $_margin;
+      margin-top: $_margin;
     }
-    @else if $margins == top {
+    @else if $_margins == top {
       margin-bottom: 0;
-      margin-top: $margin;
+      margin-top: $_margin;
     }
     @else {
-      margin-bottom: $margin;
+      margin-bottom: $_margin;
       margin-top: 0;
     }
   }
