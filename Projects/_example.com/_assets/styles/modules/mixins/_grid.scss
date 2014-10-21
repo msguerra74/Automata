@@ -61,9 +61,11 @@
 
 @mixin container($_max-width: 100, $_type: fluid, $_align: center, $_margin-bottom: 0, $_margin-top: 0) {
   @include clear;
-  @if $_align == "left" {}
+  clear: both;
+  @if $_align == "left" {
+    float: left;
+  }
   @else if $_align == "right" {
-    clear: both;
     float: right;
   }
   @if $_margin-bottom != 0 {
