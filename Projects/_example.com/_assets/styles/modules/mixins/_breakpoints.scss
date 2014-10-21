@@ -11,7 +11,7 @@
 
 @mixin breakpoint($_point, $_m-width: min) {
   @each $_breakpoint in $breakpoints {
-    @if $_point == nth($breakpoint, 1) {
+    @if $_point == nth($_breakpoint, 1) {
       @media (#{$_m-width}-width: nth($_breakpoint, 2)) {
         @content;
       }

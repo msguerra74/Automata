@@ -17,5 +17,5 @@
     background-image: url(#{$base__image-path}#{$_png}.png);
   }
   background-image: url(#{$base__image-path}#{$_svg}.svg), none;
-  @include height-width($_width, $_height);
+  @include width-height($_width, $_height);
 }
