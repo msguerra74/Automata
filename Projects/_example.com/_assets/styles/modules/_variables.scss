@@ -30,12 +30,12 @@ $spacer: $base__line-height;
 
 // ---------- Breakpoints ---------- //
 
-$small: #{481px / $base__font-size}em;
-$medium: #{769px / $base__font-size}em;
-$large: #{1025px / $base__font-size}em;
-$xlarge: #{1281px / $base__font-size}em;
-
-$breakpoints: small $small, medium $medium, large $large, xlarge $xlarge;
+$breakpoints: (
+  small: #{481px / $base__font-size}em,
+  medium: #{769px / $base__font-size}em,
+  large: #{1025px / $base__font-size}em,
+  xlarge: #{1281px / $base__font-size}em
+);
 
 // ---------- Grid ---------- //
 
