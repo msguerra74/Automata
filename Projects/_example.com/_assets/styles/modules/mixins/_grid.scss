@@ -35,8 +35,8 @@
       margin-left: $_offset * $_column;
     }
   }
-  @include rem-px(padding-left, $gutter);
-  @include rem-px(padding-right, $gutter);
+  @include rem-px(padding-left, $gutter / 2);
+  @include rem-px(padding-right, $gutter / 2);
   position: relative;
   @if $_pull != 0 {
     right: $_pull * $_column;
@@ -108,8 +108,8 @@
 @mixin row($_margin-bottom: $spacer, $_margin-top: 0) {
   @include clear;
   @include rem-px(margin-bottom, $_margin-bottom);
-  @include rem-px(margin-left, -$gutter);
-  @include rem-px(margin-right, -$gutter);
+  @include rem-px(margin-left, -$gutter / 2);
+  @include rem-px(margin-right, -$gutter / 2);
   @if $_margin-top != 0 {
     @include rem-px(margin-top, $_margin-top);
   }
