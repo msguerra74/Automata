@@ -20,25 +20,25 @@
 // ---------- Media Object Body ---------- //
 
 // Usage
-// @include media-object__body;
+// @include media-object-body;
 
-@mixin media-object__body {
+@mixin media-object-body {
   overflow: hidden;
 }
 
 // Usage
-// @extend %media-object__body;
+// @extend %media-object-body;
 
-%media-object__body {
-  @include media-object__body;
+%media-object-body {
+  @include media-object-body;
 }
 
 // ---------- Media Object Image ---------- //
 
 // Usage
-// @include media-object__image;
+// @include media-object-image;
 
-@mixin media-object__image {
+@mixin media-object-image {
   float: left;
   & img {
     display: block;
@@ -46,18 +46,18 @@
 }
 
 // Usage
-// @extend %media-object__image;
+// @extend %media-object-image;
 
-%media-object__image {
-  @include media-object__image;
+%media-object-image {
+  @include media-object-image;
 }
 
-// ---------- Media Object Image Reversed ---------- //
+// ---------- Reversed Media Object Image ---------- //
 
 // Usage
-// @inclue media-object__image--rev;
+// @inclue reversed-media-object-image;
 
-@mixin media-object__image--rev {
+@mixin reversed-media-object-image {
   float: right;
   & img {
     display: block;
@@ -65,8 +65,8 @@
 }
 
 // Usage
-// @extend %media-object__image--rev;
+// @extend %reversed-media-object-image;
 
-%media-object__image--rev {
-  @include media-object__image--rev;
+%reversed-media-object-image {
+  @include reversed-media-object-image;
 }

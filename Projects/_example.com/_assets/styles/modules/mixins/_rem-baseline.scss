@@ -7,25 +7,25 @@
 // @include rem-baseline(target, line-height-multiplier, margin-multiplier, margins);
 
 // Arguments
-// $_target: Number - (Default: Base font size)
+// $_target: Number - (Default: $font-size)
 // $_line-height-multiplier: Number - (Default: 1)
 // $_margin-multiplier: Number - (Default: 1)
 // $_margins: both, bottom, top - (Default: bottom)
 
-@mixin rem-baseline($_target: $base__font-size, $_line-height-multiplier: 1, $_margin-multiplier: 1, $_margins: bottom) {
+@mixin rem-baseline($_target: $font-size, $_line-height-multiplier: 1, $_margin-multiplier: 1, $_margins: bottom) {
   @include rem-px(font-size, $_target);
   @if $_line-height-multiplier == 0 {
     line-height: 1;
   }
   @else {
-    line-height: ceil($_target / $base__line-height) * $base__line-height / $_target * strip-units($_line-height-multiplier);
+    line-height: ceil($_target / $line-height) * $line-height / $_target * strip-units($_line-height-multiplier);
   }
   @if $_margin-multiplier == 0 {
     margin-bottom: 0;
     margin-top: 0;
   }
   @else {
-    $_margin-size: strip-units($base__line-height) * strip-units($_margin-multiplier);
+    $_margin-size: strip-units($line-height) * strip-units($_margin-multiplier);
     @if $_margins == both {
       @include rem-px(margin-bottom, $_margin-size);
       @include rem-px(margin-top, $_margin-size);

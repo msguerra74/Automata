@@ -9,7 +9,7 @@
 // $_target: Number
 
 @function rem($_target) {
-  $_base: $base__font-size;
+  $_base: $font-size;
   @if not unitless($_target) {
     $_target: strip-units($_target);
   }

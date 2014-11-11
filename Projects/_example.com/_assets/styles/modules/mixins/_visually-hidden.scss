@@ -40,9 +40,9 @@
 // ---------- Undo Visually Hidden ---------- //
 
 // Usage
-// @include visually-hidden--undo;
+// @include undo-visually-hidden;
 
-@mixin visually-hidden--undo {
+@mixin undo-visually-hidden {
   clip: auto;
   clip: rect(auto auto auto auto);
   height: auto;
@@ -53,8 +53,8 @@
 }
 
 // Usage
-// @extend %visually-hidden--undo;
+// @extend %undo-visually-hidden;
 
-%visually-hidden--undo {
-  @include visually-hidden--undo;
+%undo-visually-hidden {
+  @include undo-visually-hidden;
 }

@@ -23,16 +23,16 @@
 // ---------- Undo Hidden ---------- //
 
 // Usage
-// @include hidden--undo;
+// @include undo-hidden;
 
-@mixin hidden--undo {
+@mixin undo-hidden {
   display: block !important;
   visibility: visible;
 }
 
 // Usage
-// @extend %hidden--undo;
+// @extend %undo-hidden;
 
-%hidden--undo {
-  @include hidden--undo;
+%undo-hidden {
+  @include undo-hidden;
 }

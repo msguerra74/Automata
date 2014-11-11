@@ -14,8 +14,8 @@
 
 @mixin svg-background($_svg, $_width, $_height, $_png: $_svg) {
   @if $oldie {
-    background-image: url(#{$base__image-path}#{$_png}.png);
+    background-image: url(#{$image-path}#{$_png}.png);
   }
-  background-image: url(#{$base__image-path}#{$_svg}.svg), none;
+  background-image: url(#{$image-path}#{$_svg}.svg), none;
   @include width-height($_width, $_height);
 }

@@ -9,32 +9,36 @@
 // ---------- Base ---------- //
 
 // Colors
-$base__background-color: white;
-$base__background-color--selection: silver;
-$base__color: black;
+
+$background-color: white;
+$selection-color: silver;
+$color: black;
 
 // Fonts
-$base__font-family: Georgia, Times, "Times New Roman", serif;
-$base__font-family--code: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-$base__font-family--heading: Verdana, Geneva, sans-serif;
+
+$font-family: Georgia, Times, "Times New Roman", serif;
+$code-font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+$heading-font-family: Verdana, Geneva, sans-serif;
 
 // Paths
-$base__font-path: "../fonts/";
-$base__image-path: "../img/";
+
+$font-path: "../fonts/";
+$image-path: "../img/";
 
 // Sizes
-$base__font-size: 16px;
-$base__line-height: 24px;
-$base__max-width: 100%;
-$spacer: $base__line-height;
+
+$font-size: 16px;
+$line-height: 24px;
+$max-width: 100%;
+$spacer: $line-height;
 
 // ---------- Breakpoints ---------- //
 
 $breakpoints: (
-  small: #{481px / $base__font-size}em,
-  medium: #{769px / $base__font-size}em,
-  large: #{1025px / $base__font-size}em,
-  xlarge: #{1281px / $base__font-size}em
+  small: #{481px / $font-size}em,
+  medium: #{769px / $font-size}em,
+  large: #{1025px / $font-size}em,
+  xlarge: #{1281px / $font-size}em
 );
 
 // ---------- Grid ---------- //

@@ -7,9 +7,9 @@
 
 // Arguments
 // $_target: Number
-// $_context: Number - (Default: Base font size)
+// $_context: Number - (Default: $font-size)
 
-@function em($_target, $_context: $base__font-size) {
+@function em($_target, $_context: $font-size) {
   @if not unitless($_target) {
     $_target: strip-units($_target);
   }

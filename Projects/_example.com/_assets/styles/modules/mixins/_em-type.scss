@@ -6,13 +6,13 @@
 // @include em-type(target, context, line-height, margin-multiplier, margins);
 
 // Arguments
-// $_target: Number - (Default: Base font size)
-// $_context: Number - (Default: Base font size)
-// $_line-height: Number - (Default: Base line height)
+// $_target: Number - (Default: $font-size)
+// $_context: Number - (Default: $font-size)
+// $_line-height: Number - (Default: $line-height)
 // $_margin-multiplier: Number - (Default: 1)
 // $_margins: both, bottom, top - (Default: bottom)
 
-@mixin em-type($_target: $base__font-size, $_context: $base__font-size, $_line-height: $base__line-height / $base__font-size, $_margin-multiplier: 1, $_margins: bottom) {
+@mixin em-type($_target: $font-size, $_context: $font-size, $_line-height: $line-height / $font-size, $_margin-multiplier: 1, $_margins: bottom) {
   font-size: em($_target, $_context);
   line-height: strip-units($_line-height);
   @if $_margin-multiplier == 0 {
@@ -20,7 +20,7 @@
     margin-top: 0;
   }
   @else {
-    $_margin: em($base__line-height, $_target) * strip-units($_margin-multiplier);
+    $_margin: em($line-height, $_target) * strip-units($_margin-multiplier);
     @if $_margins == both {
       margin-bottom: $_margin;
       margin-top: $_margin;

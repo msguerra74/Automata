@@ -1,23 +1,26 @@
 # Project
+
 folder: _example.com
 
 # Website
+
 url: http://localhost:4000
 title: Website Title
-description: Website description
+description: Website Description
 owner:
   name: Owner Name
   email: owner@email.com
 analytics: # UA-xxxxxxxx-x
-banner: Created by Developer in 2014 | http://website.com
+banner: Created by Developer | http://website.com
 
 # Options
+
 link:
   canonical: true
   feed: true
   sitemap: true
 meta:
-  IEedge: false
+  IEedge: true
   responsive: true
 script:
   jquery: true
@@ -26,6 +29,7 @@ script:
   plugins: true
 
 # Jekyll
+
 include: []
 exclude: ['.htaccess']
 keep_files: ['.git', 'sftp-config.json']

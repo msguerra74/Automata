@@ -6,11 +6,11 @@
 // @include triangle(size, color, direction);
 
 // Arguments
-// $_size: Number - (Default: Spacer)
-// $_color: Color - (Default: Base color)
-// $_direction: down, down--inset, down--left, down--right, left, left--inset, right, right--inset, up, up--inset, up--left, up--right - (Default: down)
+// $_size: Number - (Default: $spacer)
+// $_color: Color - (Default: $color)
+// $_direction: down, down-inset, down-left, down-right, left, left-inset, right, right-inset, up, up-inset, up-left, up-right - (Default: down)
 
-@mixin triangle($_size: $spacer, $_color: $base__color, $_direction: down) {
+@mixin triangle($_size: $spacer, $_color: $color, $_direction: down) {
   position: relative;
   &:after {
     $_width: nth($_size, 1);
@@ -41,40 +41,40 @@
         border-right: $_height solid $_foreground-color;
       }
     }
-    @else if $_direction == up--right or $_direction == up--left {
+    @else if $_direction == up-right or $_direction == up-left {
       border-top: $_height solid $_foreground-color;
-      @if $_direction == up--right {
+      @if $_direction == up-right {
         border-left: $_width solid $_background-color;
       }
-      @else if $_direction == up--left {
+      @else if $_direction == up-left {
         border-right: $_width solid $_background-color;
       }
     }
-    @else if $_direction == down--right or $_direction == down--left {
+    @else if $_direction == down-right or $_direction == down-left {
       border-bottom: $_height solid $_foreground-color;
-      @if $_direction == down--right {
+      @if $_direction == down-right {
         border-left: $_width solid $_background-color;
       }
-      @else if $_direction == down--left {
+      @else if $_direction == down-left {
         border-right: $_width solid $_background-color;
       }
     }
-    @else if $_direction == up--inset {
+    @else if $_direction == up-inset {
       border-width: $_height $_width;
       border-style: solid;
       border-color: $_background-color $_background-color $_foreground-color;
     }
-    @else if $_direction == down--inset {
+    @else if $_direction == down-inset {
       border-width: $_height $_width;
       border-style: solid;
       border-color: $_foreground-color $_background-color $_background-color;
     }
-    @else if $_direction == right--inset {
+    @else if $_direction == right-inset {
       border-width: $_width $_height;
       border-style: solid;
       border-color: $_background-color $_background-color $_background-color $_foreground-color;
     }
-    @else if $_direction == left--inset {
+    @else if $_direction == left-inset {
       border-width: $_width $_height;
       border-style: solid;
       border-color: $_background-color $_foreground-color $_background-color $_background-color;

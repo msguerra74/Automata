@@ -7,7 +7,7 @@
 
 // Arguments
 // $_font-family: Font name
-// $_font-name: Font name - (Default: Font family)
+// $_font-name: Font name - (Default: $font-family)
 // $_weight: bold, extra-bold, normal, semi-bold - (Default: normal)
 // $_style: italic, normal - (Default: normal)
 
@@ -19,7 +19,10 @@
     font-family: $_font-family;
     font-weight: $_weight;
     font-style: $_style;
-    src: url("#{$base__font-path}#{$_font-name}.eot");
-    src: url("#{$base__font-path}#{$_font-name}.eot?#iefix") format("embedded-opentype"), url("#{$base__font-path}#{$_font-name}.woff") format("woff"), url("#{$base__font-path}#{$_font-name}.ttf") format("truetype"), url("#{$base__font-path}#{$_font-name}.svg##{$_font-family}") format("svg");
+    src: url("#{$font-path}#{$_font-name}.eot");
+    src: url("#{$font-path}#{$_font-name}.eot?#iefix") format("embedded-opentype"),
+         url("#{$font-path}#{$_font-name}.woff") format("woff"),
+         url("#{$font-path}#{$_font-name}.ttf") format("truetype"),
+         url("#{$font-path}#{$_font-name}.svg##{$_font-family}") format("svg");
   }
 }

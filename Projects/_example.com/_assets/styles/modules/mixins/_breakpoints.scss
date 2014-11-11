@@ -12,12 +12,14 @@
 @mixin breakpoint($_name, $_m-width: min) {
   @if not map-has-key($breakpoints, $_name) {
     @warn "Invalid breakpoint `#{$_name}`.";
-  } @else {
+  }
+  @else {
     @if map-get($breakpoints, $_name) {
       @media (#{$_m-width}-width: map-get($breakpoints, $_name)) {
         @content;
       }
-    } @else {
+    }
+    @else {
       @content;
     }
   }

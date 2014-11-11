@@ -20,15 +20,15 @@
 // ---------- Undo Invisible ---------- //
 
 // Usage
-// @include invisible--undo;
+// @include undo-invisible;
 
-@mixin invisible--undo {
+@mixin undo-invisible {
   visibility: visible;
 }
 
 // Usage
-// @extend %invisible--undo;
+// @extend %undo-invisible;
 
-%invisible--undo {
-  @include invisible--undo;
+%undo-invisible {
+  @include undo-invisible;
 }
