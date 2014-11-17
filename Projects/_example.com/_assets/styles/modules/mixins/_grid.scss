@@ -1,5 +1,5 @@
 // ------------------------------ //
-// Grid Column, Container, Row
+// Grid
 // ------------------------------ //
 
 // ---------- Column ---------- //
@@ -44,10 +44,10 @@
   width: $_columns * $_column;
 }
 
-// ---------- Container ---------- //
+// ---------- Row ---------- //
 
 // Usage
-// @include container(max-width, type, align, margin-bottom, margin-top);
+// @include row(max-width, type, align, margin-bottom, margin-top);
 
 // Arguments
 // $_max-width: Number - (Default: 100)
@@ -56,24 +56,21 @@
 // $_margin-bottom: Number - (Default: 0)
 // $_margin-top: Number - (Default: 0)
 
-// Note
-// Do not nest containers in other containers
-
-@mixin container($_max-width: 100, $_type: fluid, $_align: center, $_margin-bottom: 0, $_margin-top: 0) {
+@mixin row($_max-width: 100, $_type: fluid, $_align: center, $_margin-bottom: 0, $_margin-top: 0) {
   @include clear;
   clear: both;
   @if $_align == "left" {
     float: left;
   }
-  @else if $_align == "right" {
+  @if $_align == "right" {
     float: right;
+  }
+  @if $_align == "center" {
+    margin-left: auto;
+    margin-right: auto;
   }
   @if $_margin-bottom != 0 {
     @include rem-px(margin-bottom, $_margin-bottom);
-  }
-  @else {
-    margin-left: auto;
-    margin-right: auto;
   }
   @if $_margin-top != 0 {
     @include rem-px(margin-top, $_margin-top);
@@ -89,28 +86,6 @@
       max-width: strip-units($_max-width) * 1%;
     }
   }
-  @include rem-px(padding-left, $gutter);
-  @include rem-px(padding-right, $gutter);
-}
-
-// ---------- Row ---------- //
-
-// Usage
-// @include row(margin-bottom, margin-top);
-
-// Arguments
-// $_margin-bottom: Number - (Default: $spacer)
-// $_margin-top: Number - (Default: 0)
-
-// Note
-// Parent must be a container
-
-@mixin row($_margin-bottom: $spacer, $_margin-top: 0) {
-  @include clear;
-  @include rem-px(margin-bottom, $_margin-bottom);
-  @include rem-px(margin-left, -$gutter / 2);
-  @include rem-px(margin-right, -$gutter / 2);
-  @if $_margin-top != 0 {
-    @include rem-px(margin-top, $_margin-top);
-  }
+  @include rem-px(padding-left, $gutter / 2);
+  @include rem-px(padding-right, $gutter / 2);
 }
