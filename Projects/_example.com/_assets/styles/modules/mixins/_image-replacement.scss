@@ -8,14 +8,9 @@
 @mixin image-replacement {
   background-color: transparent;
   border: 0;
-  line-height: 0;
-  overflow: hidden;
-  &:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 200%;
-  }
+  color: transparent;
+  font: #{0 / 0} a;
+  text-shadow: none;
 }
 
 // Usage
