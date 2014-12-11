@@ -1,5 +1,7 @@
 # Automata
 
+[![Dependency Status](https://david-dm.org/msguerra74/automata.svg?style=flat)](https://david-dm.org/msguerra74/automata)
+
 ## Automated Static Website Generator
 
 by **Michael Guerra** | [msguerra74.com][]
