@@ -34,7 +34,7 @@ module.exports = function(grunt) {
     clean: {
       pre: [
         '<%= site %>/**/{*,.*}',
-        '!<%= site %>/{.git,sftp-config.json}',
+        '!<%= site %>/.git',
         '<%= source %>/assets'
       ]
     },
@@ -185,7 +185,6 @@ module.exports = function(grunt) {
         files: '<%= source %>/_assets/images/**/*',
         tasks: [
           'svg2png',
-          'svgmin',
           'imagemin',
           'copy:buildImages'
         ]
@@ -202,7 +201,7 @@ module.exports = function(grunt) {
       styles: {
         files: '<%= source %>/_assets/styles/**/*',
         tasks: [
-          'sass',
+          'sass:devStyles',
           'autoprefixer',
           'copy:buildStyles'
         ]
@@ -227,40 +226,6 @@ module.exports = function(grunt) {
     },
 
     /**
-     * Combine media queries
-     * Combines media queries
-     * https://github.com/buildingblocks/grunt-combine-media-queries
-     */
-
-    cmq: {
-      styles: {
-        dest: '<%= source %>/assets/css',
-        src: '<%= source %>/assets/css/**/*.css'
-      }
-    },
-
-    /**
-     * CSSmin
-     * Compress CSS files
-     * https://github.com/gruntjs/grunt-contrib-cssmin
-     */
-
-    cssmin: {
-      options: {
-        banner: '/* <%= prj.banner %> */',
-        compatibility: 'ie8',
-        keepSpecialComments: 0,
-        noAdvanced: true
-      },
-      styles: {
-        expand: true,
-        cwd: '<%= source %>/assets/css',
-        src: '*.css',
-        dest: '<%= source %>/assets/css'
-      }
-    },
-
-    /**
      * Sass
      * Compile Sass to CSS
      * https://github.com/gruntjs/grunt-contrib-sass
@@ -270,10 +235,22 @@ module.exports = function(grunt) {
       options: {
         banner: '/* <%= prj.banner %> */',
         noCache: true,
-        sourcemap: 'none',
-        style: 'expanded'
+        sourcemap: 'none'
+      },
+      devStyles: {
+        options: {
+          style: 'expanded'
+        },
+        expand: true,
+        cwd: '<%= source %>/_assets/styles',
+        src: '*.scss',
+        dest: '<%= source %>/assets/css',
+        ext: '.css'
       },
       styles: {
+        options: {
+          style: 'compressed'
+        },
         expand: true,
         cwd: '<%= source %>/_assets/styles',
         src: '*.scss',
@@ -376,13 +353,13 @@ module.exports = function(grunt) {
       generatedImages: {
         expand: true,
         cwd: '<%= source %>/assets/img',
-        src: '**/*.{gif,jpg,png}',
+        src: '**/*.{gif,jpg,png,svg}',
         dest: '<%= source %>/assets/img'
       },
       images: {
         expand: true,
         cwd: '<%= source %>/_assets/images',
-        src: '**/*.{gif,jpg,png}',
+        src: '**/*.{gif,jpg,png,svg}',
         dest: '<%= source %>/assets/img'
       }
     },
@@ -400,21 +377,6 @@ module.exports = function(grunt) {
           src: ['**/*.svg'],
           dest: '<%= source %>/assets/img'
         }]
-      }
-    },
-
-    /**
-     * SVGmin
-     * Minify SVG
-     * https://github.com/sindresorhus/grunt-svgmin
-     */
-
-    svgmin: {
-      svg: {
-        expand: true,
-        cwd: '<%= source %>/_assets/images',
-        src: '**/*.svg',
-        dest: '<%= source %>/assets/img'
       }
     },
 
@@ -504,9 +466,8 @@ module.exports = function(grunt) {
     'uglify:devPlugins',
     'uglify:vendor',
     'svg2png',
-    'svgmin',
     'imagemin',
-    'sass',
+    'sass:devStyles',
     'autoprefixer',
     'jekyll',
     'connect',
@@ -521,12 +482,9 @@ module.exports = function(grunt) {
     'uglify:plugins',
     'uglify:vendor',
     'svg2png',
-    'svgmin',
     'imagemin',
-    'sass',
+    'sass:styles',
     'autoprefixer',
-    'cmq',
-    'cssmin',
     'modernizr',
     'uglify:vendorModernizr',
     'jekyll',

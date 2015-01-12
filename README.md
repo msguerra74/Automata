@@ -38,11 +38,9 @@ by **Michael Guerra** | [msguerra74.com][]
     - [Grunt][]: JavaScript task runner
         - Project Dependencies:
         - [grunt-autoprefixer][]: Adds vendor-prefixed CSS properties
-        - [grunt-combine-media-queries][]: Combines media queries
         - [grunt-contrib-clean][]: Clear files and folders
         - [grunt-contrib-connect][]: Start a static web server
         - [grunt-contrib-copy][]: Copy files and folders
-        - [grunt-contrib-cssmin][]: Compress CSS Files
         - [grunt-contrib-imagemin][]: Optimize GIF, JPG, and PNG images
         - [grunt-contrib-jshint][]: Validate JavaScript files
         - [grunt-contrib-sass][]: Compile Sass to CSS
@@ -54,7 +52,6 @@ by **Michael Guerra** | [msguerra74.com][]
         - [grunt-modernizr][]: Build out a lean, mean Modernizr machine
         - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
-        - [grunt-svgmin][]: Minify SVG
         - [load-grunt-tasks][]: Load multiple grunt tasks using globbing patterns
 - [Ruby][]: Programming Language / Runtime Environment
     - [Jekyll][]: Static site generator
