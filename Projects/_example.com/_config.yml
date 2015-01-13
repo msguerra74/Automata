@@ -32,7 +32,7 @@ script:
 
 include: []
 exclude: ['.htaccess']
-keep_files: ['.git', 'sftp-config.json']
+keep_files: ['.git']
 show_drafts: false
 future: false
 lsi: false

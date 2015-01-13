@@ -98,11 +98,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [Google Analytics]: http://www.google.com/analytics/
 [Grunt]: http://gruntjs.com/
 [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
-[grunt-combine-media-queries]: https://github.com/buildingblocks/grunt-combine-media-queries
 [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
 [grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
 [grunt-contrib-copy]: https://github.com/gruntjs/grunt-contrib-copy
-[grunt-contrib-cssmin]: https://github.com/gruntjs/grunt-contrib-cssmin
 [grunt-contrib-imagemin]: https://github.com/gruntjs/grunt-contrib-imagemin
 [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
 [grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
@@ -114,7 +112,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-modernizr]: https://github.com/Modernizr/grunt-modernizr
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
-[grunt-svgmin]: https://github.com/sindresorhus/grunt-svgmin
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
 [HTML5 Boilerplate]: https://github.com/h5bp/html5-boilerplate
 [JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript

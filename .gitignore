@@ -3,6 +3,5 @@ node_modules*
 Projects/*
 !Projects/_*
 _site
-_source
 assets
 .DS_Store
