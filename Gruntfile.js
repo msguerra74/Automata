@@ -108,8 +108,8 @@ module.exports = function(grunt) {
         dest: '<%= source %>/.htaccess'
       },
       jquery: {
-        // jQuery needs to be manually updated here
-        src: 'http://code.jquery.com/jquery-1.11.2.js',
+        // jQuery version can be manually updated here
+        src: 'https://raw.githubusercontent.com/components/jquery/1.11/jquery.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       modernizr: {
