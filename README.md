@@ -38,6 +38,7 @@ by **Michael Guerra** | [msguerra74.com][]
     - [Grunt][]: JavaScript task runner
         - Project Dependencies:
         - [grunt-autoprefixer][]: Adds vendor-prefixed CSS properties
+        - [grunt-banner][]: Adds a simple banner to files
         - [grunt-contrib-clean][]: Clear files and folders
         - [grunt-contrib-connect][]: Start a static web server
         - [grunt-contrib-copy][]: Copy files and folders
@@ -98,6 +99,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [Google Analytics]: http://www.google.com/analytics/
 [Grunt]: http://gruntjs.com/
 [grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
+[grunt-banner]: https://github.com/mattstyles/grunt-banner
 [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
 [grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
 [grunt-contrib-copy]: https://github.com/gruntjs/grunt-contrib-copy

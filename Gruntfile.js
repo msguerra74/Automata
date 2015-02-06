@@ -26,6 +26,26 @@ module.exports = function(grunt) {
     /* ---------- Common / Shared ---------- */
 
     /**
+     * Banner
+     * Adds a simple banner to files
+     * https://github.com/mattstyles/grunt-banner
+     */
+
+    usebanner: {
+      dist: {
+        options: {
+          banner: '/* <%= prj.banner %> */'
+        },
+        files: {
+          src: [
+            '<%= source %>/assets/css/**/*.css',
+            '<%= source %>/assets/js/**/*.js'
+          ]
+        }
+      }
+    },
+
+    /**
      * Clean
      * Clear files and folders
      * https://github.com/gruntjs/grunt-contrib-clean
@@ -234,7 +254,6 @@ module.exports = function(grunt) {
 
     sass: {
       options: {
-        banner: '/* <%= prj.banner %> */',
         noCache: true,
         sourcemap: 'none'
       },
@@ -375,7 +394,7 @@ module.exports = function(grunt) {
       svg: {
         files: [{
           cwd: '<%= source %>/_assets/images/',
-          src: ['**/*.svg'],
+          src: '**/*.svg',
           dest: '<%= source %>/assets/img'
         }]
       }
@@ -423,9 +442,6 @@ module.exports = function(grunt) {
      */
 
     uglify: {
-      options: {
-        banner: '/* <%= prj.banner %> */\n'
-      },
       devPlugins: {
         options: {
           beautify: true,
@@ -488,6 +504,7 @@ module.exports = function(grunt) {
     'autoprefixer',
     'modernizr',
     'uglify:vendorModernizr',
+    'usebanner',
     'jekyll',
     'hashres',
     'prettify',
