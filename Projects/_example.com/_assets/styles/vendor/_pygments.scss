@@ -19,6 +19,11 @@
 // linenos: Delete for no line numbers
 
 @if $syntax-highlighting {
+  // Line Numbers
+  .lineno {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
   @if $dark-syntax {
     // ---------- Base16 Ocean Dark ---------- //
     // Name.Builtin.Pseudo
