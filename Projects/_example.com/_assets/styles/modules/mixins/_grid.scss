@@ -67,7 +67,7 @@
 // ---------- Row ---------- //
 
 // Usage
-// @include row(max-width, type, align, margin-bottom, margin-top, spacing-multiplier);
+// @include row(max-width, type, align, margin-bottom, margin-top, spacing-multiplier, clear);
 
 // Arguments
 // $_max-width: Number - (Default: 100)
@@ -76,9 +76,12 @@
 // $_margin-bottom: Number - (Default: 0)
 // $_margin-top: Number - (Default: 0)
 // $_spacing-multiplier: Number - (Default: 1)
+// $_clear: boolean - (Default: true)
 
-@mixin row($_max-width: 100, $_type: fluid, $_align: center, $_margin-bottom: 0, $_margin-top: 0, $_spacing-multiplier: 1) {
-  @include clear;
+@mixin row($_max-width: 100, $_type: fluid, $_align: center, $_margin-bottom: 0, $_margin-top: 0, $_spacing-multiplier: 1, $_clear: true) {
+  @if $_clear == true {
+    @include clear;
+  }
   clear: both;
   @if $_align == "left" {
     float: left;
