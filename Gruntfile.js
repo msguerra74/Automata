@@ -157,7 +157,10 @@ module.exports = function(grunt) {
         options: {
           fileNameFormat: '${name}-${hash}.${ext}'
         },
-        src: '<%= site %>/assets/**/*.{eot,gif,jpg,png,svg,ttf,woff}',
+        src: [
+          '<%= site %>/assets/**/*.*',
+          '!<%= site %>/assets/**/*.{css,js}'
+        ],
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
           '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
@@ -353,7 +356,7 @@ module.exports = function(grunt) {
       content: {
         expand: true,
         cwd: '<%= site %>',
-        src: '**/*.{html,php}',
+        src: '**/*.html',
         dest: '<%= site %>'
       }
     },

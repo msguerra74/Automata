@@ -1,5 +1,5 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
-<html class="no-js{% if page.include.class %} {{ page.include.class }}{% endif %}" lang="en">
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <!-- {{ site.banner }} -->{% if site.meta.IEedge %}
@@ -18,7 +18,7 @@
   <script src="{{ relative }}assets/js/modernizr.js"></script>{% endif %}{% if page.include.head %}
   {{ page.include.head }}{% endif %}
 </head>
-<body>
+<body{% if page.include.class %} class="{{ page.include.class }}"{% endif %}>
   {% include header.html %}
   {% include content.html %}
   {% include footer.html %}{% if site.script.jquery %}
