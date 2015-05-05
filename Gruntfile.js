@@ -129,7 +129,7 @@ module.exports = function(grunt) {
       },
       jquery: {
         // jQuery version can be manually updated here
-        src: 'https://raw.githubusercontent.com/components/jquery/1.11/jquery.js',
+        src: 'http://code.jquery.com/jquery-1.11.3.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
       modernizr: {
