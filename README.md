@@ -25,6 +25,7 @@ by **Michael Guerra** | [msguerra74.com][]
     - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
     - [Google Analytics][]: Web Analytics and Reporting
+    - [HTML5 Shiv][]: The defacto way to enable use of HTML5 sectioning elements in legacy Internet Explorer.
     - [jQuery][]: Feature-rich JavaScript library
     - [Modernizr][]: JavaScript library that detects HTML5 and CSS3 features in the users browser
     - [Respond.js][]: A fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
@@ -77,7 +78,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, jquery.js, modernizr.js, and oldie.js (respond.js)`
+    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, html5shiv, jquery.js, modernizr.js, and respond.js`
 
 ## The MIT License (MIT)
 
@@ -116,6 +117,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
 [HTML5 Boilerplate]: https://github.com/h5bp/html5-boilerplate
+[HTML5 Shiv]: https://github.com/afarkas/html5shiv
 [JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Jekyll]: http://jekyllrb.com/
 [jQuery]: http://jquery.com/

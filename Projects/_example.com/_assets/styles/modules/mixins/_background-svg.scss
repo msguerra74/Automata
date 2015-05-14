@@ -1,10 +1,10 @@
 //------------------------------//
-// SVG Background
+// Background SVG
 //------------------------------//
 // With PNG fallback
 
 // Usage
-// @include svg-background(svg, width, height, png);
+// @include background-svg(svg, width, height, png);
 
 // Arguments
 // $_svg: SVG filename
@@ -12,7 +12,7 @@
 // $_height: Number
 // $_png: PNG filename - (Default: SVG filename)
 
-@mixin svg-background($_svg, $_width, $_height, $_png: $_svg) {
+@mixin background-svg($_svg, $_width, $_height, $_png: $_svg) {
   @if $oldie {
     background-image: url(#{$image-path}#{$_png}.png);
   }

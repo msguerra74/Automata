@@ -16,6 +16,7 @@
 // ---------- Mixins ---------- //
 
 @import "modules/mixins/background-opacity";
+@import "modules/mixins/background-svg";
 @import "modules/mixins/breakpoints";
 @import "modules/mixins/center-block";
 @import "modules/mixins/clearfix";
@@ -35,7 +36,6 @@
 @import "modules/mixins/rem-baseline";
 @import "modules/mixins/rem-px";
 @import "modules/mixins/rem-type";
-@import "modules/mixins/svg-background";
 @import "modules/mixins/triangles";
 @import "modules/mixins/vertical-align-middle";
 @import "modules/mixins/visually-hidden";

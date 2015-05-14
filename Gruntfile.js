@@ -125,7 +125,11 @@ module.exports = function(grunt) {
     curl: {
       htaccess: {
         src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
-        dest: '<%= source %>/.htaccess'
+        dest: '<%= source %>/_includes/.htaccess'
+      },
+      html5shiv: {
+        src: 'https://raw.githubusercontent.com/aFarkas/html5shiv/master/src/html5shiv.js',
+        dest: '<%= source %>/_assets/scripts/oldie/html5shiv.js'
       },
       jquery: {
         // jQuery version can be manually updated here
@@ -136,13 +140,13 @@ module.exports = function(grunt) {
         src: 'http://modernizr.com/downloads/modernizr-latest.js',
         dest: '<%= source %>/_assets/scripts/vendor/modernizr.js'
       },
-      oldIE: {
-        src: 'https://raw.github.com/scottjehl/Respond/master/dest/respond.src.js',
-        dest: '<%= source %>/_assets/scripts/vendor/oldie.js'
-      },
       normalize: {
-        src: 'http://raw.github.com/necolas/normalize.css/master/normalize.css',
+        src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
+      },
+      respond: {
+        src: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.src.js',
+        dest: '<%= source %>/_assets/scripts/oldie/respond.js'
       }
     },
 
@@ -451,11 +455,23 @@ module.exports = function(grunt) {
           compress: false,
           mangle: false
         },
-        src: '<%= source %>/_assets/scripts/plugins/**/*.js',
+        src: [
+          '<%= source %>/_assets/scripts/plugins/**/*.js',
+          '<%= source %>/_assets/scripts/script.js'
+        ],
         dest: '<%= source %>/assets/js/script.js'
       },
+      oldie: {
+        expand: true,
+        cwd: '<%= source %>/_assets/scripts/oldie',
+        src: '**/*.js',
+        dest: '<%= source %>/assets/js'
+      },
       plugins: {
-        src: '<%= source %>/_assets/scripts/plugins/**/*.js',
+        src: [
+          '<%= source %>/_assets/scripts/plugins/**/*.js',
+          '<%= source %>/_assets/scripts/script.js'
+        ],
         dest: '<%= source %>/assets/js/script.js'
       },
       vendor: {
@@ -485,6 +501,7 @@ module.exports = function(grunt) {
     'jshint',
     'uglify:devPlugins',
     'uglify:vendor',
+    'uglify:oldie',
     'svg2png',
     'imagemin',
     'sass:devStyles',
@@ -501,6 +518,7 @@ module.exports = function(grunt) {
     'jshint',
     'uglify:plugins',
     'uglify:vendor',
+    'uglify:oldie',
     'svg2png',
     'imagemin',
     'sass:styles',
@@ -513,7 +531,7 @@ module.exports = function(grunt) {
     'prettify',
   ]);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, jquery.js, modernizr, and oldie.js (respond.js)
+  // Downloads the latest versions of: .htaccess, _normalize.scss, html5shiv, jquery.js, modernizr, and respond.js
   grunt.registerTask('download', [
     'curl'
   ]);

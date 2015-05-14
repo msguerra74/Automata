@@ -10,6 +10,7 @@ description: Website Description
 owner:
   name: Owner Name
   email: owner@email.com
+  twitter: # username
 analytics: # UA-xxxxxxxx-x
 banner: Created by Developer | http://website.com
 
@@ -21,7 +22,9 @@ link:
   sitemap: true
 meta:
   IEedge: true
+  openGraph: true
   responsive: true
+  twitterCard: true
 script:
   jquery: true
   modernizr: true
@@ -37,6 +40,6 @@ show_drafts: false
 future: false
 lsi: false
 paginate: 7
-paginate_path: 'page:num'
+paginate_path: 'page/:num'
 permalink: /:categories/:title/
 markdown: rdiscount
