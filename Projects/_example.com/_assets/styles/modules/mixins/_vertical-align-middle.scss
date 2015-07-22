@@ -6,7 +6,7 @@
 // @include vertical-align-middle(height, child, type, psuedo);
 
 // Arguments
-// $_height: Number
+// $_height: Number (with em/px/rem unit)
 // $_child: Child selector
 // $_type: class, element, id - (Default: element)
 // $_pseudo-element: after, before - (Default: before)
