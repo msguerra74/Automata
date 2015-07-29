@@ -57,7 +57,6 @@ by **Michael Guerra** | [msguerra74.com][]
         - [load-grunt-tasks][]: Load multiple grunt tasks using globbing patterns
 - [Ruby][]: Programming Language / Runtime Environment
     - [Jekyll][]: Static site generator
-    - [RDiscount][]: Discount implementation of John Gruber's markdown
     - [Sass][]: Extension to CSS3
 
 ### Installation
@@ -66,7 +65,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. Download and install [Ruby][] if needed.
 3. Download and unzip [Automata.zip][] where you want it.
 4. From the command prompt, navigate to the `Automata` folder and type the following commands:
-    - `sudo gem install jekyll rdiscount sass`
+    - `sudo gem install jekyll sass`
     - `sudo npm install -g grunt-cli`
     - `sudo npm install`
     - Note: if you're installing in Windows, you do not need to start each command with `sudo`
@@ -127,7 +126,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [msguerra74.com]: http://msguerra74.com/
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css
-[RDiscount]: https://github.com/davidfstr/rdiscount
 [Respond.js]: https://github.com/scottjehl/Respond
 [Ruby]: https://www.ruby-lang.org/en/
 [Sass]: http://sass-lang.com/

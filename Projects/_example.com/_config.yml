@@ -42,4 +42,5 @@ lsi: false
 paginate: 7
 paginate_path: 'page/:num'
 permalink: /:categories/:title/
-markdown: rdiscount
+kramdown:
+  auto_ids: false
