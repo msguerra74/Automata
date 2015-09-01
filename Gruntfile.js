@@ -16,7 +16,7 @@ module.exports = function(grunt) {
   // Grunt Configurations
   grunt.initConfig({
 
-    // ---------- Variables ---------- //
+    // ---------- Grunt Variables ---------- //
 
     // Project Settings
     prj: grunt.file.readYAML('Projects/' + project + '/_config.yml'),
@@ -37,10 +37,10 @@ module.exports = function(grunt) {
      */
 
     usebanner: {
-      dist: {
-        options: {
-          banner: '/* <%= prj.banner %> */'
-        },
+      options: {
+        banner: '/* <%= prj.banner %> */'
+      },
+      banner: {
         files: {
           src: [
             '<%= source %>/assets/css/**/*.css',
@@ -433,7 +433,8 @@ module.exports = function(grunt) {
       },
       scripts: [
         'Gruntfile.js',
-        '<%= source %>/_assets/scripts/plugins/**/*.js'
+        '<%= source %>/_assets/scripts/plugins/**/*.js',
+        '<%= source %>/_assets/scripts/*.js'
       ]
     },
 
@@ -502,11 +503,11 @@ module.exports = function(grunt) {
 
   });
 
-  // ---------- Tasks ---------- //
+  // ---------- Grunt Tasks ---------- //
 
   require('load-grunt-tasks')(grunt);
 
-  // Dev task 'default'
+  // Default Task - Development Mode
   grunt.registerTask('default', [
     'clean',
     'copy:fonts',
@@ -523,7 +524,7 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  // Build task (builds to the '_site' folder)
+  // Build Task - Compiles to _site folder
   grunt.registerTask('build', [
     'clean',
     'copy:fonts',
@@ -543,8 +544,8 @@ module.exports = function(grunt) {
     'prettify',
   ]);
 
-  // Downloads the latest versions of:
-  // .htaccess, _normalize.scss, html5shiv, jquery.js, modernizr, and respond.js
+  // Downloads the latest copies of the following vendor assets:
+  // .htaccess, _normalize.scss, html5shiv.js, jquery.js, modernizr.js, and respond.js
   grunt.registerTask('download', [
     'curl'
   ]);

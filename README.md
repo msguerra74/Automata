@@ -78,7 +78,7 @@ by **Michael Guerra** | [msguerra74.com][]
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, html5shiv, jquery.js, modernizr.js, and respond.js`
+    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, html5shiv.js, jquery.js, modernizr.js, and respond.js`
 
 ## The MIT License (MIT)
 
