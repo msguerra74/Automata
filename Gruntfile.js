@@ -5,25 +5,30 @@
  * MIT License [See README]
  */
 
+// Project Folder Name
+var project = '_example.com';
+
+// ---------- Do Not Edit Below This Line ---------- //
+
 // Grunt Module
 module.exports = function(grunt) {
 
   // Grunt Configurations
   grunt.initConfig({
 
-    /* ---------- Variables ---------- */
+    // ---------- Variables ---------- //
 
-    // Project Settings ------ Change /_example.com/ to working project folder.
-    prj: grunt.file.readYAML('Projects/_example.com/_config.yml'),
+    // Project Settings
+    prj: grunt.file.readYAML('Projects/' + project + '/_config.yml'),
 
     // Automata Packages
     pkg: grunt.file.readJSON('package.json'),
 
     // Directories
     site: '<%= source %>/_site',
-    source: 'Projects/<%= prj.folder %>',
+    source: 'Projects/' + project + '/',
 
-    /* ---------- Common / Shared ---------- */
+    // ---------- Common / Shared ---------- //
 
     /**
      * Banner
@@ -230,21 +235,30 @@ module.exports = function(grunt) {
         files: '<%= source %>/_assets/styles/**/*',
         tasks: [
           'sass:devStyles',
-          'autoprefixer',
+          'postcss',
           'copy:buildStyles'
         ]
       }
     },
 
-    /* ---------- CSS / Sass ---------- */
+    // ---------- CSS / Sass ---------- //
 
     /**
-     * Autoprefixer
-     * Adds vendor-prefixed CSS properties
-     * https://github.com/nDmitry/grunt-autoprefixer
+     * PostCSS
+     * Apply several post-processors to your CSS using PostCSS
+     * https://github.com/nDmitry/grunt-postcss
      */
 
-    autoprefixer: {
+    postcss: {
+      options: {
+        processors: [
+          require('autoprefixer-core')({
+            browsers: [
+              'last 2 versions'
+            ]
+          })
+        ]
+      },
       styles: {
         expand: true,
         cwd: '<%= source %>/assets/css',
@@ -286,7 +300,7 @@ module.exports = function(grunt) {
       }
     },
 
-    /* ---------- HTML / PHP ---------- */
+    // ---------- HTML / PHP ---------- //
 
     /**
      * Jekyll
@@ -363,7 +377,7 @@ module.exports = function(grunt) {
       }
     },
 
-    /* ---------- Images / SVGs ---------- */
+    // ---------- Images / SVGs ---------- //
 
     /**
      * Imagemin
@@ -405,7 +419,7 @@ module.exports = function(grunt) {
       }
     },
 
-    /* ---------- Scripts ---------- */
+    // ---------- Scripts ---------- //
 
     /**
      * JShint
@@ -488,7 +502,7 @@ module.exports = function(grunt) {
 
   });
 
-  /* ---------- Tasks ---------- */
+  // ---------- Tasks ---------- //
 
   require('load-grunt-tasks')(grunt);
 
@@ -503,7 +517,7 @@ module.exports = function(grunt) {
     'svg2png',
     'imagemin',
     'sass:devStyles',
-    'autoprefixer',
+    'postcss',
     'jekyll',
     'connect',
     'watch'
@@ -520,7 +534,7 @@ module.exports = function(grunt) {
     'svg2png',
     'imagemin',
     'sass:styles',
-    'autoprefixer',
+    'postcss',
     'modernizr',
     'uglify:vendorModernizr',
     'usebanner',
@@ -529,7 +543,8 @@ module.exports = function(grunt) {
     'prettify',
   ]);
 
-  // Downloads the latest versions of: .htaccess, _normalize.scss, html5shiv, jquery.js, modernizr, and respond.js
+  // Downloads the latest versions of:
+  // .htaccess, _normalize.scss, html5shiv, jquery.js, modernizr, and respond.js
   grunt.registerTask('download', [
     'curl'
   ]);

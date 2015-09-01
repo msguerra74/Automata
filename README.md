@@ -38,7 +38,7 @@ by **Michael Guerra** | [msguerra74.com][]
 - [Node.js][]: JavaScript runtime platform
     - [Grunt][]: JavaScript task runner
         - Project Dependencies:
-        - [grunt-autoprefixer][]: Adds vendor-prefixed CSS properties
+        - [autoprefixer-core][]: Core of Autoprefixer to use in plugins
         - [grunt-banner][]: Adds a simple banner to files
         - [grunt-contrib-clean][]: Clear files and folders
         - [grunt-contrib-connect][]: Start a static web server
@@ -52,6 +52,7 @@ by **Michael Guerra** | [msguerra74.com][]
         - [grunt-hashres][]: Hashes asset files and renames links in html/php/etc
         - [grunt-jekyll][]: Static site generator
         - [grunt-modernizr][]: Build out a lean, mean Modernizr machine
+        - [grunt-postcss][]: Apply several post-processors to your CSS using PostCSS
         - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
         - [load-grunt-tasks][]: Load multiple grunt tasks using globbing patterns
@@ -93,12 +94,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [@msguerra74]: http://twitter.com/msguerra74
 [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
+[autoprefixer-core]: https://github.com/postcss/autoprefixer-core
 [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
 [GitHub]: https://github.com/msguerra74
 [Automata GitHub page]: https://github.com/msguerra74/Automata
 [Google Analytics]: http://www.google.com/analytics/
 [Grunt]: http://gruntjs.com/
-[grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
 [grunt-banner]: https://github.com/mattstyles/grunt-banner
 [grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
 [grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
@@ -112,6 +113,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-hashres]: https://github.com/luismahou/grunt-hashres
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
 [grunt-modernizr]: https://github.com/Modernizr/grunt-modernizr
+[grunt-postcss]: https://github.com/nDmitry/grunt-postcss
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
 [HTML5]: http://www.w3.org/html/wg/drafts/html/master/
