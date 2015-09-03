@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     // Directories
     site: '<%= source %>/_site',
-    source: 'Projects/' + project + '/',
+    source: 'Projects/' + project,
 
     // ---------- Common / Shared ---------- //
 
