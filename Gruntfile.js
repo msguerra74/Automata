@@ -19,14 +19,14 @@ module.exports = function(grunt) {
     // ---------- Grunt Variables ---------- //
 
     // Project Settings
-    prj: grunt.file.readYAML('Projects/' + project + '/_config.yml'),
+    prj: grunt.file.readYAML('Projects/' + project + '/_website/_config.yml'),
 
     // Automata Packages
     pkg: grunt.file.readJSON('package.json'),
 
     // Directories
     site: '<%= source %>/_site',
-    source: 'Projects/' + project,
+    source: 'Projects/' + project + '/_website',
 
     // ---------- Common / Shared ---------- //
 
@@ -252,7 +252,7 @@ module.exports = function(grunt) {
     postcss: {
       options: {
         processors: [
-          require('autoprefixer-core')({
+          require('autoprefixer')({
             browsers: [
               'last 2 versions'
             ]

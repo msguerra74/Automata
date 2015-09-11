@@ -38,7 +38,7 @@ by **Michael Guerra** | [msguerra74.com][]
 - [Node.js][]: JavaScript runtime platform
     - [Grunt][]: JavaScript task runner
         - Project Dependencies:
-        - [autoprefixer-core][]: Core of Autoprefixer to use in plugins
+        - [autoprefixer][]: Parse CSS and add vendor prefixes to rules by Can I Use
         - [grunt-banner][]: Adds a simple banner to files
         - [grunt-contrib-clean][]: Clear files and folders
         - [grunt-contrib-connect][]: Start a static web server
@@ -94,7 +94,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [@msguerra74]: http://twitter.com/msguerra74
 [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
-[autoprefixer-core]: https://github.com/postcss/autoprefixer-core
+[autoprefixer]: https://github.com/postcss/autoprefixer
 [CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
 [GitHub]: https://github.com/msguerra74
 [Automata GitHub page]: https://github.com/msguerra74/Automata
