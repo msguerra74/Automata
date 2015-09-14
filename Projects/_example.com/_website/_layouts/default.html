@@ -32,9 +32,8 @@
   <!--[if (lt IE 9) & (!IEMobile)]>{% unless site.script.modernizr %}
   <script src="{{ relative }}assets/js/html5shiv.js"></script>{% endunless %}
   <script src="{{ relative }}assets/js/respond.js"></script>
-  <![endif]-->{% endif %}{% if site.script.modernizr %}
-  <script src="{{ relative }}assets/js/modernizr.js"></script>{% else %}
-  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% if page.include.head %}
+  <![endif]-->{% endif %}
+  <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% if page.include.head %}
   {{ page.include.head }}{% endif %}
 </head>
 <body{% if page.include.class %} class="{{ page.include.class }}"{% endif %}>

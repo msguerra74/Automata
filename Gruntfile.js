@@ -141,10 +141,6 @@ module.exports = function(grunt) {
         src: 'http://code.jquery.com/jquery-1.11.3.js',
         dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
       },
-      modernizr: {
-        src: 'http://modernizr.com/downloads/modernizr-latest.js',
-        dest: '<%= source %>/_assets/scripts/vendor/modernizr.js'
-      },
       normalize: {
         src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
@@ -172,7 +168,7 @@ module.exports = function(grunt) {
         ],
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
+          '!<%= site %>/**/{jquery*,oldie*}.js'
         ]
       },
       minifiedAssets: {
@@ -182,7 +178,7 @@ module.exports = function(grunt) {
         src: '<%= site %>/assets/**/*.{css,js}',
         dest: [
           '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,modernizr*,oldie*}.js'
+          '!<%= site %>/**/{jquery*,oldie*}.js'
         ]
       }
     },
@@ -439,23 +435,6 @@ module.exports = function(grunt) {
     },
 
     /**
-     * Modernizr
-     * Build out a lean, mean Modernizr machine
-     * https://github.com/Modernizr/grunt-modernizr
-     */
-
-    modernizr: {
-      build: {
-        devFile: '<%= source %>/_assets/scripts/vendor/modernizr.js',
-        outputFile: '<%= source %>/assets/js/modernizr.js',
-        uglify: false,
-        files: {
-          src: ['<%= source %>/assets/**/*.{css,js}']
-        }
-      }
-    },
-
-    /**
      * Uglify
      * Minify JavaScript files
      * https://github.com/gruntjs/grunt-contrib-uglify
@@ -491,12 +470,6 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= source %>/_assets/scripts/vendor',
         src: '**/*.js',
-        dest: '<%= source %>/assets/js'
-      },
-      vendorModernizr: {
-        expand: true,
-        cwd: '<%= source %>/assets/js',
-        src: '**/modernizr.js',
         dest: '<%= source %>/assets/js'
       }
     }
@@ -536,8 +509,6 @@ module.exports = function(grunt) {
     'imagemin',
     'sass:styles',
     'postcss',
-    'modernizr',
-    'uglify:vendorModernizr',
     'usebanner',
     'jekyll',
     'hashres',
@@ -545,7 +516,7 @@ module.exports = function(grunt) {
   ]);
 
   // Downloads the latest copies of the following vendor assets:
-  // .htaccess, _normalize.scss, html5shiv.js, jquery.js, modernizr.js, and respond.js
+  // .htaccess, _normalize.scss, html5shiv.js, jquery.js, and respond.js
   grunt.registerTask('download', [
     'curl'
   ]);

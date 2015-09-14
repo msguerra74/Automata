@@ -27,7 +27,6 @@ by **Michael Guerra** | [msguerra74.com][]
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: The defacto way to enable use of HTML5 sectioning elements in legacy Internet Explorer.
     - [jQuery][]: Feature-rich JavaScript library
-    - [Modernizr][]: JavaScript library that detects HTML5 and CSS3 features in the users browser
     - [Respond.js][]: A fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 
 ### Components
@@ -51,7 +50,6 @@ by **Michael Guerra** | [msguerra74.com][]
         - [grunt-curl][]: Download files from the internet
         - [grunt-hashres][]: Hashes asset files and renames links in html/php/etc
         - [grunt-jekyll][]: Static site generator
-        - [grunt-modernizr][]: Build out a lean, mean Modernizr machine
         - [grunt-postcss][]: Apply several post-processors to your CSS using PostCSS
         - [grunt-prettify][]: Prettify HTML
         - [grunt-svg2png][]: Rasterize SVG to PNG using PhantomJS
@@ -74,11 +72,11 @@ by **Michael Guerra** | [msguerra74.com][]
 
 ### Usage
 
-1. Modify the `Projects/_example.com/_config.yml` file variables to match your project needs. (NOTE: You can also duplicate the `_example.com` directory to create multiple projects, so long as you point to the appropriate `_config.yml` file at the top of the `Gruntfile.js` file).
+1. Modify the `Projects/_example.com/_website/_config.yml` file variables to match your project needs. (NOTE: You can also duplicate the `_example.com` directory to create multiple projects, so long as you point to the appropriate `_config.yml` file at the top of the `Gruntfile.js` file).
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a LiveReload server
     - `grunt build` to build a production version of the current site
-    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, html5shiv.js, jquery.js, modernizr.js, and respond.js`
+    - `grunt download` to download the latest vendor files: `.htaccess, _normalize.scss, html5shiv.js, jquery.js, and respond.js`
 
 ## The MIT License (MIT)
 
@@ -112,7 +110,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [grunt-curl]: https://github.com/twolfson/grunt-curl
 [grunt-hashres]: https://github.com/luismahou/grunt-hashres
 [grunt-jekyll]: https://github.com/dannygarcia/grunt-jekyll
-[grunt-modernizr]: https://github.com/Modernizr/grunt-modernizr
 [grunt-postcss]: https://github.com/nDmitry/grunt-postcss
 [grunt-prettify]: https://github.com/jonschlinkert/grunt-prettify
 [grunt-svg2png]: https://github.com/dbushell/grunt-svg2png
@@ -124,7 +121,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [jQuery]: http://jquery.com/
 [load-grunt-tasks]: https://github.com/sindresorhus/load-grunt-tasks
 [Markdown]: http://daringfireball.net/projects/markdown/
-[Modernizr]: http://modernizr.com
 [msguerra74.com]: http://msguerra74.com/
 [node.js]: http://nodejs.org/
 [normalize.css]: https://github.com/necolas/normalize.css

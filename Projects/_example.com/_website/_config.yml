@@ -25,7 +25,6 @@ meta:
   twitterCard: true
 script:
   jquery: true
-  modernizr: true
   oldIE: true
   plugins: true
 
