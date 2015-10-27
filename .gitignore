@@ -5,3 +5,4 @@ Projects/*
 _site
 assets
 .DS_Store
+.jekyll-metadata

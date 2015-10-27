@@ -60,7 +60,8 @@ module.exports = function(grunt) {
       pre: [
         '<%= site %>/**/{*,.*}',
         '!<%= site %>/.git',
-        '<%= source %>/assets'
+        '<%= source %>/assets',
+        '<%= source %>/.jekyll-metadata'
       ]
     },
 
