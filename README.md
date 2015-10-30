@@ -16,13 +16,10 @@ by **Michael Guerra** | [msguerra74.com][]
 ### Standards:
 
 - [HTML5][]
-- [CSS3][]
 - [JavaScript][] / [jQuery][]
 
 ### Includes
 
-- CSS
-    - [normalize.css][]: HTML5-ready alternative to CSS resets
 - JavaScript / jQuery
     - [Google Analytics][]: Web Analytics and Reporting
     - [HTML5 Shiv][]: The defacto way to enable use of HTML5 sectioning elements in legacy Internet Explorer.
@@ -93,7 +90,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [@msguerra74]: http://twitter.com/msguerra74
 [Automata.zip]: https://github.com/msguerra74/Automata/archive/master.zip
 [autoprefixer]: https://github.com/postcss/autoprefixer
-[CSS3]: http://www.w3.org/Style/CSS/current-work.en.html
 [GitHub]: https://github.com/msguerra74
 [Automata GitHub page]: https://github.com/msguerra74/Automata
 [Google Analytics]: http://www.google.com/analytics/
@@ -123,7 +119,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [Markdown]: http://daringfireball.net/projects/markdown/
 [msguerra74.com]: http://msguerra74.com/
 [node.js]: http://nodejs.org/
-[normalize.css]: https://github.com/necolas/normalize.css
 [Respond.js]: https://github.com/scottjehl/Respond
 [Ruby]: https://www.ruby-lang.org/en/
 [Sass]: http://sass-lang.com/
