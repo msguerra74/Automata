@@ -1,34 +1,30 @@
 /**
  * Automata
- * Automated Static Website Generator
+ * Automated Website Generator
  * Michael Guerra | http://msguerra74.com
  * MIT License [See README]
  */
 
-// Project Folder Name
+// Enter the name of the project directory (_example.com)
 var project = '_example.com';
 
-// ---------- Do Not Edit Below This Line ---------- //
+// ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
 
-// Grunt Module
 module.exports = function(grunt) {
 
-  // Grunt Configurations
   grunt.initConfig({
 
-    // ---------- Grunt Variables ---------- //
+    // ---------- Variables ---------- //
 
-    // Project Settings
-    prj: grunt.file.readYAML('Projects/' + project + '/_website/_config.yml'),
-
-    // Automata Packages
-    pkg: grunt.file.readJSON('package.json'),
+    // Configurations
+    config: grunt.file.readYAML('projects/' + project + '/website/_config.yml'),
 
     // Directories
-    site: '<%= source %>/_site',
-    source: 'Projects/' + project + '/_website',
+    input: 'projects/' + project + '/website',
+    output: '<%= input %>/<%= config.destination %>',
+    temp: '<%= input %>/_temp',
 
-    // ---------- Common / Shared ---------- //
+    // ---------- Packages ---------- //
 
     /**
      * Banner
@@ -37,15 +33,12 @@ module.exports = function(grunt) {
      */
 
     usebanner: {
-      options: {
-        banner: '/* <%= prj.banner %> */'
-      },
-      banner: {
+      assets: {
+        options: {
+          banner: '/* <%= config.banner %> */'
+        },
         files: {
-          src: [
-            '<%= source %>/assets/css/**/*.css',
-            '<%= source %>/assets/js/**/*.js'
-          ]
+          src: '<%= output %>/assets/**/*.{css,js}'
         }
       }
     },
@@ -58,11 +51,11 @@ module.exports = function(grunt) {
 
     clean: {
       pre: [
-        '<%= site %>/**/{*,.*}',
-        '!<%= site %>/.git',
-        '<%= source %>/assets',
-        '<%= source %>/.jekyll-metadata'
-      ]
+        '<%= output %>/**/{*,.*}',
+        '!<%= output %>/.git',
+        '<%= temp %>'
+      ],
+      post: '<%= temp %>'
     },
 
     /**
@@ -74,7 +67,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          base: '<%= site %>',
+          base: '<%= output %>',
           hostname: '*',
           livereload: true,
           open: 'http://localhost:<%= connect.server.options.port %>',
@@ -90,155 +83,99 @@ module.exports = function(grunt) {
      */
 
     copy: {
-      buildFonts: {
+      favicons: {
         expand: true,
-        cwd: '<%= source %>/assets/fonts',
-        src: '**/*.{eot,svg,ttf,woff}',
-        dest: '<%= site %>/assets/fonts'
-      },
-      buildImages: {
-        expand: true,
-        cwd: '<%= source %>/assets/img',
-        src: '**/*.{gif,jpg,png,svg}',
-        dest: '<%= site %>/assets/img'
-      },
-      buildScripts: {
-        expand: true,
-        cwd: '<%= source %>/assets/js',
-        src: '**/*.js',
-        dest: '<%= site %>/assets/js'
-      },
-      buildStyles: {
-        expand: true,
-        cwd: '<%= source %>/assets/css',
-        src: '**/*.css',
-        dest: '<%= site %>/assets/css'
+        cwd: '<%= input %>/_assets/favicons/',
+        src: '**/*.{ico,xml}',
+        dest: '<%= output %>'
       },
       fonts: {
         expand: true,
-        cwd: '<%= source %>/_assets/fonts',
+        cwd: '<%= input %>/_assets/fonts/',
         src: '**/*.{eot,svg,ttf,woff}',
-        dest: '<%= source %>/assets/fonts'
-      }
-    },
-
-    /**
-     * Curl
-     * Download files from the internet
-     * https://github.com/twolfson/grunt-curl
-     */
-
-    curl: {
-      htaccess: {
-        src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
-        dest: '<%= source %>/_includes/.htaccess'
-      },
-      html5shiv: {
-        src: 'https://raw.githubusercontent.com/aFarkas/html5shiv/master/src/html5shiv.js',
-        dest: '<%= source %>/_assets/scripts/oldie/html5shiv.js'
-      },
-      jquery: {
-        // jQuery version can be manually updated here
-        src: 'http://code.jquery.com/jquery-1.11.3.js',
-        dest: '<%= source %>/_assets/scripts/vendor/jquery.js'
-      },
-      normalize: {
-        src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
-        dest: '<%= source %>/_assets/styles/vendor/_normalize.scss'
-      },
-      respond: {
-        src: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.src.js',
-        dest: '<%= source %>/_assets/scripts/oldie/respond.js'
+        dest: '<%= output %>/assets/fonts'
       }
     },
 
     /**
      * Hashres
-     * Hashes asset files and renames links in css/html/php/etc
+     * Hashes your js and css files and rename the <script> and <link> declarations that refer to them in your html/php/etc files
      * https://github.com/luismahou/grunt-hashres
      */
 
     hashres: {
       assets: {
         options: {
-          fileNameFormat: '${name}-${hash}.${ext}'
+          fileNameFormat: '${hash}.${name}.${ext}'
         },
         src: [
-          '<%= site %>/assets/**/*.*',
-          '!<%= site %>/assets/**/*.{css,js}'
+          '<%= output %>/assets/**/*.*'
         ],
         dest: [
-          '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,oldie*}.js'
-        ]
-      },
-      minifiedAssets: {
-        options: {
-          fileNameFormat: '${name}-${hash}.min.${ext}'
-        },
-        src: '<%= site %>/assets/**/*.{css,js}',
-        dest: [
-          '<%= site %>/**/*.{css,html,js,php}',
-          '!<%= site %>/**/{jquery*,oldie*}.js'
+          '<%= output %>/**/*.{css,html,js,php}'
         ]
       }
     },
 
     /**
-     * Watch
-     * Run tasks whenever watched files change
-     * https://github.com/gruntjs/grunt-contrib-watch
+     * Imagemin
+     * Minify PNG and JPEG images
+     * https://github.com/gruntjs/grunt-contrib-imagemin
      */
 
-    watch: {
+    imagemin: {
       options: {
-        livereload: true,
-        spawn: false
+        optimizationLevel: 7
       },
-      content: {
-        files: [
-          '<%= source %>/**/*',
-          '!<%= source %>/_assets/**/*',
-          '!<%= site %>/**/*',
-          '!<%= source %>/assets/**/*'
-        ],
-        tasks: 'jekyll'
+      temp: {
+        expand: true,
+        cwd: '<%= temp %>/assets/img/',
+        src: '**/*.png',
+        dest: '<%= output %>/assets/img'
       },
-      fonts: {
-        files: '<%= source %>/_assets/fonts/**/*',
-        tasks: [
-          'copy:fonts',
-          'copy:buildFonts'
-        ]
+      favicons: {
+        expand: true,
+        cwd: '<%= input %>/_assets/favicons/',
+        src: '*.png',
+        dest: '<%= output %>'
       },
       images: {
-        files: '<%= source %>/_assets/images/**/*',
-        tasks: [
-          'svg2png',
-          'imagemin',
-          'copy:buildImages'
-        ]
-      },
-      scripts: {
-        files: '<%= source %>/_assets/scripts/**/*',
-        tasks: [
-          'jshint',
-          'uglify:devPlugins',
-          'uglify:vendor',
-          'copy:buildScripts'
-        ]
-      },
-      styles: {
-        files: '<%= source %>/_assets/styles/**/*',
-        tasks: [
-          'sass:devStyles',
-          'postcss',
-          'copy:buildStyles'
-        ]
+        expand: true,
+        cwd: '<%= input %>/_assets/images/',
+        src: '**/*.{gif,jpg,png,svg}',
+        dest: '<%= output %>/assets/img'
       }
     },
 
-    // ---------- CSS / Sass ---------- //
+    /**
+     * JS Beautifier
+     * https://github.com/vkadam/grunt-jsbeautifier
+     * Beautify js, css, html and json files using Grunt and jsbeautify
+     */
+
+    jsbeautifier: {
+      options: {
+        html: {
+          braceStyle: 'end-expand',
+          extraLiners: '',
+          indentInnerHtml: true,
+          indentScripts: 'normal',
+          indentSize: 2,
+          maxPreserveNewlines: '0',
+          unformatted: [
+            'script',
+            'style'
+          ],
+          wrapLineLength: '0'
+        },
+      },
+      content: {
+        expand: true,
+        cwd: '<%= output %>',
+        src: '**/*.html',
+        dest: '<%= output %>'
+      }
+    },
 
     /**
      * PostCSS
@@ -256,11 +193,11 @@ module.exports = function(grunt) {
           })
         ]
       },
-      styles: {
+      css: {
         expand: true,
-        cwd: '<%= source %>/assets/css',
-        src: '*.css',
-        dest: '<%= source %>/assets/css'
+        cwd: '<%= temp %>/assets/css/',
+        src: '**/*.min.css',
+        dest: '<%= output %>/assets/css'
       }
     },
 
@@ -271,255 +208,166 @@ module.exports = function(grunt) {
      */
 
     sass: {
-      options: {
-        noCache: true,
-        sourcemap: 'none'
-      },
-      devStyles: {
-        options: {
-          style: 'expanded'
-        },
-        expand: true,
-        cwd: '<%= source %>/_assets/styles',
-        src: '*.scss',
-        dest: '<%= source %>/assets/css',
-        ext: '.css'
-      },
       styles: {
         options: {
+          noCache: true,
+          sourcemap: 'none',
           style: 'compressed'
         },
         expand: true,
-        cwd: '<%= source %>/_assets/styles',
-        src: '*.scss',
-        dest: '<%= source %>/assets/css',
-        ext: '.css'
-      }
-    },
-
-    // ---------- HTML / PHP ---------- //
-
-    /**
-     * Jekyll
-     * Static site generator
-     * https://github.com/dannygarcia/grunt-jekyll
-     */
-
-    jekyll: {
-      content: {
-        options: {
-          dest: '<%= site %>',
-          src: '<%= source %>'
-        }
+        cwd: '<%= input %>/_assets/styles/',
+        src: '**/*.scss',
+        dest: '<%= temp %>/assets/css',
+        ext: '.min.css'
       }
     },
 
     /**
-     * Prettify
-     * Prettify HTML
-     * https://github.com/jonschlinkert/grunt-prettify
+     * Shell
+     * Run shell commands
+     * https://github.com/sindresorhus/grunt-shell
      */
 
-    prettify: {
-      options: {
-        'brace_style': 'end-expand',
-        indent: 2,
-        'indent_inner_html': false,
-        'indent_scripts': 'normal',
-        unformatted: [
-          'a',
-          'abbr',
-          'acronym',
-          'b',
-          'bdo',
-          'big',
-          'cite',
-          'code',
-          'del',
-          'dfn',
-          'em',
-          'font',
-          'h1',
-          'h2',
-          'h3',
-          'h4',
-          'h5',
-          'h6',
-          'i',
-          'ins',
-          'kbd',
-          'p',
-          'pre',
-          'q',
-          's',
-          'samp',
-          'script',
-          'small',
-          'span',
-          'strike',
-          'strong',
-          'style',
-          'sub',
-          'sup',
-          'tt',
-          'u',
-          'var'
-        ]
-      },
-      content: {
-        expand: true,
-        cwd: '<%= site %>',
-        src: '**/*.html',
-        dest: '<%= site %>'
-      }
-    },
-
-    // ---------- Images / SVGs ---------- //
-
-    /**
-     * Imagemin
-     * Optimize GIF, JPG, and PNG images
-     * https://github.com/gruntjs/grunt-contrib-imagemin
-     */
-
-    imagemin: {
-      options: {
-        optimizationLevel: 7
-      },
-      generatedImages: {
-        expand: true,
-        cwd: '<%= source %>/assets/img',
-        src: '**/*.{gif,jpg,png,svg}',
-        dest: '<%= source %>/assets/img'
-      },
-      images: {
-        expand: true,
-        cwd: '<%= source %>/_assets/images',
-        src: '**/*.{gif,jpg,png,svg}',
-        dest: '<%= source %>/assets/img'
+    shell: {
+      jekyll: {
+        command: [
+          'cd <%= input %>',
+          'jekyll build'
+        ].join('&&')
       }
     },
 
     /**
      * SVG2PNG
-     * Rasterize SVG to PNG using PhantomJS
+     * Grunt plugin to rasterize SVG to PNG images using PhantomJS
      * https://github.com/dbushell/grunt-svg2png
      */
 
     svg2png: {
       svg: {
         files: [{
-          cwd: '<%= source %>/_assets/images/',
+          cwd: '<%= input %>/_assets/images/',
           src: '**/*.svg',
-          dest: '<%= source %>/assets/img'
+          dest: '<%= temp %>/assets/img'
         }]
       }
     },
 
-    // ---------- Scripts ---------- //
-
-    /**
-     * JShint
-     * Validate JavaScript files
-     * https://github.com/gruntjs/grunt-contrib-jshint
-     */
-
-    jshint: {
-      options: {
-        force: true
-      },
-      scripts: [
-        'Gruntfile.js',
-        '<%= source %>/_assets/scripts/plugins/**/*.js',
-        '<%= source %>/_assets/scripts/*.js'
-      ]
-    },
-
     /**
      * Uglify
-     * Minify JavaScript files
+     * Minify files with UglifyJS
      * https://github.com/gruntjs/grunt-contrib-uglify
      */
 
     uglify: {
-      devPlugins: {
-        options: {
-          beautify: true,
-          compress: false,
-          mangle: false
-        },
-        src: [
-          '<%= source %>/_assets/scripts/plugins/**/*.js',
-          '<%= source %>/_assets/scripts/script.js'
-        ],
-        dest: '<%= source %>/assets/js/script.js'
+      concatenate: {
+        src: '<%= input %>/_assets/scripts/concatenate/**/*.js',
+        dest: '<%= output %>/assets/js/script.min.js'
       },
       oldie: {
-        expand: true,
-        cwd: '<%= source %>/_assets/scripts/oldie',
-        src: '**/*.js',
-        dest: '<%= source %>/assets/js'
+        src: '<%= input %>/_assets/scripts/oldie/**/*.js',
+        dest: '<%= output %>/assets/js/oldie.min.js'
       },
-      plugins: {
+      scripts: {
+        expand: true,
+        cwd: '<%= input %>/_assets/scripts/',
         src: [
-          '<%= source %>/_assets/scripts/plugins/**/*.js',
-          '<%= source %>/_assets/scripts/script.js'
+          '**/*.js',
+          '!{concatenate,oldie}/**/*.js'
         ],
-        dest: '<%= source %>/assets/js/script.js'
+        dest: '<%= output %>/assets/js',
+        ext: '.min.js'
+      }
+    },
+
+    /**
+     * Watch
+     * Run tasks whenever watched files change
+     * https://github.com/gruntjs/grunt-contrib-watch
+     */
+
+    watch: {
+      options: {
+        livereload: true, // Port 35729
+        spawn: false
       },
-      vendor: {
-        expand: true,
-        cwd: '<%= source %>/_assets/scripts/vendor',
-        src: '**/*.js',
-        dest: '<%= source %>/assets/js'
+      content: {
+        files: [
+          '<%= input %>/**/*',
+          '!<%= input %>/_assets/**/*',
+          '!<%= output %>/**/*'
+        ],
+        tasks: [
+          'shell',
+          'copy:favicons',
+          'imagemin:favicons'
+        ]
+      },
+      favicons: {
+        files: '<%= input %>/_assets/favicons/*.{ico,png,xml}',
+        tasks: [
+          'copy:favicons',
+          'imagemin:favicons'
+        ]
+      },
+      fonts: {
+        files: '<%= input %>/_assets/fonts/**/*.{eot,svg,ttf,woff}',
+        tasks: 'copy:fonts'
+      },
+      images: {
+        files: '<%= input %>/_assets/images/**/*.{gif,jpg,png,svg}',
+        tasks: [
+          'svg2png',
+          'imagemin:temp',
+          'imagemin:images'
+        ]
+      },
+      scripts: {
+        files: '<%= input %>/_assets/scripts/**/*.js',
+        tasks: 'uglify'
+      },
+      styles: {
+        files: '<%= input %>/_assets/styles/**/*.scss',
+        tasks: [
+          'sass',
+          'postcss'
+        ]
       }
     }
 
   });
 
-  // ---------- Grunt Tasks ---------- //
+  // ---------- Tasks ---------- //
 
+  // Load multiple grunt tasks using globbing patterns
   require('load-grunt-tasks')(grunt);
 
-  // Default Task - Development Mode
-  grunt.registerTask('default', [
-    'clean',
-    'copy:fonts',
-    'jshint',
-    'uglify:devPlugins',
-    'uglify:vendor',
-    'uglify:oldie',
+  // Base Task
+  grunt.registerTask('base', [
+    'clean:pre',
+    'shell',
+    'copy',
+    'sass',
+    'postcss',
     'svg2png',
     'imagemin',
-    'sass:devStyles',
-    'postcss',
-    'jekyll',
+    'uglify',
+    'usebanner'
+  ]);
+
+  // Build Task
+  grunt.registerTask('build', [
+    'base',
+    'hashres',
+    'jsbeautifier',
+    'clean:post'
+  ]);
+
+  // Default Task
+  grunt.registerTask('default', [
+    'base',
     'connect',
     'watch'
-  ]);
-
-  // Build Task - Compiles to _site folder
-  grunt.registerTask('build', [
-    'clean',
-    'copy:fonts',
-    'jshint',
-    'uglify:plugins',
-    'uglify:vendor',
-    'uglify:oldie',
-    'svg2png',
-    'imagemin',
-    'sass:styles',
-    'postcss',
-    'usebanner',
-    'jekyll',
-    'hashres',
-    'prettify',
-  ]);
-
-  // Downloads the latest copies of the following vendor assets:
-  // .htaccess, _normalize.scss, html5shiv.js, jquery.js, and respond.js
-  grunt.registerTask('download', [
-    'curl'
   ]);
 
 };

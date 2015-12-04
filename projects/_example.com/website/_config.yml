@@ -1,0 +1,41 @@
+# Project Configurations
+
+url: http://localhost:4000
+title: Website Title
+description: Website descriptions can be any length, but search engines typically truncate descriptions longer than 156 characters, so it's best to keep them under that.
+owner:
+  name: Owner Name
+  email: owner@email.com
+
+# Supported Components
+
+analytics: # UA-xxxxxxxx-x
+link:
+  canonical: false
+  favicons: false
+  feed: # feed.xml
+  oldie: # oldie.min.js
+  script: # script.min.js
+  sitemap: # sitemap.xml
+  style: # style.min.css
+wordpress: false
+
+# Developer Banner
+
+banner: Created by Developer | http://developer-website.com
+
+# Jekyll Configurations
+
+destination: _site # /wp-content/themes/example
+include: []
+exclude: []
+keep_files: ['.git', '.svn', 'assets']
+show_drafts: false
+future: false
+lsi: false
+permalink: /:categories/:title/
+paginate: 7
+paginate_path: page/:num
+kramdown:
+  auto_ids: false
+gems: ['jekyll-paginate']

@@ -1,8 +1,6 @@
 node_modules*
-!Projects/
-Projects/*
-!Projects/_*
+!projects/
+projects/*
+!projects/_*
 _site
-assets
 .DS_Store
-.jekyll-metadata
