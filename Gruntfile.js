@@ -115,7 +115,7 @@ module.exports = function(grunt) {
         dest: '<%= input %>/_includes/.htaccess'
       },
       normalize: {
-        src: 'https://github.com/necolas/normalize.css/blob/master/normalize.css',
+        src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
         dest: '<%= input %>/_assets/styles/vendor/_normalize.scss'
       }
     },
