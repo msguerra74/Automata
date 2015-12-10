@@ -1,0 +1,11 @@
+---
+permitted: none
+---
+
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+  <site-control permitted-cross-domain-policies="{{ page.permitted }}"/>{% if page.permitted == "all" %}
+  <allow-access-from domain="*" to-ports="*" secure="false"/>
+  <allow-http-request-headers-from domain="*" headers="*" secure="false"/>{% endif %}
+</cross-domain-policy>

@@ -1,0 +1,20 @@
+//------------------------------//
+// PX to REM
+//------------------------------//
+
+// Usage
+// rem(target);
+
+// Arguments
+// $_target: Number
+
+@function rem($_target) {
+  $_base: $font-size;
+  @if not unitless($_target) {
+    $_target: strip-units($_target);
+  }
+  @if not unitless($_base) {
+    $_base: strip-units($_base);
+  }
+  @return $_target / $_base * 1rem;
+}

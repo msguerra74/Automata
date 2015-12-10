@@ -1,0 +1,40 @@
+//------------------------------//
+// Vertical Align Middle
+//------------------------------//
+
+// Usage
+// @include vertical-align-middle(height, child, type, psuedo);
+
+// Arguments
+// $_height: Number (with em/px/rem unit)
+// $_child: Child selector
+// $_type: class, element, id - (Default: element)
+// $_pseudo-element: after, before - (Default: before)
+
+@mixin vertical-align-middle($_height, $_child, $_type: element, $_pseudo-element: before) {
+  height: $_height;
+  &:#{$_pseudo-element} {
+    @include inline-block(middle);
+    content: "";
+    height: 100%;
+    width: .1px;
+  }
+  @if $_type == "class" {
+    & .#{$_child} {
+      @include inline-block(middle);
+      width: auto;
+    }
+  }
+  @if $_type == "id" {
+    & ##{$_child} {
+      @include inline-block(middle);
+      width: auto;
+    }
+  }
+  @else {
+    & #{$_child} {
+      @include inline-block(middle);
+      width: auto;
+    }
+  }
+}

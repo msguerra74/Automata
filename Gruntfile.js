@@ -94,6 +94,29 @@ module.exports = function(grunt) {
         cwd: '<%= input %>/_assets/fonts/',
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= output %>/assets/fonts'
+      },
+      template: {
+        expand: true,
+        cwd: '<%= input %>/_templates/<%= config.template %>/',
+        src: '**/{*,.*}',
+        dest: '<%= input %>'
+      },
+    },
+
+    /**
+     * Curl
+     * Download files from the internet via grunt
+     * https://github.com/twolfson/grunt-curl
+     */
+
+    curl: {
+      htaccess: {
+        src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
+        dest: '<%= input %>/_includes/.htaccess'
+      },
+      normalize: {
+        src: 'https://github.com/necolas/normalize.css/blob/master/normalize.css',
+        dest: '<%= input %>/_assets/styles/vendor/_normalize.scss'
       }
     },
 
@@ -346,7 +369,8 @@ module.exports = function(grunt) {
   grunt.registerTask('base', [
     'clean:pre',
     'shell',
-    'copy',
+    'copy:favicons',
+    'copy:fonts',
     'sass',
     'postcss',
     'svg2png',
@@ -368,6 +392,12 @@ module.exports = function(grunt) {
     'base',
     'connect',
     'watch'
+  ]);
+
+  // Setup Task
+  grunt.registerTask('setup', [
+    'copy:template',
+    'curl'
   ]);
 
 };

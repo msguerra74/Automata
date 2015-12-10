@@ -1,0 +1,72 @@
+//------------------------------//
+// Media Object
+//------------------------------//
+
+// Usage
+// @include media-object;
+
+@mixin media-object {
+  @include clear;
+  display: block;
+}
+
+// Usage
+// @extend %media;
+
+%media {
+  @include media-object;
+}
+
+// ---------- Media Object Body ---------- //
+
+// Usage
+// @include media-object-body;
+
+@mixin media-object-body {
+  overflow: hidden;
+}
+
+// Usage
+// @extend %media-object-body;
+
+%media-object-body {
+  @include media-object-body;
+}
+
+// ---------- Media Object Image ---------- //
+
+// Usage
+// @include media-object-image;
+
+@mixin media-object-image {
+  float: left;
+  & img {
+    display: block;
+  }
+}
+
+// Usage
+// @extend %media-object-image;
+
+%media-object-image {
+  @include media-object-image;
+}
+
+// ---------- Reversed Media Object Image ---------- //
+
+// Usage
+// @inclue reversed-media-object-image;
+
+@mixin reversed-media-object-image {
+  float: right;
+  & img {
+    display: block;
+  }
+}
+
+// Usage
+// @extend %reversed-media-object-image;
+
+%reversed-media-object-image {
+  @include reversed-media-object-image;
+}

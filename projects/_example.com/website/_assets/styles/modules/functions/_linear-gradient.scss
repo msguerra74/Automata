@@ -1,0 +1,63 @@
+//------------------------------//
+// Linear Gradient Position
+//------------------------------//
+
+// Note
+// Used only in linear-gradient mixin
+
+@function _linear-positions-parser($_pos) {
+  $_type: type-of(nth($_pos, 1));
+  $_spec: null;
+  $_degree: null;
+  $_side: null;
+  $_corner: null;
+  $_length: length($_pos);
+  @if $_length > 1 {
+    @if nth($_pos, 1) == "to" {
+      $_side: nth($_pos, 2);
+      @if $_length == 2 {
+        $_degree: _position-flipper(nth($_pos, 2));
+      }
+      @else if $_length == 3 {
+        $_corner: nth($_pos, 3);
+      }
+    }
+    @else if $_length == 2 {
+      $_side: _position-flipper(nth($_pos, 1));
+      $_corner: _position-flipper(nth($_pos, 2));
+    }
+    @if "#{$_side} #{$_corner}" == "left top" or "#{$_side} #{$_corner}" == "top left" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
+    }
+    @else if "#{$_side} #{$_corner}" == "right top" or "#{$_side} #{$_corner}" == "top right" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
+    }
+    @else if "#{$_side} #{$_corner}" == "right bottom" or "#{$_side} #{$_corner}" == "bottom right" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
+    }
+    @else if "#{$_side} #{$_corner}" == "left bottom" or "#{$_side} #{$_corner}" == "bottom left" {
+      $_degree: _position-flipper(#{$_side}) _position-flipper(#{$_corner});
+    }
+    $_spec: to $_side $_corner;
+  }
+  @else if $_length == 1 {
+    @if $_type == string {
+      $_degree: $_pos;
+      $_spec: to _position-flipper($_pos);
+    }
+    @else {
+      $_degree: -270 - $_pos;
+      $_spec: $_pos;
+    }
+  }
+  $_degree: unquote($_degree + ",");
+  $_spec: unquote($_spec + ",");
+  @return $_degree $_spec;
+}
+
+// Note
+// Used only in above function
+
+@function _position-flipper($_pos) {
+  @return if($_pos == left, right, null) if($_pos == right, left, null) if($_pos == top, bottom, null) if($_pos == bottom, top, null);
+}

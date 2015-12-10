@@ -1,0 +1,19 @@
+//------------------------------//
+// Center Block
+//------------------------------//
+
+// Usage
+// @include center-block;
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Usage
+// @extend %center-block;
+
+%center-block {
+  @include center-block;
+}

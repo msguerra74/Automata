@@ -18,7 +18,7 @@ link:
   script: # script.min.js
   sitemap: # sitemap.xml
   style: # style.min.css
-wordpress: false
+template: jekyll # wordpress
 
 # Developer Banner
 
@@ -28,7 +28,7 @@ banner: Created by Developer | http://developer-website.com
 
 destination: _site # /wp-content/themes/example
 include: []
-exclude: []
+exclude: ['.htaccess']
 keep_files: ['.git', '.svn', 'assets']
 show_drafts: false
 future: false

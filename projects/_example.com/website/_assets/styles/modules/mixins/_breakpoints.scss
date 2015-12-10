@@ -1,0 +1,26 @@
+//------------------------------//
+// Breakpoints
+//------------------------------//
+
+// Usage
+// @include breakpoint(point, m-width) {}
+
+// Arguments
+// $_point: small, medium, large, xlarge
+// $_m-width: max, min - (Default: min)
+
+@mixin breakpoint($_name, $_m-width: min) {
+  @if not map-has-key($breakpoints, $_name) {
+    @warn "Invalid breakpoint `#{$_name}`.";
+  }
+  @else {
+    @if map-get($breakpoints, $_name) {
+      @media (#{$_m-width}-width: map-get($breakpoints, $_name)) {
+        @content;
+      }
+    }
+    @else {
+      @content;
+    }
+  }
+}

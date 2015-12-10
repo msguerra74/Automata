@@ -1,0 +1,44 @@
+//------------------------------//
+// REM Properties
+//------------------------------//
+// With PX fallback
+
+// Usage
+// @include rem-px(property, values...);
+
+// Arguments
+// $_property: CSS property
+// $_values: CSS property values
+
+@mixin rem-px($_property, $_values...) {
+  $_all: length($_values);
+  $_px: "";
+  $_rem: "";
+  @for $_i from 1 through $_all {
+    $_value: nth($_values, $_i);
+    @if type-of($_value) == number {
+      $_unitless-value: strip-units($_value);
+      $_px: #{$_px + $_unitless-value}px;
+      $_rem: #{$_rem + rem($_unitless-value)};
+    }
+    @else {
+      $_px: #{$_px + $_value};
+      $_rem: #{$_rem + $_value};
+    }
+    @if $_i < $_all {
+      $_px: #{$_px + " "};
+      $_rem: #{$_rem + " "};
+    }
+  }
+  @if $_px == $_rem {
+    @if $oldie {
+      #{$_property}: $_px;
+    }
+  }
+  @else {
+    @if $oldie {
+      #{$_property}: $_px;
+    }
+    #{$_property}: $_rem;
+  }
+}

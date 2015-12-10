@@ -29,6 +29,7 @@ by **Michael Guerra** | [msguerra74.com](http://msguerra74.com)
         - [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass): Compile Sass to CSS
         - [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify): Minify JavaScript files
         - [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch): Run tasks whenever watched files change
+        - [grunt-curl](https://github.com/twolfson/grunt-curl): Download files from the internet via grunt
         - [grunt-hashres](https://github.com/luismahou/grunt-hashres): Hashes asset files and renames links in html/php/etc
         - [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier): Beautify js, css, html and json files using Grunt and jsbeautify
         - [grunt-postcss](https://github.com/nDmitry/grunt-postcss): Apply several post-processors to your CSS using PostCSS
@@ -57,6 +58,7 @@ by **Michael Guerra** | [msguerra74.com](http://msguerra74.com)
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
     - `grunt` to develop the site with a live static server
     - `grunt build` to build a production version of the site
+    - `grunt setup` to download latest versions of `.htaccess` and `_normalize.scss` and copy template files over based on the `template` variable in `_config.yml`
 
 ## The MIT License (MIT)
 
