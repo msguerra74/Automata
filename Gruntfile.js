@@ -112,7 +112,7 @@ module.exports = function(grunt) {
     curl: {
       htaccess: {
         src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
-        dest: '<%= input %>/_includes/.htaccess'
+        dest: '<%= input %>/_templates/jekyll/_includes/.htaccess'
       },
       normalize: {
         src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
@@ -368,36 +368,41 @@ module.exports = function(grunt) {
   // Base Task
   grunt.registerTask('base', [
     'clean:pre',
-    'shell',
+    'shell:jekyll',
     'copy:favicons',
     'copy:fonts',
-    'sass',
-    'postcss',
-    'svg2png',
-    'imagemin',
-    'uglify',
-    'usebanner'
+    'sass:styles',
+    'postcss:css',
+    'svg2png:svg',
+    'imagemin:temp',
+    'imagemin:favicons',
+    'imagemin:images',
+    'uglify:concatenate',
+    'uglify:oldie',
+    'uglify:scripts',
+    'usebanner:assets'
   ]);
 
   // Build Task
   grunt.registerTask('build', [
     'base',
-    'hashres',
-    'jsbeautifier',
+    'hashres:assets',
+    'jsbeautifier:content',
     'clean:post'
   ]);
 
   // Default Task
   grunt.registerTask('default', [
     'base',
-    'connect',
+    'connect:server',
     'watch'
   ]);
 
   // Setup Task
   grunt.registerTask('setup', [
-    'copy:template',
-    'curl'
+    'curl:htaccess',
+    'curl:normalize',
+    'copy:template'
   ]);
 
 };
