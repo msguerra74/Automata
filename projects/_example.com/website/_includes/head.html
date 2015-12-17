@@ -10,7 +10,8 @@
     <link rel="alternate" href="{{ relative }}{{ site.link.feed }}" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% endunless %}{% if site.link.favicons %}
     <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.wordpress %}{% if site.link.canonical %}
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
-    <link rel="sitemap" href="{{ relative }}{{ site.link.sitemap }}" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}
+    <link rel="sitemap" href="{{ relative }}{{ site.link.sitemap }}" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}{% if site.link.googlefonts %}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.googlefonts }}">{% endif %}
     <link rel="stylesheet" href="{{ relative }}assets/css/{{ site.link.style }}">{% endif %}{% if site.link.oldie %}
     <!--[if (lt IE 9) & (!IEMobile)]>
     <script src="{{ relative }}assets/js/{{ site.link.oldie }}"></script>

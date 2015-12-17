@@ -411,10 +411,10 @@ module.exports = function(grunt) {
   // Build Task
   grunt.registerTask('build', [
     'base',
+    'clean:post',
     'usebanner',
     'hashres',
-    'jsbeautifier',
-    'clean:post'
+    'jsbeautifier'
   ]);
 
   // Default Task
