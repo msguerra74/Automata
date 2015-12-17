@@ -52,6 +52,11 @@ $breakpoints: (
 $columns: 12;
 $gutter: $spacer;
 
+// ---------- Highlight Syntax ---------- //
+
+$highlight-syntax: false;
+$dark-syntax: true;
+
 // ---------- oldIE ---------- //
 
 $oldie: true;

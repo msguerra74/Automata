@@ -1,14 +1,14 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
-<html class="no-js" {% if site.template == 'wordpress' %}<?php language_attributes(); ?>{% else %}lang="en"{% endif %}>
+<html class="no-js" {% if site.wordpress %}<?php language_attributes(); ?>{% else %}lang="en"{% endif %}>
   <head>
-    <meta charset="{% if site.template == 'wordpress' %}<?php bloginfo( 'charset' ); ?>{% else %}utf-8{% endif %}">
-    <!-- {{ site.banner }} -->{% if site.link.oldie %}
-    <meta http-equiv="x-ua-compatible" content="ie=edge">{% endif %}{% unless site.template == 'wordpress' %}
+    <!-- {{ site.banner }} -->
+    <meta charset="{% if site.wordpress %}<?php bloginfo( 'charset' ); ?>{% else %}utf-8{% endif %}">{% if site.link.oldie %}
+    <meta http-equiv="x-ua-compatible" content="ie=edge">{% endif %}{% unless site.wordpress %}
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% endunless %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">{% unless site.template == 'wordpress' %}{% if site.link.feed %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% unless site.wordpress %}{% if site.link.feed %}
     <link rel="alternate" href="{{ relative }}{{ site.link.feed }}" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% endunless %}{% if site.link.favicons %}
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.template == 'wordpress' %}{% if site.link.canonical %}
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.wordpress %}{% if site.link.canonical %}
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
     <link rel="sitemap" href="{{ relative }}{{ site.link.sitemap }}" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}
     <link rel="stylesheet" href="{{ relative }}assets/css/{{ site.link.style }}">{% endif %}{% if site.link.oldie %}
@@ -17,8 +17,8 @@
     <![endif]-->{% endif %}{% endunless %}{% if site.link.script %}
     <script>
       with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}
-    </script>{% endif %}{% if site.template == 'wordpress' %}
+    </script>{% endif %}{% if site.wordpress %}
     <?php wp_head(); ?>{% else %}{% if page.include.head %}
     {{ page.include.head }}{% endif %}{% endif %}
   </head>
-  <body{% if site.template == 'wordpress' %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>
+  <body{% if site.wordpress %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>

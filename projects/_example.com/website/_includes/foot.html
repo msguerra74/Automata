@@ -1,4 +1,4 @@
-    {% if site.template == 'wordpress' %}<?php wp_footer(); ?>{% else %}{% if site.link.script %}
+    {% if site.wordpress %}<?php wp_footer(); ?>{% else %}{% if site.link.script %}
     <script src="{{ relative }}assets/js/{{ site.link.script }}"></script>{% endif %}{% if page.include.foot %}
     {{ page.include.foot }}{% endif %}{% endif %}{% if site.analytics %}
     <script>

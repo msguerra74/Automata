@@ -3,5 +3,4 @@ node_modules*
 projects/*
 !projects/_*
 _site
-_temp
 .DS_Store

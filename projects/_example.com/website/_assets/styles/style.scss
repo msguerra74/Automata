@@ -8,7 +8,7 @@
 
 // ---------- Functions ---------- //
 
-@import "modules/functions/linear-gradient";
+@import "modules/functions/linear-gradient-position";
 @import "modules/functions/px-em";
 @import "modules/functions/px-rem";
 @import "modules/functions/strip-units";
@@ -47,17 +47,18 @@
 
 // ---------- Partials ---------- //
 
-@import "partials/base";
-@import "partials/header";
-@import "partials/navigation";
-@import "partials/content";
-@import "partials/aside";
-@import "partials/footer";
-@import "partials/shared";
+@import "partials/01-base";
+@import "partials/02-header";
+@import "partials/03-navigation";
+@import "partials/04-content";
+@import "partials/05-aside";
+@import "partials/06-footer";
+@import "partials/07-shared";
 
 // ---------- Vendor ---------- //
 
 @import "vendor/print";
+@import "vendor/highlight";
 
 // ---------- Additional ---------- //
 

@@ -5,8 +5,10 @@
  * MIT License [See README]
  */
 
-// Enter the name of the project directory (_example.com)
+// Step 1: Enter the project directory name
 var project = '_example.com';
+
+// Step 2: Within the project directory, edit the '/website/_config.yml' variables as needed
 
 // ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
 
@@ -14,15 +16,16 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    // ---------- Variables ---------- //
-
     // Configurations
     config: grunt.file.readYAML('projects/' + project + '/website/_config.yml'),
 
-    // Directories
+    // ---------- Variables ---------- //
+
+    // Input/Source Directory
     input: 'projects/' + project + '/website',
+
+    // Output/Compiled Directory
     output: '<%= input %>/<%= config.destination %>',
-    temp: '<%= input %>/_temp',
 
     // ---------- Packages ---------- //
 
@@ -44,6 +47,26 @@ module.exports = function(grunt) {
     },
 
     /**
+     * BrowserSync
+     * Grunt Task for keeping multiple browsers & devices in sync when building websites
+     * https://github.com/BrowserSync/grunt-browser-sync
+     */
+
+    browserSync: {
+      sync: {
+        bsFiles: {
+          src: '<%= output %>/**/*'
+        },
+        options: {
+          logLevel: 'silent',
+          open: true,
+          proxy: '<%= config.host %>:<%= config.port %>',
+          watchTask: true
+        }
+      }
+    },
+
+    /**
      * Clean
      * Clear files and folders
      * https://github.com/gruntjs/grunt-contrib-clean
@@ -52,28 +75,9 @@ module.exports = function(grunt) {
     clean: {
       pre: [
         '<%= output %>/**/{*,.*}',
-        '!<%= output %>/.git',
-        '<%= temp %>'
+        '!<%= output %>/.git'
       ],
-      post: '<%= temp %>'
-    },
-
-    /**
-     * Connect
-     * Start a static web server
-     * https://github.com/gruntjs/grunt-contrib-connect
-     */
-
-    connect: {
-      server: {
-        options: {
-          base: '<%= output %>',
-          hostname: '*',
-          livereload: true,
-          open: 'http://localhost:<%= connect.server.options.port %>',
-          port: '4000'
-        }
-      }
+      post: '<%= output %>/assets/temp'
     },
 
     /**
@@ -83,24 +87,12 @@ module.exports = function(grunt) {
      */
 
     copy: {
-      favicons: {
-        expand: true,
-        cwd: '<%= input %>/_assets/favicons/',
-        src: '**/*.{ico,xml}',
-        dest: '<%= output %>'
-      },
       fonts: {
         expand: true,
         cwd: '<%= input %>/_assets/fonts/',
         src: '**/*.{eot,svg,ttf,woff}',
         dest: '<%= output %>/assets/fonts'
-      },
-      template: {
-        expand: true,
-        cwd: '<%= input %>/_templates/<%= config.template %>/',
-        src: '**/{*,.*}',
-        dest: '<%= input %>'
-      },
+      }
     },
 
     /**
@@ -112,7 +104,7 @@ module.exports = function(grunt) {
     curl: {
       htaccess: {
         src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
-        dest: '<%= input %>/_templates/jekyll/_includes/.htaccess'
+        dest: '<%= input %>/_includes/.htaccess'
       },
       normalize: {
         src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
@@ -129,14 +121,12 @@ module.exports = function(grunt) {
     hashres: {
       assets: {
         options: {
-          fileNameFormat: '${hash}.${name}.${ext}'
+          fileNameFormat: '${hash}-${name}.${ext}'
         },
         src: [
           '<%= output %>/assets/**/*.*'
         ],
-        dest: [
-          '<%= output %>/**/*.{css,html,js,php}'
-        ]
+        dest: '<%= output %>/**/*.{css,html,js,php}'
       }
     },
 
@@ -150,22 +140,22 @@ module.exports = function(grunt) {
       options: {
         optimizationLevel: 7
       },
-      temp: {
-        expand: true,
-        cwd: '<%= temp %>/assets/img/',
-        src: '**/*.png',
-        dest: '<%= output %>/assets/img'
-      },
       favicons: {
         expand: true,
         cwd: '<%= input %>/_assets/favicons/',
-        src: '*.png',
+        src: '**/*.png',
         dest: '<%= output %>'
       },
       images: {
         expand: true,
         cwd: '<%= input %>/_assets/images/',
         src: '**/*.{gif,jpg,png,svg}',
+        dest: '<%= output %>/assets/img'
+      },
+      svg2png: {
+        expand: true,
+        cwd: '<%= output %>/assets/temp/img/',
+        src: '**/*.png',
         dest: '<%= output %>/assets/img'
       }
     },
@@ -186,17 +176,68 @@ module.exports = function(grunt) {
           indentSize: 2,
           maxPreserveNewlines: '0',
           unformatted: [
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'bdo',
+            'big',
+            'cite',
+            'code',
+            'del',
+            'dfn',
+            'em',
+            'font',
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+            'i',
+            'ins',
+            'kbd',
+            'p',
+            'pre',
+            'q',
+            's',
+            'samp',
             'script',
-            'style'
+            'small',
+            'span',
+            'strike',
+            'strong',
+            'style',
+            'sub',
+            'sup',
+            'tt',
+            'u',
+            'var'
           ],
           wrapLineLength: '0'
         },
       },
       content: {
         expand: true,
-        cwd: '<%= output %>',
+        cwd: '<%= output %>/',
         src: '**/*.html',
         dest: '<%= output %>'
+      }
+    },
+
+    /**
+     * PHP
+     * Start a PHP-server
+     * https://github.com/sindresorhus/grunt-php
+     */
+
+    php: {
+      content: {
+        options: {
+          base: '<%= output %>',
+          hostname: '<%= config.host %>',
+          port: '<%= config.port %>'
+        }
       }
     },
 
@@ -209,17 +250,13 @@ module.exports = function(grunt) {
     postcss: {
       options: {
         processors: [
-          require('autoprefixer')({
-            browsers: [
-              'last 2 versions'
-            ]
-          })
+          require('autoprefixer')
         ]
       },
       css: {
         expand: true,
-        cwd: '<%= temp %>/assets/css/',
-        src: '**/*.min.css',
+        cwd: '<%= output %>/assets/temp/css/',
+        src: '**/*.css',
         dest: '<%= output %>/assets/css'
       }
     },
@@ -227,20 +264,18 @@ module.exports = function(grunt) {
     /**
      * Sass
      * Compile Sass to CSS
-     * https://github.com/gruntjs/grunt-contrib-sass
+     * https://github.com/sindresorhus/grunt-sass
      */
 
     sass: {
       styles: {
         options: {
-          noCache: true,
-          sourcemap: 'none',
-          style: 'compressed'
+          outputStyle: 'compressed'
         },
         expand: true,
         cwd: '<%= input %>/_assets/styles/',
         src: '**/*.scss',
-        dest: '<%= temp %>/assets/css',
+        dest: '<%= output %>/assets/temp/css',
         ext: '.min.css'
       }
     },
@@ -271,7 +306,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: '<%= input %>/_assets/images/',
           src: '**/*.svg',
-          dest: '<%= temp %>/assets/img'
+          dest: '<%= output %>/assets/temp/img'
         }]
       }
     },
@@ -311,7 +346,6 @@ module.exports = function(grunt) {
 
     watch: {
       options: {
-        livereload: true, // Port 35729
         spawn: false
       },
       content: {
@@ -322,16 +356,12 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'shell',
-          'copy:favicons',
           'imagemin:favicons'
         ]
       },
       favicons: {
-        files: '<%= input %>/_assets/favicons/*.{ico,png,xml}',
-        tasks: [
-          'copy:favicons',
-          'imagemin:favicons'
-        ]
+        files: '<%= input %>/_assets/favicons/**/*.png',
+        tasks: 'imagemin:favicons'
       },
       fonts: {
         files: '<%= input %>/_assets/fonts/**/*.{eot,svg,ttf,woff}',
@@ -341,7 +371,7 @@ module.exports = function(grunt) {
         files: '<%= input %>/_assets/images/**/*.{gif,jpg,png,svg}',
         tasks: [
           'svg2png',
-          'imagemin:temp',
+          'imagemin:svg2png',
           'imagemin:images'
         ]
       },
@@ -360,49 +390,44 @@ module.exports = function(grunt) {
 
   });
 
-  // ---------- Tasks ---------- //
-
-  // Load multiple grunt tasks using globbing patterns
   require('load-grunt-tasks')(grunt);
+
+  // ---------- Tasks ---------- //
 
   // Base Task
   grunt.registerTask('base', [
     'clean:pre',
-    'shell:jekyll',
-    'copy:favicons',
-    'copy:fonts',
-    'sass:styles',
-    'postcss:css',
-    'svg2png:svg',
-    'imagemin:temp',
+    'shell',
+    'copy',
+    'sass',
+    'postcss',
+    'svg2png',
+    'imagemin:svg2png',
     'imagemin:favicons',
     'imagemin:images',
-    'uglify:concatenate',
-    'uglify:oldie',
-    'uglify:scripts',
-    'usebanner:assets'
+    'uglify'
   ]);
 
   // Build Task
   grunt.registerTask('build', [
     'base',
-    'hashres:assets',
-    'jsbeautifier:content',
+    'usebanner',
+    'hashres',
+    'jsbeautifier',
     'clean:post'
   ]);
 
   // Default Task
   grunt.registerTask('default', [
     'base',
-    'connect:server',
+    'php',
+    'browserSync',
     'watch'
   ]);
 
   // Setup Task
   grunt.registerTask('setup', [
-    'curl:htaccess',
-    'curl:normalize',
-    'copy:template'
+    'curl'
   ]);
 
 };

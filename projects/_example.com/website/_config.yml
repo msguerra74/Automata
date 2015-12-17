@@ -1,41 +1,97 @@
-# Project Configurations
+# ---------- Project Configurations ---------- #
+
+# Information
 
 url: http://localhost:4000
-title: Website Title
-description: Website descriptions can be any length, but search engines typically truncate descriptions longer than 156 characters, so it's best to keep them under that.
+
+title: The website title should be 60 characters in length or less
+description: The website meta description can be any length, but for search engine optimization purposes, it is best to limit the description to 156 characters or less.
+
 owner:
   name: Owner Name
   email: owner@email.com
 
-# Supported Components
+banner: Created by Developer | http://developer-website.com
+
+# Options
 
 analytics: # UA-xxxxxxxx-x
+wordpress: false
+
 link:
   canonical: false
-  favicons: false
+  favicons: true
   feed: # feed.xml
   oldie: # oldie.min.js
   script: # script.min.js
   sitemap: # sitemap.xml
-  style: # style.min.css
-template: jekyll # wordpress
+  style: style.min.css
 
-# Developer Banner
+# ---------- Jekyll Configurations ---------- #
 
-banner: Created by Developer | http://developer-website.com
+# Directories
 
-# Jekyll Configurations
+# collections: null
+data_dir: _data
+destination: _site
+includes_dir: _includes
+layouts_dir: _layouts
+plugins_dir: _plugins
+source: .
 
-destination: _site # /wp-content/themes/example
-include: []
+# Reading
+
+encoding: 'utf-8'
 exclude: ['.htaccess']
+include: []
 keep_files: ['.git', '.svn', 'assets']
-show_drafts: false
+markdown_ext: 'markdown,mkdown,mkdn,mkd,md'
+safe: false
+
+# Filtering
+
 future: false
+limit_posts: 0
+show_drafts: null
+unpublished: false
+
+# Plugins
+
+gems: ['jekyll-paginate']
+whitelist: []
+
+# Conversion
+
+excerpt_separator: '\n\n'
+highlighter: rouge
+incremental: false
 lsi: false
-permalink: /:categories/:title/
+markdown: kramdown
+
+# Serving
+
+baseurl: ''
+detach: false
+host: 127.0.0.1
+port: 4000
+
+# Outputting
+
 paginate: 7
-paginate_path: page/:num
+paginate_path: page:num
+permalink: /:categories/:title/
+timezone: null
+
+defaults: []
+quiet: false
+
+# Markdown
+
 kramdown:
   auto_ids: false
-gems: ['jekyll-paginate']
+  enable_coderay: false
+  entity_output: as_char
+  footnote_nr: 1
+  input: GFM
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  toc_levels: 1..6
