@@ -74,10 +74,10 @@ module.exports = function(grunt) {
 
     clean: {
       pre: [
-        '<%= output %>/**/{*,.*}',
-        '!<%= output %>/.git'
+        '<%= output %>/**/{.*,*}',
+        '!<%= output %>/.{git,svn}'
       ],
-      post: '<%= output %>/assets/temp'
+      post: '<%= output %>/assets/temp/'
     },
 
     /**
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= input %>/_assets/fonts/',
         src: '**/*.{eot,svg,ttf,woff}',
-        dest: '<%= output %>/assets/fonts'
+        dest: '<%= output %>/assets/fonts/'
       }
     },
 
@@ -144,19 +144,19 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= input %>/_assets/favicons/',
         src: '**/*.png',
-        dest: '<%= output %>'
+        dest: '<%= output %>/'
       },
       images: {
         expand: true,
         cwd: '<%= input %>/_assets/images/',
         src: '**/*.{gif,jpg,png,svg}',
-        dest: '<%= output %>/assets/img'
+        dest: '<%= output %>/assets/img/'
       },
       svg2png: {
         expand: true,
         cwd: '<%= output %>/assets/temp/img/',
         src: '**/*.png',
-        dest: '<%= output %>/assets/img'
+        dest: '<%= output %>/assets/img/'
       }
     },
 
@@ -221,7 +221,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= output %>/',
         src: '**/*.html',
-        dest: '<%= output %>'
+        dest: '<%= output %>/'
       }
     },
 
@@ -234,7 +234,7 @@ module.exports = function(grunt) {
     php: {
       content: {
         options: {
-          base: '<%= output %>',
+          base: '<%= output %>/',
           hostname: '<%= config.host %>',
           port: '<%= config.port %>'
         }
@@ -257,7 +257,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= output %>/assets/temp/css/',
         src: '**/*.css',
-        dest: '<%= output %>/assets/css'
+        dest: '<%= output %>/assets/css/'
       }
     },
 
@@ -275,7 +275,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= input %>/_assets/styles/',
         src: '**/*.scss',
-        dest: '<%= output %>/assets/temp/css',
+        dest: '<%= output %>/assets/temp/css/',
         ext: '.min.css'
       }
     },
@@ -289,7 +289,7 @@ module.exports = function(grunt) {
     shell: {
       jekyll: {
         command: [
-          'cd <%= input %>',
+          'cd <%= input %>/',
           'jekyll build'
         ].join('&&')
       }
@@ -306,7 +306,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: '<%= input %>/_assets/images/',
           src: '**/*.svg',
-          dest: '<%= output %>/assets/temp/img'
+          dest: '<%= output %>/assets/temp/img/'
         }]
       }
     },
@@ -333,7 +333,7 @@ module.exports = function(grunt) {
           '**/*.js',
           '!{concatenate,oldie}/**/*.js'
         ],
-        dest: '<%= output %>/assets/js',
+        dest: '<%= output %>/assets/js/',
         ext: '.min.js'
       }
     },
