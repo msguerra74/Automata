@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/msguerra74/Automata",
   "dependencies": {
-    "autoprefixer": "^6.1.2",
+    "autoprefixer": "^6.2.1",
     "grunt": "^0.4.5",
     "grunt-banner": "^0.6.0",
     "grunt-browser-sync": "^2.2.0",
@@ -31,6 +31,6 @@
     "grunt-sass": "^1.1.0",
     "grunt-shell": "^1.1.2",
     "grunt-svg2png": "^0.2.7",
-    "load-grunt-tasks": "^3.3.0"
+    "load-grunt-tasks": "^3.4.0"
   }
 }

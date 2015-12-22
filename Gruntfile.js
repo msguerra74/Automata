@@ -59,6 +59,7 @@ module.exports = function(grunt) {
         },
         options: {
           logLevel: 'silent',
+          notify: false,
           open: true,
           proxy: '<%= config.host %>:<%= config.port %>',
           watchTask: true
