@@ -1,4 +1,5 @@
-# ---------- Project Configurations ---------- #
+## Project Configurations
+## ----------------------
 
 # Information
 
@@ -32,7 +33,8 @@ link:
 
 components: ['es5-shim fastclick foundation-sites html5shiv jquery-legacy=jquery#^1 motion-ui']
 
-# ---------- Jekyll Configurations ---------- #
+## Jekyll Configurations
+## ---------------------
 
 # Directories
 

@@ -1,6 +1,6 @@
 # Automata
 
-[![Dependency Status](https://david-dm.org/msguerra74/automata.svg?style=flat)](https://david-dm.org/msguerra74/automata)
+[![Dependency Status](https://david-dm.org/msguerra74/automata.svg?style=flat)](https://david-dm.org/msguerra74/automata) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 ## Automated Website Generator
 
