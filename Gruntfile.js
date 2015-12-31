@@ -5,27 +5,33 @@
  * MIT License [See README]
  */
 
+// Setting up this project is as easy as 1, 2, 3!
+
 // 1. Enter the project directory name
+
 var project = '_example.com';
 
 // 2. Within the project directory, edit the '/website/_config.yml' variables as needed
 
-// ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
+// 3. That's it, the script below will do the rest!
 
 module.exports = function(grunt) {
 
   grunt.initConfig({
 
     // Configurations
+
     config: grunt.file.readYAML('projects/' + project + '/website/_config.yml'),
 
     // Variables
     // ---------
 
     // Input/Source Directory
+
     input: 'projects/' + project + '/website',
 
     // Output/Compiled Directory
+
     output: '<%= input %>/<%= config.destination %>',
 
     // Packages
@@ -374,6 +380,7 @@ module.exports = function(grunt) {
   // -----
 
   // Base Task
+
   grunt.registerTask('base', [
     'clean:pre',
     'shell:jekyll',
@@ -389,6 +396,7 @@ module.exports = function(grunt) {
   ]);
 
   // Build Task
+
   grunt.registerTask('build', [
     'base',
     'clean:post',
@@ -398,6 +406,7 @@ module.exports = function(grunt) {
   ]);
 
   // Default Task
+
   grunt.registerTask('default', [
     'base',
     'php',
@@ -406,6 +415,7 @@ module.exports = function(grunt) {
   ]);
 
   // Setup Task
+
   grunt.registerTask('setup', [
     'clean',
     'curl',

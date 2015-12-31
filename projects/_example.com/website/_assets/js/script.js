@@ -39,6 +39,23 @@
 // @import 'bower_components/foundation-sites/js/foundation.util.touch.js'
 // @import 'bower_components/foundation-sites/js/foundation.util.triggers.js'
 
+// Initialize FastClick
+// --------------------
+
+// Uncomment this section if using jQuery
+
+// $(function() {
+//   FastClick.attach(document.body);
+// });
+
+// Uncomment this section if using JavaScript
+
+// if ('addEventListener' in document) {
+//   document.addEventListener('DOMContentLoaded', function() {
+//     FastClick.attach(document.body);
+//   }, false);
+// }
+
 // Initialize Foundation Plugins
 // -----------------------------
 
