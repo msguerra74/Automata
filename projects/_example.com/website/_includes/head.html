@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}">{% endif %}{% if site.link.oldie %}
     <!--[if (lt IE 9) & (!IEMobile)]>
     <script src="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/js/{{ site.link.oldie }}"></script>
-    <![endif]-->{% endif %}{% endunless %}{% if site.link.script %}
+    <![endif]-->{% endif %}{% endunless %}{% if site.link.script %}{% if site.link.modernizr %}
+    <script src="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/js/{{ site.link.modernizr }}"></script>{% else %}
     <script>
       with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}
-    </script>{% endif %}{% if site.wordpress %}
+    </script>{% endif %}{% endif %}{% if site.wordpress %}
     <?php wp_head(); ?>{% else %}{% if page.include.head %}
     {{ page.include.head }}{% endif %}{% endif %}
   </head>

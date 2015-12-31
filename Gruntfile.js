@@ -5,10 +5,10 @@
  * MIT License [See README]
  */
 
-// Step 1: Enter the project directory name
+// 1. Enter the project directory name
 var project = '_example.com';
 
-// Step 2: Within the project directory, edit the '/website/_config.yml' variables as needed
+// 2. Within the project directory, edit the '/website/_config.yml' variables as needed
 
 // ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
 
@@ -19,7 +19,8 @@ module.exports = function(grunt) {
     // Configurations
     config: grunt.file.readYAML('projects/' + project + '/website/_config.yml'),
 
-    // ---------- Variables ---------- //
+    // Variables
+    // ---------
 
     // Input/Source Directory
     input: 'projects/' + project + '/website',
@@ -27,13 +28,12 @@ module.exports = function(grunt) {
     // Output/Compiled Directory
     output: '<%= input %>/<%= config.destination %>',
 
-    // ---------- Packages ---------- //
+    // Packages
+    // --------
 
-    /**
-     * Banner
-     * Adds a simple banner to files
-     * https://github.com/mattstyles/grunt-banner
-     */
+    // Banner
+    // Adds a simple banner to files
+    // https://github.com/mattstyles/grunt-banner
 
     usebanner: {
       assets: {
@@ -46,11 +46,9 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * BrowserSync
-     * Grunt Task for keeping multiple browsers & devices in sync when building websites
-     * https://github.com/BrowserSync/grunt-browser-sync
-     */
+    // BrowserSync
+    // Grunt Task for keeping multiple browsers & devices in sync when building websites
+    // https://github.com/BrowserSync/grunt-browser-sync
 
     browserSync: {
       sync: {
@@ -67,13 +65,12 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * Clean
-     * Clear files and folders
-     * https://github.com/gruntjs/grunt-contrib-clean
-     */
+    // Clean
+    // Clear files and folders
+    // https://github.com/gruntjs/grunt-contrib-clean
 
     clean: {
+      components: '<%= input %>/_assets/bower_components/',
       pre: [
         '<%= output %>/**/{.*,*}',
         '!<%= output %>/.{git,svn}'
@@ -81,11 +78,9 @@ module.exports = function(grunt) {
       post: '<%= output %>/assets/temp/'
     },
 
-    /**
-     * Copy
-     * Copy files and folders
-     * https://github.com/gruntjs/grunt-contrib-copy
-     */
+    // Copy
+    // Copy files and folders
+    // https://github.com/gruntjs/grunt-contrib-copy
 
     copy: {
       fonts: {
@@ -96,28 +91,20 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * Curl
-     * Download files from the internet via grunt
-     * https://github.com/twolfson/grunt-curl
-     */
+    // Curl
+    // Download files from the internet via grunt
+    // https://github.com/twolfson/grunt-curl
 
     curl: {
       htaccess: {
         src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
         dest: '<%= input %>/_includes/.htaccess'
-      },
-      normalize: {
-        src: 'https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css',
-        dest: '<%= input %>/_assets/styles/vendor/_normalize.scss'
       }
     },
 
-    /**
-     * Hashres
-     * Hashes your js and css files and rename the <script> and <link> declarations that refer to them in your html/php/etc files
-     * https://github.com/luismahou/grunt-hashres
-     */
+    // Hashres
+    // Hashes your js and css files and rename the <script> and <link> declarations that refer to them in your html/php/etc files
+    // https://github.com/luismahou/grunt-hashres
 
     hashres: {
       assets: {
@@ -131,11 +118,9 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * Imagemin
-     * Minify PNG and JPEG images
-     * https://github.com/gruntjs/grunt-contrib-imagemin
-     */
+    // Imagemin
+    // Minify PNG and JPEG images
+    // https://github.com/gruntjs/grunt-contrib-imagemin
 
     imagemin: {
       options: {
@@ -149,7 +134,7 @@ module.exports = function(grunt) {
       },
       images: {
         expand: true,
-        cwd: '<%= input %>/_assets/images/',
+        cwd: '<%= input %>/_assets/img/',
         src: '**/*.{gif,jpg,png,svg}',
         dest: '<%= output %>/assets/img/'
       },
@@ -161,11 +146,22 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * JS Beautifier
-     * https://github.com/vkadam/grunt-jsbeautifier
-     * Beautify js, css, html and json files using Grunt and jsbeautify
-     */
+    // Import JS
+    // https://github.com/dev113/grunt-import-js
+    // Import JS files within JS files by // @import "script.js"; instruction
+
+    import_js: {
+      files: {
+        expand: true,
+        cwd: '<%= input %>/_assets/',
+        src: 'js/*.js',
+        dest: '<%= output %>/assets/temp/'
+      }
+    },
+
+    // JS Beautifier
+    // https://github.com/vkadam/grunt-jsbeautifier
+    // Beautify js, css, html and json files using Grunt and jsbeautify
 
     jsbeautifier: {
       options: {
@@ -226,11 +222,9 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * PHP
-     * Start a PHP-server
-     * https://github.com/sindresorhus/grunt-php
-     */
+    // PHP
+    // Start a PHP-server
+    // https://github.com/sindresorhus/grunt-php
 
     php: {
       content: {
@@ -242,11 +236,9 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * PostCSS
-     * Apply several post-processors to your CSS using PostCSS
-     * https://github.com/nDmitry/grunt-postcss
-     */
+    // PostCSS
+    // Apply several post-processors to your CSS using PostCSS
+    // https://github.com/nDmitry/grunt-postcss
 
     postcss: {
       options: {
@@ -262,11 +254,9 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * Sass
-     * Compile Sass to CSS
-     * https://github.com/sindresorhus/grunt-sass
-     */
+    // Sass
+    // Compile Sass to CSS
+    // https://github.com/sindresorhus/grunt-sass
 
     sass: {
       styles: {
@@ -274,20 +264,21 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         expand: true,
-        cwd: '<%= input %>/_assets/styles/',
-        src: '**/*.scss',
+        cwd: '<%= input %>/_assets/scss/',
+        src: '*.scss',
         dest: '<%= output %>/assets/temp/css/',
         ext: '.min.css'
       }
     },
 
-    /**
-     * Shell
-     * Run shell commands
-     * https://github.com/sindresorhus/grunt-shell
-     */
+    // Shell
+    // Run shell commands
+    // https://github.com/sindresorhus/grunt-shell
 
     shell: {
+      bower: {
+        command: 'node_modules/bower/bin/bower install <%= config.components %> --config.directory=<%= input %>/_assets/bower_components'
+      },
       jekyll: {
         command: [
           'cd <%= input %>/',
@@ -296,54 +287,37 @@ module.exports = function(grunt) {
       }
     },
 
-    /**
-     * SVG2PNG
-     * Grunt plugin to rasterize SVG to PNG images using PhantomJS
-     * https://github.com/dbushell/grunt-svg2png
-     */
+    // SVG2PNG
+    // Grunt plugin to rasterize SVG to PNG images using PhantomJS
+    // https://github.com/dbushell/grunt-svg2png
 
     svg2png: {
       svg: {
         files: [{
-          cwd: '<%= input %>/_assets/images/',
+          cwd: '<%= input %>/_assets/img/',
           src: '**/*.svg',
           dest: '<%= output %>/assets/temp/img/'
         }]
       }
     },
 
-    /**
-     * Uglify
-     * Minify files with UglifyJS
-     * https://github.com/gruntjs/grunt-contrib-uglify
-     */
+    // Uglify
+    // Minify files with UglifyJS
+    // https://github.com/gruntjs/grunt-contrib-uglify
 
     uglify: {
-      concatenate: {
-        src: '<%= input %>/_assets/scripts/concatenate/**/*.js',
-        dest: '<%= output %>/assets/js/script.min.js'
-      },
-      oldie: {
-        src: '<%= input %>/_assets/scripts/oldie/**/*.js',
-        dest: '<%= output %>/assets/js/oldie.min.js'
-      },
       scripts: {
         expand: true,
-        cwd: '<%= input %>/_assets/scripts/',
-        src: [
-          '**/*.js',
-          '!{concatenate,oldie}/**/*.js'
-        ],
+        cwd: '<%= output %>/assets/temp/js/',
+        src: '**/*.js',
         dest: '<%= output %>/assets/js/',
         ext: '.min.js'
       }
     },
 
-    /**
-     * Watch
-     * Run tasks whenever watched files change
-     * https://github.com/gruntjs/grunt-contrib-watch
-     */
+    // Watch
+    // Run tasks whenever watched files change
+    // https://github.com/gruntjs/grunt-contrib-watch
 
     watch: {
       options: {
@@ -356,7 +330,7 @@ module.exports = function(grunt) {
           '!<%= output %>/**/*'
         ],
         tasks: [
-          'shell',
+          'shell:jekyll',
           'imagemin:favicons'
         ]
       },
@@ -369,7 +343,7 @@ module.exports = function(grunt) {
         tasks: 'copy:fonts'
       },
       images: {
-        files: '<%= input %>/_assets/images/**/*.{gif,jpg,png,svg}',
+        files: '<%= input %>/_assets/img/**/*.{gif,jpg,png,svg}',
         tasks: [
           'svg2png',
           'imagemin:svg2png',
@@ -377,11 +351,14 @@ module.exports = function(grunt) {
         ]
       },
       scripts: {
-        files: '<%= input %>/_assets/scripts/**/*.js',
-        tasks: 'uglify'
+        files: '<%= input %>/_assets/js/**/*.js',
+        tasks: [
+          'import_js',
+          'uglify'
+        ]
       },
       styles: {
-        files: '<%= input %>/_assets/styles/**/*.scss',
+        files: '<%= input %>/_assets/scss/**/*.scss',
         tasks: [
           'sass',
           'postcss'
@@ -393,12 +370,13 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  // ---------- Tasks ---------- //
+  // Tasks
+  // -----
 
   // Base Task
   grunt.registerTask('base', [
     'clean:pre',
-    'shell',
+    'shell:jekyll',
     'copy',
     'sass',
     'postcss',
@@ -406,6 +384,7 @@ module.exports = function(grunt) {
     'imagemin:svg2png',
     'imagemin:favicons',
     'imagemin:images',
+    'import_js',
     'uglify'
   ]);
 
@@ -428,7 +407,9 @@ module.exports = function(grunt) {
 
   // Setup Task
   grunt.registerTask('setup', [
-    'curl'
+    'clean',
+    'curl',
+    'shell:bower'
   ]);
 
 };
