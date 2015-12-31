@@ -35,9 +35,10 @@ by [Michael Guerra](http://msguerra74.com)
 
 ### Components
 
+- [FastClick](https://github.com/ftlabs/fastclick): Polyfill to remove click delays on browsers with touch UIs
+- [Foundation](http://foundation.zurb.com): The most advanced responsive front-end framework in the world
 - [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate): Front-end template
 - [Markdown](http://daringfireball.net/projects/markdown): Text-to-HTML conversion tool
-- [Foundation](http://foundation.zurb.com): The most advanced responsive front-end framework in the world
 - [Node.js](http://nodejs.org): JavaScript runtime platform
     - [Grunt](http://gruntjs.com): JavaScript task runner
         - **Grunt Dependencies:**
