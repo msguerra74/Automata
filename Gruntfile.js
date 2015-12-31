@@ -5,21 +5,17 @@
  * MIT License [See README]
  */
 
-// Setting up this project is as easy as 1, 2, 3!
-
-// 1. Enter the project directory name
+// Enter the project directory name
 
 var project = '_example.com';
 
-// 2. Within the project directory, edit the '/website/_config.yml' variables as needed
-
-// 3. That's it, the script below will do the rest!
+// See README for usage information
 
 module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    // Configurations
+    // Project Configurations
 
     config: grunt.file.readYAML('projects/' + project + '/website/_config.yml'),
 
@@ -34,8 +30,8 @@ module.exports = function(grunt) {
 
     output: '<%= input %>/<%= config.destination %>',
 
-    // Packages
-    // --------
+    // General Tasks
+    // -------------
 
     // Banner
     // Adds a simple banner to files
@@ -124,47 +120,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Imagemin
-    // Minify PNG and JPEG images
-    // https://github.com/gruntjs/grunt-contrib-imagemin
-
-    imagemin: {
-      options: {
-        optimizationLevel: 7
-      },
-      favicons: {
-        expand: true,
-        cwd: '<%= input %>/_assets/favicons/',
-        src: '**/*.png',
-        dest: '<%= output %>/'
-      },
-      images: {
-        expand: true,
-        cwd: '<%= input %>/_assets/img/',
-        src: '**/*.{gif,jpg,png,svg}',
-        dest: '<%= output %>/assets/img/'
-      },
-      svg2png: {
-        expand: true,
-        cwd: '<%= output %>/assets/temp/img/',
-        src: '**/*.png',
-        dest: '<%= output %>/assets/img/'
-      }
-    },
-
-    // Import JS
-    // https://github.com/dev113/grunt-import-js
-    // Import JS files within JS files by // @import 'script.js'; instruction
-
-    import_js: {
-      files: {
-        expand: true,
-        cwd: '<%= input %>/_assets/',
-        src: 'js/*.js',
-        dest: '<%= output %>/assets/temp/'
-      }
-    },
-
     // JS Beautifier
     // https://github.com/vkadam/grunt-jsbeautifier
     // Beautify js, css, html and json files using Grunt and jsbeautify
@@ -242,82 +197,19 @@ module.exports = function(grunt) {
       }
     },
 
-    // PostCSS
-    // Apply several post-processors to your CSS using PostCSS
-    // https://github.com/nDmitry/grunt-postcss
-
-    postcss: {
-      options: {
-        processors: [
-          require('autoprefixer')
-        ]
-      },
-      css: {
-        expand: true,
-        cwd: '<%= output %>/assets/temp/css/',
-        src: '**/*.css',
-        dest: '<%= output %>/assets/css/'
-      }
-    },
-
-    // Sass
-    // Compile Sass to CSS
-    // https://github.com/sindresorhus/grunt-sass
-
-    sass: {
-      styles: {
-        options: {
-          outputStyle: 'compressed'
-        },
-        expand: true,
-        cwd: '<%= input %>/_assets/scss/',
-        src: '*.scss',
-        dest: '<%= output %>/assets/temp/css/',
-        ext: '.min.css'
-      }
-    },
-
     // Shell
     // Run shell commands
     // https://github.com/sindresorhus/grunt-shell
 
     shell: {
       bower: {
-        command: 'node_modules/bower/bin/bower install <%= config.components %> --config.directory=<%= input %>/_assets/bower_components'
+        command: 'node_modules/bower/bin/bower install <%= config.components %> --config.directory=<%= input %>/_assets/bower_components/'
       },
       jekyll: {
         command: [
           'cd <%= input %>/',
           'jekyll build'
         ].join('&&')
-      }
-    },
-
-    // SVG2PNG
-    // Grunt plugin to rasterize SVG to PNG images using PhantomJS
-    // https://github.com/dbushell/grunt-svg2png
-
-    svg2png: {
-      svg: {
-        files: [{
-          cwd: '<%= input %>/_assets/img/',
-          src: '**/*.svg',
-          dest: '<%= output %>/assets/temp/img/'
-        }]
-      }
-    },
-
-    // Uglify
-    // Minify files with UglifyJS
-    // https://github.com/gruntjs/grunt-contrib-uglify
-
-    uglify: {
-      scripts: {
-        expand: true,
-        cwd: '<%= output %>/assets/temp/js/',
-        src: '**/*.js',
-        dest: '<%= output %>/assets/js/',
-        ext: '.min.js'
       }
     },
 
@@ -341,7 +233,7 @@ module.exports = function(grunt) {
         ]
       },
       favicons: {
-        files: '<%= input %>/_assets/favicons/**/*.png',
+        files: '<%= input %>/_assets/favicons/*.png',
         tasks: 'imagemin:favicons'
       },
       fonts: {
@@ -369,6 +261,141 @@ module.exports = function(grunt) {
           'sass',
           'postcss'
         ]
+      }
+    },
+
+    // Image Tasks
+    // -----------
+
+    // Imagemin
+    // Minify PNG and JPEG images
+    // https://github.com/gruntjs/grunt-contrib-imagemin
+
+    imagemin: {
+      options: {
+        optimizationLevel: 7
+      },
+      favicons: {
+        expand: true,
+        cwd: '<%= input %>/_assets/favicons/',
+        src: '*.png',
+        dest: '<%= output %>/'
+      },
+      images: {
+        expand: true,
+        cwd: '<%= input %>/_assets/img/',
+        src: '**/*.{gif,jpg,png,svg}',
+        dest: '<%= output %>/assets/img/'
+      },
+      svg2png: {
+        expand: true,
+        cwd: '<%= output %>/assets/temp/img/',
+        src: '**/*.png',
+        dest: '<%= output %>/assets/img/'
+      }
+    },
+
+    // SVG2PNG
+    // Grunt plugin to rasterize SVG to PNG images using PhantomJS
+    // https://github.com/dbushell/grunt-svg2png
+
+    svg2png: {
+      svg: {
+        files: [{
+          cwd: '<%= input %>/_assets/img/',
+          src: '**/*.svg',
+          dest: '<%= output %>/assets/temp/img/'
+        }]
+      }
+    },
+
+    // Script Tasks
+    // ------------
+
+    // Import JS
+    // https://github.com/dev113/grunt-import-js
+    // Import JS files within JS files by // @import 'script.js'; instruction
+
+    import_js: {
+      files: {
+        expand: true,
+        cwd: '<%= input %>/_assets/',
+        src: 'js/*.js',
+        dest: '<%= output %>/assets/temp/'
+      }
+    },
+
+    // Uglify
+    // Minify files with UglifyJS
+    // https://github.com/gruntjs/grunt-contrib-uglify
+
+    uglify: {
+      scripts: {
+        expand: true,
+        cwd: '<%= output %>/assets/temp/js/',
+        src: '**/*.js',
+        dest: '<%= output %>/assets/js/',
+        ext: '.min.js'
+      }
+    },
+
+    // Style Tasks
+    // -----------
+
+    // PostCSS
+    // Apply several post-processors to your CSS using PostCSS
+    // https://github.com/nDmitry/grunt-postcss
+
+    // Autoprefixer
+    // Parse CSS and add vendor prefixes to rules by Can I Use
+    // https://github.com/postcss/autoprefixer
+
+    // Oldie
+    // Provide CSS compatible with old Internet Explorer
+    // https://github.com/jonathantneal/oldie
+
+    postcss: {
+      options: {
+        processors: [
+          require('autoprefixer')
+        ]
+      },
+      css: {
+        expand: true,
+        cwd: '<%= output %>/assets/temp/css/',
+        src: [
+          '**/*.css',
+          '!oldie.min.css'
+        ],
+        dest: '<%= output %>/assets/css/'
+      },
+      oldie: {
+        options: {
+          processors: [
+            require('oldie')
+          ]
+        },
+        expand: true,
+        cwd: '<%= output %>/assets/temp/css/',
+        src: 'oldie.min.css',
+        dest: '<%= output %>/assets/css/'
+      }
+    },
+
+    // Sass
+    // Compile Sass to CSS
+    // https://github.com/sindresorhus/grunt-sass
+
+    sass: {
+      styles: {
+        options: {
+          outputStyle: 'compressed'
+        },
+        expand: true,
+        cwd: '<%= input %>/_assets/scss/',
+        src: '*.scss',
+        dest: '<%= output %>/assets/temp/css/',
+        ext: '.min.css'
       }
     }
 

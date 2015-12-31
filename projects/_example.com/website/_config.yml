@@ -21,16 +21,16 @@ wordpress: false
 link:
   canonical: false
   favicons: true
-  feed: # feed.xml
+  feed: # feed
   googlefonts: # Open+Sans:400,400italic,700,700italic
-  oldie: # oldie.min.js
-  script: script.min.js
-  sitemap: # sitemap.xml
-  style: style.min.css
+  oldie: # oldie
+  script: # script
+  sitemap: # sitemap
+  style: style
 
 # Bower Components
 
-components: ['fastclick foundation-sites motion-ui']
+components: ['es5-shim fastclick foundation-sites html5shiv jquery-legacy=jquery#^1 motion-ui']
 
 # ---------- Jekyll Configurations ---------- #
 

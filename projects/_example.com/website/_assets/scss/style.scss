@@ -1,12 +1,15 @@
-// Automata Stylesheet
-// -------------------
+// Stylesheet
+// ----------
 
 @charset 'utf-8';
 
-@import 'settings';
+@import 'partials/0-settings';
 
 // Foundation for Sites
 // --------------------
+// http://foundation.zurb.com/sites/docs/
+
+// JS components require jQuery, Foundation Core JS, and the appropriate Foundation JS plugins (See script.js)
 
 // @import '../bower_components/foundation-sites/scss/foundation';
 // @import '../bower_components/motion-ui/src/motion-ui';
@@ -18,46 +21,47 @@
 // @include foundation-forms;
 // @include foundation-visibility-classes;
 // @include foundation-float-classes;
-// @include foundation-accordion;
-// @include foundation-accordion-menu;
+// @include foundation-accordion; // JS
+// @include foundation-accordion-menu; // JS
 // @include foundation-badge;
 // @include foundation-breadcrumbs;
 // @include foundation-button-group;
 // @include foundation-callout;
 // @include foundation-close-button;
-// @include foundation-drilldown-menu;
-// @include foundation-dropdown;
-// @include foundation-dropdown-menu;
+// @include foundation-drilldown-menu; // JS
+// @include foundation-dropdown; // JS
+// @include foundation-dropdown-menu; // JS
 // @include foundation-flex-video;
 // @include foundation-label;
 // @include foundation-media-object;
 // @include foundation-menu;
-// @include foundation-off-canvas;
-// @include foundation-orbit;
+// @include foundation-off-canvas; // JS
+// @include foundation-orbit; // JS
 // @include foundation-pagination;
 // @include foundation-progress-bar;
-// @include foundation-slider;
-// @include foundation-sticky;
-// @include foundation-reveal;
+// @include foundation-slider; // JS
+// @include foundation-sticky; // JS
+// @include foundation-reveal; // JS
 // @include foundation-switch;
 // @include foundation-table;
-// @include foundation-tabs;
+// @include foundation-tabs; // JS
 // @include foundation-thumbnail;
 // @include foundation-title-bar;
-// @include foundation-tooltip;
+// @include foundation-tooltip; // JS
 // @include foundation-top-bar;
 
 // @include motion-ui-transitions;
 // @include motion-ui-animations;
 
-// Automata
-// --------
+// Additional
+// ----------
 
-@import 'partials/1-header';
-@import 'partials/2-navigation';
-@import 'partials/3-content';
-@import 'partials/4-aside';
-@import 'partials/5-footer';
-@import 'partials/6-shared';
+@import 'partials/1-base';
+@import 'partials/2-header';
+@import 'partials/3-navigation';
+@import 'partials/4-content';
+@import 'partials/5-aside';
+@import 'partials/6-footer';
+@import 'partials/7-shared';
 
 @import 'vendor/syntax-highlighting';

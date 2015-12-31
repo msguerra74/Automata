@@ -1,14 +1,21 @@
-// Automata JavaScript
-// -------------------
+// JavaScript
+// ----------
 
 // Import Bower Components
 // -----------------------
 
 // Import any of the following components by adding a ; to the end of the @import statement.
 
+// @import 'bower_components/jquery-legacy/dist/jquery.js'
 // @import 'bower_components/jquery/dist/jquery.js'
 // @import 'bower_components/fastclick/lib/fastclick.js'
 // @import 'bower_components/what-input/what-input.js'
+
+// Foundation for Sites
+// --------------------
+// http://foundation.zurb.com/sites/docs/
+
+// JS plugins require the appropriate Foundation SCSS includes (See style.scss)
 
 // @import 'bower_components/foundation-sites/js/foundation.abide.js'
 // @import 'bower_components/foundation-sites/js/foundation.accordion.js'

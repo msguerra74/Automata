@@ -8,7 +8,7 @@ by [Michael Guerra](http://msguerra74.com)
 
 > **Automata** – */aw-tom-uh-tuh/* – Machines that perform a function according to a predetermined set of coded instructions, especially ones capable of a range of programmed responses to different circumstances.
 
-**Automata** is an *Automated Website Generator* that utilizes Jekyll for static site generation and templating, as well as Sass with Foundation for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
+**Automata** is an *Automated Website Generator* that utilizes Jekyll for static site generation and templating, as well as Sass with Foundation support for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
 
 - [Automata GitHub page](https://github.com/msguerra74/Automata)
 - [Automata.zip](https://github.com/msguerra74/Automata/archive/master.zip)
@@ -35,7 +35,6 @@ by [Michael Guerra](http://msguerra74.com)
 
 ### Components
 
-- [FastClick](https://github.com/ftlabs/fastclick): Polyfill to remove click delays on browsers with touch UIs
 - [Foundation](http://foundation.zurb.com): The most advanced responsive front-end framework in the world
 - [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate): Front-end template
 - [Markdown](http://daringfireball.net/projects/markdown): Text-to-HTML conversion tool
@@ -61,6 +60,7 @@ by [Michael Guerra](http://msguerra74.com)
         - [grunt-shell](https://github.com/sindresorhus/grunt-shell): Run shell commands
         - [grunt-svg2png](https://github.com/dbushell/grunt-svg2png): Rasterize SVG to PNG using PhantomJS
         - [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks): Load multiple grunt tasks using globbing patterns
+        - [oldie](https://github.com/jonathantneal/oldie): Provide CSS compatible with old Internet Explorer
 - [Ruby](https://www.ruby-lang.org/en): Programming Language / Runtime Environment
     - [Jekyll](http://jekyllrb.com): Static site generator
     - [Sass](http://sass-lang.com): Extension to CSS3
