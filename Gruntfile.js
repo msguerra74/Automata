@@ -148,7 +148,7 @@ module.exports = function(grunt) {
 
     // Import JS
     // https://github.com/dev113/grunt-import-js
-    // Import JS files within JS files by // @import "script.js"; instruction
+    // Import JS files within JS files by // @import 'script.js'; instruction
 
     import_js: {
       files: {

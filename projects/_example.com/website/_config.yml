@@ -23,21 +23,20 @@ link:
   favicons: true
   feed: # feed.xml
   googlefonts: # Open+Sans:400,400italic,700,700italic
-  modernizr: # modernizr.min.js
   oldie: # oldie.min.js
-  script: # script.min.js
+  script: script.min.js
   sitemap: # sitemap.xml
   style: style.min.css
 
 # Bower Components
 
-components: ['fastclick foundation-sites modernizr motion-ui']
+components: ['fastclick foundation-sites motion-ui']
 
 # ---------- Jekyll Configurations ---------- #
 
 # Directories
 
-# collections: null
+collections: null
 data_dir: _data
 destination: _site
 includes_dir: _includes
