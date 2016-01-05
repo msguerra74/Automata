@@ -5,19 +5,19 @@
  * MIT License [See README]
  */
 
-// Enter the project directory name
-
-var project = '_example.com';
-
-// See README for usage information
-
 module.exports = function(grunt) {
 
+  // Enter the project directory name
+
+  var project = '_example.com';
+
+  // ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
+
+  // Project Configurations
+
+  var config = grunt.file.readYAML('projects/' + project + '/website/_config.yml');
+
   grunt.initConfig({
-
-    // Project Configurations
-
-    config: grunt.file.readYAML('projects/' + project + '/website/_config.yml'),
 
     // Variables
     // ---------
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
     // Output/Compiled Directory
 
-    output: '<%= input %>/<%= config.destination %>',
+    output: '<%= input %>/' + config.destination,
 
     // General Tasks
     // -------------
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     usebanner: {
       assets: {
         options: {
-          banner: '/* <%= config.banner %> */'
+          banner: '/* ' + config.banner + ' */'
         },
         files: {
           src: '<%= output %>/assets/**/*.{css,js}'
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
           logLevel: 'silent',
           notify: false,
           open: true,
-          proxy: '<%= config.host %>:<%= config.port %>',
+          proxy: config.host + ':' + config.port,
           watchTask: true
         }
       }
@@ -85,6 +85,15 @@ module.exports = function(grunt) {
     // https://github.com/gruntjs/grunt-contrib-copy
 
     copy: {
+      favicons: {
+        expand: true,
+        cwd: '<%= input %>/_assets/favicons/',
+        src: [
+          '**/*',
+          '!**/*.png'
+        ],
+        dest: '<%= output %>/'
+      },
       fonts: {
         expand: true,
         cwd: '<%= input %>/_assets/fonts/',
@@ -191,8 +200,8 @@ module.exports = function(grunt) {
       content: {
         options: {
           base: '<%= output %>/',
-          hostname: '<%= config.host %>',
-          port: '<%= config.port %>'
+          hostname: config.host,
+          port: config.port
         }
       }
     },
@@ -203,7 +212,7 @@ module.exports = function(grunt) {
 
     shell: {
       bower: {
-        command: 'node_modules/bower/bin/bower install <%= config.components %> --config.directory=<%= input %>/_assets/bower_components/'
+        command: 'node_modules/bower/bin/bower install ' + config.components + ' --config.directory=<%= input %>/_assets/bower_components/'
       },
       jekyll: {
         command: [
@@ -229,12 +238,16 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'shell:jekyll',
+          'copy:favicons',
           'imagemin:favicons'
         ]
       },
       favicons: {
-        files: '<%= input %>/_assets/favicons/*.png',
-        tasks: 'imagemin:favicons'
+        files: '<%= input %>/_assets/favicons/*',
+        tasks: [
+          'copy:favicons',
+          'imagemin:favicons'
+        ]
       },
       fonts: {
         files: '<%= input %>/_assets/fonts/**/*.{eot,svg,ttf,woff}',

@@ -4,7 +4,7 @@
 // Import Bower Components
 // -----------------------
 
-// Import any of the following components by adding a ; to the end of the @import statement.
+// Import any of the following components by adding a semicolon ';' to the end of the @import statement.
 
 // @import 'bower_components/jquery-legacy/dist/jquery.js'
 // @import 'bower_components/jquery/dist/jquery.js'

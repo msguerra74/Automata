@@ -3,8 +3,7 @@
 
 // Import Bower Components
 // -----------------------
-
-// Import any of the following components by adding a ; to the end of the @import statement.
+// Import any of the following components by adding a semicolon ';' to the end of the @import statement.
 
 // @import 'bower_components/es5-shim/es5-shim.js'
 // @import 'bower_components/es5-shim/es5-sham.js'

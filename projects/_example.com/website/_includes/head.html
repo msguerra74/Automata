@@ -11,10 +11,10 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.wordpress %}{% if site.link.canonical %}
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
     <link rel="sitemap" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}{{ site.link.sitemap }}.xml" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}{% if site.link.googlefonts %}
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.googlefonts }}">{% endif %}
-    {% if site.link.oldie %}<!--[if (gt IE 8) | (IEMobile)]><!-->{% endif %}
-    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}.min.css">
-    {% if site.link.oldie %}<!--<![endif]-->{% endif %}{% endif %}{% if site.link.oldie %}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.googlefonts }}">{% endif %}{% if site.link.oldie %}
+    <!--[if (gt IE 8) | (IEMobile)]><!-->{% endif %}
+    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}.min.css">{% if site.link.oldie %}
+    <!--<![endif]-->{% endif %}{% endif %}{% if site.link.oldie %}
     <!--[if (lt IE 9) & (!IEMobile)]>
     <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.oldie }}.min.css">
     <script src="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/js/{{ site.link.oldie }}.min.js"></script>
