@@ -49,7 +49,7 @@ source: .
 # Reading
 
 encoding: 'utf-8'
-exclude: ['.htaccess']
+exclude: ['*htaccess']
 include: []
 keep_files: ['.git', '.svn', 'assets']
 markdown_ext: 'markdown,mkdown,mkdn,mkd,md'
