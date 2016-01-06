@@ -23,7 +23,7 @@ by [Michael Guerra](http://msguerra74.com)
     - `sudo npm install -g grunt-cli`
     - `sudo npm install`
     - **Note:** if you're installing on Windows, you do not need to begin each command with `sudo`
-5. That's it, now you're ready to build your web project *(Usage instructions below)*!
+5. That's it, now you're ready to build your web project!
 
 ### Usage
 

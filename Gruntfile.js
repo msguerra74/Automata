@@ -5,30 +5,41 @@
  * MIT License [See README]
  */
 
+// Enter the Project Directory Name
+// --------------------------------
+// _example.com
+
+var project = '_example.com';
+
+// ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
+
 module.exports = function(grunt) {
 
-  // Enter the project directory name
+  // Project Configurations and Variables
+  // ------------------------------------
 
-  var project = '_example.com';
-
-  // ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
-
-  // Project Configurations
+  // Configurations
 
   var config = grunt.file.readYAML('projects/' + project + '/website/_config.yml');
 
+  // Generates a Wordpress Theme Name if Needed
+  // examplecom
+
+  var wp_path = '';
+  if (config.wordpress) {
+    var wp_theme = project.replace(/[^A-Za-z]/g, '');
+    wp_path = '/wp-content/themes/' + wp_theme;
+  }
+
+  // Input/Source Directory
+
+  var input = 'projects/' + project + '/website';
+
+  // Output/Compiled Directory
+
+  var output = input + '/' + config.destination + wp_path;
+
   grunt.initConfig({
-
-    // Variables
-    // ---------
-
-    // Input/Source Directory
-
-    input: 'projects/' + project + '/website',
-
-    // Output/Compiled Directory
-
-    output: '<%= input %>/' + config.destination,
 
     // General Tasks
     // -------------
@@ -43,7 +54,7 @@ module.exports = function(grunt) {
           banner: '/* ' + config.banner + ' */'
         },
         files: {
-          src: '<%= output %>/assets/**/*.{css,js}'
+          src: output + '/assets/**/*.{css,js}'
         }
       }
     },
@@ -55,7 +66,7 @@ module.exports = function(grunt) {
     browserSync: {
       sync: {
         bsFiles: {
-          src: '<%= output %>/**/*'
+          src: output + '/**/*'
         },
         options: {
           logLevel: 'silent',
@@ -72,12 +83,12 @@ module.exports = function(grunt) {
     // https://github.com/gruntjs/grunt-contrib-clean
 
     clean: {
-      components: '<%= input %>/_assets/bower_components/',
+      components: input + '/_assets/bower_components/',
       pre: [
-        '<%= output %>/**/{.*,*}',
-        '!<%= output %>/.{git,svn}'
+        output + '/**/{.*,*}',
+        '!' + output + '/.{git,svn}'
       ],
-      post: '<%= output %>/assets/temp/'
+      post: output + '/assets/temp/'
     },
 
     // Copy
@@ -87,18 +98,18 @@ module.exports = function(grunt) {
     copy: {
       favicons: {
         expand: true,
-        cwd: '<%= input %>/_assets/favicons/',
+        cwd: input + '/_assets/favicons/',
         src: [
           '**/*',
           '!**/*.png'
         ],
-        dest: '<%= output %>/'
+        dest: output + '/'
       },
       fonts: {
         expand: true,
-        cwd: '<%= input %>/_assets/fonts/',
+        cwd: input + '/_assets/fonts/',
         src: '**/*.{eot,svg,ttf,woff}',
-        dest: '<%= output %>/assets/fonts/'
+        dest: output + '/assets/fonts/'
       }
     },
 
@@ -109,7 +120,7 @@ module.exports = function(grunt) {
     curl: {
       htaccess: {
         src: 'https://raw.githubusercontent.com/h5bp/html5-boilerplate/master/dist/.htaccess',
-        dest: '<%= input %>/_includes/.htaccess'
+        dest: input + '/_includes/.htaccess'
       }
     },
 
@@ -123,9 +134,9 @@ module.exports = function(grunt) {
           fileNameFormat: '${hash}-${name}.${ext}'
         },
         src: [
-          '<%= output %>/assets/**/*.*'
+          output + '/assets/**/*.*'
         ],
-        dest: '<%= output %>/**/*.{css,html,js,php}'
+        dest: output + '/**/*.{css,html,js,php}'
       }
     },
 
@@ -186,9 +197,9 @@ module.exports = function(grunt) {
       },
       content: {
         expand: true,
-        cwd: '<%= output %>/',
+        cwd: output + '/',
         src: '**/*.html',
-        dest: '<%= output %>/'
+        dest: output + '/'
       }
     },
 
@@ -199,7 +210,7 @@ module.exports = function(grunt) {
     php: {
       content: {
         options: {
-          base: '<%= output %>/',
+          base: output + '/',
           hostname: config.host,
           port: config.port
         }
@@ -212,12 +223,12 @@ module.exports = function(grunt) {
 
     shell: {
       bower: {
-        command: 'node_modules/bower/bin/bower install ' + config.components + ' --config.directory=<%= input %>/_assets/bower_components/'
+        command: 'node_modules/bower/bin/bower install ' + config.components + ' --config.directory=' + input + '/_assets/bower_components/'
       },
       jekyll: {
         command: [
-          'cd <%= input %>/',
-          'jekyll build'
+          'cd ' + input + '/',
+          'jekyll build --destination ' + config.destination + wp_path
         ].join('&&')
       }
     },
@@ -232,9 +243,9 @@ module.exports = function(grunt) {
       },
       content: {
         files: [
-          '<%= input %>/**/*',
-          '!<%= input %>/_assets/**/*',
-          '!<%= output %>/**/*'
+          input + '/**/*',
+          '!' + input + '/_assets/**/*',
+          '!' + output + '/**/*'
         ],
         tasks: [
           'shell:jekyll',
@@ -243,18 +254,18 @@ module.exports = function(grunt) {
         ]
       },
       favicons: {
-        files: '<%= input %>/_assets/favicons/*',
+        files: input + '/_assets/favicons/*',
         tasks: [
           'copy:favicons',
           'imagemin:favicons'
         ]
       },
       fonts: {
-        files: '<%= input %>/_assets/fonts/**/*.{eot,svg,ttf,woff}',
+        files: input + '/_assets/fonts/**/*.{eot,svg,ttf,woff}',
         tasks: 'copy:fonts'
       },
       images: {
-        files: '<%= input %>/_assets/img/**/*.{gif,jpg,png,svg}',
+        files: input + '/_assets/img/**/*.{gif,jpg,png,svg}',
         tasks: [
           'svg2png',
           'imagemin:svg2png',
@@ -262,14 +273,14 @@ module.exports = function(grunt) {
         ]
       },
       scripts: {
-        files: '<%= input %>/_assets/js/**/*.js',
+        files: input + '/_assets/js/**/*.js',
         tasks: [
           'import_js',
           'uglify'
         ]
       },
       styles: {
-        files: '<%= input %>/_assets/scss/**/*.scss',
+        files: input + '/_assets/scss/**/*.scss',
         tasks: [
           'sass',
           'postcss'
@@ -290,21 +301,21 @@ module.exports = function(grunt) {
       },
       favicons: {
         expand: true,
-        cwd: '<%= input %>/_assets/favicons/',
+        cwd: input + '/_assets/favicons/',
         src: '*.png',
-        dest: '<%= output %>/'
+        dest: output + '/'
       },
       images: {
         expand: true,
-        cwd: '<%= input %>/_assets/img/',
+        cwd: input + '/_assets/img/',
         src: '**/*.{gif,jpg,png,svg}',
-        dest: '<%= output %>/assets/img/'
+        dest: output + '/assets/img/'
       },
       svg2png: {
         expand: true,
-        cwd: '<%= output %>/assets/temp/img/',
+        cwd: output + '/assets/temp/img/',
         src: '**/*.png',
-        dest: '<%= output %>/assets/img/'
+        dest: output + '/assets/img/'
       }
     },
 
@@ -315,9 +326,9 @@ module.exports = function(grunt) {
     svg2png: {
       svg: {
         files: [{
-          cwd: '<%= input %>/_assets/img/',
+          cwd: input + '/_assets/img/',
           src: '**/*.svg',
-          dest: '<%= output %>/assets/temp/img/'
+          dest: output + '/assets/temp/img/'
         }]
       }
     },
@@ -332,9 +343,9 @@ module.exports = function(grunt) {
     import_js: {
       files: {
         expand: true,
-        cwd: '<%= input %>/_assets/',
+        cwd: input + '/_assets/',
         src: 'js/*.js',
-        dest: '<%= output %>/assets/temp/'
+        dest: output + '/assets/temp/'
       }
     },
 
@@ -345,9 +356,9 @@ module.exports = function(grunt) {
     uglify: {
       scripts: {
         expand: true,
-        cwd: '<%= output %>/assets/temp/js/',
+        cwd: output + '/assets/temp/js/',
         src: '**/*.js',
-        dest: '<%= output %>/assets/js/',
+        dest: output + '/assets/js/',
         ext: '.min.js'
       }
     },
@@ -375,12 +386,12 @@ module.exports = function(grunt) {
       },
       css: {
         expand: true,
-        cwd: '<%= output %>/assets/temp/css/',
+        cwd: output + '/assets/temp/css/',
         src: [
           '**/*.css',
           '!oldie.min.css'
         ],
-        dest: '<%= output %>/assets/css/'
+        dest: output + '/assets/css/'
       },
       oldie: {
         options: {
@@ -389,9 +400,9 @@ module.exports = function(grunt) {
           ]
         },
         expand: true,
-        cwd: '<%= output %>/assets/temp/css/',
+        cwd: output + '/assets/temp/css/',
         src: 'oldie.min.css',
-        dest: '<%= output %>/assets/css/'
+        dest: output + '/assets/css/'
       }
     },
 
@@ -405,9 +416,9 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         expand: true,
-        cwd: '<%= input %>/_assets/scss/',
+        cwd: input + '/_assets/scss/',
         src: '*.scss',
-        dest: '<%= output %>/assets/temp/css/',
+        dest: output + '/assets/temp/css/',
         ext: '.min.css'
       }
     }

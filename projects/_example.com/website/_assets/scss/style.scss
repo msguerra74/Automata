@@ -3,7 +3,7 @@
 
 @charset 'utf-8';
 
-@import 'partials/0-settings';
+@import 'styles/0-settings';
 
 // Foundation for Sites
 // --------------------
@@ -55,12 +55,12 @@
 // Additional
 // ----------
 
-@import 'partials/1-base';
-@import 'partials/2-header';
-@import 'partials/3-navigation';
-@import 'partials/4-content';
-@import 'partials/5-aside';
-@import 'partials/6-footer';
-@import 'partials/7-shared';
+@import 'styles/1-base';
+@import 'styles/2-header';
+@import 'styles/3-navigation';
+@import 'styles/4-content';
+@import 'styles/5-aside';
+@import 'styles/6-footer';
+@import 'styles/7-shared';
 
-@import 'vendor/syntax-highlighting';
+@import 'partials/syntax-highlighting';
