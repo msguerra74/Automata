@@ -49,14 +49,20 @@ module.exports = function(grunt) {
     // https://github.com/mattstyles/grunt-banner
 
     usebanner: {
-      assets: {
-        options: {
-          banner: '/* ' + config.banner + ' */'
-        },
-        files: {
-          src: output + '/assets/**/*.{css,js}'
+      assets: (function() {
+        if (config.banner) {
+          return {
+            options: {
+              banner: '/* ' + config.banner + ' */'
+            },
+            files: {
+              src: output + '/assets/**/*.{css,js}'
+            }
+          };
+        } else {
+          return {};
         }
-      }
+      })()
     },
 
     // BrowserSync
@@ -96,15 +102,21 @@ module.exports = function(grunt) {
     // https://github.com/gruntjs/grunt-contrib-copy
 
     copy: {
-      favicons: {
-        expand: true,
-        cwd: input + '/_assets/favicons/',
-        src: [
-          '**/*',
-          '!**/*.png'
-        ],
-        dest: output + '/'
-      },
+      favicons: (function() {
+        if (config.link.favicons) {
+          return {
+            expand: true,
+            cwd: input + '/_assets/favicons/',
+            src: [
+              '**/*',
+              '!**/*.png'
+            ],
+            dest: output + '/'
+          };
+        } else {
+          return {};
+        }
+      })(),
       fonts: {
         expand: true,
         cwd: input + '/_assets/fonts/',
@@ -130,9 +142,17 @@ module.exports = function(grunt) {
 
     hashres: {
       assets: {
-        options: {
-          fileNameFormat: '${hash}-${name}.${ext}'
-        },
+        options: (function() {
+          if (config.cache_bust) {
+            return {
+              fileNameFormat: '${hash}-${name}.${ext}'
+            };
+          } else {
+            return {
+              fileNameFormat: '${name}.${ext}'
+            };
+          }
+        })(),
         src: [
           output + '/assets/**/*.*'
         ],
@@ -222,7 +242,7 @@ module.exports = function(grunt) {
     // https://github.com/outatime/grunt-replace
 
     replace: {
-      svg2png: {
+      oldie: {
         options: {
           patterns: [{
             match: '.svg)',
@@ -290,7 +310,7 @@ module.exports = function(grunt) {
         files: input + '/_assets/img/**/*.{gif,jpg,png,svg}',
         tasks: [
           'svg2png',
-          'imagemin:svg2png',
+          'imagemin:oldie',
           'imagemin:images'
         ]
       },
@@ -305,6 +325,7 @@ module.exports = function(grunt) {
         files: input + '/_assets/scss/**/*.scss',
         tasks: [
           'sass',
+          'replace:oldie',
           'postcss'
         ]
       }
@@ -321,19 +342,25 @@ module.exports = function(grunt) {
       options: {
         optimizationLevel: 7
       },
-      favicons: {
-        expand: true,
-        cwd: input + '/_assets/favicons/',
-        src: '*.png',
-        dest: output + '/'
-      },
+      favicons: (function() {
+        if (config.link.favicons) {
+          return {
+            expand: true,
+            cwd: input + '/_assets/favicons/',
+            src: '*.png',
+            dest: output + '/'
+          };
+        } else {
+          return {};
+        }
+      })(),
       images: {
         expand: true,
         cwd: input + '/_assets/img/',
         src: '**/*.{gif,jpg,png,svg}',
         dest: output + '/assets/img/'
       },
-      svg2png: {
+      oldie: {
         expand: true,
         cwd: output + '/assets/temp/img/',
         src: '**/*.png',
@@ -346,13 +373,19 @@ module.exports = function(grunt) {
     // https://github.com/dbushell/grunt-svg2png
 
     svg2png: {
-      svg: {
-        files: [{
-          cwd: input + '/_assets/img/',
-          src: '**/*.svg',
-          dest: output + '/assets/temp/img/'
-        }]
-      }
+      oldie: (function() {
+        if (config.link.oldie) {
+          return {
+            files: [{
+              cwd: input + '/_assets/img/',
+              src: '**/*.svg',
+              dest: output + '/assets/temp/img/'
+            }]
+          };
+        } else {
+          return {};
+        }
+      })()
     },
 
     // Script Tasks
@@ -363,12 +396,33 @@ module.exports = function(grunt) {
     // Import JS files within JS files by // @import 'script.js'; instruction
 
     import_js: {
-      files: {
-        expand: true,
-        cwd: input + '/_assets/',
-        src: 'js/*.js',
-        dest: output + '/assets/temp/'
-      }
+      oldie: (function() {
+        if (config.link.oldie && config.link.script) {
+          return {
+            expand: true,
+            cwd: input + '/_assets/',
+            src: 'js/oldie.js',
+            dest: output + '/assets/temp/'
+          };
+        } else {
+          return {};
+        }
+      })(),
+      scripts: (function() {
+        if (config.link.script) {
+          return {
+            expand: true,
+            cwd: input + '/_assets/',
+            src: [
+              'js/*.js',
+              '!js/oldie.js'
+            ],
+            dest: output + '/assets/temp/'
+          };
+        } else {
+          return {};
+        }
+      })()
     },
 
     // Uglify
@@ -401,18 +455,18 @@ module.exports = function(grunt) {
     // https://github.com/jonathantneal/oldie
 
     postcss: {
-      options: {
-        processors: [
-          require('autoprefixer')({
-            browsers: [
-              'last 2 versions',
-              'ie >= 9',
-              'and_chr >= 2.3'
-            ]
-          })
-        ]
-      },
       css: {
+        options: {
+          processors: [
+            require('autoprefixer')({
+              browsers: [
+                'last 2 versions',
+                'ie >= 9',
+                'and_chr >= 2.3'
+              ]
+            })
+          ]
+        },
         expand: true,
         cwd: output + '/assets/temp/css/',
         src: [
@@ -424,6 +478,13 @@ module.exports = function(grunt) {
       oldie: {
         options: {
           processors: [
+            require('autoprefixer')({
+              browsers: [
+                'last 2 versions',
+                'ie >= 9',
+                'and_chr >= 2.3'
+              ]
+            }),
             require('oldie')
           ]
         },
@@ -439,16 +500,41 @@ module.exports = function(grunt) {
     // https://github.com/sindresorhus/grunt-sass
 
     sass: {
-      styles: {
-        options: {
-          outputStyle: 'compressed'
-        },
-        expand: true,
-        cwd: input + '/_assets/scss/',
-        src: '*.scss',
-        dest: output + '/assets/temp/css/',
-        ext: '.min.css'
-      }
+      oldie: (function() {
+        if (config.link.oldie && config.link.style) {
+          return {
+            options: {
+              outputStyle: 'compressed'
+            },
+            expand: true,
+            cwd: input + '/_assets/scss/',
+            src: 'oldie.scss',
+            dest: output + '/assets/temp/css/',
+            ext: '.min.css'
+          };
+        } else {
+          return {};
+        }
+      })(),
+      styles: (function() {
+        if (config.link.style) {
+          return {
+            options: {
+              outputStyle: 'compressed'
+            },
+            expand: true,
+            cwd: input + '/_assets/scss/',
+            src: [
+              '*.scss',
+              '!oldie.scss'
+            ],
+            dest: output + '/assets/temp/css/',
+            ext: '.min.css'
+          };
+        } else {
+          return {};
+        }
+      })()
     }
 
   });
@@ -465,10 +551,10 @@ module.exports = function(grunt) {
     'shell:jekyll',
     'copy',
     'sass',
-    'replace:svg2png',
+    'replace:oldie',
     'postcss',
     'svg2png',
-    'imagemin:svg2png',
+    'imagemin:oldie',
     'imagemin:favicons',
     'imagemin:images',
     'import_js',

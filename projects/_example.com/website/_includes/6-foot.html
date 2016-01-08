@@ -1,5 +1,5 @@
     {% if site.wordpress %}<?php wp_footer(); ?>{% else %}{% if site.link.script %}
-    <script src="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/js/{{ site.link.script }}.min.js"></script>{% endif %}{% if page.include.foot %}
+    <script src="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/js/script.min.js"></script>{% endif %}{% if page.include.foot %}
     {{ page.include.foot }}{% endif %}{% endif %}{% if site.analytics %}
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='https://www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','{{ site.analytics }}','auto');ga('send','pageview');

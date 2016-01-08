@@ -12,22 +12,23 @@ owner:
   name: Owner Name
   email: owner@email.com
 
-banner: Created by Developer | http://developer-website.com
+banner: # Created by Developer | http://developer-website.com
 
 # Options
 
 analytics: # UA-xxxxxxxx-x
+cache_bust: true
 wordpress: false
 
 link:
   canonical: false
   favicons: true
-  feed: # feed
+  feed: false
   googlefonts: # Open+Sans:400,400italic,700,700italic
-  oldie: # oldie
-  script: # script
-  sitemap: # sitemap
-  style: style
+  oldie: false
+  script: false
+  sitemap: false
+  style: true
 
 # Bower Components
 
