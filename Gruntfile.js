@@ -217,6 +217,28 @@ module.exports = function(grunt) {
       }
     },
 
+    // Replace
+    // Replace text patterns with applause
+    // https://github.com/outatime/grunt-replace
+
+    replace: {
+      svg2png: {
+        options: {
+          patterns: [{
+            match: '.svg)',
+            replacement: '.png)'
+          }],
+          usePrefix: false
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: output + '/assets/temp/css/oldie.min.css',
+          dest: output + '/assets/temp/css/'
+        }]
+      }
+    },
+
     // Shell
     // Run shell commands
     // https://github.com/sindresorhus/grunt-shell
@@ -443,6 +465,7 @@ module.exports = function(grunt) {
     'shell:jekyll',
     'copy',
     'sass',
+    'replace:svg2png',
     'postcss',
     'svg2png',
     'imagemin:svg2png',

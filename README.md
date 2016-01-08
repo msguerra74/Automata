@@ -56,6 +56,7 @@ by [Michael Guerra](http://msguerra74.com)
         - [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier): Beautify js, css, html and json files using Grunt and jsbeautify
         - [grunt-php](https://github.com/sindresorhus/grunt-php): Start a PHP-server
         - [grunt-postcss](https://github.com/nDmitry/grunt-postcss): Apply several post-processors to your CSS using PostCSS
+        - [grunt-replace](https://github.com/outatime/grunt-replace): Replace text patterns with applause
         - [grunt-sass](https://github.com/sindresorhus/grunt-sass): Compile Sass to CSS
         - [grunt-shell](https://github.com/sindresorhus/grunt-shell): Run shell commands
         - [grunt-svg2png](https://github.com/dbushell/grunt-svg2png): Rasterize SVG to PNG using PhantomJS
