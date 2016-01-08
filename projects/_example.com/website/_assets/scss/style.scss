@@ -4,11 +4,11 @@
 @charset 'utf-8';
 
 @import 'styles/0-settings';
+@import 'partials/mixins';
 
 // Foundation for Sites
 // --------------------
 // http://foundation.zurb.com/sites/docs/
-// JS components require jQuery, Foundation Core JS, and the appropriate Foundation JS plugins (See script.js)
 
 // @import '../bower_components/foundation-sites/scss/foundation';
 // @import '../bower_components/motion-ui/src/motion-ui';
