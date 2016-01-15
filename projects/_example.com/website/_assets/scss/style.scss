@@ -3,9 +3,13 @@
 
 @charset 'utf-8';
 
-// Settings/Mixins
+// Settings
 
 @import 'settings';
+
+// Functions/Mixins
+
+@import 'functions/functions';
 @import 'mixins/mixins';
 
 // Styles

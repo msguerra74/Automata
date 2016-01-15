@@ -1,0 +1,19 @@
+// PX to REM
+//----------
+
+// Usage
+// rem(target, base);
+
+// Arguments
+// $_target: Number in pixels
+// $_base: Number in pixels
+
+@function rem($_target, $_base: 16px) {
+  @if not unitless($_target) {
+    $_target: strip-unit($_target);
+  }
+  @if not unitless($_base) {
+    $_base: strip-unit($_base);
+  }
+  @return $_target / $_base * 1rem;
+}
