@@ -8,7 +8,7 @@ by [Michael Guerra](http://msguerra74.com)
 
 > **Automata** – */aw-tom-uh-tuh/* – Machines that perform a function according to a predetermined set of coded instructions, especially ones capable of a range of programmed responses to different circumstances.
 
-**Automata** is an *Automated Website Generator* that utilizes Jekyll for static site generation and templating, as well as Sass with Foundation support for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
+**Automata** is an *Automated Website Generator* that utilizes Jekyll for static site templating, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, automatic SVG to PNG fallback conversion, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
 
 - [Automata GitHub page](https://github.com/msguerra74/Automata)
 - [Automata.zip](https://github.com/msguerra74/Automata/archive/master.zip)
@@ -35,8 +35,6 @@ by [Michael Guerra](http://msguerra74.com)
 
 ### Components
 
-- [Foundation](http://foundation.zurb.com): The most advanced responsive front-end framework in the world
-- [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate): Front-end template
 - [Markdown](http://daringfireball.net/projects/markdown): Text-to-HTML conversion tool
 - [Node.js](http://nodejs.org): JavaScript runtime platform
     - [Grunt](http://gruntjs.com): JavaScript task runner

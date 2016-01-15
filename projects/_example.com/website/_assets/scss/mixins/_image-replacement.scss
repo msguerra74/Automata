@@ -1,16 +1,15 @@
-// Mixins
-// ------
-
 // Image Replacement
-// -----------------
+//------------------
 
 // Usage
 // @include image-replacement;
 
 @mixin image-replacement {
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  color: transparent;
+  font: '0/0' a;
+  text-shadow: none;
 }
 
 // Usage

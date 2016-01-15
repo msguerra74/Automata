@@ -1,5 +1,5 @@
-## Project Configurations
-## ----------------------
+# Project Configurations
+# ----------------------
 
 # Information
 
@@ -24,7 +24,7 @@ link:
   canonical: false
   favicons: true
   feed: false
-  googlefonts: # Open+Sans:400,400italic,700,700italic
+  googlefonts: # Open+Sans:400,700,400italic,700italic
   oldie: false
   script: false
   sitemap: false
@@ -32,10 +32,10 @@ link:
 
 # Bower Components
 
-components: ['es5-shim fastclick foundation-sites html5shiv jquery-legacy=jquery#^1 motion-ui']
+components: ['html5shiv jquery']
 
-## Jekyll Configurations
-## ---------------------
+# Jekyll Configurations
+# ---------------------
 
 # Directories
 
