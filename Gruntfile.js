@@ -108,8 +108,8 @@ module.exports = function(grunt) {
             expand: true,
             cwd: input + '/_assets/favicons/',
             src: [
-              '**/*',
-              '!**/*.png'
+              '*',
+              '!*.png'
             ],
             dest: output + '/'
           };
@@ -433,7 +433,7 @@ module.exports = function(grunt) {
       scripts: {
         expand: true,
         cwd: output + '/assets/temp/js/',
-        src: '**/*.js',
+        src: '*.js',
         dest: output + '/assets/js/',
         ext: '.min.js'
       }
@@ -470,7 +470,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: output + '/assets/temp/css/',
         src: [
-          '**/*.css',
+          '*.css',
           '!oldie.min.css'
         ],
         dest: output + '/assets/css/'
