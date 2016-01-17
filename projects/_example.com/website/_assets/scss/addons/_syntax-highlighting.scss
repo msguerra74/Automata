@@ -1,12 +1,12 @@
 // Syntax Highlighting
 // -------------------
 
-// Base16 Tomorrow Theme (Dark/Light)
+// Base16 Tomorrow Dark/Light Theme
 
 @if $syntax-highlighting {
   @if $dark-syntax-highlighting {
 
-    // Dark
+    // Dark Theme
 
     .highlight {
       background-color: #373b41;
@@ -337,7 +337,7 @@
   }
   @else {
 
-    // Light
+    // Light Theme
 
     .highlight {
       background-color: #e0e0e0;

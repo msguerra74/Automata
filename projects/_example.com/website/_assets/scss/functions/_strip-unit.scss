@@ -1,9 +1,0 @@
-// Strip Unit
-//-----------
-
-// Note
-// Used in _rem.scss
-
-@function strip-unit($_value) {
-  @return $_value / ($_value * 0 + 1);
-}

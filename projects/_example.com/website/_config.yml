@@ -32,7 +32,7 @@ link:
 
 # Bower Components
 
-components: ['fastclick html5shiv jquery']
+components: ['es5-shim fastclick foundation-sites html5shiv jquery-legacy=jquery#^1 motion-ui']
 
 # Jekyll Configurations
 # ---------------------
