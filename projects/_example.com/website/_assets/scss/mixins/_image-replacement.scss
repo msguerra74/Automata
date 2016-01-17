@@ -5,11 +5,9 @@
 // @include image-replacement;
 
 @mixin image-replacement {
-  background-color: transparent;
-  border: 0;
-  color: transparent;
-  font: '0/0' a;
-  text-shadow: none;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
 }
 
 // Usage
