@@ -11,9 +11,8 @@
     .highlight {
       background-color: #373b41;
 
-      .highlighter-rouge & {
-        background: #1d1f21;
-        color: #ffffff;
+      code {
+        color: white;
       }
 
       // Comment
@@ -342,9 +341,8 @@
     .highlight {
       background-color: #e0e0e0;
 
-      .highlighter-rouge & {
-        background: #ffffff;
-        color: #1d1f21;
+      code {
+        color: #373b41;
       }
 
       // Comment
