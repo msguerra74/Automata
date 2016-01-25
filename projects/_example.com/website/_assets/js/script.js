@@ -5,7 +5,7 @@
 // ----------------
 // To import any of the following bower_components, change '//' to '// @import'.
 
-// jQuery Legacy/Modern
+// jQuery Legacy/Current
 // http://api.jquery.com
 
 // 'bower_components/jquery-legacy/dist/jquery.js';
