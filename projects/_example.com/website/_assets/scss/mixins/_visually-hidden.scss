@@ -1,0 +1,58 @@
+// Visually Hidden
+//----------------
+// Hide only visually, but have it available for screenreaders
+
+// Usage
+// @include visually-hidden;
+
+@mixin visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  // Note
+  // Extends visually-hidden to allow the element to be focusable when navigated to via the keyboard
+  &.focusable:active,
+  &.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+// Usage
+// @extend %visually-hidden;
+
+%visually-hidden {
+  @include visually-hidden;
+}
+
+// Undo Visually Hidden
+//---------------------
+
+// Usage
+// @include undo-visually-hidden;
+
+@mixin undo-visually-hidden {
+  clip: auto;
+  clip: rect(auto auto auto auto);
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+// Usage
+// @extend %undo-visually-hidden;
+
+%undo-visually-hidden {
+  @include undo-visually-hidden;
+}
