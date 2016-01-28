@@ -27,10 +27,10 @@
   </head>
   <body{% if site.wordpress %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>{% if site.link.oldie %}
     <!--[if (lt IE 9) & (!IEMobile)]>
-    <div class="callout oldie warning">
-      <button class="close-button" aria-label="Close alert" type="button">
+    <div class="callout large oldie text-center warning" data-closable>
+      <span>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com" target="_blank">upgrade your browser</a> to improve your experience.</span>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
         <span aria-hidden="true">&times;</span>
       </button>
-      <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com">upgrade your browser</a> to improve your experience.</p>
     </div>
     <![endif]-->{% endif %}
