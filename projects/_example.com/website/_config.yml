@@ -5,7 +5,7 @@
 
 url: http://localhost:4000
 
-title: The website title should be 60 characters in length or less
+title: Website title
 description: The website meta description can be any length, but for search engine optimization purposes, it is best to limit the description to 156 characters or less.
 
 owner:
