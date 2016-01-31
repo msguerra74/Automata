@@ -2,8 +2,7 @@
 <html class="no-js" {% if site.wordpress %}<?php language_attributes(); ?>{% else %}lang="en"{% endif %}>
   <head>{% if site.banner %}
     <!-- {{ site.banner }} -->{% endif %}
-    <meta charset="{% if site.wordpress %}<?php bloginfo( 'charset' ); ?>{% else %}utf-8{% endif %}">{% if site.link.oldie %}
-    <meta http-equiv="x-ua-compatible" content="ie=edge">{% endif %}{% unless site.wordpress %}
+    <meta charset="{% if site.wordpress %}<?php bloginfo( 'charset' ); ?>{% else %}utf-8{% endif %}">{% unless site.wordpress %}
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% endunless %}
     <meta name="viewport" content="width=device-width, initial-scale=1">{% unless site.wordpress %}{% if site.link.feed %}
@@ -11,26 +10,12 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.wordpress %}{% if site.link.canonical %}
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
     <link rel="sitemap" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}sitemap.xml" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}{% if site.link.googlefonts %}
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.googlefonts }}">{% endif %}{% if site.link.oldie %}
-    <!--[if (gt IE 8) | (IEMobile)]><!-->{% endif %}
-    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/style.min.css">{% if site.link.oldie %}
-    <!--<![endif]-->{% endif %}{% endif %}{% if site.link.oldie %}
-    <!--[if (lt IE 9) & (!IEMobile)]>
-    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/oldie.min.css">
-    <script src="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/js/oldie.min.js"></script>
-    <![endif]-->{% endif %}{% endunless %}{% if site.link.script %}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.googlefonts }}">{% endif %}
+    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/style.min.css">{% endif %}{% endunless %}{% if site.link.script %}
     <script>
       with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}
     </script>{% endif %}{% if site.wordpress %}
     <?php wp_head(); ?>{% else %}{% if page.include.head %}
     {{ page.include.head }}{% endif %}{% endif %}
   </head>
-  <body{% if site.wordpress %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>{% if site.link.oldie %}
-    <!--[if (lt IE 9) & (!IEMobile)]>
-    <div class="callout large oldie text-center warning" data-closable>
-      <span>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com" target="_blank">upgrade your browser</a> to improve your experience.</span>
-      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <![endif]-->{% endif %}
+  <body{% if site.wordpress %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>

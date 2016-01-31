@@ -1,14 +1,13 @@
-// JavaScript
-// ----------
+// JavaScript / jQuery
+// -------------------
 
 // Bower Components
 // ----------------
-// To import any of the following bower_components, change '//' to '// @import'.
+// To import any of the following bower_components, change '//' to '// @import'
 
-// jQuery Legacy/Current
+// jQuery
 // http://api.jquery.com
 
-// 'bower_components/jquery-legacy/dist/jquery.js';
 // 'bower_components/jquery/dist/jquery.js';
 
 // Foundation
@@ -44,21 +43,6 @@
 // 'bower_components/foundation-sites/js/foundation.util.touch.js';
 // 'bower_components/foundation-sites/js/foundation.util.triggers.js';
 
-// FastClick
-// https://github.com/ftlabs/fastclick
-
-// 'bower_components/fastclick/lib/fastclick.js';
-
-// Compontent Initilalization
-// --------------------------
-// To initialize any of the following components, uncomment the function.
-
-// Foundation
+// Initialize Foundation by uncommenting the following line
 
 // $(document).foundation();
-
-// FastClick
-
-// $(function() {
-//   FastClick.attach(document.body);
-// });

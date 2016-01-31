@@ -89,12 +89,15 @@ module.exports = function(grunt) {
     // https://github.com/gruntjs/grunt-contrib-clean
 
     clean: {
-      components: input + '/_assets/bower_components/',
       pre: [
         output + '/**/{.*,*}',
         '!' + output + '/.{git,svn}'
       ],
-      post: output + '/assets/temp/'
+      post: output + '/assets/temp/',
+      setup: [
+        input + '/_assets/bower_components/',
+        '<%= clean.pre %>'
+      ],
     },
 
     // Copy
@@ -237,28 +240,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Replace
-    // Replace text patterns with applause
-    // https://github.com/outatime/grunt-replace
-
-    replace: {
-      oldie: {
-        options: {
-          patterns: [{
-            match: '.svg)',
-            replacement: '.png)'
-          }],
-          usePrefix: false
-        },
-        files: [{
-          expand: true,
-          flatten: true,
-          src: output + '/assets/temp/css/oldie.min.css',
-          dest: output + '/assets/temp/css/'
-        }]
-      }
-    },
-
     // Shell
     // Run shell commands
     // https://github.com/sindresorhus/grunt-shell
@@ -308,11 +289,7 @@ module.exports = function(grunt) {
       },
       images: {
         files: input + '/_assets/img/**/*.{gif,jpg,png,svg}',
-        tasks: [
-          'svg2png',
-          'imagemin:oldie',
-          'imagemin:images'
-        ]
+        tasks: 'imagemin:images'
       },
       scripts: {
         files: input + '/_assets/js/**/*.js',
@@ -325,7 +302,6 @@ module.exports = function(grunt) {
         files: input + '/_assets/scss/**/*.scss',
         tasks: [
           'sass',
-          'replace:oldie',
           'postcss'
         ]
       }
@@ -359,33 +335,7 @@ module.exports = function(grunt) {
         cwd: input + '/_assets/img/',
         src: '**/*.{gif,jpg,png,svg}',
         dest: output + '/assets/img/'
-      },
-      oldie: {
-        expand: true,
-        cwd: output + '/assets/temp/img/',
-        src: '**/*.png',
-        dest: output + '/assets/img/'
       }
-    },
-
-    // SVG2PNG
-    // Grunt plugin to rasterize SVG to PNG images using PhantomJS
-    // https://github.com/dbushell/grunt-svg2png
-
-    svg2png: {
-      oldie: (function() {
-        if (config.link.oldie) {
-          return {
-            files: [{
-              cwd: input + '/_assets/img/',
-              src: '**/*.svg',
-              dest: output + '/assets/temp/img/'
-            }]
-          };
-        } else {
-          return {};
-        }
-      })()
     },
 
     // Script Tasks
@@ -396,27 +346,12 @@ module.exports = function(grunt) {
     // Import JS files within JS files by // @import 'script.js'; instruction
 
     import_js: {
-      oldie: (function() {
-        if (config.link.oldie && config.link.script) {
-          return {
-            expand: true,
-            cwd: input + '/_assets/',
-            src: 'js/oldie.js',
-            dest: output + '/assets/temp/'
-          };
-        } else {
-          return {};
-        }
-      })(),
       scripts: (function() {
         if (config.link.script) {
           return {
             expand: true,
             cwd: input + '/_assets/',
-            src: [
-              'js/*.js',
-              '!js/oldie.js'
-            ],
+            src: 'js/*.js',
             dest: output + '/assets/temp/'
           };
         } else {
@@ -450,10 +385,6 @@ module.exports = function(grunt) {
     // Parse CSS and add vendor prefixes to rules by Can I Use
     // https://github.com/postcss/autoprefixer
 
-    // Oldie
-    // Provide CSS compatible with old Internet Explorer
-    // https://github.com/jonathantneal/oldie
-
     postcss: {
       css: {
         options: {
@@ -469,28 +400,7 @@ module.exports = function(grunt) {
         },
         expand: true,
         cwd: output + '/assets/temp/css/',
-        src: [
-          '*.css',
-          '!oldie.min.css'
-        ],
-        dest: output + '/assets/css/'
-      },
-      oldie: {
-        options: {
-          processors: [
-            require('autoprefixer')({
-              browsers: [
-                'last 2 versions',
-                'ie >= 9',
-                'and_chr >= 2.3'
-              ]
-            }),
-            require('oldie')
-          ]
-        },
-        expand: true,
-        cwd: output + '/assets/temp/css/',
-        src: 'oldie.min.css',
+        src: '*.css',
         dest: output + '/assets/css/'
       }
     },
@@ -500,15 +410,15 @@ module.exports = function(grunt) {
     // https://github.com/sindresorhus/grunt-sass
 
     sass: {
-      oldie: (function() {
-        if (config.link.oldie && config.link.style) {
+      dev: (function() {
+        if (config.link.style) {
           return {
             options: {
-              outputStyle: 'compressed'
+              outputStyle: 'expanded'
             },
             expand: true,
             cwd: input + '/_assets/scss/',
-            src: 'oldie.scss',
+            src: '*.scss',
             dest: output + '/assets/temp/css/',
             ext: '.min.css'
           };
@@ -524,10 +434,7 @@ module.exports = function(grunt) {
             },
             expand: true,
             cwd: input + '/_assets/scss/',
-            src: [
-              '*.scss',
-              '!oldie.scss'
-            ],
+            src: '*.scss',
             dest: output + '/assets/temp/css/',
             ext: '.min.css'
           };
@@ -544,27 +451,18 @@ module.exports = function(grunt) {
   // Tasks
   // -----
 
-  // Base Task
-
-  grunt.registerTask('base', [
-    'clean:pre',
-    'shell:jekyll',
-    'copy',
-    'sass',
-    'replace:oldie',
-    'postcss',
-    'svg2png',
-    'imagemin:oldie',
-    'imagemin:favicons',
-    'imagemin:images',
-    'import_js',
-    'uglify'
-  ]);
-
   // Build Task
 
   grunt.registerTask('build', [
-    'base',
+    'clean:pre',
+    'shell:jekyll',
+    'copy',
+    'sass:styles',
+    'postcss',
+    'imagemin:favicons',
+    'imagemin:images',
+    'import_js',
+    'uglify',
     'clean:post',
     'usebanner',
     'hashres',
@@ -574,7 +472,15 @@ module.exports = function(grunt) {
   // Default Task
 
   grunt.registerTask('default', [
-    'base',
+    'clean:pre',
+    'shell:jekyll',
+    'copy',
+    'sass:dev',
+    'postcss',
+    'imagemin:favicons',
+    'imagemin:images',
+    'import_js',
+    'uglify',
     'php',
     'browserSync',
     'watch'
@@ -583,7 +489,7 @@ module.exports = function(grunt) {
   // Setup Task
 
   grunt.registerTask('setup', [
-    'clean',
+    'clean:setup',
     'curl',
     'shell:bower'
   ]);

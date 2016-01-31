@@ -16,8 +16,8 @@ banner: # Created by Developer | http://developer-website.com
 
 # Options
 
-analytics: # UA-xxxxxxxx-x
-cache_bust: true
+analytics: # UA-XXXXXXXX-X
+cache_bust: false
 wordpress: false
 
 link:
@@ -25,14 +25,13 @@ link:
   favicons: true
   feed: false
   googlefonts: # Open+Sans:400,700,400italic,700italic
-  oldie: false
-  script: false
+  script: true
   sitemap: false
   style: true
 
 # Bower Components
 
-components: ['es5-shim fastclick foundation-sites html5shiv jquery-legacy=jquery#^1 motion-ui']
+components: ['foundation-sites motion-ui']
 
 # Jekyll Configurations
 # ---------------------

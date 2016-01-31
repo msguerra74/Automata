@@ -8,7 +8,7 @@ by [Michael Guerra](http://msguerra74.com)
 
 > **Automata** – */aw-tom-uh-tuh/* – Machines that perform a function according to a predetermined set of coded instructions, especially ones capable of a range of programmed responses to different circumstances.
 
-**Automata** is an *Automated Website Generator* that utilizes Jekyll for static site templating, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, automatic SVG to PNG fallback conversion, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
+**Automata** is an *Automated Website Generator* that utilizes Jekyll for static site templating, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
 
 - [Automata GitHub page](https://github.com/msguerra74/Automata)
 - [Automata.zip](https://github.com/msguerra74/Automata/archive/master.zip)
@@ -54,12 +54,9 @@ by [Michael Guerra](http://msguerra74.com)
         - [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier): Beautify js, css, html and json files using Grunt and jsbeautify
         - [grunt-php](https://github.com/sindresorhus/grunt-php): Start a PHP-server
         - [grunt-postcss](https://github.com/nDmitry/grunt-postcss): Apply several post-processors to your CSS using PostCSS
-        - [grunt-replace](https://github.com/outatime/grunt-replace): Replace text patterns with applause
         - [grunt-sass](https://github.com/sindresorhus/grunt-sass): Compile Sass to CSS
         - [grunt-shell](https://github.com/sindresorhus/grunt-shell): Run shell commands
-        - [grunt-svg2png](https://github.com/dbushell/grunt-svg2png): Rasterize SVG to PNG using PhantomJS
         - [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks): Load multiple grunt tasks using globbing patterns
-        - [oldie](https://github.com/jonathantneal/oldie): Provide CSS compatible with old Internet Explorer
 - [Ruby](https://www.ruby-lang.org/en): Programming Language / Runtime Environment
     - [Jekyll](http://jekyllrb.com): Static site generator
     - [Sass](http://sass-lang.com): Extension to CSS3
