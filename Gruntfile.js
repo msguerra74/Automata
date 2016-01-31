@@ -11,7 +11,7 @@
 
 var project = '_example.com';
 
-// ---------- NO NEED TO EDIT BELOW THIS LINE ---------- //
+// ---------- EDIT BELOW THIS LINE AT YOUR OWN RISK ---------- //
 
 module.exports = function(grunt) {
 

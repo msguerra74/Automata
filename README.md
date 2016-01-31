@@ -10,6 +10,8 @@ by [Michael Guerra](http://msguerra74.com)
 
 **Automata** is an *Automated Website Generator* that utilizes Jekyll for static site templating, as well as Sass for responsive CSS preprocessing with automatic vendor prefixing and minification, JavaScript concatenation and minification, GIF/JPG/PNG/SVG image optimization, Bower asset management with cache-busting, and an automated PHP development server with BrowserSync for instant browser feedback.
 
+Additionally, [Foundation](http://foundation.zurb.com) and [WordPress](https://wordpress.org) theming support is included at no extra charge!
+
 - [Automata GitHub page](https://github.com/msguerra74/Automata)
 - [Automata.zip](https://github.com/msguerra74/Automata/archive/master.zip)
 
