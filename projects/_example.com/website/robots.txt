@@ -2,7 +2,7 @@
 disallow:
 ---
 
-{% if site.link.sitemap %}Sitemap: {{ site.url }}/sitemap.xml
+{% if site.link.sitemap %}Sitemap: {{ site.url }}/{{ site.link.sitemap }}
 
 {% endif %}User-agent: *{% if page.disallow %}{% for directory in page.disallow %}
 Disallow: {{ directory }}{% endfor %}{% else %}

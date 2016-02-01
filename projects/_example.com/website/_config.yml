@@ -13,23 +13,23 @@ owner:
   email: owner@email.com
 
 banner:
-  developer: # Developer
-  developer_url: # http://developer-website.com
+  developer: Developer Name
+  developer_url: http://developer-website.com
 
 # Options
 
-analytics: # UA-XXXXXXXX-X
-cache_bust: false
+analytics: # UA-xxxxxxxx-x
+cache_bust: true
 wordpress: # example_theme
 
 link:
-  canonical: false
+  canonical: true
   favicons: true
-  feed: false
+  feed: feed.xml
   google_fonts: # Open+Sans:400,700,400italic,700italic
-  script: true
-  sitemap: false
-  style: true
+  script: script.min.js
+  sitemap: sitemap.xml
+  style: style.min.css
 
 # Bower Components
 
