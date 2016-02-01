@@ -22,13 +22,11 @@ module.exports = function(grunt) {
 
   var config = grunt.file.readYAML('projects/' + project + '/website/_config.yml');
 
-  // Generates a Wordpress Theme Name if Needed
-  // examplecom
+  // Generates a WordPress theme path if a wordpress variable is active in _config.yml
 
   var wp_path = '';
   if (config.wordpress) {
-    var wp_theme = project.replace(/[^A-Za-z]/g, '');
-    wp_path = '/wp-content/themes/' + wp_theme;
+    wp_path = '/wp-content/themes/' + config.wordpress;
   }
 
   // Input/Source Directory
@@ -50,10 +48,10 @@ module.exports = function(grunt) {
 
     usebanner: {
       assets: (function() {
-        if (config.banner) {
+        if (config.banner.developer) {
           return {
             options: {
-              banner: '/* ' + config.banner + ' */'
+              banner: '/* Developed by ' + config.banner.developer + ' | ' + config.banner.developer_url + ' */'
             },
             files: {
               src: output + '/assets/**/*.{css,js}'

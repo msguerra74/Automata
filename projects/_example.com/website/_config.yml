@@ -12,19 +12,21 @@ owner:
   name: Owner Name
   email: owner@email.com
 
-banner: # Created by Developer | http://developer-website.com
+banner:
+  developer: # Developer
+  developer_url: # http://developer-website.com
 
 # Options
 
 analytics: # UA-XXXXXXXX-X
 cache_bust: false
-wordpress: false
+wordpress: # example_theme
 
 link:
   canonical: false
   favicons: true
   feed: false
-  googlefonts: # Open+Sans:400,700,400italic,700italic
+  google_fonts: # Open+Sans:400,700,400italic,700italic
   script: true
   sitemap: false
   style: true
