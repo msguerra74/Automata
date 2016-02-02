@@ -95,7 +95,7 @@ module.exports = function(grunt) {
       setup: [
         input + '/_assets/bower_components/',
         '<%= clean.pre %>'
-      ],
+      ]
     },
 
     // Copy

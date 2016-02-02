@@ -31,7 +31,7 @@ Additionally, [Foundation](http://foundation.zurb.com) and [WordPress](https://w
 
 1. Modify the `project` directory variable at the top of the `Gruntfile.js`, if needed, and edit the `projects/_example.com/website/_config.yml` variables to match your projects needs. (**Note:** You can also duplicate the `_example.com` directory to create multiple projects *(example2.com, example3.com, etc...)*, as long as you point to the appropriate `Project Directory` at the top of the `Gruntfile.js` file).
 2. From the command prompt, navigate to the `Automata` folder and run any of the following Grunt tasks:
-    - `grunt setup` to download the latest version of `.htaccess` and install the bower components you have listed in the `_config.yml` file.
+    - `grunt setup` to download the latest version of `.htaccess` and install the bower components you have listed in the `_config.yml` file
     - `grunt` to develop your site with a live PHP server
     - `grunt build` to build a production version of your site
 

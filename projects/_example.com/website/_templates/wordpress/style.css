@@ -1,0 +1,12 @@
+---
+---
+
+/*
+Theme Name: {{ site.title }} Theme
+Theme URI: {{ site.url }}{% if site.developer.name %}
+Author: {{ site.developer.name }}
+Author URI: {{ site.developer.url }}{% endif %}
+Description: {{ site.title }} WordPress Theme
+Version: 1.0
+License: The MIT License (MIT)
+*/

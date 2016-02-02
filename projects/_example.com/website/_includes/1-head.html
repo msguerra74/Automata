@@ -11,7 +11,9 @@
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
     <link rel="sitemap" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}{{ site.link.sitemap }}" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}{% if site.link.google_fonts %}
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.google_fonts }}">{% endif %}
-    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}">{% endif %}{% endunless %}{% if site.link.script %}
+    <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}">{% endif %}{% endunless %}{% if site.wordpress_theme_name %}
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <link rel="profile" href="http://gmpg.org/xfn/11">{% endif %}{% if site.link.script %}
     <script>
       with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}
     </script>{% endif %}{% if site.wordpress_theme_name %}
