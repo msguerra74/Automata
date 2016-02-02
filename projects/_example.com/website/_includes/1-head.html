@@ -1,21 +1,21 @@
 <!doctype html>{% capture lvl %}{{ page.url | append:'index.html' | split:'/' | size }}{% endcapture %}{% capture relative %}{% for i in (3..lvl) %}../{% endfor %}{% endcapture %}
-<html class="no-js" {% if site.wordpress %}<?php language_attributes(); ?>{% else %}lang="en"{% endif %}>
-  <head>{% if site.banner.developer %}
-    <!-- Developed by {{ site.banner.developer }} | {{ site.banner.developer_url }} -->{% endif %}
-    <meta charset="{% if site.wordpress %}<?php bloginfo( 'charset' ); ?>{% else %}utf-8{% endif %}">{% unless site.wordpress %}
+<html class="no-js" {% if site.wordpress_theme_name %}<?php language_attributes(); ?>{% else %}lang="en"{% endif %}>
+  <head>{% if site.developer.name %}
+    <!-- Developed by {{ site.developer.name }} | {{ site.developer.url }} -->{% endif %}
+    <meta charset="{% if site.wordpress_theme_name %}<?php bloginfo( 'charset' ); ?>{% else %}utf-8{% endif %}">{% unless site.wordpress_theme_name %}
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% endunless %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">{% unless site.wordpress %}{% if site.link.feed %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% unless site.wordpress_theme_name %}{% if site.link.feed %}
     <link rel="alternate" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}{{ site.link.feed }}" title="{{ site.title }} Feed" type="application/atom+xml">{% endif %}{% endunless %}{% if site.link.favicons %}
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.wordpress %}{% if site.link.canonical %}
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">{% endif %}{% unless site.wordpress_theme_name %}{% if site.link.canonical %}
     <link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">{% endif %}{% if site.link.sitemap %}
     <link rel="sitemap" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}{{ site.link.sitemap }}" title="{{ site.title }} Sitemap" type="application/xml">{% endif %}{% if site.link.style %}{% if site.link.google_fonts %}
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.google_fonts }}">{% endif %}
     <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}">{% endif %}{% endunless %}{% if site.link.script %}
     <script>
       with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}
-    </script>{% endif %}{% if site.wordpress %}
+    </script>{% endif %}{% if site.wordpress_theme_name %}
     <?php wp_head(); ?>{% else %}{% if page.include.head %}
     {{ page.include.head }}{% endif %}{% endif %}
   </head>
-  <body{% if site.wordpress %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>
+  <body{% if site.wordpress_theme_name %} <?php body_class(); ?>{% else %}{% if page.include.class %} class="{{ page.include.class }}"{% endif %}{% endif %}>

@@ -12,15 +12,15 @@ owner:
   name: Owner Name
   email: owner@email.com
 
-banner:
-  developer: Developer Name
-  developer_url: http://developer-website.com
+developer:
+  name: Developer Name
+  url: http://developer-website.com
 
 # Options
 
-analytics: # UA-xxxxxxxx-x
 cache_bust: true
-wordpress: # example_theme
+google_analytics: # UA-xxxxxxxx-x
+wordpress_theme_name: # example_theme
 
 link:
   canonical: true
@@ -33,7 +33,7 @@ link:
 
 # Bower Components
 
-components: ['foundation-sites motion-ui']
+bower_components: ['foundation-sites motion-ui']
 
 # Jekyll Configurations
 # ---------------------

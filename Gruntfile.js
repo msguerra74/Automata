@@ -24,9 +24,9 @@ module.exports = function(grunt) {
 
   // Generates a WordPress theme path if a wordpress variable is active in _config.yml
 
-  var wp_path = '';
-  if (config.wordpress) {
-    wp_path = '/wp-content/themes/' + config.wordpress;
+  var wordpress_path = '';
+  if (config.wordpress_theme_name) {
+    wordpress_path = '/wp-content/themes/' + config.wordpress_theme_name;
   }
 
   // Input/Source Directory
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
   // Output/Compiled Directory
 
-  var output = input + '/' + config.destination + wp_path;
+  var output = input + '/' + config.destination + wordpress_path;
 
   grunt.initConfig({
 
@@ -48,10 +48,10 @@ module.exports = function(grunt) {
 
     usebanner: {
       assets: (function() {
-        if (config.banner.developer) {
+        if (config.developer.name) {
           return {
             options: {
-              banner: '/* Developed by ' + config.banner.developer + ' | ' + config.banner.developer_url + ' */'
+              banner: '/* Developed by ' + config.developer.name + ' | ' + config.developer.url + ' */'
             },
             files: {
               src: output + '/assets/**/*.{css,js}'
@@ -244,12 +244,12 @@ module.exports = function(grunt) {
 
     shell: {
       bower: {
-        command: 'node_modules/bower/bin/bower install ' + config.components + ' --config.directory=' + input + '/_assets/bower_components/'
+        command: 'node_modules/bower/bin/bower install ' + config.bower_components + ' --config.directory=' + input + '/_assets/bower_components/'
       },
       jekyll: {
         command: [
           'cd ' + input + '/',
-          'jekyll build --destination ' + config.destination + wp_path
+          'jekyll build --destination ' + config.destination + wordpress_path
         ].join('&&')
       }
     },
