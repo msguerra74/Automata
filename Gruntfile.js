@@ -292,7 +292,7 @@ module.exports = function(grunt) {
       scripts: {
         files: input + '/_assets/js/**/*.js',
         tasks: [
-          'import_js',
+          'includereplace:scripts',
           'uglify'
         ]
       },
@@ -339,23 +339,22 @@ module.exports = function(grunt) {
     // Script Tasks
     // ------------
 
-    // Import JS
-    // https://github.com/dev113/grunt-import-js
-    // Import JS files within JS files by // @import 'script.js'; instruction
+    // Include Replace
+    // Grunt task to include files and replace variables
+    // https://github.com/alanshaw/grunt-include-replace
 
-    import_js: {
-      scripts: (function() {
-        if (config.link.script) {
-          return {
-            expand: true,
-            cwd: input + '/_assets/',
-            src: 'js/*.js',
-            dest: output + '/assets/temp/'
-          };
-        } else {
-          return {};
-        }
-      })()
+    includereplace: {
+      scripts: {
+        options: {
+          prefix: '// @'
+        },
+        expand: true,
+        cwd: input + '/_assets/js/',
+        src: [
+          '*.js'
+        ],
+        dest: output + '/assets/temp/js/'
+      }
     },
 
     // Uglify
@@ -459,7 +458,7 @@ module.exports = function(grunt) {
     'postcss',
     'imagemin:favicons',
     'imagemin:images',
-    'import_js',
+    'includereplace:scripts',
     'uglify',
     'clean:post',
     'usebanner',
@@ -477,7 +476,7 @@ module.exports = function(grunt) {
     'postcss',
     'imagemin:favicons',
     'imagemin:images',
-    'import_js',
+    'includereplace:scripts',
     'uglify',
     'php',
     'browserSync',

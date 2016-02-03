@@ -52,7 +52,7 @@ Additionally, [Foundation](http://foundation.zurb.com) and [WordPress](https://w
         - [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch): Run tasks whenever watched files change
         - [grunt-curl](https://github.com/twolfson/grunt-curl): Download files from the internet via grunt
         - [grunt-hashres](https://github.com/luismahou/grunt-hashres): Hashes asset files and renames links in html/php/etc
-        - [grunt-import-js](https://github.com/dev113/grunt-import-js): Import JS files within JS files by `@import` instruction
+        - [grunt-include-replace](https://github.com/alanshaw/grunt-include-replace): Grunt task to include files and replace variables
         - [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier): Beautify js, css, html and json files using Grunt and jsbeautify
         - [grunt-php](https://github.com/sindresorhus/grunt-php): Start a PHP-server
         - [grunt-postcss](https://github.com/nDmitry/grunt-postcss): Apply several post-processors to your CSS using PostCSS
