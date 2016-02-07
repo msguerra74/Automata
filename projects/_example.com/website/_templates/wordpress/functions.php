@@ -3,94 +3,169 @@
 
 <?php
 
-// Enqueue CSS and JS assets
-// -------------------------
+// Link CSS and JS Assets
+// ----------------------
 
-function {{ site.wordpress_theme_name }}_assets() {
+function {{ site.wordpress_theme_name }}_assets() { {% if site.link.google_fonts %}
+  // Google Fonts
+  wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family={{ site.link.google_fonts }}' );
+  {% endif %}
   // CSS
-  wp_enqueue_style( 'style_css', get_template_directory_uri() . '/assets/css/style.min.css', array() );
-  // JS with jQuery
-  wp_enqueue_script( 'script_js', get_template_directory_uri() . '/assets/js/script.min.js', array( 'jquery' ), '', true );
-}
+  wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/style.min.css', array() );
 
+  // JS with jQuery
+  wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js/script.min.js', array( 'jquery' ), '', true );
+}
 add_action( 'wp_enqueue_scripts', '{{ site.wordpress_theme_name }}_assets' );
 
-// Remove CSS and JS version strings
-// ---------------------------------
+// Remove Assets Version Strings
+// -----------------------------
 
-function {{ site.wordpress_theme_name }}_remove_script_version( $src ){
+function {{ site.wordpress_theme_name }}_assets_version_strings( $src ){
   return remove_query_arg( 'ver', $src );
 }
+add_filter( 'script_loader_src', '{{ site.wordpress_theme_name }}_assets_version_strings' );
+add_filter( 'style_loader_src', '{{ site.wordpress_theme_name }}_assets_version_strings' );
 
-add_filter( 'script_loader_src', '{{ site.wordpress_theme_name }}_remove_script_version' );
-add_filter( 'style_loader_src', '{{ site.wordpress_theme_name }}_remove_script_version' );
+// Body Classes
+// ------------
 
-// Setup theme defaults and register support for various features
-// --------------------------------------------------------------
+function {{ site.wordpress_theme_name }}_body_classes( $classes ) {
+	// No Aside
+	if ( ! is_active_sidebar( 'aside' ) ) {
+		$classes[] = 'no-aside';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', '{{ site.wordpress_theme_name }}_body_classes' );
+
+// Disable Media Comments
+// ----------------------
+
+function {{ site.wordpress_theme_name }}_disable_media_comments( $open, $post_id ) {
+	$post = get_post( $post_id );
+	if( $post->post_type == 'attachment' ) {
+		return false;
+	}
+	return $open;
+}
+add_filter( 'comments_open', '{{ site.wordpress_theme_name }}_disable_media_comments', 10 , 2 );
+
+// Excerpt Read More
+// -----------------
+
+function {{ site.wordpress_theme_name }}_excerpt_read_more( $more ) {
+  return ' <span>' . esc_html( '&hellip;' ) . '</span> <a href="' . get_permalink() . '" class="excerpt-read-more">' . esc_html( 'Read more' ) . '</a>';
+}
+add_filter('excerpt_more', '{{ site.wordpress_theme_name }}_excerpt_read_more');
+
+// JavaScript Detection
+// --------------------
+
+function {{ site.wordpress_theme_name }}_javascript_detection() {
+	echo "<script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>\n";
+}
+add_action( 'wp_head', '{{ site.wordpress_theme_name }}_javascript_detection', 0 );
+
+// Lead Paragraph Class
+// --------------------
+
+function {{ site.wordpress_theme_name }}_lead_paragraph_class($content){
+  return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
+}
+add_filter( 'the_content', '{{ site.wordpress_theme_name }}_lead_paragraph_class' );
+
+// Setup Theme
+// -----------
 
 function {{ site.wordpress_theme_name }}_setup() {
-  // Add default posts and comments RSS feed links to head
+  // Feed Links
   add_theme_support( 'automatic-feed-links' );
 
-  // Convert default core markup to valid HTML5 for various components
-  add_theme_support( 'html5', array(
-    'caption',
-    'comment-form',
-    'comment-list',
-    'gallery',
-    'search-form'
-  ) );
+  // HTML5
+  add_theme_support( 'html5',
+    array(
+      'caption',
+      'comment-form',
+      'comment-list',
+      'gallery',
+      'search-form'
+    )
+  );
 
-  // Enable support for Post Thumbnails / Featured Images on posts and pages
-  // add_image_size( 'banner-xlarge', 1200, 250, true );
+  // Post Formats
+  add_theme_support( 'post-formats',
+    array(
+      'aside',
+      'audio',
+      'chat',
+      'gallery',
+      'image',
+      'link',
+      'quote',
+      'status',
+      'video'
+    )
+  );
+
+  // Post Thumbnails
+  add_image_size( 'small', 640 );
+  add_image_size( 'xlarge', 1440 );
   add_theme_support( 'post-thumbnails' );
+  update_option( 'large_size_h', 0 );
+  update_option( 'large_size_w', 1200 );
+  update_option( 'medium_size_h', 0 );
+  update_option( 'medium_size_w', 1024 );
+  update_option( 'thumbnail_size_h', 160 );
+  update_option( 'thumbnail_size_w', 160 );
 
-  // Let WordPress manage the document title
+  // Title Tag
   add_theme_support( 'title-tag' );
 
-  // Register nav menus
-  register_nav_menus( array(
-		'nav_menu' => esc_html__( 'Nav Menu', '{{ site.wordpress_theme_name }}' ),
-	) );
-
-  // Remove unnecesary meta tags
+  // Remove Unwanted Head Components
   remove_action( 'wp_head', 'rsd_link' );
   remove_action( 'wp_head', 'wlwmanifest_link' );
   remove_action( 'wp_head', 'wp_generator' );
+
+  // Menus
+  register_nav_menus(
+    array(
+    	'nav_menu' => 'Nav Menu',
+      'social_nav_menu' => 'Social Nav Menu',
+      'footer_nav_menu' => 'Footer Nav Menu'
+    )
+  );
 }
+add_action( 'init', '{{ site.wordpress_theme_name }}_setup' );
 
-add_action( 'after_setup_theme', '{{ site.wordpress_theme_name }}_setup' );
+// Widget Sidebars
+// ---------------
 
-// Register sidebar/widgets area
-// -----------------------------
-
-function {{ site.wordpress_theme_name }}_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Aside', '{{ site.wordpress_theme_name }}' ),
-		'description' => __( 'Add widgets here to appear in the aside area.', '{{ site.wordpress_theme_name }}' ),
-    'id' => 'aside',
-		'before_widget' => '<div class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>'
-	) );
+function {{ site.wordpress_theme_name }}_widgets() {
+  // Aside
+	register_sidebar(
+    array(
+      'class' => 'aside',
+      'description' => 'Add widgets for the aside area',
+      'id' => 'aside',
+  		'name' => 'Aside',
+      'before_widget' => '<div class="widget %2$s">',
+  		'after_widget' => '</div>',
+  		'before_title' => '<h3>',
+  		'after_title' => '</h3>'
+  	)
+  );
 }
+add_action( 'widgets_init', '{{ site.wordpress_theme_name }}_widgets' );
 
-add_action( 'widgets_init', '{{ site.wordpress_theme_name }}_widgets_init' );
+// Widget Tag Cloud Font Sizes
+// ---------------------------
 
-// Add .lead class to the first paragraph of the content
-// -----------------------------------------------------
-
-function lead_paragraph_class($content){
-  return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead-paragraph">', $content, 1 );
+function {{ site.wordpress_theme_name }}_widget_tag_cloud_font_sizes( $args ) {
+	$args['largest'] = 1;
+	$args['smallest'] = 1;
+	$args['unit'] = 'rem';
+	return $args;
 }
-
-add_filter( 'the_content', 'lead_paragraph_class' );
-
-// Show pagination if it exists
-// ----------------------------
-
-function show_post_pagination() {
-  global $wp_query;
-  return ( $wp_query->max_num_pages > 1 );
-}
+add_filter( 'widget_tag_cloud_args', '{{ site.wordpress_theme_name }}_widget_tag_cloud_font_sizes' );

@@ -2,7 +2,7 @@
  * Automata
  * Automated Website Generator
  * Michael Guerra | http://msguerra74.com
- * MIT License [See README]
+ * The MIT License (MIT) [See README]
  */
 
 // Enter the Project Directory Name

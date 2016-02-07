@@ -13,10 +13,8 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family={{ site.link.google_fonts }}">{% endif %}
     <link rel="stylesheet" href="{% if page.relative == false %}/{% else %}{{ relative }}{% endif %}assets/css/{{ site.link.style }}">{% endif %}{% endunless %}{% if site.wordpress_theme_name %}
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-    <link rel="profile" href="http://gmpg.org/xfn/11">{% endif %}{% if site.link.script %}
-    <script>
-      with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}
-    </script>{% endif %}{% if site.wordpress_theme_name %}
+    <link rel="profile" href="http://gmpg.org/xfn/11">{% endif %}{% unless site.wordpress_theme_name %}{% if site.link.script %}
+    <script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>{% endif %}{% endunless %}{% if site.wordpress_theme_name %}
     <?php wp_head(); ?>{% else %}{% if page.include.head %}
     {{ page.include.head }}{% endif %}{% endif %}
   </head>
