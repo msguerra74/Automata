@@ -37,13 +37,13 @@ add_filter( 'style_loader_src', '{{ site.wordpress_theme_name }}_assets_version_
 
 function {{ site.wordpress_theme_name }}_body_classes( $classes ) {
 
-	// No Aside
+  // No Aside
 
-	if ( ! is_active_sidebar( 'aside' ) ) {
-		$classes[] = 'no-aside';
-	}
+  if ( ! is_active_sidebar( 'aside' ) ) {
+    $classes[] = 'no-aside';
+  }
 
-	return $classes;
+  return $classes;
 }
 add_filter( 'body_class', '{{ site.wordpress_theme_name }}_body_classes' );
 
@@ -51,11 +51,11 @@ add_filter( 'body_class', '{{ site.wordpress_theme_name }}_body_classes' );
 // ----------------------
 
 function {{ site.wordpress_theme_name }}_disable_media_comments( $open, $post_id ) {
-	$post = get_post( $post_id );
-	if( $post->post_type == 'attachment' ) {
-		return false;
-	}
-	return $open;
+  $post = get_post( $post_id );
+  if( $post->post_type == 'attachment' ) {
+    return false;
+  }
+  return $open;
 }
 add_filter( 'comments_open', '{{ site.wordpress_theme_name }}_disable_media_comments', 10 , 2 );
 
@@ -71,7 +71,7 @@ add_filter('excerpt_more', '{{ site.wordpress_theme_name }}_excerpt_read_more');
 // --------------------
 
 function {{ site.wordpress_theme_name }}_javascript_detection() {
-	echo "<script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>\n";
+  echo "<script>with(document.documentElement){className=className.replace(/\bno-js\b/,'js')}</script>\n";
 }
 add_action( 'wp_head', '{{ site.wordpress_theme_name }}_javascript_detection', 0 );
 
@@ -146,7 +146,7 @@ function {{ site.wordpress_theme_name }}_setup() {
 
   register_nav_menus(
     array(
-    	'nav_menu' => 'Nav Menu',
+      'nav_menu' => 'Nav Menu',
       'social_nav_menu' => 'Social Nav Menu',
       'footer_nav_menu' => 'Footer Nav Menu'
     )
@@ -158,10 +158,10 @@ add_action( 'init', '{{ site.wordpress_theme_name }}_setup' );
 // ---------------------------
 
 function {{ site.wordpress_theme_name }}_widget_tag_cloud_font_sizes( $args ) {
-	$args['largest'] = 1;
-	$args['smallest'] = 1;
-	$args['unit'] = 'rem';
-	return $args;
+  $args['largest'] = 1;
+  $args['smallest'] = 1;
+  $args['unit'] = 'rem';
+  return $args;
 }
 add_filter( 'widget_tag_cloud_args', '{{ site.wordpress_theme_name }}_widget_tag_cloud_font_sizes' );
 
@@ -172,17 +172,17 @@ function {{ site.wordpress_theme_name }}_widgets() {
 
   // Aside
 
-	register_sidebar(
+  register_sidebar(
     array(
       'class' => 'aside',
       'description' => 'Add widgets for the aside area',
       'id' => 'aside',
-  		'name' => 'Aside',
+      'name' => 'Aside',
       'before_widget' => '<div class="widget %2$s">',
-  		'after_widget' => '</div>',
-  		'before_title' => '<h3>',
-  		'after_title' => '</h3>'
-  	)
+      'after_widget' => '</div>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    )
   );
 }
 add_action( 'widgets_init', '{{ site.wordpress_theme_name }}_widgets' );

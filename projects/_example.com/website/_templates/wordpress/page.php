@@ -14,7 +14,7 @@ get_header(); ?>
             get_template_part( 'template-parts/content', 'page' );
           endwhile;
           if ( comments_open() || get_comments_number() ) :
-    				comments_template();
+            comments_template();
           endif;
         else :
           get_template_part( 'template-parts/content', 'oops' );
