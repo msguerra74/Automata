@@ -6,12 +6,12 @@
 
 @import 'settings';
 
-// @import '../../bower_components/foundation-sites/scss/foundation';
+@import '../../bower_components/foundation-sites/scss/foundation';
 // @import '../../bower_components/motion-ui/src/motion-ui';
 
-// @include foundation-global-styles;
+@include foundation-global-styles;
 // @include foundation-grid;
-// @include foundation-typography;
+@include foundation-typography;
 // @include foundation-button;
 // @include foundation-forms;
 // @include foundation-visibility-classes;

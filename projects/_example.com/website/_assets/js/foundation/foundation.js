@@ -1,10 +1,10 @@
 // Foundation for Sites
 // --------------------
 // http://foundation.zurb.com/sites/docs/
-// To @include any of the these scripts, add an '@' before the word 'include'
+// To @include any of the these scripts, add '@' before 'include'
 
-// include('../../bower_components/what-input/what-input.js')
-// include('../../bower_components/foundation-sites/js/foundation.core.js')
+// @include('../../bower_components/what-input/what-input.js')
+// @include('../../bower_components/foundation-sites/js/foundation.core.js')
 // include('../../bower_components/foundation-sites/js/foundation.abide.js')
 // include('../../bower_components/foundation-sites/js/foundation.accordion.js')
 // include('../../bower_components/foundation-sites/js/foundation.accordionMenu.js')
@@ -33,4 +33,4 @@
 // include('../../bower_components/foundation-sites/js/foundation.util.touch.js')
 // include('../../bower_components/foundation-sites/js/foundation.util.triggers.js')
 
-$(document).foundation();
+jQuery(document).foundation();

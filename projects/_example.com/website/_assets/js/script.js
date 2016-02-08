@@ -1,6 +1,6 @@
 // JavaScript / jQuery
 // -------------------
-// To @include any of the these scripts, add an '@' before the word 'include'
+// To @include any of the these scripts, add '@' before 'include'
 
 // jQuery
 
