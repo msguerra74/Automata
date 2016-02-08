@@ -94,6 +94,7 @@ module.exports = function(grunt) {
       post: output + '/assets/temp/',
       setup: [
         input + '/_assets/bower_components/',
+        input + '/_includes/.htaccess',
         '<%= clean.pre %>'
       ]
     },
