@@ -1,9 +1,10 @@
-<?php
-get_header(); ?>
-<div class="content-container">
-  <div class="content" id="content">
-    <div class="main-container">
-      <main class="main" role="main">
+---
+layout: wordpress
+wordpress:
+  feature: false
+  sidebar: true
+---
+
         <?php
         if( have_posts() ) :
           the_archive_title( '<h1>', '</h1>' );
@@ -15,11 +16,3 @@ get_header(); ?>
         else :
           get_template_part( 'template-parts/content', 'oops' );
         endif; ?>
-      </main>
-    </div>
-    <?php
-    get_sidebar(); ?>
-  </div>
-</div>
-<?php
-get_footer();
