@@ -154,6 +154,14 @@ function {{ site.wordpress_theme_name }}_setup() {
 }
 add_action( 'init', '{{ site.wordpress_theme_name }}_setup' );
 
+// Video Container Class
+// ---------------------
+
+function {{ site.wordpress_theme_name }}_video_container_class($html, $url, $attr, $post_id) {
+  return '<div class="video-container">' . $html . '</div>';
+}
+add_filter('embed_oembed_html', '{{ site.wordpress_theme_name }}_video_container_class', 99, 4);
+
 // Widget Tag Cloud Font Sizes
 // ---------------------------
 

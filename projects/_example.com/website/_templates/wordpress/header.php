@@ -25,20 +25,24 @@
           endif; ?>
         </div>
       </header>
-      <div class="nav-container">
-        <nav class="nav" role="navigation">
-          <div class="nav-toggle">
-            <a href="#nav-menu"><?php echo esc_html( 'Menu' ); ?></a>
-          </div>
-          <?php
-          wp_nav_menu(
-            array(
-              'container' => 'ul',
-              'menu_class' => 'nav-menu',
-              'menu_id' => 'nav-menu',
-              'theme_location' => 'nav_menu'
-            )
-          ); ?>
-        </nav>
-      </div>
+      <?php
+      if ( has_nav_menu( 'nav_menu' ) ) : ?>
+        <div class="nav-container">
+          <nav class="nav" role="navigation">
+            <div class="nav-toggle">
+              <a href="#nav-menu"><?php echo esc_html( 'Menu' ); ?></a>
+            </div>
+              <?php
+              wp_nav_menu(
+                array(
+                  'container' => 'ul',
+                  'menu_class' => 'nav-menu',
+                  'menu_id' => 'nav-menu',
+                  'theme_location' => 'nav_menu'
+                )
+              ); ?>
+          </nav>
+        </div>
+      <?php
+      endif; ?>
     </div>

@@ -19,10 +19,10 @@
     font-family: $_font-family;
     font-weight: $_weight;
     font-style: $_style;
-    src: url("#{$_font-path}#{$_font-name}.eot");
-    src: url("#{$_font-path}#{$_font-name}.eot?#iefix") format("embedded-opentype"),
-         url("#{$_font-path}#{$_font-name}.woff") format("woff"),
-         url("#{$_font-path}#{$_font-name}.ttf") format("truetype"),
-         url("#{$_font-path}#{$_font-name}.svg##{$_font-family}") format("svg");
+    src: url('#{$_font-path}#{$_font-name}.eot');
+    src: url('#{$_font-path}#{$_font-name}.eot?#iefix') format('embedded-opentype'),
+         url('#{$_font-path}#{$_font-name}.woff') format('woff'),
+         url('#{$_font-path}#{$_font-name}.ttf') format('truetype'),
+         url('#{$_font-path}#{$_font-name}.svg##{$_font-family}') format('svg');
   }
 }
