@@ -63,7 +63,7 @@ add_filter( 'comments_open', '{{ site.wordpress_theme_name }}_disable_media_comm
 // -----------------
 
 function {{ site.wordpress_theme_name }}_excerpt_read_more( $more ) {
-  return ' <span>' . esc_html( '&hellip;' ) . '</span> <a href="' . get_permalink() . '" class="excerpt-read-more">' . esc_html( 'Read more' ) . '</a>';
+  return ' <span>' . esc_html( '&hellip;' ) . '</span> <a href="' . get_permalink() . '" class="post-excerpt-read-more">' . esc_html( 'Read more' ) . '</a>';
 }
 add_filter('excerpt_more', '{{ site.wordpress_theme_name }}_excerpt_read_more');
 
@@ -166,8 +166,9 @@ add_filter('embed_oembed_html', '{{ site.wordpress_theme_name }}_video_container
 // ---------------------------
 
 function {{ site.wordpress_theme_name }}_widget_tag_cloud_font_sizes( $args ) {
-  $args['largest'] = 1;
-  $args['smallest'] = 1;
+  $args['format'] = 'list';
+  $args['largest'] = .875;
+  $args['smallest'] = .875;
   $args['unit'] = 'rem';
   return $args;
 }

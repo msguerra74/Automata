@@ -5,7 +5,7 @@
   endif ?>
   <div class="post-excerpt-info">
     <h2><a href="<?php echo esc_url( the_permalink() ); ?>" rel="home"><?php the_title(); ?></a></h2>
-    <p class="post-exerpt-date"><?php the_time( 'F j, Y' ); ?></p>
+    <p class="post-excerpt-date"><?php the_time( 'F j, Y' ); ?></p>
     <?php
     the_excerpt(); ?>
   </div>
