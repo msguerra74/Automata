@@ -83,6 +83,17 @@ function {{ site.wordpress_theme_name }}_lead_paragraph_class($content){
 }
 add_filter( 'the_content', '{{ site.wordpress_theme_name }}_lead_paragraph_class' );
 
+// Prevent Editor Code Stripping
+// -----------------------------
+
+function {{ site.wordpress_theme_name }}_prevent_editor_code_stripping($initArray) {
+  $opts = '*[*]';
+  $initArray['valid_elements'] = $opts;
+  $initArray['extended_valid_elements'] = $opts;
+  return $initArray;
+}
+add_filter('tiny_mce_before_init', '{{ site.wordpress_theme_name }}_prevent_editor_code_stripping');
+
 // Setup
 // -----
 
