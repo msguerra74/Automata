@@ -1,7 +1,36 @@
 // Mixins
 // ------
 
-@import 'font-face';
-@import 'image-replacement';
-@import 'vertical-align-middle';
-@import 'visually-hidden';
+// Font Face
+// ---------
+// @include font-face(font-family, font-name, weight, style, font-path);
+// Include order: normal, bold, italic, bold + italic
+
+// @param {Keyword} $_font-family - Font name
+// @param {Keyword} $_font-name [$_font-family] - Font name
+// @param {Keyword} $_weight [normal] - bold, extra-bold, normal, semi-bold
+// @param {Keyword} $_style [normal] - italic, normal
+// @param {String} $_font-path ['../fonts/'] - Relative path to fonts from CSS
+
+@mixin font-face($_font-family, $_font-name: $_font-family, $_weight: normal, $_style: normal, $_font-path: '../fonts/') {
+  @font-face {
+    font-family: $_font-family;
+    font-weight: $_weight;
+    font-style: $_style;
+    src: url('#{$_font-path}#{$_font-name}.eot');
+    src: url('#{$_font-path}#{$_font-name}.eot?#iefix') format('embedded-opentype'),
+         url('#{$_font-path}#{$_font-name}.woff') format('woff'),
+         url('#{$_font-path}#{$_font-name}.ttf') format('truetype'),
+         url('#{$_font-path}#{$_font-name}.svg##{$_font-family}') format('svg');
+  }
+}
+
+// Image Replacement
+// -----------------
+// @include image-replacement;
+
+@mixin image-replacement {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}

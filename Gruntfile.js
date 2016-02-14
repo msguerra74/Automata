@@ -300,7 +300,7 @@ module.exports = function(grunt) {
       styles: {
         files: input + '/_assets/scss/**/*.scss',
         tasks: [
-          'sass',
+          'sass:dev',
           'postcss'
         ]
       }

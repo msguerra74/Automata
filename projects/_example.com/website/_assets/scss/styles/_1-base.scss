@@ -1,3 +1,44 @@
 // 1. Base
 // -------
 
+html {
+  min-width: 20rem;
+  overflow-y: scroll;
+}
+
+@if variable-exists(primary-color) {
+  ::selection {
+    background: $primary-color;
+    text-shadow: none;
+  }
+}
+
+canvas {
+  touch-action: auto;
+}
+
+embed,
+object,
+video {
+  height: auto;
+  max-width: 100%;
+  &[height],
+  &[width] {
+    max-width: none;
+  }
+}
+
+img {
+  &[height],
+  &[width] {
+    max-width: none;
+  }
+}
+
+pre {
+  white-space: pre;
+}
+
+textarea {
+  resize: vertical;
+}
