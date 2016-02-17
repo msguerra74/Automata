@@ -30,7 +30,7 @@
   endif;
   if ( ! comments_open() || ! comments_open() && get_comments_number() ) : ?>
     <div class="comments-closed">
-      <p><?php echo esc_html( 'Comments are currenlty closed.' ); ?></p>
+      <p><?php echo esc_html( 'Comments are currently closed.' ); ?></p>
     </div>
   <?php
   endif;

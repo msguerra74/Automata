@@ -22,17 +22,6 @@ object,
 video {
   height: auto;
   max-width: 100%;
-  &[height],
-  &[width] {
-    max-width: none;
-  }
-}
-
-img {
-  &[height],
-  &[width] {
-    max-width: none;
-  }
 }
 
 pre {
