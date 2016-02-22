@@ -7,7 +7,9 @@ wordpress:
 
         <?php
         if( have_posts() ) : ?>
-          <h1><?php echo esc_html( 'Search results for: '); ?><span><?php the_search_query(); ?></span></h1>
+          <div class="page-header">
+            <h1><?php echo esc_html( 'Search results for: '); ?><span><?php the_search_query(); ?></span></h1>
+          </div>
           <?php
           while ( have_posts() ) : the_post();
             get_template_part( 'template-parts/content', get_post_format() );

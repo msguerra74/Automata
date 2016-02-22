@@ -94,6 +94,15 @@ function {{ site.wordpress_theme_name }}_prevent_editor_code_stripping($initArra
 }
 add_filter('tiny_mce_before_init', '{{ site.wordpress_theme_name }}_prevent_editor_code_stripping');
 
+// Remove Comment Website Field
+// ----------------------------
+
+function {{ site.wordpress_theme_name }}_remove_comment_website_field($fields) {
+  unset($fields['url']);
+  return $fields;
+}
+add_filter('comment_form_default_fields','{{ site.wordpress_theme_name }}_remove_comment_website_field');
+
 // Setup
 // -----
 

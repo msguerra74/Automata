@@ -23,14 +23,14 @@
   <?php
   the_comments_navigation(
     array(
-      'prev_text' => 'Previous comments',
-      'next_text' => 'Next comments'
+      'prev_text' => '&#10092; Older comments',
+      'next_text' => 'Newer comments &#10093;'
     )
   );
   endif;
   if ( ! comments_open() || ! comments_open() && get_comments_number() ) : ?>
     <div class="comments-closed">
-      <p><?php echo esc_html( 'Comments are currently closed.' ); ?></p>
+      <p><?php echo esc_html( 'Comments are currently closed' ); ?></p>
     </div>
   <?php
   endif;

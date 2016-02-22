@@ -12,8 +12,8 @@ wordpress:
           endwhile;
           the_post_navigation(
             array(
-              'prev_text' => 'Previous post',
-              'next_text' => 'Next post'
+              'prev_text' => '&#10092; Previous post',
+              'next_text' => 'Next post &#10093;'
             )
           );
           if ( comments_open() || get_comments_number() ) :

@@ -12,8 +12,8 @@ wordpress:
           endwhile;
           the_posts_navigation(
             array(
-              'prev_text' => 'Previous posts',
-              'next_text' => 'Next posts'
+              'prev_text' => '&#10092; Older posts',
+              'next_text' => 'Newer posts &#10093'
             )
           );
         else :
