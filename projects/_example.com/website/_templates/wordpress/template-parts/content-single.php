@@ -10,11 +10,11 @@
   the_content(); ?>
   <footer class="post-footer">
     <?php
-    wp_link_pages( 'before=<p class="multi-page-post-navigation">Page &pagelink=<span> % </span>' ); ?>
+    wp_link_pages( 'before=<p class="multi-page-navigation">Page &pagelink=<span> % </span>' ); ?>
     <h3><?php echo esc_html( 'Post categorization'); ?></h3>
     <?php
     the_category();
     the_tags( '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' ); ?>
-    <p class="post-modified-date"><small><?php echo esc_html( 'Post last updated on ' ), the_modified_date(); ?></small></p>
+    <p class="post-modified-date"><small><?php echo esc_html( 'Post last updated on' ) ?> <span><?php the_modified_date(); ?></span></small></p>
   </footer>
 </article>

@@ -3,6 +3,24 @@
 
 <?php
 
+// Add Categories and Tags to Pages and Archives
+// ---------------------------------------------
+
+function {{ site.wordpress_theme_name }}_add_category_and_tags_to_pages() {
+  register_taxonomy_for_object_type( 'post_tag', 'page' );
+  register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', '{{ site.wordpress_theme_name }}_add_category_and_tags_to_pages' );
+
+function {{ site.wordpress_theme_name }}_add_category_and_tag_to_archives( $wp_query ) {
+  // $my_post_array = array( 'post', 'page' );
+  if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) ) $wp_query->set( 'post_type', 'any' );
+  if ( $wp_query->get( 'tag' ) ) $wp_query->set( 'post_type', 'any' );
+}
+if ( ! is_admin() ) {
+  add_action( 'pre_get_posts', '{{ site.wordpress_theme_name }}_add_category_and_tag_to_archives' );
+}
+
 // Assets
 // ------
 
@@ -173,6 +191,18 @@ function {{ site.wordpress_theme_name }}_setup() {
   );
 }
 add_action( 'init', '{{ site.wordpress_theme_name }}_setup' );
+
+// Show Custom Image Sizes in Insert Media
+// ---------------------------------------
+
+function {{ site.wordpress_theme_name }}_show_custom_image_sizes_in_insert_media( $sizes ) {
+  $custom_sizes = array(
+    'small' => 'Small',
+    'xlarge' => 'X-Large'
+  );
+  return array_merge( $sizes, $custom_sizes );
+}
+add_filter( 'image_size_names_choose', '{{ site.wordpress_theme_name }}_show_custom_image_sizes_in_insert_media' );
 
 // Video Container Class
 // ---------------------
