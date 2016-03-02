@@ -31,7 +31,7 @@
     "grunt-php": "^1.5.1",
     "grunt-postcss": "^0.7.2",
     "grunt-sass": "^1.1.0",
-    "grunt-shell": "^1.1.2",
-    "load-grunt-tasks": "^3.4.0"
+    "grunt-shell": "^1.2.1",
+    "load-grunt-tasks": "^3.4.1"
   }
 }
