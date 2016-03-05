@@ -91,7 +91,6 @@ module.exports = function(grunt) {
         output + '/**/{.*,*}',
         '!' + output + '/.{git,svn}'
       ],
-      post: output + '/assets/temp/',
       setup: [
         input + '/_assets/bower_components/',
         input + '/_includes/.htaccess',
@@ -293,14 +292,15 @@ module.exports = function(grunt) {
       scripts: {
         files: input + '/_assets/js/**/*.js',
         tasks: [
-          'includereplace:scripts',
+          'includereplace',
+          'babel',
           'uglify'
         ]
       },
       styles: {
         files: input + '/_assets/scss/**/*.scss',
         tasks: [
-          'sass:dev',
+          'sass',
           'postcss'
         ]
       }
@@ -340,6 +340,22 @@ module.exports = function(grunt) {
     // Script Tasks
     // ------------
 
+    // Babel
+    // Use next generation JavaScript today
+    // https://github.com/babel/grunt-babel
+
+    babel: {
+      options: {
+        presets: ['es2015']
+      },
+      dist: {
+        expand: true,
+        cwd: output + '/assets/js/',
+        src: '*.js',
+        dest: output + '/assets/js/',
+      }
+    },
+
     // Include Replace
     // Grunt task to include files and replace variables
     // https://github.com/alanshaw/grunt-include-replace
@@ -354,7 +370,8 @@ module.exports = function(grunt) {
         src: [
           '*.js'
         ],
-        dest: output + '/assets/temp/js/'
+        dest: output + '/assets/js/',
+        ext: '.min.js'
       }
     },
 
@@ -365,10 +382,9 @@ module.exports = function(grunt) {
     uglify: {
       scripts: {
         expand: true,
-        cwd: output + '/assets/temp/js/',
+        cwd: output + '/assets/js/',
         src: '*.js',
-        dest: output + '/assets/js/',
-        ext: '.min.js'
+        dest: output + '/assets/js/'
       }
     },
 
@@ -379,25 +395,28 @@ module.exports = function(grunt) {
     // Apply several post-processors to your CSS using PostCSS
     // https://github.com/nDmitry/grunt-postcss
 
-    // Autoprefixer
-    // Parse CSS and add vendor prefixes to rules by Can I Use
-    // https://github.com/postcss/autoprefixer
+    // cssnano
+    // A modular minifier, composed of single-responsibility PostCSS plugins
+    // https://github.com/ben-eb/cssnano
 
     postcss: {
       css: {
         options: {
           processors: [
-            require('autoprefixer')({
-              browsers: [
-                'last 2 versions',
-                'ie >= 9',
-                'and_chr >= 2.3'
-              ]
+            require('cssnano')({
+              autoprefixer: {
+                add: true,
+                browsers: [
+                  'last 2 versions',
+                  'ie >= 9',
+                  'and_chr >= 2.3'
+                ]
+              }
             })
           ]
         },
         expand: true,
-        cwd: output + '/assets/temp/css/',
+        cwd: output + '/assets/css/',
         src: '*.css',
         dest: output + '/assets/css/'
       }
@@ -408,32 +427,13 @@ module.exports = function(grunt) {
     // https://github.com/sindresorhus/grunt-sass
 
     sass: {
-      dev: (function() {
-        if (config.link.style) {
-          return {
-            options: {
-              outputStyle: 'expanded'
-            },
-            expand: true,
-            cwd: input + '/_assets/scss/',
-            src: '*.scss',
-            dest: output + '/assets/temp/css/',
-            ext: '.min.css'
-          };
-        } else {
-          return {};
-        }
-      })(),
       styles: (function() {
         if (config.link.style) {
           return {
-            options: {
-              outputStyle: 'compressed'
-            },
             expand: true,
             cwd: input + '/_assets/scss/',
             src: '*.scss',
-            dest: output + '/assets/temp/css/',
+            dest: output + '/assets/css/',
             ext: '.min.css'
           };
         } else {
@@ -455,13 +455,13 @@ module.exports = function(grunt) {
     'clean:pre',
     'shell:jekyll',
     'copy',
-    'sass:styles',
+    'sass',
     'postcss',
     'imagemin:favicons',
     'imagemin:images',
-    'includereplace:scripts',
+    'includereplace',
+    'babel',
     'uglify',
-    'clean:post',
     'usebanner',
     'hashres',
     'jsbeautifier'
@@ -473,11 +473,12 @@ module.exports = function(grunt) {
     'clean:pre',
     'shell:jekyll',
     'copy',
-    'sass:dev',
+    'sass',
     'postcss',
     'imagemin:favicons',
     'imagemin:images',
-    'includereplace:scripts',
+    'includereplace',
+    'babel',
     'uglify',
     'php',
     'browserSync',

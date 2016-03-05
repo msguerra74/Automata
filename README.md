@@ -41,8 +41,9 @@ Additionally, [Foundation](http://foundation.zurb.com) and [WordPress](https://w
 - [Node.js](http://nodejs.org): JavaScript runtime platform
     - [Grunt](http://gruntjs.com): JavaScript task runner
         - **Grunt Dependencies:**
-        - [autoprefixer](https://github.com/postcss/autoprefixer): Parse CSS and add vendor prefixes to rules by Can I Use
         - [bower](http://bower.io): A package manager for the web
+        - [cssnano](https://github.com/ben-eb/cssnano): A modular minifier, composed of single-responsibility PostCSS plugins
+        - [grunt-babel](https://github.com/babel/grunt-babel): Use next generation JavaScript today
         - [grunt-banner](https://github.com/mattstyles/grunt-banner): Adds a simple banner to files
         - [grunt-browser-sync](https://github.com/BrowserSync/grunt-browser-sync): Grunt Task for keeping multiple browsers & devices in sync when building websites
         - [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean): Clear files and folders
