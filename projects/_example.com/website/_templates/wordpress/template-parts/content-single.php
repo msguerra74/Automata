@@ -6,8 +6,10 @@
       <time class="post-date" datetime="<?php the_time( 'Y-j-m' ); ?>"><?php the_time( 'F j, Y' ); ?></time>
     </div>
   </header>
-  <?php
-  the_content(); ?>
+  <div class="post-content">
+    <?php
+    the_content(); ?>
+  </div>
   <footer class="post-footer">
     <?php
     wp_link_pages( 'before=<p class="multi-page-navigation">Page &pagelink=<span> % </span>' ); ?>

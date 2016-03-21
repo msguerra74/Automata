@@ -5,8 +5,11 @@
 <?php
 if ( has_post_thumbnail() ) :
   get_template_part( 'template-parts/content', 'feature' );
-endif;
-the_content(); ?>
+endif; ?>
+<div class="page-content">
+  <?php
+  the_content(); ?>
+</div>
 <footer class="page-footer">
   <?php
   wp_link_pages( 'before=<p class="multi-page-navigation">Page &pagelink=<span> % </span>' ); ?>
