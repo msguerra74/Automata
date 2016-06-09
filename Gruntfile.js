@@ -57,7 +57,8 @@ module.exports = function(grunt) {
               src: output + '/assets/**/*.{css,js}'
             }
           };
-        } else {
+        }
+        else {
           return {};
         }
       })()
@@ -114,7 +115,8 @@ module.exports = function(grunt) {
             ],
             dest: output + '/'
           };
-        } else {
+        }
+        else {
           return {};
         }
       })(),
@@ -148,7 +150,8 @@ module.exports = function(grunt) {
             return {
               fileNameFormat: '${hash}-${name}.${ext}'
             };
-          } else {
+          }
+          else {
             return {
               fileNameFormat: '${name}.${ext}'
             };
@@ -325,7 +328,8 @@ module.exports = function(grunt) {
             src: '*.png',
             dest: output + '/'
           };
-        } else {
+        }
+        else {
           return {};
         }
       })(),
@@ -436,7 +440,8 @@ module.exports = function(grunt) {
             dest: output + '/assets/css/',
             ext: '.min.css'
           };
-        } else {
+        }
+        else {
           return {};
         }
       })()
