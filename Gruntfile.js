@@ -406,6 +406,7 @@ module.exports = function(grunt) {
     postcss: {
       css: {
         options: {
+          map: true,
           processors: [
             require('cssnano')({
               autoprefixer: {
@@ -431,6 +432,9 @@ module.exports = function(grunt) {
     // https://github.com/sindresorhus/grunt-sass
 
     sass: {
+      options: {
+        sourceMap: true
+      },
       styles: (function() {
         if (config.link.style) {
           return {
