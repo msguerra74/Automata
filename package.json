@@ -29,7 +29,7 @@
     "grunt-curl": "^2.2.0",
     "grunt-hashres": "^0.4.1",
     "grunt-include-replace": "^4.0.1",
-    "grunt-jsbeautifier": "^0.2.12",
+    "grunt-jsbeautifier": "^0.2.13",
     "grunt-php": "^1.5.1",
     "grunt-postcss": "^0.8.0",
     "grunt-sass": "^1.2.0",
