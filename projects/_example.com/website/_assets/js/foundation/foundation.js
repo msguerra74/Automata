@@ -1,7 +1,10 @@
 // Foundation for Sites
 // --------------------
 // http://foundation.zurb.com/sites/docs/
-// '// @include()' to include any of the the following scripts
+// Before including any of the following scripts, run 'grunt setup'
+// Next, include 'jquery.js' and 'foundation.js' in the 'script.js' file
+// Lastly, include scripts by adding '@include'
+// Example: // @include('...')
 
 // ('../../bower_components/what-input/what-input.js')
 // @include('../../bower_components/foundation-sites/js/foundation.core.js')
@@ -34,4 +37,5 @@
 // ('../../bower_components/foundation-sites/js/foundation.util.triggers.js')
 
 // Instantiate Foundation
+
 jQuery(document).foundation();
