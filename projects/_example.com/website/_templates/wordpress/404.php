@@ -1,6 +1,6 @@
 <?php
 get_header(); ?>
-<div class="content-container" id="content-container">
+<div class="content-container" id="content-container" tabindex="0">
   <main class="main" role="main">
     <?php
     get_template_part( 'template-parts/content', 'oops' ); ?>

@@ -2,7 +2,7 @@
 ---
 
 {% include 1-head.html %}
-    <a href="#content-container" class="skip-link screen-reader-text"><?php echo esc_html( 'Skip to content' ); ?></a>
+    <a href="#content-container" class="skip-link show-on-focus"><?php echo esc_html( 'Skip to content' ); ?></a>
     <div class="header-container">
       <header class="header" role="banner">
         <div class="header-info">

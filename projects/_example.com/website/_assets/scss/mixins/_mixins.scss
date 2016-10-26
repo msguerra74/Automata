@@ -1,6 +1,20 @@
 // Mixins
 // ------
 
+// Child Margin
+// ------------
+// @include child-margin(child-type, margin-type, margin);
+
+// @param {Keyword} $_child-type [last] - first, last
+// @param {Keyword} $_margin-type [bottom] - bottom, top
+// @param {Keyword} $_margin [0] - Margin size
+
+@mixin child-margin($_child-type: last, $_margin-type: bottom, $_margin: 0) {
+  & > :#{$_child-type}-child {
+    margin-#{$_margin-type}: $_margin;
+  }
+}
+
 // Font Face
 // ---------
 // @include font-face(font-family, font-name, weight, style, font-path);
