@@ -1,3 +1,6 @@
+<?php
+if ( post_password_required() )
+  return; ?>
 <section class="comments">
   <?php
   if ( have_comments() ) : ?>
@@ -19,7 +22,7 @@
         'avatar_size' => 72
       )
     ); ?>
-  </ol>
+  </ol><!-- /.comment-list -->
   <?php
   the_comments_navigation(
     array(
@@ -31,7 +34,7 @@
   if ( ! comments_open() || ! comments_open() && get_comments_number() ) : ?>
     <div class="comments-closed">
       <p><?php echo esc_html( 'Comments are currently closed' ); ?></p>
-    </div>
+    </div><!-- /.comments-closed -->
   <?php
   endif;
   comment_form(
@@ -40,4 +43,4 @@
       'title_reply_after' => '</h2>'
     )
   ); ?>
-</section>
+</section><!-- /.comments -->

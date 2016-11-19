@@ -1,14 +1,21 @@
 // JavaScript / jQuery
 // -------------------
-// Before including any of the following scripts, run 'grunt setup'
-// Next, include scripts by adding '@include'
+// Before including the following scripts, run 'grunt setup'
+// Include the following scripts by replacing the '//' with '// @include'
 // Example: // @include('...')
 
 // jQuery
+// ------
+// Not needed if enqueueing via WordPress
 
 // ('../bower_components/jquery/dist/jquery.js')
 
 // Foundation for Sites
-// Requires jQuery
+// --------------------
+// Requires jQuery (Not needed if enqueueing via WordPress)
 
-// ('foundation/foundation.js')
+// foundation/foundation.js'
+
+// Scripts
+// -------
+

@@ -1,13 +1,14 @@
 // Foundation for Sites
 // --------------------
 // http://foundation.zurb.com/sites/docs/
+// Before importing/including Foundation components, run 'grunt setup'
 
-@import 'settings';
+@import 'foundation-settings';
 
 @import '../../bower_components/foundation-sites/scss/foundation';
 // @import '../../bower_components/motion-ui/src/motion-ui';
 
-@include foundation-global-styles;
+// @include foundation-global-styles;
 // @include foundation-grid;
 // @include foundation-flex-grid;
 // @include foundation-typography;

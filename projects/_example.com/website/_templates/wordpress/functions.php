@@ -25,7 +25,6 @@ if ( ! is_admin() ) {
 // ------
 
 function {{ site.wordpress_theme_name }}_assets() { {% if site.link.google_fonts %}
-
   // Google Fonts
 
   wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family={{ site.link.google_fonts }}' );
@@ -33,6 +32,7 @@ function {{ site.wordpress_theme_name }}_assets() { {% if site.link.google_fonts
 
   // CSS
 
+  // wp_enqueue_style( 'style', get_stylesheet_uri() ); // Enqueue style.css if needed
   wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/style.min.css', array() );
 
   // JS / jQuery
@@ -54,13 +54,11 @@ add_filter( 'style_loader_src', '{{ site.wordpress_theme_name }}_assets_version_
 // ------------
 
 function {{ site.wordpress_theme_name }}_body_classes( $classes ) {
-
   // No Aside
 
   if ( ! is_active_sidebar( 'aside' ) ) {
     $classes[] = 'no-aside';
   }
-
   return $classes;
 }
 add_filter( 'body_class', '{{ site.wordpress_theme_name }}_body_classes' );
@@ -119,13 +117,12 @@ function {{ site.wordpress_theme_name }}_remove_comment_website_field($fields) {
   unset($fields['url']);
   return $fields;
 }
-add_filter('comment_form_default_fields','{{ site.wordpress_theme_name }}_remove_comment_website_field');
+add_filter('comment_form_default_fields', '{{ site.wordpress_theme_name }}_remove_comment_website_field');
 
 // Setup
 // -----
 
 function {{ site.wordpress_theme_name }}_setup() {
-
   // Feed Links
 
   add_theme_support( 'automatic-feed-links' );
@@ -184,11 +181,17 @@ function {{ site.wordpress_theme_name }}_setup() {
 
   register_nav_menus(
     array(
-      'nav_menu' => 'Nav Menu',
-      'social_nav_menu' => 'Social Nav Menu',
-      'footer_nav_menu' => 'Footer Nav Menu'
+      'header_top_nav_menu' => 'Header Top Nav Menu',
+      'header_nav_menu' => 'Header Nav Menu',
+      'social_nav_menu' => 'Social Nav Menu'
     )
   );
+
+  // Set the content width based on the theme's design and stylesheet.
+
+  if ( ! isset( $content_width ) ) {
+  	$content_width = 1200;
+  }
 }
 add_action( 'init', '{{ site.wordpress_theme_name }}_setup' );
 
@@ -228,15 +231,74 @@ add_filter( 'widget_tag_cloud_args', '{{ site.wordpress_theme_name }}_widget_tag
 // -------
 
 function {{ site.wordpress_theme_name }}_widgets() {
-
-  // Aside
+  // Header Modules
 
   register_sidebar(
     array(
-      'class' => 'aside',
-      'description' => 'Add widgets for the aside area',
-      'id' => 'aside',
-      'name' => 'Aside',
+      'class' => 'header-modules',
+      'description' => 'Add widgets for the header modules area',
+      'id' => 'header-modules',
+      'name' => 'Header Modules',
+      'before_widget' => '<div class="widget %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    )
+  );
+
+  // Main Modules
+
+  register_sidebar(
+    array(
+      'class' => 'main-modules',
+      'description' => 'Add widgets for the main modules area',
+      'id' => 'main-modules',
+      'name' => 'Main Modules',
+      'before_widget' => '<div class="widget %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    )
+  );
+
+  // Aside Modules
+
+  register_sidebar(
+    array(
+      'class' => 'aside-modules',
+      'description' => 'Add widgets for the aside modules area',
+      'id' => 'aside-modules',
+      'name' => 'Aside Modules',
+      'before_widget' => '<div class="widget %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    )
+  );
+
+  // Modules
+
+  register_sidebar(
+    array(
+      'class' => 'modules',
+      'description' => 'Add widgets for the modules area',
+      'id' => 'modules',
+      'name' => 'Modules',
+      'before_widget' => '<div class="widget %2$s">',
+      'after_widget' => '</div>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    )
+);
+
+  // Footer Modules
+
+  register_sidebar(
+    array(
+      'class' => 'footer-modules',
+      'description' => 'Add widgets for the footer modules area',
+      'id' => 'footer-modules',
+      'name' => 'Footer Modules',
       'before_widget' => '<div class="widget %2$s">',
       'after_widget' => '</div>',
       'before_title' => '<h3>',

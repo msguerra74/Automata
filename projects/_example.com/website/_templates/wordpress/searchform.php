@@ -4,4 +4,4 @@
     <input class="search-field" name="s" placeholder="<?php echo esc_html( 'Search&hellip;' ); ?>" type="search" value="<?php echo get_search_query(); ?>" />
   </label>
   <button class="search-submit" type="submit"><span class="screen-reader-text"><?php echo esc_html( 'Search' ); ?></span></button>
-</form>
+</form><!-- /.search-form -->

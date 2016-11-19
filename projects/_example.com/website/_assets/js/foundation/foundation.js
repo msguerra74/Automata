@@ -1,13 +1,12 @@
 // Foundation for Sites
 // --------------------
 // http://foundation.zurb.com/sites/docs/
-// Before including any of the following scripts, run 'grunt setup'
-// Next, include 'jquery.js' and 'foundation.js' in the 'script.js' file
-// Lastly, include scripts by adding '@include'
+// Before including the following scripts, run 'grunt setup'
+// Include the following scripts by replacing the '//' with '// @include'
 // Example: // @include('...')
 
 // ('../../bower_components/what-input/what-input.js')
-// @include('../../bower_components/foundation-sites/js/foundation.core.js')
+// ('../../bower_components/foundation-sites/js/foundation.core.js')
 // ('../../bower_components/foundation-sites/js/foundation.abide.js')
 // ('../../bower_components/foundation-sites/js/foundation.accordion.js')
 // ('../../bower_components/foundation-sites/js/foundation.accordionMenu.js')

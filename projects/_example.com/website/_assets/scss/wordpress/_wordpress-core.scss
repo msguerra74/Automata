@@ -1,0 +1,114 @@
+// WordPress Core
+// --------------
+
+.alignnone {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.aligncenter {
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.alignright {
+  display: block;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 40em) {
+    float: right;
+    margin: 0 0 1rem 1rem;
+  }
+}
+
+.alignleft {
+  display: block;
+  margin-bottom: 1.5rem;
+
+  @media (min-width: 40em) {
+    float: left;
+    margin: 0 1rem 1rem 0;
+  }
+}
+
+.gallery {
+  margin-bottom: 1.5rem;
+
+  &:after,
+  &:before {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.gallery-item {
+  width: 100%;
+
+  @media (min-width: 40em) {
+    float: left;
+  }
+
+  .gallery-columns-2 & {
+    @media (min-width: 40em) {
+      width: 50%;
+    }
+  }
+
+  .gallery-columns-3 & {
+    @media (min-width: 40em) {
+      width: 33.33%;
+    }
+  }
+
+  .gallery-columns-4 & {
+    @media (min-width: 40em) {
+      width: 25%;
+    }
+  }
+
+  .gallery-columns-5 & {
+    @media (min-width: 40em) {
+      width: 20%;
+    }
+  }
+
+  .gallery-columns-6 & {
+    @media (min-width: 40em) {
+      width: 16.66%;
+    }
+  }
+
+  .gallery-columns-7 & {
+    @media (min-width: 40em) {
+      width: 14.28%;
+    }
+  }
+
+  .gallery-columns-8 & {
+    @media (min-width: 40em) {
+      width: 12.5%;
+    }
+  }
+
+  .gallery-columns-9 & {
+    @media (min-width: 40em) {
+      width: 11.11%;
+    }
+  }
+}
+
+.gallery-caption {
+  display: block;
+}
+
+.sticky {
+  display: block;
+}
+
+.wp-caption {
+  .wp-caption-text {}
+}

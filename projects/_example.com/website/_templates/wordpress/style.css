@@ -2,7 +2,7 @@
 ---
 
 /*
-  Theme Name: {{ site.title }} Theme
+  Theme Name: {{ site.title }}
   Theme URI: {{ site.url }}
   Author: {{ site.developer.name }}
   Author URI: {{ site.developer.url }}
@@ -10,4 +10,5 @@
   Version: 1.0
   License: The MIT License (MIT)
   License URI: https://tldrlegal.com/license/mit-license
+  Text Domain: {{ site.wordpress_theme_name }}
 */
