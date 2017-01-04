@@ -1,3 +1,5 @@
+> **Notice:** Development on this project has been paused in favor of [Automata Prepros](https://github.com/msguerra74/Automata-Prepros), so check it out for the most up-to-date version.
+
 # Automata
 
 [![Dependency Status](https://david-dm.org/msguerra74/automata.svg?style=flat)](https://david-dm.org/msguerra74/automata) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
