@@ -1,4 +1,4 @@
-> **Notice:** Development on this project has been paused in favor of [Automata Prepros](https://github.com/msguerra74/Automata-Prepros), so check it out for the most up-to-date version.
+> **Notice:** Development on this project has ended.
 
 # Automata
 
